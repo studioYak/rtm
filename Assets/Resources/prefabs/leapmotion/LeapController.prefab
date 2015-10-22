@@ -41,15 +41,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionState: 3
   initShieldPosition: {x: 0, y: 0, z: 0}
+  initSwordPosition: {x: 0, y: 0, z: 0}
   debugLeapCanvasPrefab: {fileID: 22304300, guid: c6d75c243a987bf409877aa6a24ad6d7,
     type: 2}
-  projectionMainDroitePrefab: {fileID: 120136, guid: b86dbcf36ba9b8947939cadd4e15b9a8,
+  attackProjectionPrefab: {fileID: 120136, guid: b86dbcf36ba9b8947939cadd4e15b9a8,
     type: 2}
-  projectionMainGauchePrefab: {fileID: 118146, guid: 368d1c905e92b5549acc014ca226c8e6,
+  defenseProjectionPrefab: {fileID: 118146, guid: 368d1c905e92b5549acc014ca226c8e6,
     type: 2}
-  pointerRightHandPrefab: {fileID: 137980, guid: 9d9566eb9102a3e45850875351feac6e,
+  pointerAttackHandPrefab: {fileID: 137980, guid: 9d9566eb9102a3e45850875351feac6e,
     type: 2}
-  pointerLeftHandPrefab: {fileID: 101304, guid: 5910132e4105cb748a578abc4ccf2ca9,
+  pointerDefenseHandPrefab: {fileID: 101304, guid: 5910132e4105cb748a578abc4ccf2ca9,
     type: 2}
 --- !u!1001 &100100000
 Prefab:
@@ -93,6 +94,22 @@ Prefab:
       objectReference: {fileID: 120136, guid: b86dbcf36ba9b8947939cadd4e15b9a8, type: 2}
     - target: {fileID: 0}
       propertyPath: projectionMainGauchePrefab
+      value: 
+      objectReference: {fileID: 118146, guid: 368d1c905e92b5549acc014ca226c8e6, type: 2}
+    - target: {fileID: 0}
+      propertyPath: pointerAttackHandPrefab
+      value: 
+      objectReference: {fileID: 137980, guid: 9d9566eb9102a3e45850875351feac6e, type: 2}
+    - target: {fileID: 0}
+      propertyPath: pointerDefenseHandPrefab
+      value: 
+      objectReference: {fileID: 101304, guid: 5910132e4105cb748a578abc4ccf2ca9, type: 2}
+    - target: {fileID: 0}
+      propertyPath: attackProjectionPrefab
+      value: 
+      objectReference: {fileID: 120136, guid: b86dbcf36ba9b8947939cadd4e15b9a8, type: 2}
+    - target: {fileID: 0}
+      propertyPath: defenseProjectionPrefab
       value: 
       objectReference: {fileID: 118146, guid: 368d1c905e92b5549acc014ca226c8e6, type: 2}
     m_RemovedComponents: []

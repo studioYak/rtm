@@ -32,7 +32,7 @@ public abstract class Hero : Unit {
 		HpRefresh = hpRefresh;
 		PowerRefresh = powerRefresh;
 		BlockingPercent = blockingPercent;
-		range = 4;
+		range = 5;
 	}
 
 	public int XpQuantity {

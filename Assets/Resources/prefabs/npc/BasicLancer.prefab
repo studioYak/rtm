@@ -26,8 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188766}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.8599999, y: 0, z: -4.07999992}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -2.8599999, y: 1, z: -4.07999992}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,7 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d73e1ef94ee6dbc4bb11d626de5bf15a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LancePrefab: {fileID: 118478, guid: de26dac7a18c57042a2cf1ea97f32434, type: 2}
+  LancePrefab: {fileID: 118478, guid: fbdafafba19c6d54abee745a13bd6eb0, type: 2}
 --- !u!135 &13599196
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -100,7 +100,23 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: LancePrefab
       value: 
-      objectReference: {fileID: 118478, guid: de26dac7a18c57042a2cf1ea97f32434, type: 2}
+      objectReference: {fileID: 118478, guid: fbdafafba19c6d54abee745a13bd6eb0, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 188766}

@@ -112,7 +112,7 @@ public abstract class Unit : MonoBehaviour {
 
 	public void WakeUp(float deltaTime)
 	{
-		float maxHeight = 1.5f;
+		float maxHeight = 2f; //edit 1.5 BV
 		float speed = 3;
 		float height = this.transform.position.y + speed * deltaTime;
 		if(maxHeight < height)

@@ -31,15 +31,15 @@ public class LeapControl : MonoBehaviour {
 	protected UnityEngine.UI.Text movementLabel;
 	
 	
-	public GameObject  projectionMainDroitePrefab ;
-	private GameObject projectionMainDroite;
-	public GameObject  projectionMainGauchePrefab ;
-	private GameObject projectionMainGauche;
+	public GameObject  attackProjectionPrefab ;
+	private GameObject attackProjection;
+	public GameObject  defenseProjectionPrefab ;
+	private GameObject defenseProjection;
 	
-	public GameObject pointerRightHandPrefab;
-	private GameObject pointerRightHand;
-	public GameObject pointerLeftHandPrefab;
-	private GameObject pointerLeftHand;
+	public GameObject pointerAttackHandPrefab;
+	private GameObject pointerAttackHand;
+	public GameObject pointerDefenseHandPrefab;
+	private GameObject pointerDefenseHand;
 	
 	Hand rightHand = null;
 	Hand leftHand = null;
@@ -50,35 +50,102 @@ public class LeapControl : MonoBehaviour {
 	
 	
 	private int nAction = 0;
-	
-	
-	// Use this for initialization
-	void OnEnable () {
+
+	//TODO overwritte with game settigns
+	private GameController.HandSide attackHand = GameController.HandSide.RIGHT_HAND; //default value
+	private GameController.HandSide defenseHand = GameController.HandSide.LEFT_HAND;
+
+	/**
+	 * Sets which hand (right or left) is the attack hand.
+	 * At the same time, defines which defense hand it is (by inverse logic).
+	 * It means you don't have to call both setAttackHand or setDefenseHand
+	 **/
+	public void setAttackHand(GameController.HandSide attackSide)
+	{
+		attackHand = attackSide;
+		defenseHand = (attackSide == GameController.HandSide.RIGHT_HAND ? GameController.HandSide.LEFT_HAND : GameController.HandSide.RIGHT_HAND);
+
+		setInitPosition();
+	}
+
+	/**
+	 * Sets which hand (right or left) is the attack hand.
+	 * At the same time, defines which defense hand it is (by inverse logic)
+	 * It means you don't have to call both setAttackHand or setDefenseHand
+	 **/
+	public void setDefenseHand(GameController.HandSide defenseSide)
+	{
+		attackHand = (defenseSide == GameController.HandSide.RIGHT_HAND ? GameController.HandSide.LEFT_HAND : GameController.HandSide.RIGHT_HAND);
+		defenseHand = defenseSide;
+
+		setInitPosition();
+
+
+	}
+
+	private void setInitPosition()
+	{
+		//switch init pos if lefthanded
+		if (attackHand == GameController.HandSide.RIGHT_HAND)
+		{
+			pointerDefenseHand.transform.localPosition = new Vector3 (-1.65f, -0.25f, 0.1f);
+			pointerAttackHand.transform.localPosition = new Vector3(1.65f, -0.25f, 0.1f);
+		}
+		else
+		{
+			pointerDefenseHand.transform.localPosition = new Vector3 (1.65f, -0.25f, 0.1f);
+			pointerAttackHand.transform.localPosition = new Vector3(-1.65f, -0.25f, 0.1f);
+		}
 		
-		debugLeapCanvas = Instantiate (debugLeapCanvasPrefab);
-		projectionMainDroite = Instantiate (projectionMainDroitePrefab);
-		projectionMainGauche = Instantiate (projectionMainGauchePrefab);
-		
-		pointerLeftHand = Instantiate (pointerLeftHandPrefab);
-		pointerRightHand = Instantiate (pointerRightHandPrefab);
-		
-		
-		leapDebugLabel = debugLeapCanvas.transform.Find("InfoLabel").GetComponent<UnityEngine.UI.Text>();
-		movementLabel = debugLeapCanvas.transform.Find("MovementLabel").GetComponent<UnityEngine.UI.Text>();
-		
-		//pointerLeftHand = Instantiate (debugLeapCanvasPrefab) as GameObject;
-		
-		initShieldPosition = pointerLeftHand.transform.localPosition;
-		initSwordPosition = pointerRightHand.transform.localPosition;
+		initShieldPosition = pointerDefenseHand.transform.localPosition;
+		initSwordPosition = pointerAttackHand.transform.localPosition;
 		
 		//same init pos
-		projectionMainGauche.transform.position = pointerLeftHand.transform.position;
-		projectionMainDroite.transform.position = pointerRightHand.transform.position;
+		defenseProjection.transform.position = pointerDefenseHand.transform.position;
+		attackProjection.transform.position = pointerAttackHand.transform.position;
+	}
+
+	/**
+	 * Returns the Vector 3 Position of the LeapMotion right or left hand (according to
+	 * setAttackHand)
+	 * internals pointerDefenseHand/pointerAttackHand must be already initialized
+	 * internal attackHand must be set with setAttackHand() first
+	 **/
+	public Vector3 getAttackPointer()
+	{
+		return pointerAttackHand.transform.position;
+	}
+
+	/**
+	 * Returns the Vector 3 Position of the LeapMotion right or left hand (according to
+	 * setAttackHand)
+	 * internals pointerDefenseHand/pointerAttackHand must be already initialized
+	 * internal attackHand must be set with setAttackHand() first
+	 **/
+	public Vector3 getDefensePointer()
+	{
+		return pointerDefenseHand.transform.position;
+	}
+
+	// Use this for initialization
+	/**
+	 * Called before GameController calls LeapControl.setParent()
+	 **/
+	void OnEnable () 
+	{
+		debugLeapCanvas = Instantiate (debugLeapCanvasPrefab);
+		attackProjection = Instantiate (attackProjectionPrefab);
+		defenseProjection = Instantiate (defenseProjectionPrefab);
 		
-		//link obkjects
-		//projectionMainGauche.transform.parent = pointerLeftHand.transform;
-		//projectionMainDroite.transform.parent = pointerRightHand.transform;
-		
+		pointerDefenseHand = Instantiate (pointerDefenseHandPrefab);
+		pointerAttackHand = Instantiate (pointerAttackHandPrefab);
+
+		leapDebugLabel = debugLeapCanvas.transform.Find("InfoLabel").GetComponent<UnityEngine.UI.Text>();
+		movementLabel = debugLeapCanvas.transform.Find("MovementLabel").GetComponent<UnityEngine.UI.Text>();
+
+
+		//setAttackHand(GameController.HandSide.RIGHT_HAND);
+	
 		Debug.Log ("Fin de Start LeapControl.cs ");
 		
 		
@@ -88,10 +155,10 @@ public class LeapControl : MonoBehaviour {
 	{
 		heroAsParent = go;
 		Debug.Log("add parent: "+go);
-		pointerLeftHand.transform.parent = go.transform;
-		pointerRightHand.transform.parent = go.transform;
-		projectionMainDroite.transform.parent = go.transform;
-		projectionMainGauche.transform.parent = go.transform;
+		pointerDefenseHand.transform.parent = go.transform;
+		pointerAttackHand.transform.parent = go.transform;
+		attackProjection.transform.parent = go.transform;
+		defenseProjection.transform.parent = go.transform;
 	}
 	
 	/** Creates a new Leap Controller object. */
@@ -104,47 +171,18 @@ public class LeapControl : MonoBehaviour {
 	/**
 	 * using rightHand and leftHand var 
 	 **/
-	void GestureDetection()
+	void GestureDetection(Hand hand)
 	{
+
 		//detect gestures
 		//detect hand forward (attack / defense)
-		if (rightHand != null && rightHand.IsValid && (rightHand.PalmPosition.z <= -50) && (rightHand.PalmVelocity.z <= -500))
+		if (hand != null && hand.IsValid && (hand.PalmPosition.z <= -50) && (hand.PalmVelocity.z <= -500))
 		{
-			nAction++;
-			//dbg pps
-			
-			//projectionMainDroite.GetComponent<Renderer>().enabled = true;
-			
-			Vector3 pointerPosition = projectionMainDroite.transform.position;
-			pointerPosition.x = rightHand.PalmPosition.ToUnityScaled().x * movementScale;
-			pointerPosition.y = rightHand.PalmPosition.ToUnityScaled().y * movementScale;
-			projectionMainDroite.transform.position = pointerPosition;
-			
-			actionState = ActionState.ATTACK;
-			timeAction = Time.time;
-		}
-		else
-			//defense
-			if (leftHand != null && leftHand.IsValid && (leftHand.PalmPosition.z <= -50) && (leftHand.PalmVelocity.z <= -500))
-		{
-			nAction++;
-			
-			
-			projectionMainGauche.GetComponent<Renderer>().enabled = true;
-			
-			//reattach shield  to pointer
-			projectionMainGauche.transform.parent = pointerLeftHand.transform;
-			projectionMainGauche.transform.localPosition = new Vector3(0,0,0);
-			
-			/*Vector3 pointerPosition = projectionMainGauche.transform.localPosition;
-			pointerPosition.x = leftHand.PalmPosition.ToUnityScaled().x * movementScale;
-			pointerPosition.y = leftHand.PalmPosition.ToUnityScaled().y * movementScale;
-			projectionMainGauche.transform.localPosition = pointerPosition;*/
-			
-			
-			
-			actionState = ActionState.DEFENSE;
-			timeAction = Time.time;
+			if ((attackHand == GameController.HandSide.LEFT_HAND && hand.IsLeft) || 
+			    (attackHand == GameController.HandSide.RIGHT_HAND && hand.IsRight))
+				nAction = attack(nAction, hand);
+			else
+				nAction = defense(nAction);
 		}
 		/*else
 		 * //desactivation pour sprint 1 car bug
@@ -156,6 +194,51 @@ public class LeapControl : MonoBehaviour {
 			actionState = ActionState.CHEST;
 			timeAction = Time.time;
 		}*/
+	}
+
+	/**
+	 * return nAction
+	 **/
+	public int attack (int nAction, Hand hand)
+	{
+		nAction++;
+		//dbg pps
+		
+		//attackProjection.GetComponent<Renderer>().enabled = true;
+		
+		Vector3 pointerPosition = attackProjection.transform.position;
+		pointerPosition.x = hand.PalmPosition.ToUnityScaled().x * movementScale;
+		pointerPosition.y = hand.PalmPosition.ToUnityScaled().y * movementScale;
+		attackProjection.transform.position = pointerPosition;
+		
+		actionState = ActionState.ATTACK;
+		timeAction = Time.time;
+
+		return nAction;
+	}
+
+	public int defense(int nAction)
+	{
+		nAction++;
+		
+		
+		defenseProjection.GetComponent<Renderer>().enabled = true;
+		
+		//reattach shield  to pointer
+		defenseProjection.transform.parent = pointerDefenseHand.transform;
+		defenseProjection.transform.localPosition = new Vector3(0,0,0);
+		
+		/*Vector3 pointerPosition = defenseProjection.transform.localPosition;
+			pointerPosition.x = leftHand.PalmPosition.ToUnityScaled().x * movementScale;
+			pointerPosition.y = leftHand.PalmPosition.ToUnityScaled().y * movementScale;
+			defenseProjection.transform.localPosition = pointerPosition;*/
+		
+		
+		
+		actionState = ActionState.DEFENSE;
+		timeAction = Time.time;
+
+		return nAction;
 	}
 	
 	public ActionState getActionState() {
@@ -186,32 +269,38 @@ public class LeapControl : MonoBehaviour {
 			{
 				
 				
-				if (hand.IsValid && hand.IsLeft)
+				if (hand.IsValid && (hand.IsLeft && defenseHand == GameController.HandSide.LEFT_HAND ||
+				    hand.IsRight && defenseHand == GameController.HandSide.RIGHT_HAND))
 				{
 					frameString += "\nLeft hand";
 					frameString += "\nLeft hand pos.x :  " + hand.PalmPosition.x;
 					frameString += "\nLeft hand postounityscale.x :  " + hand.PalmPosition.ToUnityScaled().x;
-					frameString += "\nLeft pointer pos :  " + pointerLeftHand.transform.position.ToString();
+					frameString += "\nLeft pointer pos :  " + pointerDefenseHand.transform.position.ToString();
 					leftHand = hand;
-					//pointerLeftHand.transform.localPosition = leftHand.PalmPosition.ToUnityScaled();
-					Vector3 pointerPosition = pointerLeftHand.transform.position;
+					//pointerDefenseHand.transform.localPosition = leftHand.PalmPosition.ToUnityScaled();
+					Vector3 pointerPosition = pointerDefenseHand.transform.position;
 					pointerPosition.x = leftHand.PalmPosition.ToUnityScaled().x * movementScale;
-					pointerPosition.y = leftHand.PalmPosition.ToUnityScaled().y * movementScale;
-					pointerLeftHand.transform.position = pointerPosition;
+					pointerPosition.y = leftHand.PalmPosition.ToUnityScaled().y * movementScale -1.0f;
+					pointerDefenseHand.transform.position = pointerPosition;
 					
 				}
-				else if (hand.IsValid && hand.IsRight )
+				else if (hand.IsValid && (hand.IsRight && attackHand == GameController.HandSide.RIGHT_HAND ||
+				         hand.IsLeft && attackHand == GameController.HandSide.LEFT_HAND))
 				{
 					
 					rightHand = hand;
-					//pointerRightHand.transform.localPosition = rightHand.PalmPosition.ToUnityScaled();
+					//pointerAttackHand.transform.localPosition = rightHand.PalmPosition.ToUnityScaled();
 					
-					Vector3 pointerPosition = pointerRightHand.transform.position;
+					Vector3 pointerPosition = pointerAttackHand.transform.position;
 					pointerPosition.x = rightHand.PalmPosition.ToUnityScaled().x * movementScale;
-					pointerPosition.y = rightHand.PalmPosition.ToUnityScaled().y * movementScale;
-					pointerRightHand.transform.position = pointerPosition;
+					pointerPosition.y = rightHand.PalmPosition.ToUnityScaled().y * movementScale -1.0f;
+					pointerAttackHand.transform.position = pointerPosition;
 					
 				}
+
+				//ne cherche les actions que si on est pas déjà en mvt
+				if(actionState == ActionState.REST)
+					GestureDetection (hand);
 				
 			}
 			
@@ -230,30 +319,9 @@ public class LeapControl : MonoBehaviour {
 		
 		
 
-		//ne cherche les actions que si on est pas déjà en mvt
-		if(actionState == ActionState.REST)
-			GestureDetection ();
 		
-		/*
-		 * //debut de code souris, a voir pour le prochain sprint
-		 * var h =  Input.mousePosition.x;
-		var v = Input.mousePosition.y;
-
-		//debut codage souris
-		if (Input.GetButtonDown("Fire1")) {
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-
-
-			Debug.Log ("toWorldPoint:"+Camera.main.ScreenToWorldPoint(Input.mousePosition));
-			Debug.Log ("toViewportPoint:"+Camera.main.ScreenToViewportPoint(Input.mousePosition));
-			Debug.Log ("toRay:"+Camera.main.ScreenPointToRay(Input.mousePosition));
-
-		}
-
-
-		leapDebugLabel.text += h + ";"+ v;*/
 		
+	
 		
 		movementLabel.text = actionState.ToString() + " ( "+ nAction.ToString()+" )";
 	}
@@ -265,17 +333,17 @@ public class LeapControl : MonoBehaviour {
 	public void backToInitialPosition()
 	{
 		//remet en état initial la main gauche
-		projectionMainGauche.transform.parent = heroAsParent.transform;
-		Vector3 restPositionL = projectionMainGauche.transform.position;
+		defenseProjection.transform.parent = heroAsParent.transform;
+		Vector3 restPositionL = defenseProjection.transform.position;
 		restPositionL.x = initShieldPosition.x;
 		restPositionL.y = initShieldPosition.y;
 		
-		projectionMainGauche.transform.position =  restPositionL;
+		defenseProjection.transform.position =  restPositionL;
 
-		Vector3 restPositionR = projectionMainDroite.transform.position;
+		Vector3 restPositionR = attackProjection.transform.position;
 		restPositionR.x = initSwordPosition.x;
 		restPositionR.y = initSwordPosition.y;
-		projectionMainDroite.transform.position = restPositionR;
+		attackProjection.transform.position = restPositionR;
 	}
 	
 }

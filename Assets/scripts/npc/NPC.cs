@@ -34,7 +34,7 @@ public abstract class NPC : Unit {
 		XpGain = xpGain;
 
 		aggroDistance = 30;
-		attackDistance = 3.5f;
+		attackDistance = 4.5f; //edit BV demo 3.5
 		distanceToDisappear = 2;
 		this.blocking = blocking;
 	}

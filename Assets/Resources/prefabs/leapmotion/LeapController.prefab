@@ -36,21 +36,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 142260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d048dae81a721d4aab1776539b1937e, type: 3}
+  m_Script: {fileID: 11500000, guid: 451b21ff7876d2943a65be97a91a701c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actionState: 3
   initShieldPosition: {x: 0, y: 0, z: 0}
   initSwordPosition: {x: 0, y: 0, z: 0}
-  debugLeapCanvasPrefab: {fileID: 22304300, guid: c6d75c243a987bf409877aa6a24ad6d7,
+  debugLeapCanvasPrefab: {fileID: 22304300, guid: e5f689b9c263d544aada8500ffa431d3,
     type: 2}
-  attackProjectionPrefab: {fileID: 120136, guid: b86dbcf36ba9b8947939cadd4e15b9a8,
+  attackProjectionPrefab: {fileID: 120136, guid: 829e22946eed6d240a3e5cd9ecfc2e4d,
     type: 2}
-  defenseProjectionPrefab: {fileID: 118146, guid: 368d1c905e92b5549acc014ca226c8e6,
+  defenseProjectionPrefab: {fileID: 118146, guid: dc2321e3dae35fa40ba8229c7739ed59,
     type: 2}
-  pointerAttackHandPrefab: {fileID: 137980, guid: 9d9566eb9102a3e45850875351feac6e,
+  pointerAttackHandPrefab: {fileID: 137980, guid: acfbba67a2d9995489b4d464e46b8756,
     type: 2}
-  pointerDefenseHandPrefab: {fileID: 101304, guid: 5910132e4105cb748a578abc4ccf2ca9,
+  pointerDefenseHandPrefab: {fileID: 101304, guid: 961f7ddc2c3431e429c98f2ab3eaa9cf,
     type: 2}
 --- !u!1001 &100100000
 Prefab:
@@ -62,7 +62,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: debugLeapCanvasPrefab
       value: 
-      objectReference: {fileID: 22304300, guid: c6d75c243a987bf409877aa6a24ad6d7,
+      objectReference: {fileID: 22304300, guid: e5f689b9c263d544aada8500ffa431d3,
         type: 2}
     - target: {fileID: 0}
       propertyPath: pointerLeftHand
@@ -99,19 +99,19 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: pointerAttackHandPrefab
       value: 
-      objectReference: {fileID: 137980, guid: 9d9566eb9102a3e45850875351feac6e, type: 2}
+      objectReference: {fileID: 137980, guid: acfbba67a2d9995489b4d464e46b8756, type: 2}
     - target: {fileID: 0}
       propertyPath: pointerDefenseHandPrefab
       value: 
-      objectReference: {fileID: 101304, guid: 5910132e4105cb748a578abc4ccf2ca9, type: 2}
+      objectReference: {fileID: 101304, guid: 961f7ddc2c3431e429c98f2ab3eaa9cf, type: 2}
     - target: {fileID: 0}
       propertyPath: attackProjectionPrefab
       value: 
-      objectReference: {fileID: 120136, guid: b86dbcf36ba9b8947939cadd4e15b9a8, type: 2}
+      objectReference: {fileID: 120136, guid: 829e22946eed6d240a3e5cd9ecfc2e4d, type: 2}
     - target: {fileID: 0}
       propertyPath: defenseProjectionPrefab
       value: 
-      objectReference: {fileID: 118146, guid: 368d1c905e92b5549acc014ca226c8e6, type: 2}
+      objectReference: {fileID: 118146, guid: dc2321e3dae35fa40ba8229c7739ed59, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 142260}

@@ -2,6 +2,10 @@
 using System.Collections;
 using System;
 
+/**
+* @author HugoLS
+* @version 1.0
+**/
 public abstract class Unit : MonoBehaviour {
 
 	int hp;
@@ -23,6 +27,15 @@ public abstract class Unit : MonoBehaviour {
 
 	}
 
+	/**
+	* FR:
+	* Constructeur de la classe Unit
+	* EN:
+	* Unit class constructor
+	* @see Unit
+	*
+	* @version 1.0
+	**/
 	public Unit(int hp, int damage, int movementSpeed, string attackType, string name){
 		this.hp = hp;
 		this.maxHp = hp;
@@ -32,6 +45,18 @@ public abstract class Unit : MonoBehaviour {
 		this.name = name;
 	}
 
+	/**
+	* FR:
+	* Getter/Setter de hp
+	* EN:
+	* Getter/Setter of hp
+	* @return 
+	* FR:
+	*	Retourne un int pour le getter et void pour le setter
+	* EN:
+	*	Return an int for the getter and void for the setter
+	* @version 1.0
+	**/
 	public int HealthPoint {
 		get {
 			return this.hp;
@@ -41,6 +66,18 @@ public abstract class Unit : MonoBehaviour {
 		}
 	}
 
+	/**
+	* FR:
+	* Getter/Setter de maxHp
+	* EN:
+	* Getter/Setter of maxHp
+	* @return 
+	* FR:
+	*	Retourne un int pour le getter et void pour le setter
+	* EN:
+	*	Return an int for the getter and void for the setter
+	* @version 1.0
+	**/
 	public int MaxHealthPoint {
 		get {
 			return this.maxHp;
@@ -50,6 +87,18 @@ public abstract class Unit : MonoBehaviour {
 		}
 	}
 
+	/**
+	* FR:
+	* Getter/Setter de action
+	* EN:
+	* Getter/Setter of action
+	* @return 
+	* FR:
+	*	Retourne une structure action int pour le getter et void pour le setter
+	* EN:
+	*	Return an action structure for the getter and void for the setter
+	* @version 1.0
+	**/
 	public UnitAction Action {
 		get {
 			return this.action;
@@ -59,6 +108,18 @@ public abstract class Unit : MonoBehaviour {
 		}
 	}
 
+	/**
+	* FR:
+	* Getter/Setter de damage
+	* EN:
+	* Getter/Setter of damage
+	* @return 
+	* FR:
+	*	Retourne un int pour le getter et void pour le setter
+	* EN:
+	*	Return an int for the getter and void for the setter
+	* @version 1.0
+	**/
 	public int Damage {
 		get {
 			return this.damage;
@@ -68,6 +129,18 @@ public abstract class Unit : MonoBehaviour {
 		}
 	}
 
+	/**
+	* FR:
+	* Getter/Setter de movementSpeed
+	* EN:
+	* Getter/Setter of movementSpeed
+	* @return 
+	* FR:
+	*	Retourne un int pour le getter et void pour le setter
+	* EN:
+	*	Return an int for the getter and void for the setter
+	* @version 1.0
+	**/
 	public int MovementSpeed {
 		get {
 			return this.movementSpeed;
@@ -77,6 +150,18 @@ public abstract class Unit : MonoBehaviour {
 		}
 	}
 
+	/**
+	* FR:
+	* Getter/Setter de attackType
+	* EN:
+	* Getter/Setter of attackType
+	* @return 
+	* FR:
+	*	Retourne une string pour le getter et void pour le setter
+	* EN:
+	*	Return a string for the getter and void for the setter
+	* @version 1.0
+	**/
 	public string AttackType {
 		get {
 			return this.attackType;
@@ -86,6 +171,18 @@ public abstract class Unit : MonoBehaviour {
 		}
 	}
 
+	/**
+	* FR:
+	* Getter/Setter de name
+	* EN:
+	* Getter/Setter of name
+	* @return 
+	* FR:
+	*	Retourne une string pour le getter et void pour le setter
+	* EN:
+	*	Return a string for the getter and void for the setter
+	* @version 1.0
+	**/
 	public string Name {
 		get {
 			return this.name;
@@ -95,16 +192,40 @@ public abstract class Unit : MonoBehaviour {
 		}
 	}
 
+	/**
+	* Not used for the moment
+	*
+	**/
 	void Attack(int x, int y, int z){
 
 		//Cooldown(0.0);
 	}
 
+	/**
+	* FR:
+	* Permet de retirer des points de vie à l'unité
+	* EN:
+	* Reduce health point of the Unit
+	* @return 
+	* FR:
+	*	Retourne un int
+	* EN:
+	*	Return an int
+	* @version 1.0
+	**/
 	public int LostHP(int hpLost){
 		hp = hp - hpLost;
 		return hp;
 	}
 
+	/**
+	* FR:
+	* 	Permet de redéfinir la position d'une Unité
+	* EN:
+	* 	Set the position of a Unit
+	* @return Return void
+	* @version 1.0
+	**/
 	public void SetPosition(float x,float y, float z)
 	{
 		this.transform.position = new Vector3 (x, y, z);
@@ -122,6 +243,14 @@ public abstract class Unit : MonoBehaviour {
 		this.transform.position = new Vector3 (this.transform.position.x, height, this.transform.position.z);
 	}
 
+	/**
+	* FR:
+	* 	Permet de récupérer la position d'une Unité
+	* EN:
+	* 	Get the position of a Unit
+	* @return Return a Vector3 with the x,y and z position
+	* @version 1.0
+	**/
 	public Vector3 GetPosition()
 	{
 		float x = this.transform.position.x;
@@ -131,8 +260,24 @@ public abstract class Unit : MonoBehaviour {
 		return new Vector3(x,y,z);
 	}
 	
+	/**
+	* FR:
+	* 	Fait courir l'unité en fonction du deltaTime
+	* EN:
+	* 	Do running the Unit according to the deltaTime
+	* @return Return void
+	* @version 1.0
+	**/
 	public abstract void Run (float deltaTime);
 
+	/**
+	* FR:
+	* 	Vérifie si l'unité possède plus de 0 points de vie
+	* EN:
+	* 	Check if the unit get more than 0 Health point
+	* @return Return bool
+	* @version 1.0
+	**/
 	bool IsDead(){
 		if (hp <= 0) {
 			return true;
@@ -140,6 +285,14 @@ public abstract class Unit : MonoBehaviour {
 		return false;
 	}
 
+	/**
+	* FR:
+	* 	Tue l'unité en détruisant le gameObject
+	* EN:
+	* 	Kill the unit by destroying the gameObject
+	* @return Return void
+	* @version 1.0
+	**/
 	public void Die()
 	{
 		Destroy(this.gameObject);

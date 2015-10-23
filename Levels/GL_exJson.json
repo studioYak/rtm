@@ -1,0 +1,15 @@
+{
+	"ennemies":[
+		{"type":"basicDragonet", "position_seconds":10, "position_x":1.5},
+		{"type":"canon", "position_seconds":15, "position_x":3},
+		{"type":"basicLancer", "position_seconds":24, "position_x":1},
+		{"type":"iceLancer", "position_seconds":30, "position_x":-2},
+		{"type":"fireLancer", "position_seconds":30, "position_x":0},
+		{"type":"basicDragonet", "position_seconds":40, "position_x":-2}
+	],
+	"objects":[
+		{"type":"health", "position_seconds":12},
+		{"type":"power", "position_seconds":23},
+		{"type":"invincibility", "position_seconds":28}
+	]
+}

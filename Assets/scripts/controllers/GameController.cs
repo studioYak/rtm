@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour {
 		LEFT_HAND,
 	};
 
-	private const string FILE_PATH = "levels/GL_exJson.json";
+	private const string FILE_PATH = "Levels/GL_exJson.json";
 
 	private GameObject terrain;
 

@@ -3,8 +3,14 @@ using System.Collections;
 using UnityEngine.UI;
 using Leap;
 
+/**
+ * @author Baptiste Valthier
+ * Gesture Detection class using LeapController
+ **/
 public class LeapControl : MonoBehaviour {
-	
+
+	/**
+	 * La derniere action répérée par le mouvement LeapMotion */
 	public enum ActionState
 	{
 		ATTACK,
@@ -17,7 +23,8 @@ public class LeapControl : MonoBehaviour {
 	private float timeAction;
 	
 	public ActionState actionState = ActionState.REST;
-	
+
+	//TODO merge in gameController
 	public Vector3 initShieldPosition; //a mettre dans game controller
 	public Vector3 initSwordPosition; //a mettre dans game controller
 	
@@ -59,6 +66,7 @@ public class LeapControl : MonoBehaviour {
 	 * Sets which hand (right or left) is the attack hand.
 	 * At the same time, defines which defense hand it is (by inverse logic).
 	 * It means you don't have to call both setAttackHand or setDefenseHand
+	 * @param Right or Left handside
 	 **/
 	public void setAttackHand(GameController.HandSide attackSide)
 	{
@@ -72,8 +80,10 @@ public class LeapControl : MonoBehaviour {
 	 * Sets which hand (right or left) is the attack hand.
 	 * At the same time, defines which defense hand it is (by inverse logic)
 	 * It means you don't have to call both setAttackHand or setDefenseHand
-	 **/
-	public void setDefenseHand(GameController.HandSide defenseSide)
+	 * @param defenseSide La main utilisée par la défense (Gauche ou Droite)
+	 * @return int une valeur
+	 **/ 
+	public int setDefenseHand(GameController.HandSide defenseSide)
 	{
 		attackHand = (defenseSide == GameController.HandSide.RIGHT_HAND ? GameController.HandSide.LEFT_HAND : GameController.HandSide.RIGHT_HAND);
 		defenseHand = defenseSide;
@@ -83,6 +93,9 @@ public class LeapControl : MonoBehaviour {
 
 	}
 
+	/**
+	 * Defines the base position of defense and attackhand. Called at init
+	 **/
 	private void setInitPosition()
 	{
 		//switch init pos if lefthanded
@@ -150,7 +163,11 @@ public class LeapControl : MonoBehaviour {
 		
 		
 	}
-	
+
+	/**
+	 * Called by GameControler to link with parent so the LeapController
+	 * follows the camera
+	 **/
 	public void addParent(GameObject go)
 	{
 		heroAsParent = go;
@@ -169,7 +186,8 @@ public class LeapControl : MonoBehaviour {
 	}
 	
 	/**
-	 * using rightHand and leftHand var 
+	 * Called in update FPS from Leap Controller
+	 * recognizes movement patterns
 	 **/
 	void GestureDetection(Hand hand)
 	{
@@ -197,7 +215,9 @@ public class LeapControl : MonoBehaviour {
 	}
 
 	/**
-	 * return nAction
+	 * Visual clue of attacking
+	 * @param nAction action counter (displayed for debug purposes)
+	 * @param hand LeapMotion object
 	 **/
 	public int attack (int nAction, Hand hand)
 	{
@@ -217,6 +237,10 @@ public class LeapControl : MonoBehaviour {
 		return nAction;
 	}
 
+	/**
+	 * Visual clue for defense
+	 * @param nAction action counter (displayed for debug purposes)
+	 **/
 	public int defense(int nAction)
 	{
 		nAction++;
@@ -240,12 +264,18 @@ public class LeapControl : MonoBehaviour {
 
 		return nAction;
 	}
-	
+
+	/**
+	 * returns the last actual state of movement
+	 */
 	public ActionState getActionState() {
 		return actionState;
 	}
 	
-	// Update is called once per frame
+	/**
+	 * Get the values of LM controller (polling the service)
+	 * and may print for debug purposes the status
+	 */
 	void Update () {
 		
 		if(leap_controller_.IsConnected && leap_controller_.IsServiceConnected())

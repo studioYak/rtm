@@ -81,7 +81,7 @@ public abstract class NPC : Unit {
 		{
 			Disappear();
 		}
-		else if(position.z - character.z < attackDistance)
+		else if(position.z - character.z < attackDistance && position.z - character.z > 0)
 		{
 			Attack(character);
 		}

@@ -1,6 +1,10 @@
 using UnityEngine;
 using System.Collections;
 
+/**
+* @author HugoLS
+* @version 1.0
+**/
 public class IceLancer : Lancer {
 	
 	// Use this for initialization
@@ -13,6 +17,10 @@ public class IceLancer : Lancer {
 		
 	}
 
+	/**
+	* Constructeur de la classe IceLancer
+	* @version 1.0
+	**/
 	public IceLancer()
 		:base(2.0f, 7, 40, 400, 10, "cac", "anonymous"){
 

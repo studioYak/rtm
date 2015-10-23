@@ -1,6 +1,10 @@
 using UnityEngine;
 using System.Collections;
 
+/**
+* @author HugoLS
+* @version 1.0
+**/
 public class Warrior : Hero {
 	
 
@@ -16,6 +20,10 @@ public class Warrior : Hero {
 
 	}
 
+	/**
+	* Constructeur de la classe Warrior
+	* @version 1.0
+	**/
 	public Warrior()
 		:base(0,100,"epee",1000, 2, 2, false, 1000, 10, 3, "cac", "anonymous"){
 

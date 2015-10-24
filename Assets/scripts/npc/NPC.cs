@@ -13,7 +13,7 @@ public abstract class NPC : Unit {
 		BLOCK,
 	};
 
-	public enum RangeType {
+	public enum RangeClass {
 		CAC,
 		LONGRANGE
 	};
@@ -26,7 +26,7 @@ public abstract class NPC : Unit {
 	float attackRange;
 	int distanceToDisappear;
 	Blocking blocking;
-	RangeType rangeType;
+	RangeClass rangeType;
 
 	// Use this for initialization
 	void Start () {
@@ -56,16 +56,16 @@ public abstract class NPC : Unit {
 		XpGain = xpGain;
 
 		aggroDistance = 30;
-		attackRange = 3.5f; //edit BV demo 3.5
+		attackRange = 4.5f; //edit BV demo 3.5
 		distanceToDisappear = 2;
 		this.blocking = blocking;
 		if(attackType == "distance")
 		{
-			rangeType = RangeType.LONGRANGE;
+			rangeType = RangeClass.LONGRANGE;
 		}
 		else
 		{
-			rangeType = RangeType.CAC;
+			rangeType = RangeClass.CAC;
 		}
 	}
 
@@ -187,7 +187,7 @@ public abstract class NPC : Unit {
 		{
 			base.Action = new UnitAction(character.x,character.y,character.z);
 			base.Action.SetActionAsAttack(Damage);
-			if(rangeType == RangeType.LONGRANGE)
+			if(rangeType == RangeClass.LONGRANGE)
 			{
 				base.Action.SetActionAsDistant();
 			}
@@ -232,7 +232,7 @@ public abstract class NPC : Unit {
 	*	Return an enum for the getter and void for the setter
 	* @version 1.0
 	**/
-	public RangeType RangeType{
+	public RangeClass RangeType{
 		get {
 			return this.rangeType;
 		}

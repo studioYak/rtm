@@ -3,23 +3,42 @@ using System.Collections;
 using System.Collections.Generic;
 using SimpleJSON;
 
+/**
+ * @author Adrien D
+ * @version 1.0
+ */
 
-
+/**
+ * The controller for the Game Scene
+ */
 public class GameController : MonoBehaviour {
 
+	/**
+	 * The game state
+	 */
 	public enum GameState {
 		PLAY,
 		PAUSE,
 		DEAD,
 	};
 
+	/**
+	 * The strong hand for the player
+	 */
 	public enum HandSide {
 		RIGHT_HAND,
 		LEFT_HAND,
 	};
 
+	/**
+	 * Json level file path
+	 */
 	private const string FILE_PATH = "Levels/GL_exJson.json";
 
+
+	/**
+	 * Prefabs used in the game
+	 */
 	private GameObject terrain;
 
 	private GameObject hud;
@@ -58,6 +77,9 @@ public class GameController : MonoBehaviour {
 
 	private List<GameObject> npcList;
 
+	/**
+	 * Timers
+	 */
 	private float timerBloque = 0.0f;
 	private float maxTimerBloque = 5.0f;
 
@@ -71,6 +93,9 @@ public class GameController : MonoBehaviour {
 
 	private bool deathDone = false;
 
+	/**
+	 * During the awakening : we load all the prefabs
+	 */
 	void Awake(){
 		Debug.Log ("START Awake GameController");
 
@@ -99,7 +124,10 @@ public class GameController : MonoBehaviour {
 
 	}
 
-	// Use this for initialization
+	/**
+	 * Initialisation of the game
+	 * Generation of the scene from the level file
+	 */
 	void Start () {
 
 		Debug.Log ("START Start GameController");
@@ -109,7 +137,7 @@ public class GameController : MonoBehaviour {
 		handSide = HandSide.RIGHT_HAND;
 
 		//lire fichier niveau
-		TestJson parser = new TestJson (FILE_PATH);
+		LevelParser parser = new LevelParser (FILE_PATH);
 
 		//génération du héros
 		Debug.Log (warrior);
@@ -183,7 +211,10 @@ public class GameController : MonoBehaviour {
 
 	}
 	
-	// Update is called once per frame
+	/**
+	 * The game loop
+	 * Decides what should be done in function of the game state
+	 */
 	void Update () {
 
 		switch (state) {
@@ -202,7 +233,12 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-
+	/**
+	 * Function called when the game state is "play"
+	 * Takes in count player actions on the leap
+	 * Makes the AI react
+	 * Updates the HUDs
+	 */
 	void play(){
 		//Gestion héros
 		if (!bloque) {
@@ -211,6 +247,7 @@ public class GameController : MonoBehaviour {
 			Camera.main.transform.position = new Vector3(0, 2.18f, hero.GetPosition().z);
 		}
 
+		//Get leap state
 		if (lastState == LeapControl.ActionState.REST) {
 			lastState = leapControl.actionState;
 		} else {
@@ -303,11 +340,11 @@ public class GameController : MonoBehaviour {
 		}
 
 		
-		
+		//update hud state
 		float currentHealthPercent = 100*hero.HealthPoint/hero.MaxHealthPoint;
 		float currentPowerPercent = 100*hero.PowerQuantity/hero.MaxPowerQuantity;
 		Debug.Log("Life: " + currentHealthPercent);
-		//update hud state
+
 		hudMaster.setLevel (HudMaster.HudType.Life, currentHealthPercent);
 		hudMaster.setLevel (HudMaster.HudType.Special, currentPowerPercent);
 		
@@ -323,9 +360,15 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+	/**
+	 * Function called when the game is paused
+	 */
 	void pause(){
 	}
 
+	/**
+	 * Function called when the player is dead
+	 */
 	void dead(){
 		if (!deathDone) {
 			Instantiate (deathHud);
@@ -336,15 +379,28 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+	/**
+	 * Function called when an ennemy hurts the hero
+	 */
 	void NPCAttacksHero(){
 	}
 
+	/**
+	 * Function called when the hero blocks an annemy attack
+	 */
 	void HeroBlocks(){
 	}
 
+	/**
+	 * Function called when the hero hurts an ennemy
+	 */
 	void HeroAttacksNPC(){
 	}
 
+	/**
+	 * Restarts the level
+	 * For test purposes
+	 */
 	public void Restart() {
 		Application.LoadLevel ("GameScene");
 	}

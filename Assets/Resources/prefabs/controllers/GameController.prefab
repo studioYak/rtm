@@ -1,62 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &112020
+--- !u!1 &153922
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 460412}
-  - 114: {fileID: 11461000}
+  - 4: {fileID: 409926}
+  - 114: {fileID: 11487740}
   m_Layer: 0
-  m_Name: Camera Manager
-  m_TagString: Untagged
+  m_Name: GameController
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &460412
+--- !u!4 &409926
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 112020}
+  m_GameObject: {fileID: 153922}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: .049999997, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11461000
+--- !u!114 &11487740
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 112020}
+  m_GameObject: {fileID: 153922}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d4b26c2377e8f44bab45fe133abf1da, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d2eb68a3109b0b46b4dc53910f2791f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSubjective: {fileID: 0}
-  cameraHaute: {fileID: 0}
+  terrain: {fileID: 0}
+  hud: {fileID: 0}
+  deathHud: {fileID: 0}
+  basicLancer: {fileID: 0}
+  fireLancer: {fileID: 0}
+  iceLancer: {fileID: 0}
+  basicDragonet: {fileID: 0}
+  fireDragonet: {fileID: 0}
+  iceDragonet: {fileID: 0}
+  wall: {fileID: 0}
+  canon: {fileID: 0}
+  assassin: {fileID: 0}
+  warrior: {fileID: 0}
+  leapPrefab: {fileID: 0}
+  weapon: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: cameraSubjective
-      value: 
-      objectReference: {fileID: 0}
+    m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 112020}
+  m_RootGameObject: {fileID: 153922}
   m_IsPrefabParent: 1

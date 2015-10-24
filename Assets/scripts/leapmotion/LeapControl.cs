@@ -81,15 +81,13 @@ public class LeapControl : MonoBehaviour {
 	 * At the same time, defines which defense hand it is (by inverse logic)
 	 * It means you don't have to call both setAttackHand or setDefenseHand
 	 * @param defenseSide La main utilisée par la défense (Gauche ou Droite)
-	 * @return int une valeur
 	 **/ 
-	public int setDefenseHand(GameController.HandSide defenseSide)
+	public void setDefenseHand(GameController.HandSide defenseSide)
 	{
 		attackHand = (defenseSide == GameController.HandSide.RIGHT_HAND ? GameController.HandSide.LEFT_HAND : GameController.HandSide.RIGHT_HAND);
 		defenseHand = defenseSide;
 
 		setInitPosition();
-
 
 	}
 

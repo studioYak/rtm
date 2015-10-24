@@ -73,6 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 731b006bfe34f334fb3976e035e42472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LancePrefab: {fileID: 0}
 --- !u!135 &13599196
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -13,14 +13,20 @@ public abstract class NPC : Unit {
 		BLOCK,
 	};
 
+	public enum RangeType {
+		CAC,
+		LONGRANGE
+	};
+
 	float attackSpeed;
 	float lastAttack;
 	int xpGain;
 
 	int aggroDistance;
-	float attackDistance;
+	float attackRange;
 	int distanceToDisappear;
 	Blocking blocking;
+	RangeType rangeType;
 
 	// Use this for initialization
 	void Start () {
@@ -50,9 +56,17 @@ public abstract class NPC : Unit {
 		XpGain = xpGain;
 
 		aggroDistance = 30;
-		attackDistance = 3.5f; //edit BV demo 3.5
+		attackRange = 3.5f; //edit BV demo 3.5
 		distanceToDisappear = 2;
 		this.blocking = blocking;
+		if(attackType == "distance")
+		{
+			rangeType = RangeType.LONGRANGE;
+		}
+		else
+		{
+			rangeType = RangeType.CAC;
+		}
 	}
 
 	/**
@@ -81,7 +95,7 @@ public abstract class NPC : Unit {
 		{
 			Disappear();
 		}
-		else if(position.z - character.z < attackDistance && position.z - character.z > 0)
+		else if(position.z - character.z < attackRange && position.z - character.z > 0) // Condition provisoire
 		{
 			Attack(character);
 		}
@@ -173,6 +187,10 @@ public abstract class NPC : Unit {
 		{
 			base.Action = new UnitAction(character.x,character.y,character.z);
 			base.Action.SetActionAsAttack(Damage);
+			if(rangeType == RangeType.LONGRANGE)
+			{
+				base.Action.SetActionAsDistant();
+			}
 			LastAttack = Time.time;
 		}
 		else
@@ -199,6 +217,27 @@ public abstract class NPC : Unit {
 		}
 		set {
 			blocking = value;
+		}
+	}
+
+	/**
+	* FR:
+	* Getter/Setter de rangeType
+	* EN:
+	* Getter/Setter of rangeType
+	* @return 
+	* FR:
+	*	Retourne un enum pour le getter et void pour le setter
+	* EN:
+	*	Return an enum for the getter and void for the setter
+	* @version 1.0
+	**/
+	public RangeType RangeType{
+		get {
+			return this.rangeType;
+		}
+		set {
+			rangeType = value;
 		}
 	}
 

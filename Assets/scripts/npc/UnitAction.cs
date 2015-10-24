@@ -6,6 +6,7 @@ public class UnitAction {
 	public Vector3 coords;
 	int damage;
 	bool isAttack = false;
+	bool isDistant = false;
 	bool isRun = false;
 	bool isDisappear = false;
 
@@ -28,6 +29,11 @@ public class UnitAction {
 	{
 		Damage = damage;
 		isAttack = true;
+	}
+
+	public void SetActionAsDistant()
+	{
+		isDistant = true;
 	}
 
 	public void SetActionAsDisappear()

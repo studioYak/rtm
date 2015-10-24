@@ -9,7 +9,6 @@ public class BasicDragonet : Dragonet {
 	
 	void Start () {
 		gameObject.GetComponent<Renderer>().material.color = Color.green;
-		gameObject.tag = "weapon";
 	}
 	
 	void Update () {

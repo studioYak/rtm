@@ -31,7 +31,7 @@ public class Cannon : NPC {
 	* @version 1.0
 	**/
 	public Cannon()
-	:base(2.0f, 0, Blocking.FREE, 60, 75, 5, "distance", "anonymous"){
+	:base(2.0f, 0, Blocking.FREE, 60, 75, 0, "distance", "anonymous"){
 		
 	}
 
@@ -45,7 +45,7 @@ public class Cannon : NPC {
 			fireInTheHall = true;
 			projectile = Instantiate(cannonBall) as GameObject;
 			Rigidbody rb = projectile.GetComponent<Rigidbody>();
-			rb.velocity = transform.TransformDirection(0,0,5);
+			rb.velocity = transform.TransformDirection(2,0,5);
 			LastAttack = Time.time;
 		}
 		else

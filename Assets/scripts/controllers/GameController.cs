@@ -160,6 +160,7 @@ public class GameController : MonoBehaviour {
 		Debug.Log (heroGameObject);
 		hero = heroGameObject.GetComponent<Hero>();
 		float vitesseHeros = hero.MovementSpeed;
+		hero.XpQuantity = modelHero.XpQuantity;
 
 		//LEAP
 		leapInstance = Instantiate (leapPrefab);
@@ -372,6 +373,9 @@ public class GameController : MonoBehaviour {
 
 		if (Input.GetKeyDown(KeyCode.R)){
 			Restart();
+		}else if (Input.GetKey(KeyCode.Escape)){
+
+			Quit ();
 		}
 	}
 
@@ -418,6 +422,11 @@ public class GameController : MonoBehaviour {
 	 */
 	public void Restart() {
 		Application.LoadLevel ("GameScene");
+	}
+
+	public void Quit() {
+		Debug.Log ("QUIT");
+		Application.Quit ();
 	}
 	
 }

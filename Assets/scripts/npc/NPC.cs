@@ -61,7 +61,6 @@ public abstract class NPC : Unit {
 		this.blocking = blocking;
 		if(attackType == "distance")
 		{
-<<<<<<< HEAD
 			rangeType = RangeClass.LONGRANGE;
 		}
 		else

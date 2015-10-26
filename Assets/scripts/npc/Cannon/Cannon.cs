@@ -33,6 +33,7 @@ public class Cannon : NPC {
 	public Cannon()
 	:base(2.0f, 0, Blocking.FREE, 60, 75, 0, "distance", "anonymous"){
 		// attackSpeed,  xpGain,  blocking,  hp,  damage,  movementSpeed,  attackType,  name
+		base.attackRange = 20.0f;
 	}
 
 	public override void Attack(Vector3 character)

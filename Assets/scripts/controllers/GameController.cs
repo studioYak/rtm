@@ -58,7 +58,8 @@ public class GameController : MonoBehaviour {
 	private GameObject assassin;
 
 	private GameObject warrior;
-
+	private GameObject monk;
+	private GameObject wizard;
 		
 	private GameObject leapPrefab;
 	private GameObject leapInstance;
@@ -117,6 +118,8 @@ public class GameController : MonoBehaviour {
 		assassin = Resources.Load("prefabs/npc/Assassin") as GameObject;
 		
 		warrior = Resources.Load("prefabs/hero/Warrior") as GameObject;
+		monk = Resources.Load("prefabs/hero/Monk") as GameObject;
+		wizard = Resources.Load("prefabs/hero/Wizard") as GameObject;
 			
 		leapPrefab = Resources.Load("prefabs/leapmotion/LeapController") as GameObject;
 
@@ -140,11 +143,24 @@ public class GameController : MonoBehaviour {
 		LevelParser parser = new LevelParser (FILE_PATH);
 
 		//génération du héros
-		Debug.Log (warrior);
-		heroGameObject = Instantiate (warrior);
+
+		//instanciate a hero using the class contained in the model
+		Hero modelHero = GameModel.Hero;
+		string heroClass = modelHero.GetType ().ToString ();
+
+		if (heroClass == "Warrior")
+			heroGameObject = Instantiate (warrior);
+		else if (heroClass == "Monk")
+			heroGameObject = Instantiate (monk);
+		else if (heroClass == "Wizard")
+			heroGameObject = Instantiate (wizard);
+		else
+			heroGameObject = Instantiate (warrior);
+			
 		Debug.Log (heroGameObject);
 		hero = heroGameObject.GetComponent<Hero>();
 		float vitesseHeros = hero.MovementSpeed;
+		hero.XpQuantity = modelHero.XpQuantity;
 
 		//LEAP
 		leapInstance = Instantiate (leapPrefab);
@@ -357,6 +373,9 @@ public class GameController : MonoBehaviour {
 
 		if (Input.GetKeyDown(KeyCode.R)){
 			Restart();
+		}else if (Input.GetKey(KeyCode.Escape)){
+
+			Quit ();
 		}
 	}
 
@@ -403,6 +422,11 @@ public class GameController : MonoBehaviour {
 	 */
 	public void Restart() {
 		Application.LoadLevel ("GameScene");
+	}
+
+	public void Quit() {
+		Debug.Log ("QUIT");
+		Application.Quit ();
 	}
 	
 }

@@ -11,21 +11,17 @@ public class Cannon : NPC {
 	public GameObject CannonBallPrefab;
 
 	GameObject cannonBall;
-	GameObject projectile; 
 	private List<GameObject> projectiles;
 
-	bool fireInTheHall = false;
 	Vector3 target;
+	float projectileSpeed = -25.0f;
 
 	void Start () {
 		cannonBall = Resources.Load("prefabs/item/Ball") as GameObject;
 	}
 	
 	void Update () {
-		if(fireInTheHall)
-		{
-			//cannonBall.velocity = transform.TransformDirection(Vector3 (0,0,5));
-		}
+		
 	}
 	
 	/**
@@ -46,13 +42,14 @@ public class Cannon : NPC {
 			base.Action = new UnitAction(character.x,character.y,character.z);
 			base.Action.SetActionAsAttack(Damage);
 			base.Action.SetActionAsDistant();
-			fireInTheHall = true;
-			projectile = Instantiate(cannonBall) as GameObject;
-			projectiles.Add(projectile);
+		
+			GameObject projectile = Instantiate(cannonBall) as GameObject;
 			projectile.transform.position = new Vector3(transform.position.x,transform.position.y+3,transform.position.z);
 			Rigidbody rb = projectile.GetComponent<Rigidbody>();
 			float placementX = Mathf.Abs((character.x-transform.position.x)/(character.z-transform.position.z));
 			rb.velocity = transform.TransformDirection(-placementX,3,-25);
+			projectiles.Add(projectile);
+			
 			LastAttack = Time.time;
 		}
 		else
@@ -65,9 +62,16 @@ public class Cannon : NPC {
 			int i = 0;
 			for(i=0;i<projectiles.Count;i++)
 			{
-				Rigidbody rb = projectiles[i].GetComponent<Rigidbody>();
-				float placementX = Mathf.Abs((character.x-projectiles[i].transform.position.x)/(character.z-projectiles[i].transform.position.z));
-				rb.velocity = projectiles[i].transform.TransformDirection(-placementX,3,-25);
+				if(projectiles[i].transform.position.x != 0)
+				{
+					Rigidbody rb = projectiles[i].GetComponent<Rigidbody>();
+					float placementX = Mathf.Abs((character.x-projectiles[i].transform.position.x)/(character.z-projectiles[i].transform.position.z));
+					rb.velocity = projectiles[i].transform.TransformDirection(-placementX,3,projectileSpeed);
+				}
+				else
+				{
+					Destroy(projectiles[i], 3);
+				}
 			}
 		}
 

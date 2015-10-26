@@ -45,7 +45,7 @@ public class Cannon : NPC {
 			fireInTheHall = true;
 			projectile = Instantiate(cannonBall) as GameObject;
 			Rigidbody rb = projectile.GetComponent<Rigidbody>();
-			rb.velocity = transform.TransformDirection(2,0,5);
+			rb.velocity = transform.TransformDirection(2,5,5);
 			LastAttack = Time.time;
 		}
 		else

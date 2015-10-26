@@ -394,7 +394,7 @@ public class GameController : MonoBehaviour {
 			deathDone = true;
 		}
 		if (Input.GetKeyDown(KeyCode.R)){
-			Restart();
+			ReturnToMainMenu();
 		}
 	}
 
@@ -427,6 +427,10 @@ public class GameController : MonoBehaviour {
 	public void Quit() {
 		Debug.Log ("QUIT");
 		Application.Quit ();
+	}
+
+	public void ReturnToMainMenu() {
+		Application.LoadLevel ("Main_menu");
 	}
 	
 }

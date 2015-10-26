@@ -38,6 +38,7 @@ public class Cannon : NPC {
 	public override void Attack(Vector3 character)
 	{
 		Vector3 vectorToTarget = character - transform.position;
+		vectorToTarget.y = 0;
 		transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(vectorToTarget),0.01);
 		if(LastAttack + AttackSpeed < Time.time )
 		{

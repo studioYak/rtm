@@ -13,11 +13,7 @@ public abstract class NPC : Unit {
 		BLOCK,
 	};
 
-<<<<<<< HEAD
 	public enum RangeClass {
-=======
-	public enum RangeT {
->>>>>>> e20a87b1fb62df66109906947f587f8f74cf2e33
 		CAC,
 		LONGRANGE
 	};
@@ -30,11 +26,7 @@ public abstract class NPC : Unit {
 	float attackRange;
 	int distanceToDisappear;
 	Blocking blocking;
-<<<<<<< HEAD
 	RangeClass rangeType;
-=======
-	RangeT rangeType;
->>>>>>> e20a87b1fb62df66109906947f587f8f74cf2e33
 
 	// Use this for initialization
 	void Start () {
@@ -69,19 +61,11 @@ public abstract class NPC : Unit {
 		this.blocking = blocking;
 		if(attackType == "distance")
 		{
-<<<<<<< HEAD
 			rangeType = RangeClass.LONGRANGE;
 		}
 		else
 		{
 			rangeType = RangeClass.CAC;
-=======
-			rangeType = RangeT.LONGRANGE;
-		}
-		else
-		{
-			rangeType = RangeT.CAC;
->>>>>>> e20a87b1fb62df66109906947f587f8f74cf2e33
 		}
 	}
 
@@ -203,11 +187,8 @@ public abstract class NPC : Unit {
 		{
 			base.Action = new UnitAction(character.x,character.y,character.z);
 			base.Action.SetActionAsAttack(Damage);
-<<<<<<< HEAD
+
 			if(rangeType == RangeClass.LONGRANGE)
-=======
-			if(rangeType == RangeT.LONGRANGE)
->>>>>>> e20a87b1fb62df66109906947f587f8f74cf2e33
 			{
 				base.Action.SetActionAsDistant();
 			}
@@ -252,11 +233,8 @@ public abstract class NPC : Unit {
 	*	Return an enum for the getter and void for the setter
 	* @version 1.0
 	**/
-<<<<<<< HEAD
+	
 	public RangeClass RangeType{
-=======
-	public RangeT RangeType{
->>>>>>> e20a87b1fb62df66109906947f587f8f74cf2e33
 		get {
 			return this.rangeType;
 		}

@@ -47,7 +47,7 @@ public class Cannon : NPC {
 			projectile = Instantiate(cannonBall) as GameObject;
 			projectile.transform.position = new Vector3(transform.position.x,transform.position.y+3,transform.position.z);
 			Rigidbody rb = projectile.GetComponent<Rigidbody>();
-			float placementX = character.x/character.y;
+			float placementX = character.x/character.z;
 			rb.velocity = transform.TransformDirection(-placementX,5,-15);
 			LastAttack = Time.time;
 		}

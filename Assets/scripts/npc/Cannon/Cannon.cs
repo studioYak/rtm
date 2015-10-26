@@ -8,7 +8,8 @@ using System.Collections;
 public class Cannon : NPC {
 	
 	public GameObject CannonBallPrefab;
-	GameObject cannonBall;
+
+	GameObject cannonBall; 
 
 	bool fireInTheHall = false;
 	Vector3 target;
@@ -18,10 +19,10 @@ public class Cannon : NPC {
 	}
 	
 	void Update () {
-		/*if(fireInTheHall)
+		if(fireInTheHall)
 		{
-			
-		}*/
+			cannonBall.velocity = transform.TransformDirection(Vector3 (0,0,5));
+		}
 	}
 	
 	/**
@@ -33,10 +34,21 @@ public class Cannon : NPC {
 		
 	}
 
-	public void shootHero (Vector3 hero)
+	public void Attack(Vector3 character)
 	{
-		fireInTheHall = true;
-		target = hero;
+		if(LastAttack + AttackSpeed < Time.time )
+		{
+			base.Action = new UnitAction(character.x,character.y,character.z);
+			base.Action.SetActionAsAttack(Damage);
+			base.Action.SetActionAsDistant();
+			fireInTheHall = true;
+			cannonBall = Instantiate(Resources.Load("prefab/item/Ball", typeof(GameObject))) as GameObject;
+			LastAttack = Time.time;
+		}
+		else
+		{
+			base.Action = new UnitAction(0,0,0);
+		}
 	}
 	
 }

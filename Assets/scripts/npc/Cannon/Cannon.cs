@@ -14,7 +14,7 @@ public class Cannon : NPC {
 	private List<GameObject> projectiles;
 
 	Vector3 target;
-	float projectileSpeed = -25.0f;
+	float projectileSpeed = -35.0f;
 
 	void Start () {
 		cannonBall = Resources.Load("prefabs/item/Ball") as GameObject;
@@ -46,10 +46,10 @@ public class Cannon : NPC {
 			GameObject projectile = Instantiate(cannonBall) as GameObject;
 			projectile.transform.position = new Vector3(transform.position.x,transform.position.y+3,transform.position.z);
 			Rigidbody rb = projectile.GetComponent<Rigidbody>();
-			float placementX = Mathf.Abs((character.x-transform.position.x)/(character.z-transform.position.z));
-			rb.velocity = transform.TransformDirection(-placementX,3,-25);
+			//float placementX = Mathf.Abs((character.x-transform.position.x)/(character.z-transform.position.z));
+			rb.velocity = transform.TransformDirection(-character.x,1,-projectileSpeed);
 			projectiles.Add(projectile);
-			
+
 			LastAttack = Time.time;
 		}
 		else
@@ -65,8 +65,8 @@ public class Cannon : NPC {
 				if(projectiles[i].transform.position.x != 0)
 				{
 					Rigidbody rb = projectiles[i].GetComponent<Rigidbody>();
-					float placementX = Mathf.Abs((character.x-projectiles[i].transform.position.x)/(character.z-projectiles[i].transform.position.z));
-					rb.velocity = projectiles[i].transform.TransformDirection(-placementX,3,projectileSpeed);
+					//float placementX = Mathf.Abs((character.x-projectiles[i].transform.position.x)/(character.z-projectiles[i].transform.position.z));
+					rb.velocity = projectiles[i].transform.TransformDirection(-character.x,0,projectileSpeed);
 				}
 				else
 				{

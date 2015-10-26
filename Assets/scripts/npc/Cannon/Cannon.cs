@@ -37,9 +37,11 @@ public class Cannon : NPC {
 
 	public override void Attack(Vector3 character)
 	{
+		Vector3 vectorToTarget = character - transform.position;
+		transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(vectorToTarget),0.01);
 		if(LastAttack + AttackSpeed < Time.time )
 		{
-			Debug.LogWarning(character.x+" "+character.y+" "+character.z);
+			//Debug.LogWarning(character.x+" "+character.y+" "+character.z);
 			base.Action = new UnitAction(character.x,character.y,character.z);
 			base.Action.SetActionAsAttack(Damage);
 			base.Action.SetActionAsDistant();
@@ -48,7 +50,7 @@ public class Cannon : NPC {
 			projectile.transform.position = new Vector3(transform.position.x,transform.position.y+3,transform.position.z);
 			Rigidbody rb = projectile.GetComponent<Rigidbody>();
 			//float placementX = Mathf.Abs((character.x-transform.position.x)/(character.z-transform.position.z));
-			rb.velocity = transform.TransformDirection(character.x-transform.position.x,1,-projectileSpeed);
+			rb.velocity = transform.TransformDirection(0,1,-projectileSpeed);
 			projectiles.Add(projectile);
 
 			LastAttack = Time.time;
@@ -65,9 +67,9 @@ public class Cannon : NPC {
 			{
 				if(projectiles[i].transform.position.y != 0)
 				{
-					Rigidbody rb = projectiles[i].GetComponent<Rigidbody>();
+					/*Rigidbody rb = projectiles[i].GetComponent<Rigidbody>();
 					//float placementX = Mathf.Abs(()/(character.z-projectiles[i].transform.position.z));
-					rb.velocity = projectiles[i].transform.TransformDirection(character.x-projectiles[i].transform.position.x,0,projectileSpeed);
+					rb.velocity = projectiles[i].transform.TransformDirection(transform.position.x,0,projectileSpeed);*/
 				}
 				else
 				{

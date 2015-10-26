@@ -9,19 +9,20 @@ public class Cannon : NPC {
 	
 	public GameObject CannonBallPrefab;
 
-	GameObject cannonBall; 
+	GameObject cannonBall;
+	GameObject projectile; 
 
 	bool fireInTheHall = false;
 	Vector3 target;
 
 	void Start () {
-		
+		cannonBall = Resources.Load("prefab/item.Ball") as GameObject;
 	}
 	
 	void Update () {
 		if(fireInTheHall)
 		{
-			cannonBall.velocity = transform.TransformDirection(Vector3 (0,0,5));
+			//cannonBall.velocity = transform.TransformDirection(Vector3 (0,0,5));
 		}
 	}
 	
@@ -42,7 +43,9 @@ public class Cannon : NPC {
 			base.Action.SetActionAsAttack(Damage);
 			base.Action.SetActionAsDistant();
 			fireInTheHall = true;
-			cannonBall = Instantiate(Resources.Load("prefab/item/Ball", typeof(GameObject))) as GameObject;
+			projectile = Instantiate(cannonBall) as GameObject;
+			Rigidbody rb = projectile.GetComponent<Rigidbody>();
+			rb.velocity = transform.TransformDirection(0,0,5);
 			LastAttack = Time.time;
 		}
 		else

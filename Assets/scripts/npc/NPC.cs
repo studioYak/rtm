@@ -233,7 +233,6 @@ public abstract class NPC : Unit {
 	*	Return an enum for the getter and void for the setter
 	* @version 1.0
 	**/
-	
 	public RangeClass RangeType{
 		get {
 			return this.rangeType;

@@ -39,6 +39,7 @@ public class Cannon : NPC {
 	{
 		if(LastAttack + AttackSpeed < Time.time )
 		{
+			Debug.LogWarning(character.x+" "+character.y+" "+character.z);
 			base.Action = new UnitAction(character.x,character.y,character.z);
 			base.Action.SetActionAsAttack(Damage);
 			base.Action.SetActionAsDistant();
@@ -47,7 +48,7 @@ public class Cannon : NPC {
 			projectile.transform.position = new Vector3(transform.position.x,transform.position.y+3,transform.position.z);
 			Rigidbody rb = projectile.GetComponent<Rigidbody>();
 			//float placementX = Mathf.Abs((character.x-transform.position.x)/(character.z-transform.position.z));
-			rb.velocity = transform.TransformDirection(-character.x,1,-projectileSpeed);
+			rb.velocity = transform.TransformDirection(character.x-transform.position.x,1,-projectileSpeed);
 			projectiles.Add(projectile);
 
 			LastAttack = Time.time;
@@ -62,11 +63,11 @@ public class Cannon : NPC {
 			int i = 0;
 			for(i=0;i<projectiles.Count;i++)
 			{
-				if(projectiles[i].transform.position.x != 0)
+				if(projectiles[i].transform.position.y != 0)
 				{
 					Rigidbody rb = projectiles[i].GetComponent<Rigidbody>();
-					//float placementX = Mathf.Abs((character.x-projectiles[i].transform.position.x)/(character.z-projectiles[i].transform.position.z));
-					rb.velocity = projectiles[i].transform.TransformDirection(-character.x,0,projectileSpeed);
+					//float placementX = Mathf.Abs(()/(character.z-projectiles[i].transform.position.z));
+					rb.velocity = projectiles[i].transform.TransformDirection(character.x-projectiles[i].transform.position.x,0,projectileSpeed);
 				}
 				else
 				{

@@ -1,6 +1,5 @@
 {
 	"ennemies":[
-		{"type":"basicDragonet", "position_seconds":10, "position_x":1},
 		{"type":"canon", "position_seconds":15, "position_x":3},
 		{"type":"basicLancer", "position_seconds":24, "position_x":1},
 		{"type":"iceLancer", "position_seconds":30, "position_x":-1},

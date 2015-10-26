@@ -32,22 +32,21 @@ public class Cannon : NPC {
 	**/
 	public Cannon()
 	:base(2.0f, 0, Blocking.FREE, 60, 75, 0, "distance", "anonymous"){
-		
+		// attackSpeed,  xpGain,  blocking,  hp,  damage,  movementSpeed,  attackType,  name
 	}
 
 	public override void Attack(Vector3 character)
 	{
-		Debug.LogWarning("zbra");
 		if(LastAttack + AttackSpeed < Time.time )
 		{
-			Debug.LogWarning("Cannon attack");
 			base.Action = new UnitAction(character.x,character.y,character.z);
 			base.Action.SetActionAsAttack(Damage);
 			base.Action.SetActionAsDistant();
 			fireInTheHall = true;
 			projectile = Instantiate(cannonBall) as GameObject;
+			projectile.transform.position = new Vector3(projectile.transform.position.x,projectile.transform.position.x+3,projectile.transform.position.z);
 			Rigidbody rb = projectile.GetComponent<Rigidbody>();
-			rb.velocity = transform.TransformDirection(2,5,5);
+			rb.velocity = transform.TransformDirection(0,5,5);
 			LastAttack = Time.time;
 		}
 		else

@@ -187,6 +187,7 @@ public abstract class NPC : Unit {
 		{
 			base.Action = new UnitAction(character.x,character.y,character.z);
 			base.Action.SetActionAsAttack(Damage);
+
 			if(rangeType == RangeClass.LONGRANGE)
 			{
 				base.Action.SetActionAsDistant();

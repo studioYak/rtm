@@ -16,7 +16,7 @@ public class Cannon : NPC {
 	Vector3 target;
 
 	void Start () {
-		cannonBall = Resources.Load("prefab/item.Ball") as GameObject;
+		cannonBall = Resources.Load("prefabs/item/Ball") as GameObject;
 	}
 	
 	void Update () {
@@ -35,10 +35,12 @@ public class Cannon : NPC {
 		
 	}
 
-	public void Attack(Vector3 character)
+	public override void Attack(Vector3 character)
 	{
+		Debug.LogWarning("zbra");
 		if(LastAttack + AttackSpeed < Time.time )
 		{
+			Debug.LogWarning("Cannon attack");
 			base.Action = new UnitAction(character.x,character.y,character.z);
 			base.Action.SetActionAsAttack(Damage);
 			base.Action.SetActionAsDistant();

@@ -181,8 +181,9 @@ public abstract class NPC : Unit {
 	* @return Return a void
 	* @version 1.0
 	**/
-	public void Attack(Vector3 character)
+	public virtual void Attack(Vector3 character)
 	{
+		Debug.LogWarning("zbrouille");
 		if(LastAttack + AttackSpeed < Time.time )
 		{
 			base.Action = new UnitAction(character.x,character.y,character.z);

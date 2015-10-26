@@ -16,8 +16,7 @@ public class BasicLancer : Lancer {
 	
 
 	void Update () {
-		Vector3 pos = this.GetPosition();
-		pos.x -= 1;
+		
 	}
 
 	/**

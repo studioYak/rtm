@@ -7,12 +7,21 @@ using System.Collections;
 **/
 public class Cannon : NPC {
 	
+	public GameObject CannonBallPrefab;
+	GameObject cannonBall;
+
+	bool fireInTheHall = false;
+	Vector3 target;
+
 	void Start () {
 		
 	}
 	
 	void Update () {
-		
+		/*if(fireInTheHall)
+		{
+			
+		}*/
 	}
 	
 	/**
@@ -22,6 +31,12 @@ public class Cannon : NPC {
 	public Cannon()
 	:base(2.0f, 0, Blocking.FREE, 60, 75, 5, "distance", "anonymous"){
 		
+	}
+
+	public void shootHero (Vector3 hero)
+	{
+		fireInTheHall = true;
+		target = hero;
 	}
 	
 }

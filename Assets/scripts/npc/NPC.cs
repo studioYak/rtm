@@ -23,7 +23,7 @@ public abstract class NPC : Unit {
 	int xpGain;
 
 	int aggroDistance;
-	float attackRange;
+	protected float attackRange;
 	int distanceToDisappear;
 	Blocking blocking;
 	RangeClass rangeType;

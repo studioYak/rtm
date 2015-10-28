@@ -39,7 +39,7 @@ public class Cannon : NPC {
 	{
 		Vector3 vectorToTarget = character - transform.position;
 		vectorToTarget.y = 0;
-		transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(vectorToTarget),0.01);
+		transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(vectorToTarget),0.10f);
 		if(LastAttack + AttackSpeed < Time.time )
 		{
 			//Debug.LogWarning(character.x+" "+character.y+" "+character.z);

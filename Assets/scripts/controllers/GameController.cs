@@ -215,6 +215,7 @@ public class GameController : MonoBehaviour {
 
 			if (go != null){
 				npcList.Add( Instantiate(go, new Vector3(ennemy.PositionInX, 0, vitesseHeros*ennemy.PositionInSeconds), Quaternion.identity) as GameObject);
+				npcList[npcList.Count-1].transform.Rotate(0, 180, 0);
 			}
 		}
 
@@ -222,6 +223,11 @@ public class GameController : MonoBehaviour {
 		hudMaster = Instantiate (hud).GetComponent<HudMaster>();
 		Debug.Log ("hudMaster : " + hudMaster);
 		state = GameState.PLAY;
+
+
+		Camera.main.transform.parent = heroGameObject.transform;
+		Camera.main.transform.position = new Vector3 (0, 0, 0);
+		Camera.main.transform.Translate(new Vector3(0, 2.18f, 0));
 
 		Debug.Log ("END Start GameController");
 
@@ -260,7 +266,7 @@ public class GameController : MonoBehaviour {
 		if (!bloque) {
 			//faire avancer Héros
 			hero.Run(Time.deltaTime);
-			Camera.main.transform.position = new Vector3(0, 2.18f, hero.GetPosition().z);
+			//Camera.main.transform.position = new Vector3(0, 2.18f, hero.GetPosition().z);
 		}
 
 		//Get leap state
@@ -394,7 +400,7 @@ public class GameController : MonoBehaviour {
 			deathDone = true;
 		}
 		if (Input.GetKeyDown(KeyCode.R)){
-			Restart();
+			ReturnToMainMenu();
 		}
 	}
 
@@ -427,6 +433,10 @@ public class GameController : MonoBehaviour {
 	public void Quit() {
 		Debug.Log ("QUIT");
 		Application.Quit ();
+	}
+
+	public void ReturnToMainMenu() {
+		Application.LoadLevel ("Main_menu");
 	}
 	
 }

@@ -19,6 +19,13 @@ public class MainMenuController : MonoBehaviour {
 	}
 
 	/**
+	 * function triggered by the high scofre button
+	 */
+	public void highScore() {
+		
+	}
+
+	/**
 	 * function triggered by the config button
 	 */
 	public void config() {

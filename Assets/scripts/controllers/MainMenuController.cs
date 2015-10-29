@@ -11,11 +11,20 @@ using System.Collections;
  */
 public class MainMenuController : MonoBehaviour {
 
+
+
 	/**
 	 * function triggered by the play button
 	 */
 	public void play() {
 		Application.LoadLevel ("Hero_menu");
+	}
+
+	/**
+	 * function triggered by the load button
+	 */
+	public void load() {
+
 	}
 
 	/**

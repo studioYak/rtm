@@ -35,7 +35,7 @@ public class GameController : MonoBehaviour {
 	 */
 	private const string FILE_PATH = "Levels/GL_exJson.json";
 
-
+	private Level level;
 	/**
 	 * Prefabs used in the game
 	 */
@@ -133,6 +133,10 @@ public class GameController : MonoBehaviour {
 	 */
 	void Start () {
 
+		level = GameModel.Level;
+
+		Debug.Log (level.Name);
+
 		Debug.Log ("START Start GameController");
 
 
@@ -140,7 +144,7 @@ public class GameController : MonoBehaviour {
 		handSide = HandSide.RIGHT_HAND;
 
 		//lire fichier niveau
-		LevelParser parser = new LevelParser (FILE_PATH);
+		//LevelParser parser = new LevelParser (FILE_PATH);
 
 		//génération du héros
 
@@ -189,9 +193,11 @@ public class GameController : MonoBehaviour {
 		npcList = new List<GameObject> ();
 		Debug.Log (npcList);
 
-		List<Thing> ennemies = parser.getEnnemies ();
+		//List<Thing> ennemies = parser.getEnnemies ();
+		List<Item> items = level.ItemList;
+		Debug.Log ("FINAL ITEM LIST COUNT : " + items.Count);
 
-		foreach (Thing ennemy in ennemies) {
+		foreach (Item ennemy in items) {
 			GameObject go = null;
 
 			if (ennemy.Type == "basicLancer")

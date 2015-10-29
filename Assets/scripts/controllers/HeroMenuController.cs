@@ -5,21 +5,29 @@ using System.Collections;
 public class HeroMenuController : MonoBehaviour {
 
 	string userName;
+
 	InputField inputName;
+
 	Button buttonPlay;
 	Button buttonWarrior;
 	Button buttonWizard;
 	Button buttonMonk;
+
 	bool warrior, wizard, monk;
+
 	ColorBlock cb;
 
 	// Use this for initialization
 	void Start () {
 		inputName = GameObject.Find("InputName").GetComponent<InputField>();
+
 		buttonPlay = GameObject.Find("Play").GetComponent<Button>();
 		buttonWarrior = GameObject.Find("Warrior").GetComponent<Button>();
 		buttonWizard = GameObject.Find("Wizard").GetComponent<Button>();
 		buttonMonk = GameObject.Find("Monk").GetComponent<Button>();
+
+		buttonPlay.interactable = false;
+
 		cb = buttonWarrior.colors;
 
 		userName = "";

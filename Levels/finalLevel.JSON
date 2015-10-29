@@ -3,8 +3,7 @@
 "music" : "son2.wav",
 "map" : "terrain3",
 "tutorial" : "false",
-"items" : {
-	"ennemies":[
+"items" : [
 
 		{"type":"basicLancer", "position_seconds":15, "position_x":3},
 
@@ -12,10 +11,7 @@
 
 		{"type":"fireLancer", "position_seconds":30, "position_x":0},
 
-		{"type":"basicDragonet", "position_seconds":40, "position_x":-1}
-
-		],
-	"objects":[
+		{"type":"basicDragonet", "position_seconds":40, "position_x":-1},
 
 		{"type":"power", "position_seconds":23},
 
@@ -23,5 +19,4 @@
 
 		]
 
-	}
 }

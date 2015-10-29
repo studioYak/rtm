@@ -17,7 +17,9 @@ public class GameModel : MonoBehaviour {
 	 */
 	private static Hero hero;
 
-	private static Level level;
+	private static Level actualLevel;
+
+	private static List<Level> levels;
 
 	public static Hero Hero {
 		get {
@@ -29,18 +31,26 @@ public class GameModel : MonoBehaviour {
 		}
 	}
 
-	public static Level Level {
+	public static Level ActualLevel {
 		get {
-			return level;
+			return actualLevel;
 		}
 		
 		set {
-			level = value;
+			actualLevel = value;
 		}
 	}
 
 
-
+	public static List<Level> Levels {
+		get {
+			return levels;
+		}
+		
+		set {
+			levels = value;
+		}
+	}
 
 
 
@@ -49,14 +59,12 @@ public class GameModel : MonoBehaviour {
 	 */
 	public static void Init(){
 		hero  = new Warrior();
-		level = LevelParser.parseLevelFile ("frozenLevel");
-		Debug.Log (level.Map);
-		List<Item> list = level.ItemList;
-		Debug.Log (list);
-		Debug.Log ("Taille : " + list.Count);
-		
-		foreach (Item item in list){
-			Debug.Log (item.Type);
-		}
+		levels = LevelParser.parseAllLevelFiles ("LvlList");
+
+		Debug.Log (levels.Count + " levels parsed");
+
+		actualLevel = levels [0];
+		Debug.Log (actualLevel.Name + " is the actual level");
+
 	}
 }

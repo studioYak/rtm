@@ -133,7 +133,7 @@ public class GameController : MonoBehaviour {
 	 */
 	void Start () {
 
-		level = GameModel.Level;
+		level = GameModel.ActualLevel;
 
 		Debug.Log (level.Name);
 

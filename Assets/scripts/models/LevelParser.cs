@@ -21,7 +21,7 @@ public class LevelParser {
 	private JSONNode jsonContent;
 
 	public static Level parseLevelFile(string levelFileName){
-		Debug.Log ("Levels/" + levelFileName + ".JSON");
+
 		JSONNode jsonContent = getJsonFile ("Levels/"+levelFileName+".JSON");
 
 		string name = getName (jsonContent);
@@ -30,14 +30,25 @@ public class LevelParser {
 		List<Item> items = getItems (jsonContent);
 		bool tutorial = getTutorial (jsonContent);
 
-		Debug.Log (items);
-		Debug.Log ("Taille : " + items.Count);
-		
-		foreach (Item item in items){
-			Debug.Log (item.Type);
+		return new Level (name, musicPath, map, items, tutorial);
+	}
+
+	public static List<Level> parseAllLevelFiles(string mainLevelFileName){
+
+		List<Level> levels = new List<Level> ();
+
+		JSONNode root = getJsonFile ("Levels/"+mainLevelFileName+".JSON");
+
+		JSONNode fileList = root ["levels"].AsArray;
+
+		int size = fileList.Count;
+		for (int i=0; i<size; i++) {
+			JSONNode file = fileList[i];
+			Debug.Log("parsing " + file["file"]);
+			levels.Add (parseLevelFile(file["file"]));
 		}
 
-		return new Level (name, musicPath, map, items, tutorial);
+		return levels;
 	}
 	
 

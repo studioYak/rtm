@@ -39,27 +39,41 @@ public class HeroMenuController : MonoBehaviour {
 	}
 
 	public void Warrior(){
-		cb.normalColor = new Color(163, 124, 124, 255);
-		warrior = true;
+		cb.normalColor = new Color32(163, 124, 124, 255);
 		buttonWarrior.colors = cb;
-
+		warrior = true;
+		
 		cb.normalColor = Color.white;
-		wizard = false;
 		buttonWizard.colors = cb;
-		monk = false;
 		buttonMonk.colors = cb;
+		wizard = false;
+		monk = false;
+
 	}
 
 	public void Wizard() {
-		warrior = false;
+		cb.normalColor = new Color32(163, 124, 124, 255);
+		buttonWizard.colors = cb;
 		wizard = true;
+
+		cb.normalColor = Color.white;
+		buttonWarrior.colors = cb;
+		buttonMonk.colors = cb;
+		warrior = false;
 		monk = false;
 	}
 
 	public void Monk() {
+		cb.normalColor = new Color32(163, 124, 124, 255);
+		buttonMonk.colors = cb;
+		monk = true;
+
+		cb.normalColor = Color.white;
+		buttonWarrior.colors = cb;
+		buttonWizard.colors = cb;
 		warrior = false;
 		wizard = false;
-		monk = true;
+
 	}
 
 	public void Play(){

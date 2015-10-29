@@ -45,6 +45,6 @@ public class MainMenuController : MonoBehaviour {
 	 * function triggered by the exit button
 	 */
 	public void exit() {
-		Application.Quit ();
+		Application.Quit();
 	}
 }

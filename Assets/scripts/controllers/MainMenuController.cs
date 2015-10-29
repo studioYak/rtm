@@ -11,9 +11,7 @@ using System.Collections;
  */
 public class MainMenuController : MonoBehaviour {
 
-	public void Awake(){
-		GameModel.Init ();
-	}
+
 	/**
 	 * function triggered by the play button
 	 */

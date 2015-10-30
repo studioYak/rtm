@@ -111,7 +111,7 @@ public class LoadMenuController : MonoBehaviour {
 	}
 
 	public void Play() {
-		GameModel.loadSave(save);
+		//GameModel.loadSave(save);
 		Application.LoadLevel ("GameScene");
 	}
 

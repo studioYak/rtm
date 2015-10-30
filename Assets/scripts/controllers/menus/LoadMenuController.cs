@@ -14,6 +14,8 @@ public class LoadMenuController : MonoBehaviour {
 
 	ColorBlock cb;
 
+	int save;
+
 	bool slot1, slot2, slot3;
 
 	// Use this for initialization
@@ -76,6 +78,8 @@ public class LoadMenuController : MonoBehaviour {
 		buttonSlot3.colors = cb;
 		slot2 = false;
 		slot3 = false;
+
+		int saves = 0;
 	}
 
 	public void Slot2 () {
@@ -88,6 +92,8 @@ public class LoadMenuController : MonoBehaviour {
 		buttonSlot3.colors = cb;
 		slot1 = false;
 		slot3 = false;
+
+		int saves = 1;
 	}
 
 	public void Slot3() {
@@ -100,6 +106,8 @@ public class LoadMenuController : MonoBehaviour {
 		buttonSlot2.colors = cb;
 		slot1 = false;
 		slot2 = false;
+
+		int saves = 2;
 	}
 
 	public void Play() {

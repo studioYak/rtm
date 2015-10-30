@@ -17,6 +17,8 @@ public class GameModel : MonoBehaviour {
 	 */
 	private static Hero hero;
 
+	private static List<Hero> herosInGame;
+
 	private static Level actualLevel;
 
 	private static List<Level> levels;
@@ -32,6 +34,16 @@ public class GameModel : MonoBehaviour {
 
 		set {
 			hero = value;
+		}
+	}
+
+	public static List<Hero> HerosInGame {
+		get {
+			return herosInGame;
+		}
+		
+		set {
+			herosInGame = value;
 		}
 	}
 
@@ -106,6 +118,8 @@ public class GameModel : MonoBehaviour {
 
 		ActualLevelId = 0;
 		Debug.Log (actualLevel.Name + " is the actual level");
+
+		herosInGame = new List<Hero> ();
 
 		//create saves
 		saves = new List<Save> ();

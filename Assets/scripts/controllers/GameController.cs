@@ -166,7 +166,8 @@ public class GameController : MonoBehaviour {
 			heroGameObject = Instantiate (warrior);
 			
 		Debug.Log (heroGameObject);
-		hero = heroGameObject.GetComponent<Hero>();
+		GameModel.HerosInGame.Add (heroGameObject.GetComponent<Hero> ());
+		hero = GameModel.HerosInGame [0];
 		float vitesseHeros = hero.MovementSpeed;
 		hero.XpQuantity = modelHero.XpQuantity;
 
@@ -239,9 +240,6 @@ public class GameController : MonoBehaviour {
 		Camera.main.transform.position = new Vector3 (0, 2.18f, 0);
 		//Camera.main.transform.Translate(new Vector3(0, 2.18f, 0));
 
-		AudioSource musicPlayer = GetComponent<AudioSource> ();
-		musicPlayer.clip = Resources.Load ("sounds/music1.mp3") as AudioClip;
-		musicPlayer.Play();
 
 		pausedMenu = GameObject.Find("Canvas");
 		pausedMenu.SetActive(false);
@@ -286,7 +284,8 @@ public class GameController : MonoBehaviour {
 		//Gestion héros
 		if (!bloque) {
 			//faire avancer Héros
-			hero.Run(Time.deltaTime);
+			//hero.Run(Time.deltaTime);
+			GameModel.HerosInGame[0].Run(Time.deltaTime);
 			//Camera.main.transform.position = new Vector3(0, 2.18f, hero.GetPosition().z);
 		}
 
@@ -384,8 +383,8 @@ public class GameController : MonoBehaviour {
 		*/
 		
 		//update hud state
-		float currentHealthPercent = 100*hero.HealthPoint/hero.MaxHealthPoint;
-		float currentPowerPercent = 100*hero.PowerQuantity/hero.MaxPowerQuantity;
+		float currentHealthPercent = 100*GameModel.HerosInGame[0].HealthPoint/GameModel.HerosInGame[0].MaxHealthPoint;
+		float currentPowerPercent = 100*GameModel.HerosInGame[0].PowerQuantity/GameModel.HerosInGame[0].MaxPowerQuantity;
 		//Debug.Log("Life: " + currentHealthPercent);
 
 		hudMaster.setLevel (HudMaster.HudType.Life, currentHealthPercent);

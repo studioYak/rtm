@@ -13,8 +13,8 @@ public class FireLancer : Lancer {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	protected void Update () {
+		base.Update ();
 	}
 	
 	/**
@@ -22,7 +22,22 @@ public class FireLancer : Lancer {
 	* @version 1.0
 	**/
 	public FireLancer()
-		:base(2.0f, 6, 30, 300, 10, "cac", "anonymous"){
+		:base(30.0f, 4.5f, 2.0f, 2.0f, 6.0f, 30.0f, 300.0f, 10.0f, "cac", "anonymous"){
+
+	}
+
+	public FireLancer(float essai_double_constructeur)
+		:base(EnnemyConfigurator.fireLancerAggroDistance,
+			EnnemyConfigurator.fireLancerAttackRange,
+			EnnemyConfigurator.fireLancerDistanceToDisappear,
+			EnnemyConfigurator.fireLancerAttackSpeed,
+			EnnemyConfigurator.fireLancerXpGain,
+			EnnemyConfigurator.fireLancerHp,
+			EnnemyConfigurator.fireLancerDamage,
+			EnnemyConfigurator.fireLancerMovementSpeed,
+			EnnemyConfigurator.fireLancerAttackType,
+			EnnemyConfigurator.fireLancerName)
+	{
 
 	}
 }

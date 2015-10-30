@@ -11,17 +11,18 @@ public class Cannon : NPC {
 	public GameObject CannonBallPrefab;
 
 	GameObject cannonBall;
-	private List<GameObject> projectiles;
 
 	Vector3 target;
-	float projectileSpeed = -35.0f;
+	float projectileSpeed = EnnemyConfigurator.cannonProjectileSpeed;
+	float projectileHeight = EnnemyConfigurator.cannonProjectileHeight;
+	float rotationSpeed = EnnemyConfigurator.cannonRotationSpeed;
 
 	void Start () {
 		cannonBall = Resources.Load("prefabs/item/Ball") as GameObject;
 	}
 	
-	void Update () {
-		
+	protected void Update () {
+		base.Update ();
 	}
 	
 	/**
@@ -29,56 +30,58 @@ public class Cannon : NPC {
 	* @version 1.0
 	**/
 	public Cannon()
-	:base(2.0f, 0, Blocking.FREE, 60, 75, 0, "distance", "anonymous"){
+	:base(30.0f, 20.0f, 2.0f, 2.0f, 0.0f, Blocking.FREE, 60.0f, 75.0f, 0.0f, "distance", "anonymous"){
 		// attackSpeed,  xpGain,  blocking,  hp,  damage,  movementSpeed,  attackType,  name
-		base.attackRange = 20.0f;
-		projectiles = new List<GameObject> ();
 	}
 
-	public override void Attack(Vector3 character)
+	public Cannon(float essai_double_constructeur)
+		:base(EnnemyConfigurator.cannonAggroDistance,
+			EnnemyConfigurator.cannonAttackRange,
+			EnnemyConfigurator.cannonDistanceToDisappear,
+			EnnemyConfigurator.cannonAttackSpeed,
+			EnnemyConfigurator.cannonXpGain,
+			Blocking.FREE,
+			EnnemyConfigurator.cannonHp,
+			EnnemyConfigurator.cannonDamage,
+			EnnemyConfigurator.cannonMovementSpeed,
+			EnnemyConfigurator.cannonAttackType,
+			EnnemyConfigurator.cannonName)
 	{
-		Vector3 vectorToTarget = character - transform.position;
+
+	}
+
+	public override void Attack(Hero target)
+	{
+
+		float dist = Vector3.Distance(target.GetPosition(), transform.position);
+		float timeToShoot = Mathf.Abs(dist/projectileSpeed);
+		float distHero = 3.0f * timeToShoot;
+		Vector3 pos = target.GetPosition() + new Vector3(0, 0, 0+distHero);
+
+		Vector3 vectorToTarget = pos - transform.position;
 		vectorToTarget.y = 0;
-		transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(vectorToTarget),0.10f);
+
+		transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(vectorToTarget),rotationSpeed);
 		if(LastAttack + AttackSpeed < Time.time )
 		{
-			//Debug.LogWarning(character.x+" "+character.y+" "+character.z);
-			base.Action = new UnitAction(character.x,character.y,character.z);
+			// INITIALISATION DE L'ACTION EFFECTUE
+			base.Action = new UnitAction(pos.x,pos.y,pos.z);
 			base.Action.SetActionAsAttack(Damage);
 			base.Action.SetActionAsDistant();
 		
+
 			GameObject projectile = Instantiate(cannonBall) as GameObject;
-			projectile.transform.position = new Vector3(transform.position.x,transform.position.y+3,transform.position.z);
+			projectile.transform.position = new Vector3(transform.position.x,transform.position.y+projectileHeight,transform.position.z);
 			Rigidbody rb = projectile.GetComponent<Rigidbody>();
-			//float placementX = Mathf.Abs((character.x-transform.position.x)/(character.z-transform.position.z));
 			rb.velocity = transform.TransformDirection(0,1,-projectileSpeed);
-			projectiles.Add(projectile);
 
 			LastAttack = Time.time;
+			Destroy(projectile, 5);
 		}
 		else
 		{
 			base.Action = new UnitAction(0,0,0);
 		}
-
-		if(projectiles.Count > 0)
-		{
-			int i = 0;
-			for(i=0;i<projectiles.Count;i++)
-			{
-				if(projectiles[i].transform.position.y != 0)
-				{
-					/*Rigidbody rb = projectiles[i].GetComponent<Rigidbody>();
-					//float placementX = Mathf.Abs(()/(character.z-projectiles[i].transform.position.z));
-					rb.velocity = projectiles[i].transform.TransformDirection(transform.position.x,0,projectileSpeed);*/
-				}
-				else
-				{
-					Destroy(projectiles[i], 3);
-				}
-			}
-		}
-
 	}
 	
 }

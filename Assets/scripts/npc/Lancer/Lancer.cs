@@ -13,8 +13,8 @@ public abstract class Lancer : NPC {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	protected void Update () {
+		base.Update ();
 	}
 
 	/**
@@ -30,8 +30,8 @@ public abstract class Lancer : NPC {
 	*
 	* @version 1.0
 	**/
-	public Lancer(float attackSpeed, int xpGain, int hp, int damage, int movementSpeed, string attackType, string name)
-		:base(attackSpeed, xpGain, Blocking.FREE, hp, damage, movementSpeed, attackType, name){
-		
+	public Lancer(float aggroDistance, float attackRange, float distanceToDisappear, float attackSpeed, float xpGain, float hp, float damage, float movementSpeed, string attackType, string name)
+		:base(aggroDistance, attackRange, distanceToDisappear, attackSpeed, xpGain, Blocking.FREE, hp, damage, movementSpeed, attackType, name){
+	
 	}
 }

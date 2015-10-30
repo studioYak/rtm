@@ -16,7 +16,8 @@ public class MainMenuController : MonoBehaviour {
 	 * function triggered by the play button
 	 */
 	public void play() {
-		Application.LoadLevel ("Hero_menu");
+		//Application.LoadLevel ("Hero_menu");
+		Application.LoadLevel ("GameScene");
 	}
 
 	/**

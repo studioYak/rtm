@@ -21,6 +21,8 @@ public class GameModel : MonoBehaviour {
 
 	private static List<Level> levels;
 
+	private static int actualLevelId;
+
 	public static Hero Hero {
 		get {
 			return hero;
@@ -38,6 +40,19 @@ public class GameModel : MonoBehaviour {
 		
 		set {
 			actualLevel = value;
+		}
+	}
+
+	public static int ActualLevelId {
+		get {
+			return actualLevelId;
+		}
+		
+		set {
+			if (value >= 0 && value < levels.Count){
+				actualLevelId = value;
+				actualLevel = levels[actualLevelId];
+			}
 		}
 	}
 
@@ -63,8 +78,10 @@ public class GameModel : MonoBehaviour {
 
 		Debug.Log (levels.Count + " levels parsed");
 
-		actualLevel = levels [0];
+		ActualLevelId = 0;
 		Debug.Log (actualLevel.Name + " is the actual level");
 
 	}
+
+
 }

@@ -232,8 +232,12 @@ public class GameController : MonoBehaviour {
 
 
 		Camera.main.transform.parent = heroGameObject.transform;
-		Camera.main.transform.position = new Vector3 (0, 0, 0);
-		Camera.main.transform.Translate(new Vector3(0, 2.18f, 0));
+		Camera.main.transform.position = new Vector3 (0, 2.18f, 0);
+		//Camera.main.transform.Translate(new Vector3(0, 2.18f, 0));
+
+		AudioSource musicPlayer = GetComponent<AudioSource> ();
+		musicPlayer.clip = Resources.Load ("sounds/music1.mp3") as AudioClip;
+		musicPlayer.Play();
 
 		Debug.Log ("END Start GameController");
 
@@ -327,28 +331,26 @@ public class GameController : MonoBehaviour {
 		if (npcList.Count > 0) {
 			NPC firstNPC = npcList [0].GetComponent<NPC> ();
 			
-			UnitAction action = firstNPC.Act(new Vector3(hero.GetPosition().x,hero.GetPosition().y,hero.GetPosition().z), Time.deltaTime);
+			UnitAction action = firstNPC.Act (new Vector3 (hero.GetPosition ().x, hero.GetPosition ().y, hero.GetPosition ().z), Time.deltaTime);
 			
-			if(action.IsAttack)
-			{
-				hero.LostHP(action.Damage);
-			}else if (action.IsDisappear) {
-				Debug.Log("DISAPPEAR");
-				firstNPC.Die();
-				npcList.RemoveAt(0);
+			if (action.IsAttack) {
+				hero.LostHP (action.Damage);
+			} else if (action.IsDisappear) {
+				Debug.Log ("DISAPPEAR");
+				firstNPC.Die ();
+				npcList.RemoveAt (0);
 			}
 
 			if (npcList.Count > 0) {
 				firstNPC = npcList [0].GetComponent<NPC> ();
-				float distance = (firstNPC.transform.position.z - hero.GetPosition().z);
-				if (distance < 5)
-				{
+				float distance = (firstNPC.transform.position.z - hero.GetPosition ().z);
+				if (distance < 5) {
 
-					if (!bloque && firstNPC.BlockingType != NPC.Blocking.FREE){
+					if (!bloque && firstNPC.BlockingType != NPC.Blocking.FREE) {
 						bloque = true;
 					}
 
-					if (firstNPC.BlockingType == NPC.Blocking.SEMIBLOCK){
+					if (firstNPC.BlockingType == NPC.Blocking.SEMIBLOCK) {
 						timerBloque += Time.deltaTime;
 
 						if (timerBloque >= maxTimerBloque) {
@@ -357,7 +359,7 @@ public class GameController : MonoBehaviour {
 							firstNPC.BlockingType = NPC.Blocking.FREE;
 						}
 
-					}else if (firstNPC.BlockingType == NPC.Blocking.BLOCK){
+					} else if (firstNPC.BlockingType == NPC.Blocking.BLOCK) {
 						
 					}
 
@@ -365,6 +367,8 @@ public class GameController : MonoBehaviour {
 			
 			}
 
+		} else {
+			NextLevel();
 		}
 
 		
@@ -382,6 +386,8 @@ public class GameController : MonoBehaviour {
 			Debug.Log("your dead");
 			state = GameState.DEAD;
 		}
+
+
 
 		if (Input.GetKeyDown(KeyCode.R)){
 			Restart();
@@ -443,6 +449,11 @@ public class GameController : MonoBehaviour {
 
 	public void ReturnToMainMenu() {
 		Application.LoadLevel ("Main_menu");
+	}
+
+	public void NextLevel(){
+		GameModel.ActualLevelId++;
+		Application.LoadLevel ("NextLevelScene");
 	}
 	
 }

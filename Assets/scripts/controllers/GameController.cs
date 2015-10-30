@@ -35,7 +35,7 @@ public class GameController : MonoBehaviour {
 	 */
 	private const string FILE_PATH = "Levels/GL_exJson.json";
 
-
+	private Level level;
 	/**
 	 * Prefabs used in the game
 	 */
@@ -133,6 +133,10 @@ public class GameController : MonoBehaviour {
 	 */
 	void Start () {
 
+		level = GameModel.ActualLevel;
+
+		Debug.Log (level.Name);
+
 		Debug.Log ("START Start GameController");
 
 
@@ -140,7 +144,7 @@ public class GameController : MonoBehaviour {
 		handSide = HandSide.RIGHT_HAND;
 
 		//lire fichier niveau
-		LevelParser parser = new LevelParser (FILE_PATH);
+		//LevelParser parser = new LevelParser (FILE_PATH);
 
 		//génération du héros
 
@@ -189,9 +193,11 @@ public class GameController : MonoBehaviour {
 		npcList = new List<GameObject> ();
 		Debug.Log (npcList);
 
-		List<Thing> ennemies = parser.getEnnemies ();
+		//List<Thing> ennemies = parser.getEnnemies ();
+		List<Item> items = level.ItemList;
+		Debug.Log ("FINAL ITEM LIST COUNT : " + items.Count);
 
-		foreach (Thing ennemy in ennemies) {
+		foreach (Item ennemy in items) {
 			GameObject go = null;
 
 			if (ennemy.Type == "basicLancer")
@@ -226,8 +232,12 @@ public class GameController : MonoBehaviour {
 
 
 		Camera.main.transform.parent = heroGameObject.transform;
-		Camera.main.transform.position = new Vector3 (0, 0, 0);
-		Camera.main.transform.Translate(new Vector3(0, 2.18f, 0));
+		Camera.main.transform.position = new Vector3 (0, 2.18f, 0);
+		//Camera.main.transform.Translate(new Vector3(0, 2.18f, 0));
+
+		AudioSource musicPlayer = GetComponent<AudioSource> ();
+		musicPlayer.clip = Resources.Load ("sounds/music1.mp3") as AudioClip;
+		musicPlayer.Play();
 
 		Debug.Log ("END Start GameController");
 
@@ -321,28 +331,26 @@ public class GameController : MonoBehaviour {
 		if (npcList.Count > 0) {
 			NPC firstNPC = npcList [0].GetComponent<NPC> ();
 			
-			UnitAction action = firstNPC.Act(new Vector3(hero.GetPosition().x,hero.GetPosition().y,hero.GetPosition().z), Time.deltaTime);
+			UnitAction action = firstNPC.Act (new Vector3 (hero.GetPosition ().x, hero.GetPosition ().y, hero.GetPosition ().z), Time.deltaTime);
 			
-			if(action.IsAttack)
-			{
-				hero.LostHP(action.Damage);
-			}else if (action.IsDisappear) {
-				Debug.Log("DISAPPEAR");
-				firstNPC.Die();
-				npcList.RemoveAt(0);
+			if (action.IsAttack) {
+				hero.LostHP (action.Damage);
+			} else if (action.IsDisappear) {
+				Debug.Log ("DISAPPEAR");
+				firstNPC.Die ();
+				npcList.RemoveAt (0);
 			}
 
 			if (npcList.Count > 0) {
 				firstNPC = npcList [0].GetComponent<NPC> ();
-				float distance = (firstNPC.transform.position.z - hero.GetPosition().z);
-				if (distance < 5)
-				{
+				float distance = (firstNPC.transform.position.z - hero.GetPosition ().z);
+				if (distance < 5) {
 
-					if (!bloque && firstNPC.BlockingType != NPC.Blocking.FREE){
+					if (!bloque && firstNPC.BlockingType != NPC.Blocking.FREE) {
 						bloque = true;
 					}
 
-					if (firstNPC.BlockingType == NPC.Blocking.SEMIBLOCK){
+					if (firstNPC.BlockingType == NPC.Blocking.SEMIBLOCK) {
 						timerBloque += Time.deltaTime;
 
 						if (timerBloque >= maxTimerBloque) {
@@ -351,7 +359,7 @@ public class GameController : MonoBehaviour {
 							firstNPC.BlockingType = NPC.Blocking.FREE;
 						}
 
-					}else if (firstNPC.BlockingType == NPC.Blocking.BLOCK){
+					} else if (firstNPC.BlockingType == NPC.Blocking.BLOCK) {
 						
 					}
 
@@ -359,6 +367,8 @@ public class GameController : MonoBehaviour {
 			
 			}
 
+		} else {
+			NextLevel();
 		}
 
 		
@@ -376,6 +386,8 @@ public class GameController : MonoBehaviour {
 			Debug.Log("your dead");
 			state = GameState.DEAD;
 		}
+
+
 
 		if (Input.GetKeyDown(KeyCode.R)){
 			Restart();
@@ -437,6 +449,11 @@ public class GameController : MonoBehaviour {
 
 	public void ReturnToMainMenu() {
 		Application.LoadLevel ("Main_menu");
+	}
+
+	public void NextLevel(){
+		GameModel.ActualLevelId++;
+		Application.LoadLevel ("NextLevelScene");
 	}
 	
 }

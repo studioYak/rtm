@@ -1,0 +1,22 @@
+{
+"name" : "Final",
+"music" : "son2.wav",
+"map" : "terrain3",
+"tutorial" : "false",
+"items" : [
+
+		{"type":"fireLancer", "position_seconds":15, "position_x":3},
+
+		{"type":"fireLancer", "position_seconds":24, "position_x":1},
+
+		{"type":"iceLancer", "position_seconds":40, "position_x":0},
+
+		{"type":"iceDragonet", "position_seconds":50, "position_x":-1},
+
+		{"type":"power", "position_seconds":23},
+
+		{"type":"invincibility", "position_seconds":28}
+
+		]
+
+}

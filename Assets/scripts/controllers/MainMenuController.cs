@@ -11,8 +11,6 @@ using System.Collections;
  */
 public class MainMenuController : MonoBehaviour {
 
-
-
 	/**
 	 * function triggered by the play button
 	 */

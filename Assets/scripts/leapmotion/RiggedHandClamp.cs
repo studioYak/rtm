@@ -31,7 +31,7 @@ public class RiggedHandClamp : HandModel
 			//palm.rotation = GetPalmRotation() ;//* Reorientation();  //BV edit
 
 
-			Debug.Log (palm.position.x +" ; "+palm.localPosition.x );
+			//Debug.Log (palm.position.x +" ; "+palm.localPosition.x );
 
 			//constraint left BV
 			if (palm.localPosition.x <= -1 )

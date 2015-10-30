@@ -264,4 +264,11 @@ public abstract class NPC : Unit {
 		base.Action = new UnitAction(0,0,0);
 		transform.Translate(base.MovementSpeed * (-Vector3.forward) * deltaTime, Space.World);
 	}
+
+	public void OnTriggerEnter(Collider other){
+		Debug.Log ("COLLISION : "+other.name);
+		//this.LostHP (GameModel.Hero.Damage);
+		if (other.gameObject.tag == "hero_weapon")
+			Die ();
+	}
 }

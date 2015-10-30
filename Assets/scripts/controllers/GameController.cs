@@ -224,7 +224,7 @@ public class GameController : MonoBehaviour {
 				go = assassin;
 
 			if (go != null){
-				npcList.Add( Instantiate(go, new Vector3(ennemy.PositionInX, 0, vitesseHeros*ennemy.PositionInSeconds), Quaternion.identity) as GameObject);
+				npcList.Add( Instantiate(go, new Vector3(ennemy.PositionInX, go.transform.localScale.y/2, vitesseHeros*ennemy.PositionInSeconds), Quaternion.identity) as GameObject);
 				npcList[npcList.Count-1].transform.Rotate(0, 180, 0);
 			}
 		}
@@ -339,7 +339,7 @@ public class GameController : MonoBehaviour {
 		
 		//Gestion premier ennemi
 			
-		if (npcList.Count > 0) {
+		/*if (npcList.Count > 0) {
 			NPC firstNPC = npcList [0].GetComponent<NPC> ();
 			
 			UnitAction action = firstNPC.Act (new Vector3 (hero.GetPosition ().x, hero.GetPosition ().y, hero.GetPosition ().z), Time.deltaTime);
@@ -381,12 +381,12 @@ public class GameController : MonoBehaviour {
 		} else {
 			NextLevel();
 		}
-
+		*/
 		
 		//update hud state
 		float currentHealthPercent = 100*hero.HealthPoint/hero.MaxHealthPoint;
 		float currentPowerPercent = 100*hero.PowerQuantity/hero.MaxPowerQuantity;
-		Debug.Log("Life: " + currentHealthPercent);
+		//Debug.Log("Life: " + currentHealthPercent);
 
 		hudMaster.setLevel (HudMaster.HudType.Life, currentHealthPercent);
 		hudMaster.setLevel (HudMaster.HudType.Special, currentPowerPercent);

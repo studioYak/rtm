@@ -19,16 +19,10 @@ public class SwordInteract : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		
-		
-		Debug.Log ("zAnim : " +zAnim);
+
 		Debug.Log ("Trigger collider:" +other);
 
-		if (zAnim != null) {
-			zAnim.Play ("back_fall");
 
-			
-			Destroy(zAnimObject, 1);
-		}
 		
 	}
 }

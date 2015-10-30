@@ -5,15 +5,12 @@
 "tutorial" : "true",
 "items" : [
 
-		{"type":"canon", "position_seconds":15, "position_x":3},
+		
 
-		{"type":"basicLancer", "position_seconds":24, "position_x":1},
+		{"type":"basicLancer", "position_seconds":10, "position_x":1},
 
-		{"type":"iceLancer", "position_seconds":30, "position_x":-1},
 
-		{"type":"fireLancer", "position_seconds":35, "position_x":0},
-
-		{"type":"basicDragonet", "position_seconds":40, "position_x":-1},
+		{"type":"basicDragonet", "position_seconds":15, "position_x":-1},
 
 		{"type":"health", "position_seconds":12},
 

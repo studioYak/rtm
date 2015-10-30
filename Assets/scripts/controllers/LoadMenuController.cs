@@ -11,7 +11,6 @@ public class LoadMenuController : MonoBehaviour {
 	Button buttonSlot3;
 
 	List<Button> buttons;
-	List<bool> slots;
 
 	ColorBlock cb;
 
@@ -19,6 +18,11 @@ public class LoadMenuController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		// A SUPPRIMER QUAND TERMINE ////////////
+		GameModel.Init();
+		/////////////////////////////////////////
+
 		buttonPlay = GameObject.Find("Play").GetComponent<Button>();
 		buttonSlot1 = GameObject.Find("ButtonSlot1").GetComponent<Button>();
 		buttonSlot2 = GameObject.Find("ButtonSlot2").GetComponent<Button>();
@@ -36,18 +40,11 @@ public class LoadMenuController : MonoBehaviour {
 		slot3 = false;
 
 		buttons  = new List<Button>();
-		//buttons.Add(buttonSlot1);
-		//buttons.Add(buttonSlot2);
-		//buttons.Add(buttonSlot3);
-
-		slots = new List<bool>();
-		//slots.Add (buttonSlot1.interactable);
-		//slots.Add (buttonSlot2.interactable);
-		//slots.Add (buttonSlot3.interactable);
+		buttons.Add(buttonSlot1);
+		buttons.Add(buttonSlot2);
+		buttons.Add(buttonSlot3);
 
 		checkSave();
-		showLevel();
-
 	}
 	
 	// Update is called once per frame
@@ -58,17 +55,14 @@ public class LoadMenuController : MonoBehaviour {
 	}
 
 	void checkSave() {
-
-	}
-
-	void showLevel() {
-		int i;
-		string s = " à moi";
-		for (i=0; i<buttons.Count; i++){
-			Debug.Log(slots[i]);
-			if(slots[i]){
-				buttons[i].GetComponentInChildren<Text>().text = "maman\n"+s;
-			}
+		List<Save> saves = GameModel.Saves;
+		for (int i = 0; i < saves.Count; i++) {
+			buttons[i].interactable = true;
+			buttons[i].GetComponentInChildren<Text>().text = 
+					"Name : "+saves[i].Hero.Name+"\nClass : "+saves[i].Hero.GetType().ToString()+"\nLevel : "+saves[i].Hero.XpQuantity+"\nLast Level : "+saves[i].Level.Name;
+			buttons[i].GetComponentInChildren<Text>().alignment = TextAnchor.MiddleLeft;
+			buttons[i].GetComponentInChildren<Text>().fontSize = 14;
+			buttons[i].GetComponentInChildren<Text>().lineSpacing = 1.6f;
 		}
 	}
 

@@ -98,10 +98,14 @@ public class GameModel : MonoBehaviour {
 
 		Save s1 = new Save ();
 		s1.Hero = new Monk ();
+		s1.Hero.Name = "Bob";
+		s1.Hero.XpQuantity = 200;
 		s1.Level = levels [1];
 
 		Save s2 = new Save ();
 		s2.Hero = new Wizard ();
+		s2.Hero.Name = "Jean";
+		s2.Hero.XpQuantity = 10000;
 		s2.Level = levels [0];
 
 		saves.Add (s1);

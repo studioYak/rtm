@@ -12,6 +12,9 @@ public class Save {
 		this.levelId = levelId;
 	}
 
+	public Save(){
+	}
+
 	public Hero Hero {
 		get {
 			return hero;

@@ -61,7 +61,7 @@ public class LoadMenuController : MonoBehaviour {
 		for (int i = 0; i < saves.Count; i++) {
 			buttons[i].interactable = true;
 			buttons[i].GetComponentInChildren<Text>().text = 
-					"Name : "+saves[i].Hero.Name+"\nClass : "+saves[i].Hero.GetType().ToString()+"\nLevel : "+saves[i].Hero.XpQuantity+"\nLast Level : "+saves[i].Level.Name;
+				"Name : "+saves[i].Hero.Name+"\nClass : "+saves[i].Hero.GetType().ToString()+"\nLevel : "+saves[i].Hero.XpQuantity+"\nLast Level : "+GameModel.Levels[saves[i].LevelId].Name;
 			buttons[i].GetComponentInChildren<Text>().alignment = TextAnchor.MiddleLeft;
 			buttons[i].GetComponentInChildren<Text>().fontSize = 14;
 			buttons[i].GetComponentInChildren<Text>().lineSpacing = 1.6f;
@@ -79,7 +79,7 @@ public class LoadMenuController : MonoBehaviour {
 		slot2 = false;
 		slot3 = false;
 
-		int saves = 0;
+		save = 0;
 	}
 
 	public void Slot2 () {
@@ -93,7 +93,7 @@ public class LoadMenuController : MonoBehaviour {
 		slot1 = false;
 		slot3 = false;
 
-		int saves = 1;
+		save = 1;
 	}
 
 	public void Slot3() {
@@ -107,10 +107,11 @@ public class LoadMenuController : MonoBehaviour {
 		slot1 = false;
 		slot2 = false;
 
-		int saves = 2;
+		save = 2;
 	}
 
 	public void Play() {
+		GameModel.loadSave(save);
 		Application.LoadLevel ("GameScene");
 	}
 

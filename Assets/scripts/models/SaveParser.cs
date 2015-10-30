@@ -21,7 +21,7 @@ public class SaveParser {
 			string name = slots[i]["name"];
 			int score = slots[i]["score"].AsInt;
 			string currentLevel = slots[i]["currentLevel"];
-			int xp = slots[i]["xp"];
+			int xp = slots[i]["xp"].AsInt;
 			string className = slots[i]["class"];
 
 			// HERO
@@ -38,7 +38,7 @@ public class SaveParser {
 			// LEVEL
 			int levelId = GameModel.getLevelIdByName(currentLevel);
 
-			slots.Add(new Save(hero, levelId));
+			saves.Add(new Save(hero, levelId));
 		}
 
 

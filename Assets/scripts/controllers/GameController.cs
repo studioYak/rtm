@@ -123,7 +123,7 @@ public class GameController : MonoBehaviour {
 		monk = Resources.Load("prefabs/hero/Monk") as GameObject;
 		wizard = Resources.Load("prefabs/hero/Wizard") as GameObject;
 			
-		leapPrefab = Resources.Load("prefabs/leapmotion/LeapController") as GameObject;
+		//leapPrefab = Resources.Load("prefabs/leapmotion/LeapController") as GameObject;
 
 		Debug.Log (" END Awake GameController");
 
@@ -134,6 +134,8 @@ public class GameController : MonoBehaviour {
 	 * Generation of the scene from the level file
 	 */
 	void Start () {
+
+		GameModel.Init();
 
 		level = GameModel.ActualLevel;
 
@@ -169,12 +171,12 @@ public class GameController : MonoBehaviour {
 		hero.XpQuantity = modelHero.XpQuantity;
 
 		//LEAP
-		leapInstance = Instantiate (leapPrefab);
-		Debug.Log ("leapInstance : " + leapInstance);
-		leapInstance.transform.parent = transform;
+		//leapInstance = Instantiate (leapPrefab);
+		//Debug.Log ("leapInstance : " + leapInstance);
+		/*leapInstance.transform.parent = transform;
 		leapControl = leapInstance.GetComponent<LeapControl>();
 		leapControl.setAttackHand (handSide);
-		leapControl.addParent(heroGameObject);
+		leapControl.addParent(heroGameObject);*/
 
 
 
@@ -289,7 +291,7 @@ public class GameController : MonoBehaviour {
 		}
 
 		//Get leap state
-		if (lastState == LeapControl.ActionState.REST) {
+		/*if (lastState == LeapControl.ActionState.REST) {
 			lastState = leapControl.actionState;
 		} else {
 			if (actionDone){
@@ -331,7 +333,7 @@ public class GameController : MonoBehaviour {
 				}
 				actionDone = true;
 			}
-		}
+		}*/
 
 
 		

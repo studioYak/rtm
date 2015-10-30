@@ -128,5 +128,11 @@ public class GameModel : MonoBehaviour {
 		saves.Add (s2);
 	}
 
+	public static void loadSave(int saveNum){
 
+		Save save = saves [saveNum];
+		hero = save.Hero;
+
+		ActualLevelId = save.LevelId;
+	}
 }

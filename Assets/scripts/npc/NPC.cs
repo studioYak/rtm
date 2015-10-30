@@ -21,6 +21,8 @@ public abstract class NPC : Unit {
 
 	float attackSpeed;
 	float lastAttack;
+	float attackBeginning;
+	float attackTimeMax;
 	float xpGain;
 
 	float aggroDistance;
@@ -69,6 +71,9 @@ public abstract class NPC : Unit {
 		{
 			rangeType = RangeClass.CAC;
 		}
+
+		this.attackTimeMax = 5.0f;
+		this.attackBeginning = -1.0f;
 	}
 
 	/**
@@ -107,7 +112,17 @@ public abstract class NPC : Unit {
 		}
 		else if(position.z - character.position.z < attackRange && position.z - character.position.z > 0) // Condition provisoire
 		{
+			if (attackBeginning == -1.0f && blocking != Blocking.FREE){
+				target.CanRun = false;
+				attackBeginning = Time.time;
+			}
+
 			Attack(target);
+
+			if (!target.CanRun && attackBeginning+attackTimeMax < Time.time) {
+				target.CanRun = true;
+				Run (Time.deltaTime);
+			}
 		}
 		else if(position.z - character.position.z < aggroDistance)
 		{
@@ -266,6 +281,7 @@ public abstract class NPC : Unit {
 	{
 		base.Action = new UnitAction(0,0,0);
 		base.Action.SetActionAsDisappear();
+		Die ();
 	}
 
 	/**
@@ -280,7 +296,9 @@ public abstract class NPC : Unit {
 	public void OnTriggerEnter(Collider other){
 		Debug.Log ("COLLISION : "+other.name);
 		//this.LostHP (GameModel.Hero.Damage);
-		if (other.gameObject.tag == "hero_weapon")
+		if (other.gameObject.tag == "hero_weapon") {
+			GameModel.HerosInGame[0].XpQuantity += this.xpGain;
 			Die ();
+		}
 	}
 }

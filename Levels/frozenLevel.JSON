@@ -6,7 +6,8 @@
 "items" : [
 
 		
-
+		{"type":"cannon", "position_seconds":25, "position_x":2},
+		
 		{"type":"basicLancer", "position_seconds":10, "position_x":1},
 
 

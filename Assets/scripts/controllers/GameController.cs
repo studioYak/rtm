@@ -70,6 +70,8 @@ public class GameController : MonoBehaviour {
 	private Terrain ter;
 
 	private GameState state;
+	private bool paused;
+	private GameObject pausedMenu;
 
 	private HandSide handSide;
 
@@ -239,6 +241,10 @@ public class GameController : MonoBehaviour {
 		musicPlayer.clip = Resources.Load ("sounds/music1.mp3") as AudioClip;
 		musicPlayer.Play();
 
+		pausedMenu = GameObject.Find("Canvas");
+		pausedMenu.SetActive(false);
+		paused = false;
+
 		Debug.Log ("END Start GameController");
 
 	}
@@ -254,7 +260,10 @@ public class GameController : MonoBehaviour {
 			play ();
 			break;
 		case GameState.PAUSE:
-			pause ();
+			if(!paused){
+				Pause();
+				paused = true;
+			}
 			break;
 		case GameState.DEAD:
 			dead ();
@@ -392,15 +401,17 @@ public class GameController : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.R)){
 			Restart();
 		}else if (Input.GetKey(KeyCode.Escape)){
-
 			Quit ();
+		} else if (Input.GetKeyDown(KeyCode.P)){
+			state = GameState.PAUSE;
 		}
 	}
 
 	/**
 	 * Function called when the game is paused
 	 */
-	void pause(){
+	public void Pause(){
+		pausedMenu.SetActive(true);
 	}
 
 	/**
@@ -454,6 +465,12 @@ public class GameController : MonoBehaviour {
 	public void NextLevel(){
 		GameModel.ActualLevelId++;
 		Application.LoadLevel ("NextLevelScene");
+	}
+
+	public void Resume(){
+		pausedMenu.SetActive(false);
+		paused = false;
+		state = GameState.PLAY;
 	}
 	
 }

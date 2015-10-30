@@ -5,7 +5,12 @@ public class Save {
 
 	private Hero hero;
 
-	private Level level;
+	private int levelId;
+
+	public Save(Hero hero, int levelId){
+		this.hero = hero;
+		this.levelId = levelId;
+	}
 
 	public Hero Hero {
 		get {
@@ -17,13 +22,13 @@ public class Save {
 		}
 	}
 
-	public Level Level {
+	public int LevelId {
 		get {
-			return level;
+			return levelId;
 		}
 		
 		set {
-			level = value;
+			levelId = value;
 		}
 	}
 

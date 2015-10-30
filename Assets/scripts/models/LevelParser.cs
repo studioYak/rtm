@@ -15,10 +15,7 @@ using SimpleJSON;
  */
 public class LevelParser {
 
-	/**
-	 * contains the result of a SimpleJSON parsing
-	 */
-	private JSONNode jsonContent;
+
 
 	public static Level parseLevelFile(string levelFileName){
 

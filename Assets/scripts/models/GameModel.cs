@@ -69,6 +69,20 @@ public class GameModel : MonoBehaviour {
 		}
 	}
 
+	public static int getLevelIdByName(string name){
+		int res = -1;
+
+		int size = levels.Count;
+		for (int i=0; i<size; i++) {
+			if (levels[i].Name == name){
+				res = i;
+				break;
+			}
+		}
+		return res;
+	}
+	
+
 	public static List<Save> Saves {
 		get {
 			return saves;
@@ -98,11 +112,11 @@ public class GameModel : MonoBehaviour {
 
 		Save s1 = new Save ();
 		s1.Hero = new Monk ();
-		s1.Level = levels [1];
+		s1.LevelId = 1;
 
 		Save s2 = new Save ();
 		s2.Hero = new Wizard ();
-		s2.Level = levels [0];
+		s2.LevelId = 0;
 
 		saves.Add (s1);
 		saves.Add (s2);

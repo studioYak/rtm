@@ -1,0 +1,25 @@
+{
+	"slots": [
+		{
+			"name" : "Roxxor2000",
+	
+			"score" : 1200,
+	
+			"currentLevel" : "frozenLevel",
+		
+			"xp" : 360,
+		
+			"class" : "Monk"
+		},{
+			"name" : "Jean-Kévin",
+	
+			"score" : 3670,
+	
+			"currentLevel" : "finalLevel",
+		
+			"xp" : 3000,
+		
+			"class" : "Wizard"
+		}
+	]
+}

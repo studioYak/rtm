@@ -23,6 +23,8 @@ public class GameModel : MonoBehaviour {
 
 	private static int actualLevelId;
 
+	private static List<Save> saves;
+
 	public static Hero Hero {
 		get {
 			return hero;
@@ -67,6 +69,16 @@ public class GameModel : MonoBehaviour {
 		}
 	}
 
+	public static List<Save> Saves {
+		get {
+			return saves;
+		}
+		
+		set {
+			saves = value;
+		}
+	}
+
 
 
 	/**
@@ -81,6 +93,19 @@ public class GameModel : MonoBehaviour {
 		ActualLevelId = 0;
 		Debug.Log (actualLevel.Name + " is the actual level");
 
+		//create saves
+		saves = new List<Save> ();
+
+		Save s1 = new Save ();
+		s1.Hero = new Monk ();
+		s1.Level = levels [1];
+
+		Save s2 = new Save ();
+		s2.Hero = new Wizard ();
+		s2.Level = levels [0];
+
+		saves.Add (s1);
+		saves.Add (s2);
 	}
 
 

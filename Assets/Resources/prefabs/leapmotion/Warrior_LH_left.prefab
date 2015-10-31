@@ -269,7 +269,7 @@ GameObject:
   - 4: {fileID: 400034}
   - 114: {fileID: 11400006}
   m_Layer: 0
-  m_Name: Warrior_LH_right
+  m_Name: Warrior_LH_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

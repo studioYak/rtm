@@ -146,7 +146,7 @@ public class GameController : MonoBehaviour {
 
 
 		//recupération des options
-		handSide = HandSide.LEFT_HAND;
+		handSide = HandSide.RIGHT_HAND;
 
 		//lire fichier niveau
 		//LevelParser parser = new LevelParser (FILE_PATH);

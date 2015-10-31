@@ -137,8 +137,10 @@ public class GameController : MonoBehaviour {
 	 */
 	void Start () {
 
+
 		GameModel.Init();
 		GameModel.resetDataBeforeLevel ();
+
 
 		level = GameModel.ActualLevel;
 

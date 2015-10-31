@@ -115,7 +115,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 400014}
   - 137: {fileID: 13700000}
-  - 114: {fileID: 11494762}
   m_Layer: 0
   m_Name: pepper_arm_left
   m_TagString: Untagged
@@ -316,7 +315,7 @@ GameObject:
   - 4: {fileID: 400040}
   - 114: {fileID: 11400008}
   m_Layer: 0
-  m_Name: ImageFullLeftHand
+  m_Name: PepperLightFullLeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -896,7 +895,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  deformPosition: 1
+  deformPosition: 0
   modelFingerPointing: {x: 1, y: 0, z: 0}
   modelPalmFacing: {x: -0, y: -1, z: 0}
 --- !u!114 &11400002
@@ -920,7 +919,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  deformPosition: 1
+  deformPosition: 0
   modelFingerPointing: {x: 1, y: 0, z: 0}
   modelPalmFacing: {x: -0, y: -1, z: 0}
 --- !u!114 &11400004
@@ -944,7 +943,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  deformPosition: 1
+  deformPosition: 0
   modelFingerPointing: {x: 1, y: 0, z: 0}
   modelPalmFacing: {x: -0, y: -1, z: 0}
 --- !u!114 &11400006
@@ -968,7 +967,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  deformPosition: 1
+  deformPosition: 0
   modelFingerPointing: {x: 1, y: 0, z: 0}
   modelPalmFacing: {x: -0, y: -1, z: 0}
 --- !u!114 &11400008
@@ -979,16 +978,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 100040}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d96890c2dc2b7546beaa7e5e7adf291, type: 3}
+  m_Script: {fileID: 11500000, guid: a77b65c1ae87b436881aa63bc80f4894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   handModelPalmWidth: .0850000009
   fingers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400006}
+  - {fileID: 11400004}
+  - {fileID: 11400000}
+  - {fileID: 11400002}
+  - {fileID: 11400010}
   palm: {fileID: 400000}
   forearm: {fileID: 400004}
   wristJoint: {fileID: 0}
@@ -1016,21 +1015,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  deformPosition: 1
+  deformPosition: 0
   modelFingerPointing: {x: 1, y: 0, z: 0}
   modelPalmFacing: {x: -0, y: -1, z: 0}
---- !u!114 &11494762
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86aee74930bad8446a5eacc8f034bfac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  imageMode: 0
 --- !u!137 &13700000
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1038,10 +1025,10 @@ SkinnedMeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100014}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: e1241bf1f407c8c4f96dd6d323e22afe, type: 2}
+  - {fileID: 2100000, guid: b3a8edcacceac4925b9a4516d95faea6, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0

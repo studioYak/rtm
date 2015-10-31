@@ -20,7 +20,7 @@ public class LeapControl : MonoBehaviour {
 	}
 	
 	
-	private float timeAction;
+
 	
 	public ActionState actionState = ActionState.REST;
 
@@ -230,7 +230,6 @@ public class LeapControl : MonoBehaviour {
 		attackProjection.transform.position = pointerPosition;
 		
 		actionState = ActionState.ATTACK;
-		timeAction = Time.time;
 
 		return nAction;
 	}
@@ -258,7 +257,7 @@ public class LeapControl : MonoBehaviour {
 		
 		
 		actionState = ActionState.DEFENSE;
-		timeAction = Time.time;
+
 
 		return nAction;
 	}

@@ -59,6 +59,7 @@ public class LoadMenuController : MonoBehaviour {
 	void checkSave() {
 		List<Save> saves = GameModel.Saves;
 		for (int i = 0; i < saves.Count; i++) {
+
 			buttons[i].interactable = true;
 			buttons[i].GetComponentInChildren<Text>().text = 
 				"Name : "+saves[i].Hero.Name+"\nClass : "+saves[i].Hero.GetType().ToString()+"\nLevel : "+saves[i].Hero.XpQuantity+"\nLast Level : "+GameModel.Levels[saves[i].LevelId].Name;

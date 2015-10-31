@@ -134,7 +134,8 @@ public class GameModel {
 		herosInGame = new List<Hero> ();
 
 		//create saves
-		saves = new List<Save> ();
+		saves = SaveParser.parseLevelFile ("saves");
+		/*saves = new List<Save> ();
 
 		Save s1 = new Save ();
 		s1.Hero = new Monk ();
@@ -151,7 +152,7 @@ public class GameModel {
 		s2.LevelId = 0;
 
 		saves.Add (s1);
-		saves.Add (s2);
+		saves.Add (s2);*/
 	}
 
 	public static void resetDataBeforeLevel(){

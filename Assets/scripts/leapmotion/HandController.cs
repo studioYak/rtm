@@ -82,9 +82,13 @@ public class HandController : MonoBehaviour {
 
 		//sets Left hand model
 		GameObject leftGO = Resources.Load("prefabs/leapmotion/"+prefab+"_left") as GameObject;
+		if (leftGO == null)
+			Debug.LogError ("Baptiste says : Can't find GameObject "+"prefabs/leapmotion/"+prefab+"_left"+ ". Does it exists?");
 		leftGraphicsModel = leftGO.GetComponent<RiggedHand>();
 
 		GameObject rightGO = Resources.Load("prefabs/leapmotion/"+prefab+"_right") as GameObject;
+		if (leftGO == null)
+			Debug.LogError ("Baptiste says : Can't find GameObject "+"prefabs/leapmotion/"+prefab+"_left"+ ". Does it exists?");
 		rightGraphicsModel = rightGO.GetComponent<RiggedHand>();
 
 	}

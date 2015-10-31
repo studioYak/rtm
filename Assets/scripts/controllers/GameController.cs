@@ -63,7 +63,7 @@ public class GameController : MonoBehaviour {
 		
 	private GameObject leapPrefab;
 	private GameObject leapInstance;
-	private LeapControl leapControl;
+	private HandController leapControl;
 	
 	private Hero hero;
 	private GameObject heroGameObject;
@@ -74,6 +74,7 @@ public class GameController : MonoBehaviour {
 	private GameObject pausedMenu;
 
 	private HandSide handSide;
+
 
 
 	private float tempsMusique = 240f;
@@ -123,7 +124,7 @@ public class GameController : MonoBehaviour {
 		monk = Resources.Load("prefabs/hero/Monk") as GameObject;
 		wizard = Resources.Load("prefabs/hero/Wizard") as GameObject;
 			
-		//leapPrefab = Resources.Load("prefabs/leapmotion/LeapController") as GameObject;
+		leapPrefab = Resources.Load("prefabs/leapmotion/LeapMotionScene") as GameObject;
 
 		Debug.Log (" END Awake GameController");
 
@@ -172,12 +173,15 @@ public class GameController : MonoBehaviour {
 		hero.XpQuantity = modelHero.XpQuantity;
 
 		//LEAP
-		//leapInstance = Instantiate (leapPrefab);
+		leapInstance = Instantiate (leapPrefab);
 		//Debug.Log ("leapInstance : " + leapInstance);
-		/*leapInstance.transform.parent = transform;
-		leapControl = leapInstance.GetComponent<LeapControl>();
-		leapControl.setAttackHand (handSide);
-		leapControl.addParent(heroGameObject);*/
+		//the leap motion scene is child of camera so it follow the translation
+		leapInstance.transform.parent = Camera.allCameras[0].transform;
+		leapInstance.transform.position = new Vector3 (0f, 2.5f, 1.6f);
+		//sets the "hand parent" field so the arms also are child of camera and don't flicker
+		leapControl = leapInstance.GetComponent<HandController> ();
+		leapControl.setModel(handSide, heroClass);
+		leapControl.handParent = Camera.allCameras[0].transform;
 
 
 

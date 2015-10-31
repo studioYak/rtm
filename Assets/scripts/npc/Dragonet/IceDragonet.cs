@@ -12,7 +12,9 @@ public class IceDragonet : Dragonet {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	protected void Update () {
+		base.Update ();
+
 		//gameObject.GetComponent<Animation>().CrossFadeQueued("BattementAiles", 0.2F);
 
 		if(Input.GetKey(KeyCode.Space)){
@@ -26,7 +28,22 @@ public class IceDragonet : Dragonet {
 	* @version 1.0
 	**/
 	public IceDragonet()
-		:base(2.0f, 7, 40, 25, 10, "semiDistance", "anonymous"){
+		:base(30.0f, 4.5f, 2.0f, 2.0f, 7.0f, 40.0f, 25.0f, 10.0f, "semiDistance", "anonymous"){
 			
+	}
+
+	public IceDragonet(float essai_double_constructeur)
+		:base(EnnemyConfigurator.iceDragonetAggroDistance,
+			EnnemyConfigurator.iceDragonetAttackRange,
+			EnnemyConfigurator.iceDragonetDistanceToDisappear,
+			EnnemyConfigurator.iceDragonetAttackSpeed,
+			EnnemyConfigurator.iceDragonetXpGain,
+			EnnemyConfigurator.iceDragonetHp,
+			EnnemyConfigurator.iceDragonetDamage,
+			EnnemyConfigurator.iceDragonetMovementSpeed,
+			EnnemyConfigurator.iceDragonetAttackType,
+			EnnemyConfigurator.iceDragonetName)
+	{
+
 	}
 }

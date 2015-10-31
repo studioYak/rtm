@@ -11,8 +11,8 @@ public class BasicDragonet : Dragonet {
 		gameObject.GetComponent<Renderer>().material.color = Color.green;
 	}
 	
-	void Update () {
-		
+	protected void Update () {
+		base.Update ();
 	}
 
 	/**
@@ -20,8 +20,23 @@ public class BasicDragonet : Dragonet {
 	* @version 1.0
 	**/
 	public BasicDragonet()
-		:base(2.0f, 5, 30, 40, 5, "semiDistance", "anonymous"){
+		:base(30.0f, 4.5f, 2.0f, 2.0f, 5.0f, 30.0f, 40.0f, 5.0f, "semiDistance", "anonymous"){
 		
+	}
+
+	public BasicDragonet(float essai_double_constructeur)
+		:base(EnnemyConfigurator.basicDragonetAggroDistance,
+			EnnemyConfigurator.basicDragonetAttackRange,
+			EnnemyConfigurator.basicDragonetDistanceToDisappear,
+			EnnemyConfigurator.basicDragonetAttackSpeed,
+			EnnemyConfigurator.basicDragonetXpGain,
+			EnnemyConfigurator.basicDragonetHp,
+			EnnemyConfigurator.basicDragonetDamage,
+			EnnemyConfigurator.basicDragonetMovementSpeed,
+			EnnemyConfigurator.basicDragonetAttackType,
+			EnnemyConfigurator.basicDragonetName)
+	{
+
 	}
 }
 

@@ -8,12 +8,12 @@ using System;
 **/
 public abstract class Unit : MonoBehaviour {
 
-	int hp;
-	int maxHp;
-	int damage;
-	int movementSpeed;
-	string attackType;
-	string name;
+	protected float hp;
+	protected float maxHp;
+	protected float damage;
+	protected float movementSpeed;
+	protected string attackType;
+	protected string name;
 	UnitAction action;
 	protected GameObject weapon;
 	protected GameObject shield;
@@ -23,8 +23,7 @@ public abstract class Unit : MonoBehaviour {
 
 	}
 
-	void Update(){
-
+	protected void Update(){
 	}
 
 	/**
@@ -36,7 +35,7 @@ public abstract class Unit : MonoBehaviour {
 	*
 	* @version 1.0
 	**/
-	public Unit(int hp, int damage, int movementSpeed, string attackType, string name){
+	public Unit(float hp, float damage, float movementSpeed, string attackType, string name){
 		this.hp = hp;
 		this.maxHp = hp;
 		this.damage = damage;
@@ -52,12 +51,12 @@ public abstract class Unit : MonoBehaviour {
 	* Getter/Setter of hp
 	* @return 
 	* FR:
-	*	Retourne un int pour le getter et void pour le setter
+	*	Retourne un float pour le getter et void pour le setter
 	* EN:
-	*	Return an int for the getter and void for the setter
+	*	Return a float for the getter and void for the setter
 	* @version 1.0
 	**/
-	public int HealthPoint {
+	public float HealthPoint {
 		get {
 			return this.hp;
 		}
@@ -73,12 +72,12 @@ public abstract class Unit : MonoBehaviour {
 	* Getter/Setter of maxHp
 	* @return 
 	* FR:
-	*	Retourne un int pour le getter et void pour le setter
+	*	Retourne un float pour le getter et void pour le setter
 	* EN:
-	*	Return an int for the getter and void for the setter
+	*	Return a float for the getter and void for the setter
 	* @version 1.0
 	**/
-	public int MaxHealthPoint {
+	public float MaxHealthPoint {
 		get {
 			return this.maxHp;
 		}
@@ -94,7 +93,7 @@ public abstract class Unit : MonoBehaviour {
 	* Getter/Setter of action
 	* @return 
 	* FR:
-	*	Retourne une structure action int pour le getter et void pour le setter
+	*	Retourne une structure action float pour le getter et void pour le setter
 	* EN:
 	*	Return an action structure for the getter and void for the setter
 	* @version 1.0
@@ -115,12 +114,12 @@ public abstract class Unit : MonoBehaviour {
 	* Getter/Setter of damage
 	* @return 
 	* FR:
-	*	Retourne un int pour le getter et void pour le setter
+	*	Retourne un float pour le getter et void pour le setter
 	* EN:
-	*	Return an int for the getter and void for the setter
+	*	Return a float for the getter and void for the setter
 	* @version 1.0
 	**/
-	public int Damage {
+	public float Damage {
 		get {
 			return this.damage;
 		}
@@ -136,12 +135,12 @@ public abstract class Unit : MonoBehaviour {
 	* Getter/Setter of movementSpeed
 	* @return 
 	* FR:
-	*	Retourne un int pour le getter et void pour le setter
+	*	Retourne un float pour le getter et void pour le setter
 	* EN:
-	*	Return an int for the getter and void for the setter
+	*	Return a float for the getter and void for the setter
 	* @version 1.0
 	**/
-	public int MovementSpeed {
+	public float MovementSpeed {
 		get {
 			return this.movementSpeed;
 		}
@@ -196,7 +195,7 @@ public abstract class Unit : MonoBehaviour {
 	* Not used for the moment
 	*
 	**/
-	void Attack(int x, int y, int z){
+	void Attack(float x, float y, float z){
 
 		//Cooldown(0.0);
 	}
@@ -208,12 +207,12 @@ public abstract class Unit : MonoBehaviour {
 	* Reduce health point of the Unit
 	* @return 
 	* FR:
-	*	Retourne un int
+	*	Retourne un float
 	* EN:
-	*	Return an int
+	*	Return an float
 	* @version 1.0
 	**/
-	public int LostHP(int hpLost){
+	public float LostHP(float hpLost){
 		hp = hp - hpLost;
 		return hp;
 	}

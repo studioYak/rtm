@@ -167,7 +167,8 @@ public class GameController : MonoBehaviour {
 			heroGameObject = Instantiate (warrior);
 			
 		Debug.Log (heroGameObject);
-		hero = heroGameObject.GetComponent<Hero>();
+		GameModel.HerosInGame.Add (heroGameObject.GetComponent<Hero> ());
+		hero = GameModel.HerosInGame [0];
 		float vitesseHeros = hero.MovementSpeed;
 		hero.XpQuantity = modelHero.XpQuantity;
 
@@ -222,7 +223,7 @@ public class GameController : MonoBehaviour {
 				go = iceDragonet;
 			else if (ennemy.Type == "wall")
 				go = wall;
-			else if (ennemy.Type == "canon")
+			else if (ennemy.Type == "cannon")
 				go = canon;
 			else if (ennemy.Type == "assassin")
 				go = assassin;
@@ -243,9 +244,6 @@ public class GameController : MonoBehaviour {
 		Camera.main.transform.position = new Vector3 (0, 2.18f, 0);
 		//Camera.main.transform.Translate(new Vector3(0, 2.18f, 0));
 
-		AudioSource musicPlayer = GetComponent<AudioSource> ();
-		musicPlayer.clip = Resources.Load ("sounds/music1.mp3") as AudioClip;
-		musicPlayer.Play();
 
 		pausedMenu = GameObject.Find("Canvas");
 		pausedMenu.SetActive(false);
@@ -288,108 +286,17 @@ public class GameController : MonoBehaviour {
 	 */
 	void play(){
 		//Gestion héros
-		if (!bloque) {
+		/*if (!bloque) {
 			//faire avancer Héros
-			hero.Run(Time.deltaTime);
+			//hero.Run(Time.deltaTime);
+			GameModel.HerosInGame[0].Run(Time.deltaTime);
 			//Camera.main.transform.position = new Vector3(0, 2.18f, hero.GetPosition().z);
-		}
-
-		//Get leap state
-		/*if (lastState == LeapControl.ActionState.REST) {
-			lastState = leapControl.actionState;
-		} else {
-			if (actionDone){
-				//maj timer
-				timerGeste += Time.deltaTime;
-				
-				if (
-					lastState == LeapControl.ActionState.ATTACK && timerGeste > maxTimerGesteAttaque ||
-					lastState == LeapControl.ActionState.DEFENSE && timerGeste > maxTimerGesteDefense){
-					
-					timerGeste = 0.0f;
-					leapControl.actionState = LeapControl.ActionState.REST;
-					leapControl.backToInitialPosition();
-					lastState = LeapControl.ActionState.REST;
-					actionDone = false;
-					hero.DefenseMode("off");
-				}
-
-			}else{
-				if (lastState == LeapControl.ActionState.ATTACK) {
-					Debug.Log (npcList);
-					if (npcList.Count > 0) {
-
-					
-						float distance = (npcList [0].transform.position.z - hero.GetPosition().z);
-						if (distance < hero.Range){
-							npcList [0].GetComponent<NPC> ().LostHP (hero.Damage);
-							if (npcList [0].GetComponent<NPC> ().HealthPoint < 0) {
-								npcList [0].GetComponent<NPC> ().Die ();
-								npcList.RemoveAt (0);
-								if (bloque)
-									bloque = false;
-							}
-						}
-					}
-				}else if(lastState == LeapControl.ActionState.DEFENSE) {
-
-					hero.DefenseMode("on");
-				}
-				actionDone = true;
-			}
 		}*/
 
-
-		
-		//Gestion premier ennemi
-			
-		/*if (npcList.Count > 0) {
-			NPC firstNPC = npcList [0].GetComponent<NPC> ();
-			
-			UnitAction action = firstNPC.Act (new Vector3 (hero.GetPosition ().x, hero.GetPosition ().y, hero.GetPosition ().z), Time.deltaTime);
-			
-			if (action.IsAttack) {
-				hero.LostHP (action.Damage);
-			} else if (action.IsDisappear) {
-				Debug.Log ("DISAPPEAR");
-				firstNPC.Die ();
-				npcList.RemoveAt (0);
-			}
-
-			if (npcList.Count > 0) {
-				firstNPC = npcList [0].GetComponent<NPC> ();
-				float distance = (firstNPC.transform.position.z - hero.GetPosition ().z);
-				if (distance < 5) {
-
-					if (!bloque && firstNPC.BlockingType != NPC.Blocking.FREE) {
-						bloque = true;
-					}
-
-					if (firstNPC.BlockingType == NPC.Blocking.SEMIBLOCK) {
-						timerBloque += Time.deltaTime;
-
-						if (timerBloque >= maxTimerBloque) {
-							bloque = false;
-							timerBloque = 0.0f;
-							firstNPC.BlockingType = NPC.Blocking.FREE;
-						}
-
-					} else if (firstNPC.BlockingType == NPC.Blocking.BLOCK) {
-						
-					}
-
-				}
-			
-			}
-
-		} else {
-			NextLevel();
-		}
-		*/
 		
 		//update hud state
-		float currentHealthPercent = 100*hero.HealthPoint/hero.MaxHealthPoint;
-		float currentPowerPercent = 100*hero.PowerQuantity/hero.MaxPowerQuantity;
+		float currentHealthPercent = 100*GameModel.HerosInGame[0].HealthPoint/GameModel.HerosInGame[0].MaxHealthPoint;
+		float currentPowerPercent = 100*GameModel.HerosInGame[0].PowerQuantity/GameModel.HerosInGame[0].MaxPowerQuantity;
 		//Debug.Log("Life: " + currentHealthPercent);
 
 		hudMaster.setLevel (HudMaster.HudType.Life, currentHealthPercent);

@@ -11,8 +11,8 @@ public abstract class Dragonet : NPC {
 		
 	}
 	
-	void Update () {
-		
+	protected void Update () {
+		base.Update ();
 	}
 	
 	/**
@@ -24,8 +24,8 @@ public abstract class Dragonet : NPC {
 	*					Valeur de l'expérience donné au héro lors de sa mort
 	* @version 1.0
 	**/
-	public Dragonet(float attackSpeed, int xpGain, int hp, int damage, int movementSpeed, string attackType, string name)
-		:base(attackSpeed, xpGain, Blocking.SEMIBLOCK, hp, damage, movementSpeed, attackType, name){
+	public Dragonet(float aggroDistance, float attackRange, float distanceToDisappear, float attackSpeed, float xpGain, float hp, float damage, float movementSpeed, string attackType, string name)
+		:base(aggroDistance, attackRange, distanceToDisappear, attackSpeed, xpGain, Blocking.SEMIBLOCK, hp, damage, movementSpeed, attackType, name){
 		
 	}
 }

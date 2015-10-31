@@ -15,8 +15,8 @@ public class BasicLancer : Lancer {
 	}
 	
 
-	void Update () {
-		
+	protected void Update () {
+		base.Update ();
 	}
 
 	/**
@@ -24,7 +24,22 @@ public class BasicLancer : Lancer {
 	* @version 1.0
 	**/
 	public BasicLancer()
-		:base(2.0f, 5, 30, 300, 10, "cac", "anonymous"){
+		:base(30.0f, 4.5f, 2.0f, 2.0f, 5.0f, 30.0f, 300.0f, 10.0f, "cac", "anonymous"){
+
+	}
+
+	public BasicLancer(float essai_double_constructeur)
+		:base(EnnemyConfigurator.basicLancerAggroDistance,
+			EnnemyConfigurator.basicLancerAttackRange,
+			EnnemyConfigurator.basicLancerDistanceToDisappear,
+			EnnemyConfigurator.basicLancerAttackSpeed,
+			EnnemyConfigurator.basicLancerXpGain,
+			EnnemyConfigurator.basicLancerHp,
+			EnnemyConfigurator.basicLancerDamage,
+			EnnemyConfigurator.basicLancerMovementSpeed,
+			EnnemyConfigurator.basicLancerAttackType,
+			EnnemyConfigurator.basicLancerName)
+	{
 
 	}
 }

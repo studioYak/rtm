@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 /**
 * @author HugoLS
@@ -20,11 +21,13 @@ public abstract class NPC : Unit {
 
 	float attackSpeed;
 	float lastAttack;
-	int xpGain;
+	float attackBeginning;
+	float attackTimeMax;
+	float xpGain;
 
-	int aggroDistance;
+	float aggroDistance;
 	protected float attackRange;
-	int distanceToDisappear;
+	float distanceToDisappear;
 	Blocking blocking;
 	RangeClass rangeType;
 
@@ -34,8 +37,9 @@ public abstract class NPC : Unit {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-
+	protected void Update () {
+		base.Update ();
+		Act();
 	}
 
 	/**
@@ -50,15 +54,15 @@ public abstract class NPC : Unit {
 	* @see Unit
 	* @version 1.0
 	**/
-	public NPC(float attackSpeed, int xpGain, Blocking blocking, int hp, int damage, int movementSpeed, string attackType, string name)
+	public NPC(float aggroDistance, float attackRange, float distanceToDisappear, float attackSpeed, float xpGain, Blocking blocking, float hp, float damage, float movementSpeed, string attackType, string name)
 	:base(hp, damage, movementSpeed, attackType, name){
 		AttackSpeed = attackSpeed;
 		XpGain = xpGain;
-
-		aggroDistance = 30;
-		attackRange = 4.5f; //edit BV demo 3.5
-		distanceToDisappear = 2;
+		this.aggroDistance = aggroDistance;
+		this.attackRange = attackRange;
+		this.distanceToDisappear = distanceToDisappear;
 		this.blocking = blocking;
+		
 		if(attackType == "distance")
 		{
 			rangeType = RangeClass.LONGRANGE;
@@ -67,6 +71,9 @@ public abstract class NPC : Unit {
 		{
 			rangeType = RangeClass.CAC;
 		}
+
+		this.attackTimeMax = 5.0f;
+		this.attackBeginning = -1.0f;
 	}
 
 	/**
@@ -87,25 +94,43 @@ public abstract class NPC : Unit {
 	* @return Return an Act object
 	* @version 1.0
 	**/
-	public UnitAction Act(Vector3 character, float deltaTime)
+	public UnitAction Act()
 	{
+		List<Hero> heros = GameModel.HerosInGame;
+		System.Random rnd = new System.Random();
+		int hero_target_index = rnd.Next(0, heros.Count);
+
+		Hero target = heros[hero_target_index];
+
+		Transform character = target.transform;
+
 		base.Action = new UnitAction(0,0,0);
 		Vector3 position = GetPosition();
-		if(position.z < character.z - distanceToDisappear)
+		if(position.z < character.position.z - distanceToDisappear)
 		{
 			Disappear();
 		}
-		else if(position.z - character.z < attackRange && position.z - character.z > 0) // Condition provisoire
+		else if(position.z - character.position.z < attackRange && position.z - character.position.z > 0) // Condition provisoire
 		{
-			Attack(character);
+			if (attackBeginning == -1.0f && blocking != Blocking.FREE){
+				target.CanRun = false;
+				attackBeginning = Time.time;
+			}
+
+			Attack(target);
+
+			if (!target.CanRun && attackBeginning+attackTimeMax < Time.time) {
+				target.CanRun = true;
+				Run (Time.deltaTime);
+			}
 		}
-		else if(position.z - character.z < aggroDistance)
+		else if(position.z - character.position.z < aggroDistance)
 		{
-			Run(deltaTime);
+			Run(Time.deltaTime);
 		}
-		else if(position.z - character.z < aggroDistance + 1)
+		else if(position.z - character.position.z < aggroDistance + 1)
 		{
-			WakeUp(deltaTime);
+			WakeUp(Time.deltaTime);
 		}
 		return base.Action;
 	}
@@ -159,12 +184,12 @@ public abstract class NPC : Unit {
 	* Getter/Setter of xpGain
 	* @return 
 	* FR:
-	*	Retourne un int pour le getter et void pour le setter
+	*	Retourne un float pour le getter et void pour le setter
 	* EN:
-	*	Return an int for the getter and void for the setter
+	*	Return an float for the getter and void for the setter
 	* @version 1.0
 	**/
-	public int XpGain {
+	public float XpGain {
 		get {
 			return this.xpGain;
 		}
@@ -181,11 +206,13 @@ public abstract class NPC : Unit {
 	* @return Return a void
 	* @version 1.0
 	**/
-	public virtual void Attack(Vector3 character)
+	public virtual void Attack(Hero target)
 	{
 		if(LastAttack + AttackSpeed < Time.time )
 		{
-			base.Action = new UnitAction(character.x,character.y,character.z);
+			target.LostHP(damage);
+
+			base.Action = new UnitAction(target.GetPosition().x, target.GetPosition().y, target.GetPosition().z);
 			base.Action.SetActionAsAttack(Damage);
 
 			if(rangeType == RangeClass.LONGRANGE)
@@ -254,6 +281,7 @@ public abstract class NPC : Unit {
 	{
 		base.Action = new UnitAction(0,0,0);
 		base.Action.SetActionAsDisappear();
+		Die ();
 	}
 
 	/**
@@ -268,7 +296,9 @@ public abstract class NPC : Unit {
 	public void OnTriggerEnter(Collider other){
 		Debug.Log ("COLLISION : "+other.name);
 		//this.LostHP (GameModel.Hero.Damage);
-		if (other.gameObject.tag == "hero_weapon")
+		if (other.gameObject.tag == "hero_weapon") {
+			GameModel.HerosInGame[0].XpQuantity += this.xpGain;
 			Die ();
+		}
 	}
 }

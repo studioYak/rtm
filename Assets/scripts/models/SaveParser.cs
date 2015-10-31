@@ -40,7 +40,7 @@ public class SaveParser {
 
 			saves.Add(new Save(hero, levelId));
 		}
-
+		Debug.Log (saves.Count + " saves loaded");
 
 		return saves;
 	}

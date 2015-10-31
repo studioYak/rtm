@@ -284,6 +284,13 @@ public abstract class NPC : Unit {
 		Die ();
 	}
 
+	void OnDestroy() {
+		GameModel.NPCsInGame.Remove (this);
+		foreach (Hero hero in GameModel.HerosInGame) {
+			hero.CanRun = true;
+		}
+	}
+
 	/**
 	* {@inheritDoc}
 	**/

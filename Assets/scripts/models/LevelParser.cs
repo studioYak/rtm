@@ -36,13 +36,13 @@ public class LevelParser {
 
 		JSONNode root = getJsonFile ("Levels/"+mainLevelFileName+".JSON");
 
-		JSONNode fileList = root ["levels"].AsArray;
+		JSONNode fileList = root.AsArray;
 
 		int size = fileList.Count;
 		for (int i=0; i<size; i++) {
-			JSONNode file = fileList[i];
-			Debug.Log("parsing " + file["file"]);
-			levels.Add (parseLevelFile(file["file"]));
+			string file = fileList[i];
+			Debug.Log("parsing " + file);
+			levels.Add (parseLevelFile(file));
 		}
 
 		return levels;

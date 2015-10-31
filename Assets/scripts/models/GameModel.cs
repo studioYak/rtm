@@ -10,7 +10,7 @@ using System.Collections.Generic;
 /**
  * This class is made to keep the context between controllers
  */
-public class GameModel : MonoBehaviour {
+public class GameModel {
 
 	/**
 	 * The hero : mainly to keep the class and XP
@@ -18,6 +18,8 @@ public class GameModel : MonoBehaviour {
 	private static Hero hero;
 
 	private static List<Hero> herosInGame;
+
+	private static List<NPC> npcsInGame;
 
 	private static Level actualLevel;
 
@@ -44,6 +46,16 @@ public class GameModel : MonoBehaviour {
 		
 		set {
 			herosInGame = value;
+		}
+	}
+
+	public static List<NPC> NPCsInGame {
+		get {
+			return npcsInGame;
+		}
+		
+		set {
+			npcsInGame = value;
 		}
 	}
 
@@ -122,7 +134,8 @@ public class GameModel : MonoBehaviour {
 		herosInGame = new List<Hero> ();
 
 		//create saves
-		saves = new List<Save> ();
+		saves = SaveParser.parseLevelFile ("saves");
+		/*saves = new List<Save> ();
 
 		Save s1 = new Save ();
 		s1.Hero = new Monk ();
@@ -139,7 +152,11 @@ public class GameModel : MonoBehaviour {
 		s2.LevelId = 0;
 
 		saves.Add (s1);
-		saves.Add (s2);
+		saves.Add (s2);*/
+	}
+
+	public static void resetDataBeforeLevel(){
+		npcsInGame = new List<NPC> ();
 	}
 
 	public static void loadSave(int saveNum){

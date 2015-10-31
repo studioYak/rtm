@@ -26,12 +26,12 @@ using Leap;
 * scene whenever physical hands are tracked by the Leap Motion hardware. By default, these objects are
 * destroyed when the physical hands are lost and recreated when tracking resumes. The asset package
 * provides a variety of hands that you can use in conjunction with the hand controller. 
+* 
+* @author LeapMotion edited by Baptiste Valthier
 */
 public class HandController : MonoBehaviour {
 
-    //ajout BV
-    public UnityEngine.UI.Text debugT;
-
+  
     public HandModel leftPhysicsModel_gtwo;
 
     // Reference distance from thumb base to pinky base in mm.
@@ -52,13 +52,6 @@ public class HandController : MonoBehaviour {
   // If this is null hands will have no parent
   public Transform handParent = null;
 
-  /** The GameObject containing both graphics and colliders for tools. */
-  public ToolModel toolModel;
-
-  /** Set true if the Leap Motion hardware is mounted on an HMD; otherwise, leave false. */
-  public bool isHeadMounted = false;
-  /** Reverses the z axis. */
-  public bool mirrorZAxis = false;
 
   /** If hands are in charge of Destroying themselves, make this false. */
   public bool destroyHands = true;
@@ -66,18 +59,7 @@ public class HandController : MonoBehaviour {
   /** The scale factors for hand movement. Set greater than 1 to give the hands a greater range of motion. */
   public Vector3 handMovementScale = Vector3.one;
 
-  // Recording parameters.
-  /** Set true to enable recording. */
-  public bool enableRecordPlayback = false;
-  /** The file to record or playback from. */
-  public TextAsset recordingAsset;
-  /** Playback speed. Set to 1.0 for normal speed. */
-  public float recorderSpeed = 1.0f;
-  /** Whether to loop the playback. */
-  public bool recorderLoop = true;
-  
-  /** The object used to control recording and playback.*/
-  protected LeapRecorder recorder_ = new LeapRecorder();
+
   
   /** The underlying Leap Motion Controller object.*/
   protected Controller leap_controller_;
@@ -86,13 +68,27 @@ public class HandController : MonoBehaviour {
   protected Dictionary<int, HandModel> hand_graphics_;
   /** The list of all hand physics objects owned by this HandController.*/
   protected Dictionary<int, HandModel> hand_physics_;
-  /** The list of all tool objects owned by this HandController.*/
-  protected Dictionary<int, ToolModel> tools_;
+
 
   private bool flag_initialized_ = false;
   private long prev_graphics_id_ = 0;
   private long prev_physics_id_ = 0;
   
+	public void setModel(GameController.HandSide hs, string hero_class)
+	{
+		string prefab = hero_class+"_";
+		//puts the right-handed or left-handed attribute to the prefab name
+		prefab += (hs == GameController.HandSide.RIGHT_HAND ? "RH" : "LH");
+
+		//sets Left hand model
+		GameObject leftGO = Resources.Load("prefabs/leapmotion/"+prefab+"_left") as GameObject;
+		leftGraphicsModel = leftGO.GetComponent<RiggedHand>();
+
+		GameObject rightGO = Resources.Load("prefabs/leapmotion/"+prefab+"_right") as GameObject;
+		rightGraphicsModel = rightGO.GetComponent<RiggedHand>();
+
+	}
+
   /** Draws the Leap Motion gizmo when in the Unity editor. */
   void OnDrawGizmos() {
     // Draws the little Leap Motion Controller in the Editor view.
@@ -108,10 +104,8 @@ public class HandController : MonoBehaviour {
   {
     // Optimize for top-down tracking if on head mounted display.
     Controller.PolicyFlag policy_flags = leap_controller_.PolicyFlags;
-    if (isHeadMounted)
-      policy_flags |= Controller.PolicyFlag.POLICY_OPTIMIZE_HMD;
-    else
-      policy_flags &= ~Controller.PolicyFlag.POLICY_OPTIMIZE_HMD;
+ 
+    policy_flags &= ~Controller.PolicyFlag.POLICY_OPTIMIZE_HMD;
 
     leap_controller_.SetPolicyFlags(policy_flags);
   }
@@ -121,21 +115,20 @@ public class HandController : MonoBehaviour {
     leap_controller_ = new Controller();
   }
 
+
+
   /** Initalizes the hand and tool lists and recording, if enabled.*/
   void Start() {
     // Initialize hand lookup tables.
     hand_graphics_ = new Dictionary<int, HandModel>();
     hand_physics_ = new Dictionary<int, HandModel>();
-
-    tools_ = new Dictionary<int, ToolModel>();
+		
 
     if (leap_controller_ == null) {
       Debug.LogWarning(
           "Cannot connect to controller. Make sure you have Leap Motion v2.0+ installed");
     }
 
-    if (enableRecordPlayback && recordingAsset != null)
-      recorder_.Load(recordingAsset);
   }
 
   /**
@@ -192,14 +185,16 @@ public class HandController : MonoBehaviour {
     for (int h = 0; h < num_hands; ++h) {
       Hand leap_hand = leap_hands[h];
       
-      HandModel model = (mirrorZAxis != leap_hand.IsLeft) ? left_model : right_model;
+      HandModel model = (leap_hand.IsLeft) ? left_model : right_model;
+
+		
 
       // If we've mirrored since this hand was updated, destroy it.
-      if (all_hands.ContainsKey(leap_hand.Id) &&
-          all_hands[leap_hand.Id].IsMirrored() != mirrorZAxis) {
+      /*if (all_hands.ContainsKey(leap_hand.Id) &&
+          all_hands[leap_hand.Id].IsMirrored() != mirrorYAxis) {
         DestroyHand(all_hands[leap_hand.Id]);
         all_hands.Remove(leap_hand.Id);
-      }
+      }*/
 
       // Only create or update if the hand is enabled.
       if (model != null) {
@@ -209,7 +204,7 @@ public class HandController : MonoBehaviour {
         if (!all_hands.ContainsKey(leap_hand.Id)) {
           HandModel new_hand = CreateHand(model);
           new_hand.SetLeapHand(leap_hand);
-          new_hand.MirrorZAxis(mirrorZAxis);
+          //new_hand.MirrorYAxis(mirrorYAxis);
           new_hand.SetController(this);
 
           // Set scaling based on reference hand.
@@ -224,7 +219,7 @@ public class HandController : MonoBehaviour {
           // Make sure we update the Leap Hand reference.
           HandModel hand_model = all_hands[leap_hand.Id];
           hand_model.SetLeapHand(leap_hand);
-          hand_model.MirrorZAxis(mirrorZAxis);
+          //hand_model.MirrorYAxis(mirrorYAxis);
 
           // Set scaling based on reference hand.
           float hand_scale = MM_TO_M * leap_hand.PalmWidth / hand_model.handModelPalmWidth;
@@ -241,66 +236,6 @@ public class HandController : MonoBehaviour {
     }
   }
 
-  /** Creates a ToolModel instance. */
-  protected ToolModel CreateTool(ToolModel model) {
-    ToolModel tool_model = Instantiate(model, transform.position, transform.rotation) as ToolModel;
-    tool_model.gameObject.SetActive(true);
-    Leap.Utils.IgnoreCollisions(tool_model.gameObject, gameObject);
-    return tool_model;
-  }
-
-  /** 
-  * Updates tools based on tracking data in the specified Leap ToolList object.
-  * Active ToolModel instances are updated if the tool they represent is still
-  * present in the Leap ToolList; otherwise, the ToolModel is removed. If new
-  * Leap Tool objects are present in the Leap ToolList, new ToolModels are 
-  * created and added to the HandController tool list. 
-  * @param all_tools The dictionary containing the ToolModels to update.
-  * @param leap_tools The list of tools from the a Leap Frame instance.
-  * @param model The ToolModel instance to use for new tools.
-  */
-  protected void UpdateToolModels(Dictionary<int, ToolModel> all_tools,
-                                  ToolList leap_tools, ToolModel model) {
-    List<int> ids_to_check = new List<int>(all_tools.Keys);
-
-    // Go through all the active tools and update them.
-    int num_tools = leap_tools.Count;
-    for (int h = 0; h < num_tools; ++h) {
-      Tool leap_tool = leap_tools[h];
-      
-      // Only create or update if the tool is enabled.
-      if (model) {
-
-        ids_to_check.Remove(leap_tool.Id);
-
-        // Create the tool and initialized it if it doesn't exist yet.
-        if (!all_tools.ContainsKey(leap_tool.Id)) {
-          ToolModel new_tool = CreateTool(model);
-          new_tool.SetController(this);
-          new_tool.SetLeapTool(leap_tool);
-          new_tool.InitTool();
-          all_tools[leap_tool.Id] = new_tool;
-        }
-
-        // Make sure we update the Leap Tool reference.
-        ToolModel tool_model = all_tools[leap_tool.Id];
-        tool_model.SetLeapTool(leap_tool);
-        tool_model.MirrorZAxis(mirrorZAxis);
-
-        // Set scaling.
-        tool_model.transform.localScale = transform.lossyScale;
-
-        tool_model.UpdateTool();
-      }
-    }
-
-    // Destroy all tools with defunct IDs.
-    for (int i = 0; i < ids_to_check.Count; ++i) {
-      Destroy(all_tools[ids_to_check[i]].gameObject);
-      all_tools.Remove(ids_to_check[i]);
-    }
-  }
-
   /** Returns the Leap Controller instance. */
   public Controller GetLeapController() {
     return leap_controller_;
@@ -313,8 +248,7 @@ public class HandController : MonoBehaviour {
   * Otherwise, the frame comes from the Leap Motion Controller itself.
   */
   public Frame GetFrame() {
-    if (enableRecordPlayback && recorder_.state == RecorderState.Playing)
-      return recorder_.GetCurrentFrame();
+   
 
     return leap_controller_.Frame();
   }
@@ -324,8 +258,7 @@ public class HandController : MonoBehaviour {
     if (leap_controller_ == null)
       return;
     
-
-    UpdateRecorder();
+	
     Frame frame = GetFrame();
 
     if (frame != null && !flag_initialized_)
@@ -349,7 +282,6 @@ public class HandController : MonoBehaviour {
     if (frame.Id != prev_physics_id_)
     {
       UpdateHandModels(hand_physics_, frame.Hands, leftPhysicsModel, rightPhysicsModel);
-      UpdateToolModels(tools_, frame.Tools, toolModel);
       prev_physics_id_ = frame.Id;
     }
   }
@@ -412,59 +344,4 @@ public class HandController : MonoBehaviour {
     }
   }
   
-  /** The current frame position divided by the total number of frames in the recording. */
-  public float GetRecordingProgress() {
-    return recorder_.GetProgress();
-  }
-
-  /** Stops recording or playback and resets the frame counter to the beginning. */
-  public void StopRecording() {
-    recorder_.Stop();
-  }
-
-  /** Start getting frames from the LeapRecorder object rather than the Leap service. */
-  public void PlayRecording() {
-    recorder_.Play();
-  }
-
-  /** Stops playback or recording without resetting the frame counter. */
-  public void PauseRecording() {
-    recorder_.Pause();
-  }
-
-  /** 
-  * Saves the current recording to a new file, returns the path, and starts playback.
-  * @return string The path to the saved recording.
-  */
-  public string FinishAndSaveRecording() {
-    string path = recorder_.SaveToNewFile();
-    recorder_.Play();
-    return path;
-  }
-
-  /** Discards any frames recorded so far. */
-  public void ResetRecording() {
-    recorder_.Reset();
-  }
-
-  /** Starts saving frames. */
-  public void Record() {
-    recorder_.Record();
-  }
-
-  /** Called in Update() to send frames to the recorder. */
-  protected void UpdateRecorder() {
-    if (!enableRecordPlayback)
-      return;
-
-    recorder_.speed = recorderSpeed;
-    recorder_.loop = recorderLoop;
-
-    if (recorder_.state == RecorderState.Recording) {
-      recorder_.AddFrame(leap_controller_.Frame());
-    }
-    else {
-      recorder_.NextFrame();
-    }
-  }
 }

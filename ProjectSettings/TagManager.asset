@@ -4,6 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - hero_defense
+  - Touchable
   - hero_weapon
   layers:
   - Default

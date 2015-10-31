@@ -73,23 +73,36 @@ public class HandController : MonoBehaviour {
   private bool flag_initialized_ = false;
   private long prev_graphics_id_ = 0;
   private long prev_physics_id_ = 0;
-  
-	public void setModel(GameController.HandSide hs, string hero_class)
+
+	private string heroClass = null;
+	private GameController.HandSide handSide;
+
+	/**
+	 * @author Baptiste Valthier
+	 * defines whether the user is left handed or not and choose the appropriate graphics and features according to the class.
+	 **/
+	public void setModel(GameController.HandSide hs, string _heroClass)
 	{
-		string prefab = hero_class+"_";
+		//saves the value locally
+		heroClass = _heroClass;
+		handSide = hs;
+
+			string prefab = _heroClass+"_";
 		//puts the right-handed or left-handed attribute to the prefab name
 		prefab += (hs == GameController.HandSide.RIGHT_HAND ? "RH" : "LH");
 
 		//sets Left hand model
 		GameObject leftGO = Resources.Load("prefabs/leapmotion/"+prefab+"_left") as GameObject;
+		//GameObject leftGO = Resources.Load("prefabs/leapmotion/PepperLightFullLeftHand") as GameObject;
+
 		if (leftGO == null)
 			Debug.LogError ("Baptiste says : Can't find GameObject "+"prefabs/leapmotion/"+prefab+"_left"+ ". Does it exists?");
-		leftGraphicsModel = leftGO.GetComponent<RiggedHand>();
+		leftGraphicsModel = leftGO.GetComponent<RiggedHandBV>();
 
 		GameObject rightGO = Resources.Load("prefabs/leapmotion/"+prefab+"_right") as GameObject;
 		if (leftGO == null)
 			Debug.LogError ("Baptiste says : Can't find GameObject "+"prefabs/leapmotion/"+prefab+"_left"+ ". Does it exists?");
-		rightGraphicsModel = rightGO.GetComponent<RiggedHand>();
+		rightGraphicsModel = rightGO.GetComponent<RiggedHandBV>();
 
 	}
 
@@ -257,6 +270,31 @@ public class HandController : MonoBehaviour {
     return leap_controller_.Frame();
   }
 
+	/**
+	 * @author Baptiste Valthier
+	 * According to the Hero class, recognizes the pattern and adapt the view
+	 **/
+	void DetectSpecialMovements()
+	{
+		if (heroClass == null || handSide == null)
+			return;
+
+		if (heroClass == "Wizard")
+		{
+			Frame frame = GetFrame();
+			HandList handsInFrame = frame.Hands;
+
+			foreach (Hand hand in handsInFrame)
+			{				
+				//if we are going through the attack hand
+				if (hand.IsValid && (handSide == GameController.HandSide.RIGHT_HAND ? hand.IsRight : hand.IsLeft))
+				{
+					Debug.Log (hand.GrabStrength);
+				}
+			}
+		}
+	}
+
   /** Updates the graphics objects. */
   void Update() {
     if (leap_controller_ == null)
@@ -271,6 +309,7 @@ public class HandController : MonoBehaviour {
     }
     if (frame.Id != prev_graphics_id_)
     {
+			DetectSpecialMovements();
       UpdateHandModels(hand_graphics_, frame.Hands, leftGraphicsModel, rightGraphicsModel);
       prev_graphics_id_ = frame.Id;
     }

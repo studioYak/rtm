@@ -136,7 +136,7 @@ public class GameController : MonoBehaviour {
 	 */
 	void Start () {
 
-		GameModel.Init();
+		//GameModel.Init();
 
 		level = GameModel.ActualLevel;
 

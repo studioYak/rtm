@@ -84,8 +84,9 @@ public class GameController : MonoBehaviour {
 	/**
 	 * Timers
 	 */
-	private float timerBloque = 0.0f;
-	private float maxTimerBloque = 5.0f;
+
+	private float timerEnd = 0.0f;
+	private float maxTimerEnd = 3.0f;
 
 	private float timerGeste = 0.0f;
 	private float maxTimerGesteAttaque = 1.0f;
@@ -137,6 +138,7 @@ public class GameController : MonoBehaviour {
 	void Start () {
 
 		GameModel.Init();
+		GameModel.resetDataBeforeLevel ();
 
 		level = GameModel.ActualLevel;
 
@@ -229,8 +231,9 @@ public class GameController : MonoBehaviour {
 				go = assassin;
 
 			if (go != null){
-				npcList.Add( Instantiate(go, new Vector3(ennemy.PositionInX, go.transform.localScale.y/2, vitesseHeros*ennemy.PositionInSeconds), Quaternion.identity) as GameObject);
-				npcList[npcList.Count-1].transform.Rotate(0, 180, 0);
+				GameObject instance = Instantiate(go, new Vector3(ennemy.PositionInX, go.transform.localScale.y/2, vitesseHeros*ennemy.PositionInSeconds), Quaternion.identity) as GameObject;
+				GameModel.NPCsInGame.Add(instance.GetComponent<NPC>());
+				//GameModel.NPCsInGame[GameModel.NPCsInGame.Count-1].transform.Rotate(0, 180, 0);
 			}
 		}
 
@@ -301,7 +304,16 @@ public class GameController : MonoBehaviour {
 
 		hudMaster.setLevel (HudMaster.HudType.Life, currentHealthPercent);
 		hudMaster.setLevel (HudMaster.HudType.Special, currentPowerPercent);
-		
+
+		Debug.Log (GameModel.NPCsInGame.Count);
+		if (GameModel.NPCsInGame.Count == 0) {
+			Debug.Log (timerEnd);
+			timerEnd += Time.deltaTime;
+			if (timerEnd >= maxTimerEnd){
+				NextLevel();
+			}
+		}
+
 		if(currentHealthPercent <= 0)
 		{
 			//Time.timeScale = 0;

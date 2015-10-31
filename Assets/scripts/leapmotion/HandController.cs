@@ -52,6 +52,10 @@ public class HandController : MonoBehaviour {
   // If this is null hands will have no parent
   public Transform handParent = null;
 
+	private GameObject fireball = null;
+	private GameObject fireballGo = null;
+
+
 
   /** If hands are in charge of Destroying themselves, make this false. */
   public bool destroyHands = true;
@@ -100,9 +104,17 @@ public class HandController : MonoBehaviour {
 		leftGraphicsModel = leftGO.GetComponent<RiggedHandBV>();
 
 		GameObject rightGO = Resources.Load("prefabs/leapmotion/"+prefab+"_right") as GameObject;
-		if (leftGO == null)
-			Debug.LogError ("Baptiste says : Can't find GameObject "+"prefabs/leapmotion/"+prefab+"_left"+ ". Does it exists?");
+		if (rightGO == null)
+			Debug.LogError ("Baptiste says : Can't find GameObject "+"prefabs/leapmotion/"+prefab+"_right"+ ". Does it exists?");
 		rightGraphicsModel = rightGO.GetComponent<RiggedHandBV>();
+
+		//laod extra prefabs if needed
+		if (heroClass == "Wizard") {
+			fireballGo = Resources.Load ("prefabs/leapmotion/Fireball") as GameObject;
+
+		}
+
+
 
 	}
 
@@ -289,7 +301,22 @@ public class HandController : MonoBehaviour {
 				//if we are going through the attack hand
 				if (hand.IsValid && (handSide == GameController.HandSide.RIGHT_HAND ? hand.IsRight : hand.IsLeft))
 				{
-					Debug.Log (hand.GrabStrength);
+					//if we grab and we don't have a fireball in  the hand yet
+					if (fireball == null && hand.GrabStrength >= 0.88) 
+					{
+						//loading fireball in the hand
+						fireball = Instantiate(fireballGo);
+
+						fireball.transform.parent = transform.parent.FindChild("Wizard_RH_right(Clone)").FindChild("HandContainer").transform;
+						fireball.transform.localPosition = new Vector3(0f, 0f, 0f);
+					}
+					//if we throw and we have a fireball ready in the hand
+					else if (fireball != null && hand.GrabStrength <= 0.2)
+					{
+						fireball.transform.parent = null;
+						//fireball.GetComponent<Rigidbody>().AddForce
+						fireball.GetComponent<Rigidbody>().isKinematic = false;
+					}
 				}
 			}
 		}

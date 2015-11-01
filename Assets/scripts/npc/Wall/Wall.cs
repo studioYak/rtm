@@ -26,8 +26,24 @@ public class Wall : NPC {
 	* @version 1.0
 	**/
 	public Wall()
-		:base(0.0f, 0, Blocking.BLOCK, 100, 10, 0, "cac", "anonymous"){
+		:base(30.0f, 4.5f, 2.0f, 0.0f, 0.0f, Blocking.BLOCK, 100.0f, 10.0f, 0.0f, "cac", "anonymous"){
 		
+	}
+
+	public Wall(float essai_double_constructeur)
+		:base(EnnemyConfigurator.wallAggroDistance,
+			EnnemyConfigurator.wallAttackRange,
+			EnnemyConfigurator.wallDistanceToDisappear,
+			EnnemyConfigurator.wallAttackSpeed,
+			EnnemyConfigurator.wallXpGain,
+			Blocking.FREE,
+			EnnemyConfigurator.wallHp,
+			EnnemyConfigurator.wallDamage,
+			EnnemyConfigurator.wallMovementSpeed,
+			EnnemyConfigurator.wallAttackType,
+			EnnemyConfigurator.wallName)
+	{
+
 	}
 
 }

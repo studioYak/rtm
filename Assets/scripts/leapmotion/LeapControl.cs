@@ -20,7 +20,7 @@ public class LeapControl : MonoBehaviour {
 	}
 	
 	
-	private float timeAction;
+
 	
 	public ActionState actionState = ActionState.REST;
 
@@ -48,33 +48,33 @@ public class LeapControl : MonoBehaviour {
 	public GameObject pointerDefenseHandPrefab;
 	private GameObject pointerDefenseHand;
 	
-	Hand rightHand = null;
-	Hand leftHand = null;
+//	Hand rightHand = null;
+	//Hand leftHand = null;
 	
 	float movementScale = 15f;
 	
 	GameObject heroAsParent;
 	
 	
-	private int nAction = 0;
+	//private int nAction = 0;
 
 	//TODO overwritte with game settigns
-	private GameController.HandSide attackHand = GameController.HandSide.RIGHT_HAND; //default value
+/*	private GameController.HandSide attackHand = GameController.HandSide.RIGHT_HAND; //default value
 	private GameController.HandSide defenseHand = GameController.HandSide.LEFT_HAND;
-
+*/
 	/**
 	 * Sets which hand (right or left) is the attack hand.
 	 * At the same time, defines which defense hand it is (by inverse logic).
 	 * It means you don't have to call both setAttackHand or setDefenseHand
 	 * @param Right or Left handside
 	 **/
-	public void setAttackHand(GameController.HandSide attackSide)
+	/*public void setAttackHand(GameController.HandSide attackSide)
 	{
 		attackHand = attackSide;
 		defenseHand = (attackSide == GameController.HandSide.RIGHT_HAND ? GameController.HandSide.LEFT_HAND : GameController.HandSide.RIGHT_HAND);
 
 		setInitPosition();
-	}
+	}*/
 
 	/**
 	 * Sets which hand (right or left) is the attack hand.
@@ -82,7 +82,7 @@ public class LeapControl : MonoBehaviour {
 	 * It means you don't have to call both setAttackHand or setDefenseHand
 	 * @param defenseSide La main utilisée par la défense (Gauche ou Droite)
 	 **/ 
-	public void setDefenseHand(GameController.HandSide defenseSide)
+	/*public void setDefenseHand(GameController.HandSide defenseSide)
 	{
 		attackHand = (defenseSide == GameController.HandSide.RIGHT_HAND ? GameController.HandSide.LEFT_HAND : GameController.HandSide.RIGHT_HAND);
 		defenseHand = defenseSide;
@@ -90,11 +90,11 @@ public class LeapControl : MonoBehaviour {
 		setInitPosition();
 
 	}
-
+*/
 	/**
 	 * Defines the base position of defense and attackhand. Called at init
 	 **/
-	private void setInitPosition()
+/*	private void setInitPosition()
 	{
 		//switch init pos if lefthanded
 		if (attackHand == GameController.HandSide.RIGHT_HAND)
@@ -114,7 +114,7 @@ public class LeapControl : MonoBehaviour {
 		//same init pos
 		defenseProjection.transform.position = pointerDefenseHand.transform.position;
 		attackProjection.transform.position = pointerAttackHand.transform.position;
-	}
+	}*/
 
 	/**
 	 * Returns the Vector 3 Position of the LeapMotion right or left hand (according to
@@ -187,7 +187,7 @@ public class LeapControl : MonoBehaviour {
 	 * Called in update FPS from Leap Controller
 	 * recognizes movement patterns
 	 **/
-	void GestureDetection(Hand hand)
+	/*void GestureDetection(Hand hand)
 	{
 
 		//detect gestures
@@ -199,7 +199,7 @@ public class LeapControl : MonoBehaviour {
 				nAction = attack(nAction, hand);
 			else
 				nAction = defense(nAction);
-		}
+		}*/
 		/*else
 		 * //desactivation pour sprint 1 car bug
 			//si on a une acceleration vers le haut rapide : chest open
@@ -210,7 +210,7 @@ public class LeapControl : MonoBehaviour {
 			actionState = ActionState.CHEST;
 			timeAction = Time.time;
 		}*/
-	}
+	//}
 
 	/**
 	 * Visual clue of attacking
@@ -230,7 +230,6 @@ public class LeapControl : MonoBehaviour {
 		attackProjection.transform.position = pointerPosition;
 		
 		actionState = ActionState.ATTACK;
-		timeAction = Time.time;
 
 		return nAction;
 	}
@@ -258,7 +257,7 @@ public class LeapControl : MonoBehaviour {
 		
 		
 		actionState = ActionState.DEFENSE;
-		timeAction = Time.time;
+
 
 		return nAction;
 	}
@@ -276,7 +275,7 @@ public class LeapControl : MonoBehaviour {
 	 */
 	void Update () {
 		
-		if(leap_controller_.IsConnected && leap_controller_.IsServiceConnected())
+		/*if(leap_controller_.IsConnected && leap_controller_.IsServiceConnected())
 		{
 			
 			//polling de LM
@@ -351,7 +350,7 @@ public class LeapControl : MonoBehaviour {
 		
 	
 		
-		movementLabel.text = actionState.ToString() + " ( "+ nAction.ToString()+" )";
+		movementLabel.text = actionState.ToString() + " ( "+ nAction.ToString()+" )";*/
 	}
 
 	/**

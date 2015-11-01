@@ -8,6 +8,17 @@ using SimpleJSON;
  * @version 1.0
  */
 
+namespace Game {
+
+	
+	/**
+	 * The strong hand for the player
+	 */
+	public enum HandSide {
+		RIGHT_HAND,
+		LEFT_HAND,
+	};
+
 /**
  * The controller for the Game Scene
  */
@@ -22,13 +33,6 @@ public class GameController : MonoBehaviour {
 		DEAD,
 	};
 
-	/**
-	 * The strong hand for the player
-	 */
-	public enum HandSide {
-		RIGHT_HAND,
-		LEFT_HAND,
-	};
 
 	/**
 	 * Json level file path
@@ -63,7 +67,7 @@ public class GameController : MonoBehaviour {
 		
 	private GameObject leapPrefab;
 	private GameObject leapInstance;
-	private LeapControl leapControl;
+	private HandController leapControl;
 	
 	private Hero hero;
 	private GameObject heroGameObject;
@@ -76,6 +80,7 @@ public class GameController : MonoBehaviour {
 	private HandSide handSide;
 
 
+
 	private float tempsMusique = 240f;
 
 	private List<GameObject> npcList;
@@ -83,8 +88,9 @@ public class GameController : MonoBehaviour {
 	/**
 	 * Timers
 	 */
-	private float timerBloque = 0.0f;
-	private float maxTimerBloque = 5.0f;
+
+	private float timerEnd = 0.0f;
+	private float maxTimerEnd = 3.0f;
 
 	private float timerGeste = 0.0f;
 	private float maxTimerGesteAttaque = 1.0f;
@@ -123,7 +129,7 @@ public class GameController : MonoBehaviour {
 		monk = Resources.Load("prefabs/hero/Monk") as GameObject;
 		wizard = Resources.Load("prefabs/hero/Wizard") as GameObject;
 			
-		leapPrefab = Resources.Load("prefabs/leapmotion/LeapController") as GameObject;
+		leapPrefab = Resources.Load("prefabs/leapmotion/LeapMotionScene") as GameObject;
 
 		Debug.Log (" END Awake GameController");
 
@@ -134,6 +140,11 @@ public class GameController : MonoBehaviour {
 	 * Generation of the scene from the level file
 	 */
 	void Start () {
+
+
+		//GameModel.Init();
+		GameModel.resetDataBeforeLevel ();
+
 
 		level = GameModel.ActualLevel;
 
@@ -164,17 +175,21 @@ public class GameController : MonoBehaviour {
 			heroGameObject = Instantiate (warrior);
 			
 		Debug.Log (heroGameObject);
-		hero = heroGameObject.GetComponent<Hero>();
+		GameModel.HerosInGame.Add (heroGameObject.GetComponent<Hero> ());
+		hero = GameModel.HerosInGame [0];
 		float vitesseHeros = hero.MovementSpeed;
 		hero.XpQuantity = modelHero.XpQuantity;
 
 		//LEAP
 		leapInstance = Instantiate (leapPrefab);
-		Debug.Log ("leapInstance : " + leapInstance);
-		leapInstance.transform.parent = transform;
-		leapControl = leapInstance.GetComponent<LeapControl>();
-		leapControl.setAttackHand (handSide);
-		leapControl.addParent(heroGameObject);
+		//Debug.Log ("leapInstance : " + leapInstance);
+		//the leap motion scene is child of camera so it follow the translation
+		leapInstance.transform.parent = Camera.allCameras[0].transform;
+		leapInstance.transform.position = new Vector3 (0f, 2.5f, 1.6f);
+		//sets the "hand parent" field so the arms also are child of camera and don't flicker
+		leapControl = leapInstance.GetComponent<HandController> ();
+		leapControl.setModel(handSide, heroClass);
+		leapControl.handParent = Camera.allCameras[0].transform;
 
 
 
@@ -216,14 +231,15 @@ public class GameController : MonoBehaviour {
 				go = iceDragonet;
 			else if (ennemy.Type == "wall")
 				go = wall;
-			else if (ennemy.Type == "canon")
+			else if (ennemy.Type == "cannon")
 				go = canon;
 			else if (ennemy.Type == "assassin")
 				go = assassin;
 
 			if (go != null){
-				npcList.Add( Instantiate(go, new Vector3(ennemy.PositionInX, 0, vitesseHeros*ennemy.PositionInSeconds), Quaternion.identity) as GameObject);
-				npcList[npcList.Count-1].transform.Rotate(0, 180, 0);
+				GameObject instance = Instantiate(go, new Vector3(ennemy.PositionInX, go.transform.localScale.y/2, vitesseHeros*ennemy.PositionInSeconds), Quaternion.identity) as GameObject;
+				GameModel.NPCsInGame.Add(instance.GetComponent<NPC>());
+				//GameModel.NPCsInGame[GameModel.NPCsInGame.Count-1].transform.Rotate(0, 180, 0);
 			}
 		}
 
@@ -237,9 +253,6 @@ public class GameController : MonoBehaviour {
 		Camera.main.transform.position = new Vector3 (0, 2.18f, 0);
 		//Camera.main.transform.Translate(new Vector3(0, 2.18f, 0));
 
-		AudioSource musicPlayer = GetComponent<AudioSource> ();
-		musicPlayer.clip = Resources.Load ("sounds/music1.mp3") as AudioClip;
-		musicPlayer.Play();
 
 		pausedMenu = GameObject.Find("Canvas");
 		pausedMenu.SetActive(false);
@@ -282,113 +295,31 @@ public class GameController : MonoBehaviour {
 	 */
 	void play(){
 		//Gestion héros
-		if (!bloque) {
+		/*if (!bloque) {
 			//faire avancer Héros
-			hero.Run(Time.deltaTime);
+			//hero.Run(Time.deltaTime);
+			GameModel.HerosInGame[0].Run(Time.deltaTime);
 			//Camera.main.transform.position = new Vector3(0, 2.18f, hero.GetPosition().z);
-		}
-
-		//Get leap state
-		if (lastState == LeapControl.ActionState.REST) {
-			lastState = leapControl.actionState;
-		} else {
-			if (actionDone){
-				//maj timer
-				timerGeste += Time.deltaTime;
-				
-				if (
-					lastState == LeapControl.ActionState.ATTACK && timerGeste > maxTimerGesteAttaque ||
-					lastState == LeapControl.ActionState.DEFENSE && timerGeste > maxTimerGesteDefense){
-					
-					timerGeste = 0.0f;
-					leapControl.actionState = LeapControl.ActionState.REST;
-					leapControl.backToInitialPosition();
-					lastState = LeapControl.ActionState.REST;
-					actionDone = false;
-					hero.DefenseMode("off");
-				}
-
-			}else{
-				if (lastState == LeapControl.ActionState.ATTACK) {
-					Debug.Log (npcList);
-					if (npcList.Count > 0) {
-
-					
-						float distance = (npcList [0].transform.position.z - hero.GetPosition().z);
-						if (distance < hero.Range){
-							npcList [0].GetComponent<NPC> ().LostHP (hero.Damage);
-							if (npcList [0].GetComponent<NPC> ().HealthPoint < 0) {
-								npcList [0].GetComponent<NPC> ().Die ();
-								npcList.RemoveAt (0);
-								if (bloque)
-									bloque = false;
-							}
-						}
-					}
-				}else if(lastState == LeapControl.ActionState.DEFENSE) {
-
-					hero.DefenseMode("on");
-				}
-				actionDone = true;
-			}
-		}
-
-
-		
-		//Gestion premier ennemi
-			
-		if (npcList.Count > 0) {
-			NPC firstNPC = npcList [0].GetComponent<NPC> ();
-			
-			UnitAction action = firstNPC.Act (new Vector3 (hero.GetPosition ().x, hero.GetPosition ().y, hero.GetPosition ().z), Time.deltaTime);
-			
-			if (action.IsAttack) {
-				hero.LostHP (action.Damage);
-			} else if (action.IsDisappear) {
-				Debug.Log ("DISAPPEAR");
-				firstNPC.Die ();
-				npcList.RemoveAt (0);
-			}
-
-			if (npcList.Count > 0) {
-				firstNPC = npcList [0].GetComponent<NPC> ();
-				float distance = (firstNPC.transform.position.z - hero.GetPosition ().z);
-				if (distance < 5) {
-
-					if (!bloque && firstNPC.BlockingType != NPC.Blocking.FREE) {
-						bloque = true;
-					}
-
-					if (firstNPC.BlockingType == NPC.Blocking.SEMIBLOCK) {
-						timerBloque += Time.deltaTime;
-
-						if (timerBloque >= maxTimerBloque) {
-							bloque = false;
-							timerBloque = 0.0f;
-							firstNPC.BlockingType = NPC.Blocking.FREE;
-						}
-
-					} else if (firstNPC.BlockingType == NPC.Blocking.BLOCK) {
-						
-					}
-
-				}
-			
-			}
-
-		} else {
-			NextLevel();
-		}
+		}*/
 
 		
 		//update hud state
-		float currentHealthPercent = 100*hero.HealthPoint/hero.MaxHealthPoint;
-		float currentPowerPercent = 100*hero.PowerQuantity/hero.MaxPowerQuantity;
-		Debug.Log("Life: " + currentHealthPercent);
+		float currentHealthPercent = 100*GameModel.HerosInGame[0].HealthPoint/GameModel.HerosInGame[0].MaxHealthPoint;
+		float currentPowerPercent = 100*GameModel.HerosInGame[0].PowerQuantity/GameModel.HerosInGame[0].MaxPowerQuantity;
+		//Debug.Log("Life: " + currentHealthPercent);
 
 		hudMaster.setLevel (HudMaster.HudType.Life, currentHealthPercent);
 		hudMaster.setLevel (HudMaster.HudType.Special, currentPowerPercent);
-		
+
+		Debug.Log (GameModel.NPCsInGame.Count);
+		if (GameModel.NPCsInGame.Count == 0) {
+			Debug.Log (timerEnd);
+			timerEnd += Time.deltaTime;
+			if (timerEnd >= maxTimerEnd){
+				NextLevel();
+			}
+		}
+
 		if(currentHealthPercent <= 0)
 		{
 			//Time.timeScale = 0;
@@ -411,6 +342,7 @@ public class GameController : MonoBehaviour {
 	 * Function called when the game is paused
 	 */
 	public void Pause(){
+		Time.timeScale = 0.0f;
 		pausedMenu.SetActive(true);
 	}
 
@@ -471,6 +403,8 @@ public class GameController : MonoBehaviour {
 		pausedMenu.SetActive(false);
 		paused = false;
 		state = GameState.PLAY;
+		Time.timeScale = 1.0f;
 	}
 	
+}
 }

@@ -4,7 +4,7 @@ using System.Collections;
 public class UnitAction {
 
 	public Vector3 coords;
-	int damage;
+	float damage;
 	bool isAttack = false;
 	bool isDistant = false;
 	bool isRun = false;
@@ -25,7 +25,7 @@ public class UnitAction {
 		coords = new Vector3(x,y,z);
 	}
 
-	public void SetActionAsAttack(int damage)
+	public void SetActionAsAttack(float damage)
 	{
 		Damage = damage;
 		isAttack = true;
@@ -46,7 +46,7 @@ public class UnitAction {
 		isRun = true;
 	}
 
-	public int Damage {
+	public float Damage {
 		get {
 			return this.damage;
 		}

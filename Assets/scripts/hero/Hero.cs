@@ -8,7 +8,7 @@ using System.Collections;
 **/
 public abstract class Hero : Unit {
 
-	int xpQuantity;
+	float xpQuantity;
 	string handAttack;
 	int powerQuantity;
 	int maxPowerQuantity;
@@ -18,14 +18,18 @@ public abstract class Hero : Unit {
 	int blockingPercent;
 	float range;
 
+	bool canRun;
+
 	// Use this for initialization
 	void Start () {
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	protected void Update () {
+		if (canRun) {
+			Run (Time.deltaTime);
+		}
 	}
 
 	/**
@@ -103,7 +107,7 @@ public abstract class Hero : Unit {
 	*					Name of the player
 	* @version 1.0
 	**/
-	public Hero(int xpQuantity,int blockingPercent, string handAttack, int powerQuantity, int hpRefresh, int powerRefresh, bool defending, int hp, int damage, int movementSpeed, string attackType, string name)
+	public Hero(float xpQuantity,int blockingPercent, string handAttack, int powerQuantity, int hpRefresh, int powerRefresh, bool defending, int hp, int damage, int movementSpeed, string attackType, string name)
 		:base(hp, 1000*damage, movementSpeed, attackType, name){
 		XpQuantity = xpQuantity;
 		HandAttack = handAttack;
@@ -113,6 +117,8 @@ public abstract class Hero : Unit {
 		PowerRefresh = powerRefresh;
 		BlockingPercent = blockingPercent;
 		range = 5;
+
+		canRun = true;
 	}
 
 	/**
@@ -127,7 +133,7 @@ public abstract class Hero : Unit {
 	*	Return an int for the getter and void for the setter
 	* @version 1.0
 	**/
-	public int XpQuantity {
+	public float XpQuantity {
 		get {
 			return this.xpQuantity;
 		}
@@ -322,12 +328,21 @@ public abstract class Hero : Unit {
 	*	Return a bool for the getter and void for the setter
 	* @version 1.0
 	**/
-	bool Defending {
+	public bool Defending {
 		get {
 			return this.defending;
 		}
 		set {
 			defending = value;
+		}
+	}
+
+	public bool CanRun {
+		get {
+			return this.canRun;
+		}
+		set {
+			canRun = value;
 		}
 	}
 
@@ -358,5 +373,9 @@ public abstract class Hero : Unit {
 		} else {
 			Defending = true;
 		}
+	}
+
+	void OnDestroy(){
+		GameModel.HerosInGame.Remove (this);
 	}
 }

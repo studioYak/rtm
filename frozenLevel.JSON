@@ -1,0 +1,24 @@
+{
+"name" : "frozen!",
+"music" : "son1.wav",
+"map" : "terrain1",
+"tutorial" : "true",
+"items" : [
+
+		
+		{"type":"cannon", "position_seconds":25, "position_x":2},
+		
+		{"type":"basicLancer", "position_seconds":10, "position_x":1},
+
+
+		{"type":"basicDragonet", "position_seconds":15, "position_x":-1},
+
+		{"type":"health", "position_seconds":12},
+
+		{"type":"power", "position_seconds":23},
+
+		{"type":"invincibility", "position_seconds":28}
+
+		]
+
+}

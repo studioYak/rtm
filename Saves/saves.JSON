@@ -1,11 +1,11 @@
 {
 	"slots": [
 		{
-			"name" : "Roxxor2000",
+			"name" : "Roxxor22",
 	
 			"score" : 1200,
 	
-			"currentLevel" : "frozenLevel",
+			"currentLevel" : "Zbra",
 		
 			"xp" : 360,
 		
@@ -15,7 +15,7 @@
 	
 			"score" : 3670,
 	
-			"currentLevel" : "finalLevel",
+			"currentLevel" : "Test",
 		
 			"xp" : 3000,
 		

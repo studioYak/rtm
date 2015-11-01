@@ -374,4 +374,8 @@ public abstract class Hero : Unit {
 			Defending = true;
 		}
 	}
+
+	void OnDestroy(){
+		GameModel.HerosInGame.Remove (this);
+	}
 }

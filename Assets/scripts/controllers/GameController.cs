@@ -33,11 +33,7 @@ public class GameController : MonoBehaviour {
 		DEAD,
 	};
 
-
-	/**
-	 * Json level file path
-	 */
-	private const string FILE_PATH = "Levels/GL_exJson.json";
+		
 
 	private Level level;
 	/**
@@ -342,6 +338,7 @@ public class GameController : MonoBehaviour {
 	 * Function called when the game is paused
 	 */
 	public void Pause(){
+		Time.timeScale = 0.0f;
 		pausedMenu.SetActive(true);
 	}
 
@@ -402,6 +399,7 @@ public class GameController : MonoBehaviour {
 		pausedMenu.SetActive(false);
 		paused = false;
 		state = GameState.PLAY;
+		Time.timeScale = 1.0f;
 	}
 	
 }

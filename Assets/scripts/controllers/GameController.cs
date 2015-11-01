@@ -33,11 +33,7 @@ public class GameController : MonoBehaviour {
 		DEAD,
 	};
 
-
-	/**
-	 * Json level file path
-	 */
-	private const string FILE_PATH = "Levels/GL_exJson.json";
+		
 
 	private Level level;
 	/**

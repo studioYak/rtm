@@ -254,6 +254,8 @@ public class GameController : MonoBehaviour {
 		pausedMenu.SetActive(false);
 		paused = false;
 
+		Time.timeScale = 1.0f;
+
 		Debug.Log ("END Start GameController");
 
 	}

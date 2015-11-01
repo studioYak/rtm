@@ -8,6 +8,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using Leap;
 
+using Game;
+
 /**
 * The Controller object that instantiates hands and tools to represent the hands and tools tracked
 * by the Leap Motion device.
@@ -52,6 +54,13 @@ public class HandController : MonoBehaviour {
   // If this is null hands will have no parent
   public Transform handParent = null;
 
+	private GameObject fireball = null;
+	private GameObject fireballGo = null;
+
+	private GameObject vortex = null;
+	private GameObject vortexGo = null;
+
+
 
   /** If hands are in charge of Destroying themselves, make this false. */
   public bool destroyHands = true;
@@ -75,13 +84,13 @@ public class HandController : MonoBehaviour {
   private long prev_physics_id_ = 0;
 
 	private string heroClass = null;
-	private GameController.HandSide handSide;
+	private HandSide handSide;
 
 	/**
 	 * @author Baptiste Valthier
 	 * defines whether the user is left handed or not and choose the appropriate graphics and features according to the class.
 	 **/
-	public void setModel(GameController.HandSide hs, string _heroClass)
+	public void setModel(HandSide hs, string _heroClass)
 	{
 		//saves the value locally
 		heroClass = _heroClass;
@@ -89,7 +98,7 @@ public class HandController : MonoBehaviour {
 
 			string prefab = _heroClass+"_";
 		//puts the right-handed or left-handed attribute to the prefab name
-		prefab += (hs == GameController.HandSide.RIGHT_HAND ? "RH" : "LH");
+		prefab += (hs == HandSide.RIGHT_HAND ? "RH" : "LH");
 
 		//sets Left hand model
 		GameObject leftGO = Resources.Load("prefabs/leapmotion/"+prefab+"_left") as GameObject;
@@ -100,9 +109,18 @@ public class HandController : MonoBehaviour {
 		leftGraphicsModel = leftGO.GetComponent<RiggedHandBV>();
 
 		GameObject rightGO = Resources.Load("prefabs/leapmotion/"+prefab+"_right") as GameObject;
-		if (leftGO == null)
-			Debug.LogError ("Baptiste says : Can't find GameObject "+"prefabs/leapmotion/"+prefab+"_left"+ ". Does it exists?");
+		if (rightGO == null)
+			Debug.LogError ("Baptiste says : Can't find GameObject "+"prefabs/leapmotion/"+prefab+"_right"+ ". Does it exists?");
 		rightGraphicsModel = rightGO.GetComponent<RiggedHandBV>();
+
+		//load extra prefabs if needed
+		if (heroClass == "Wizard") {
+			fireballGo = Resources.Load ("prefabs/leapmotion/Fireball") as GameObject;
+			vortexGo = Resources.Load ("prefabs/leapmotion/Vortex") as GameObject;
+
+		}
+
+
 
 	}
 
@@ -276,7 +294,7 @@ public class HandController : MonoBehaviour {
 	 **/
 	void DetectSpecialMovements()
 	{
-		if (heroClass == null || handSide == null)
+		if (heroClass == null)
 			return;
 
 		if (heroClass == "Wizard")
@@ -287,9 +305,60 @@ public class HandController : MonoBehaviour {
 			foreach (Hand hand in handsInFrame)
 			{				
 				//if we are going through the attack hand
-				if (hand.IsValid && (handSide == GameController.HandSide.RIGHT_HAND ? hand.IsRight : hand.IsLeft))
+				if (hand.IsValid && (handSide == HandSide.RIGHT_HAND ? hand.IsRight : hand.IsLeft))
 				{
-					Debug.Log (hand.GrabStrength);
+					//if we grab and we don't have a fireball in  the hand yet
+					if (fireball == null && hand.GrabStrength >= 0.88) 
+					{
+						Transform handPrefab = transform.parent.FindChild("Wizard_"+(handSide == HandSide.RIGHT_HAND ? "RH" : "LH") +"_right(Clone)");
+						//if the LM finds the grab before constructing the hand, we wait to instantiate it
+						if (handPrefab != null)
+						{
+							//loading fireball in the hand
+							fireball = Instantiate(fireballGo);
+
+							fireball.transform.parent = handPrefab.FindChild("HandContainer").transform;
+							fireball.transform.localPosition = new Vector3(0f, 0f, 0f);
+						}
+					}
+					//if we throw and we have a fireball ready in the hand
+					else if (fireball != null && hand.GrabStrength <= 0.2)
+					{
+						fireball.transform.parent = null;
+						//fireball.GetComponent<Rigidbody>().AddForce
+						fireball.GetComponent<Rigidbody>().isKinematic = false;
+					}
+				}
+				else
+				if (hand.IsValid && (handSide == HandSide.RIGHT_HAND ? hand.IsLeft : hand.IsRight))
+				{
+					//defense hand
+					if (vortex == null && hand.GrabStrength >= 0.88) 
+					{
+						//prepare to create vortex
+
+						Transform handPrefab = transform.parent.FindChild("Wizard_"+(handSide == HandSide.RIGHT_HAND ? "RH" : "LH") +"_left(Clone)");
+						//if the LM finds the grab before constructing the hand, we wait to instantiate it
+						if (handPrefab != null)
+						{
+							//loading vortex
+							vortex = Instantiate(vortexGo);
+							
+							vortex.transform.parent = handPrefab.FindChild("HandContainer").transform;
+							vortex.transform.localPosition = new Vector3(0f, 0f, 0f);
+						}
+					}
+					//if we throw 
+					else if (vortex != null && hand.GrabStrength <= 0.2)
+					{
+						vortex.transform.parent = transform.parent; //attach to camera
+						//vortex.transform.localPosition = new Vector3(0f, 0.3f, 1.5f);
+
+						vortex.GetComponent<VortexController>().isDropped();
+						//vortex.transform.position
+						//fireball.GetComponent<Rigidbody>().AddForce
+						//vortex.GetComponent<Rigidbody>().isKinematic = false;
+					}
 				}
 			}
 		}

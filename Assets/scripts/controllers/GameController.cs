@@ -8,6 +8,17 @@ using SimpleJSON;
  * @version 1.0
  */
 
+namespace Game {
+
+	
+	/**
+	 * The strong hand for the player
+	 */
+	public enum HandSide {
+		RIGHT_HAND,
+		LEFT_HAND,
+	};
+
 /**
  * The controller for the Game Scene
  */
@@ -22,13 +33,6 @@ public class GameController : MonoBehaviour {
 		DEAD,
 	};
 
-	/**
-	 * The strong hand for the player
-	 */
-	public enum HandSide {
-		RIGHT_HAND,
-		LEFT_HAND,
-	};
 
 	/**
 	 * Json level file path
@@ -138,7 +142,7 @@ public class GameController : MonoBehaviour {
 	void Start () {
 
 
-		GameModel.Init();
+		//GameModel.Init();
 		GameModel.resetDataBeforeLevel ();
 
 
@@ -402,4 +406,5 @@ public class GameController : MonoBehaviour {
 		Time.timeScale = 1.0f;
 	}
 	
+}
 }

@@ -8,21 +8,13 @@ using System.Collections;
 using Leap;
 
 // Class to setup a rigged hand based on a model.
-public class RiggedHandClamp : HandModel
+public class RiggedHandClamp : RiggedHandBV
 {
 	
-	public Vector3 modelFingerPointing = Vector3.up;
-	public Vector3 modelPalmFacing = Vector3.forward;
+	/*public Vector3 modelFingerPointing = Vector3.up;
+	public Vector3 modelPalmFacing = Vector3.forward;*/
 
-	public override void InitHand ()
-	{
-		UpdateHand ();
-	}
 
-	public Quaternion Reorientation ()
-	{
-		return Quaternion.Inverse (Quaternion.LookRotation (modelFingerPointing, -modelPalmFacing));
-	}
 
 	public override void UpdateHand ()
 	{

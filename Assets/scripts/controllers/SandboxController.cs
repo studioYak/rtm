@@ -110,6 +110,11 @@ public class SandboxController : MonoBehaviour {
 			popItem("basicLancer");
 		}
 
+		if (Input.GetKeyDown (KeyCode.V)) {
+			Debug.Log ("RETURN");
+			GameModel.HerosInGame[0].HealthPoint = GameModel.HerosInGame[0].MaxHealthPoint;
+			Debug.Log (GameModel.HerosInGame[0].MaxHealthPoint);
+		}
 	}
 
 	public void popItem(string type){

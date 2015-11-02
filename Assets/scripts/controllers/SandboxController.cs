@@ -146,4 +146,17 @@ public class SandboxController : MonoBehaviour {
 			//GameModel.NPCsInGame[GameModel.NPCsInGame.Count-1].transform.Rotate(0, 180, 0);
 		}
 	}
+
+	public void resetLife() {
+		GameModel.HerosInGame[0].HealthPoint = GameModel.HerosInGame[0].MaxHealthPoint;
+	}
+
+	public void resetPower() {
+		GameModel.HerosInGame [0].PowerQuantity = GameModel.HerosInGame [0].MaxPowerQuantity;
+	}
+
+	public void resetBoth() {
+		resetLife ();
+		resetPower ();
+	}
 }

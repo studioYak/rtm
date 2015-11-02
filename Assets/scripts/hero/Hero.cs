@@ -8,17 +8,22 @@ using System.Collections;
 **/
 public abstract class Hero : Unit {
 
-	float xpQuantity;
-	string handAttack;
-	int powerQuantity;
-	int maxPowerQuantity;
-	int hpRefresh;
-	int powerRefresh;
-	bool defending;
-	int blockingPercent;
-	float range;
-
-	bool canRun;
+	protected float xpQuantity;
+	protected float xpQuantityNextLevel;
+	protected float level;
+	protected string handAttack;
+	protected float powerQuantity;
+	protected float maxPowerQuantity;
+	protected float hpRefresh;
+	protected float powerRefresh;
+	protected bool defending;
+	protected float blockingPercent;
+	protected float range;
+	protected bool specialCapacityUnlocked;
+	protected bool specialCapacity;
+	protected float lastCapacityUsed;
+	public bool runBlocked;
+	protected float lastRegenPower = 0.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -27,8 +32,14 @@ public abstract class Hero : Unit {
 	
 	// Update is called once per frame
 	protected void Update () {
-		if (canRun) {
-			Run (Time.deltaTime);
+		checkLevel();
+		adaptStatAccordingToLevel();
+		if(specialCapacityUnlocked)
+		{
+			SpecialCapacitySpell();
+		}
+		if(!runBlocked){
+			Run(Time.deltaTime);
 		}
 	}
 
@@ -107,7 +118,7 @@ public abstract class Hero : Unit {
 	*					Name of the player
 	* @version 1.0
 	**/
-	public Hero(float xpQuantity,int blockingPercent, string handAttack, int powerQuantity, int hpRefresh, int powerRefresh, bool defending, int hp, int damage, int movementSpeed, string attackType, string name)
+	public Hero(float range, float xpQuantity,float blockingPercent, string handAttack, float powerQuantity, float hpRefresh, float powerRefresh, float hp, float damage, float movementSpeed, string attackType, string name)
 		:base(hp, 1000*damage, movementSpeed, attackType, name){
 		XpQuantity = xpQuantity;
 		HandAttack = handAttack;
@@ -116,9 +127,11 @@ public abstract class Hero : Unit {
 		HpRefresh = hpRefresh;
 		PowerRefresh = powerRefresh;
 		BlockingPercent = blockingPercent;
-		range = 5;
-
-		canRun = true;
+		this.range = range;
+		XpQuantityNextLevel = 100;
+		specialCapacityUnlocked = false;
+		specialCapacity = false;
+		runBlocked = false;
 	}
 
 	/**
@@ -128,9 +141,9 @@ public abstract class Hero : Unit {
 	* Getter/Setter of xpQuantity
 	* @return 
 	* FR:
-	*	Retourne un int pour le getter et void pour le setter
+	*	Retourne un float pour le getter et void pour le setter
 	* EN:
-	*	Return an int for the getter and void for the setter
+	*	Return an float for the getter and void for the setter
 	* @version 1.0
 	**/
 	public float XpQuantity {
@@ -141,6 +154,113 @@ public abstract class Hero : Unit {
 			xpQuantity = value;
 		}
 	}
+
+	/**
+	* FR:
+	* Getter/Setter de xpQuantityNextLevel
+	* EN:
+	* Getter/Setter of xpQuantityNextLevel
+	* @return 
+	* FR:
+	*	Retourne un float pour le getter et void pour le setter
+	* EN:
+	*	Return an float for the getter and void for the setter
+	* @version 1.0
+	**/
+	public float XpQuantityNextLevel {
+		get {
+			return this.xpQuantityNextLevel;
+		}
+		set {
+			xpQuantityNextLevel = value;
+		}
+	}
+
+	/**
+	* FR:
+	* Getter/Setter de level
+	* EN:
+	* Getter/Setter of level
+	* @return 
+	* FR:
+	*	Retourne un float pour le getter et void pour le setter
+	* EN:
+	*	Return an float for the getter and void for the setter
+	* @version 1.0
+	**/
+	public float Level {
+		get {
+			return this.level;
+		}
+		set {
+			level = value;
+		}
+	}
+
+	/**
+	* FR:
+	* Getter/Setter de specialCapacityUnlocked
+	* EN:
+	* Getter/Setter of specialCapacityUnlocked
+	* @return 
+	* FR:
+	*	Retourne un bool pour le getter et void pour le setter
+	* EN:
+	*	Return a bool for the getter and void for the setter
+	* @version 1.0
+	**/
+	public bool SpecialCapacityUnlocked {
+		get {
+			return this.specialCapacityUnlocked;
+		}
+		set {
+			specialCapacityUnlocked = value;
+		}
+	}
+
+
+	/**
+	* FR:
+	* Getter/Setter de specialCapacity
+	* EN:
+	* Getter/Setter of specialCapacity
+	* @return 
+	* FR:
+	*	Retourne un bool pour le getter et void pour le setter
+	* EN:
+	*	Return a bool for the getter and void for the setter
+	* @version 1.0
+	**/
+	public bool SpecialCapacity {
+		get {
+			return this.specialCapacity;
+		}
+		set {
+			specialCapacity = value;
+		}
+	}
+
+	/**
+	* FR:
+	* Getter/Setter de runBlocked
+	* EN:
+	* Getter/Setter of runBlocked
+	* @return 
+	* FR:
+	*	Retourne un bool pour le getter et void pour le setter
+	* EN:
+	*	Return a bool for the getter and void for the setter
+	* @version 1.0
+	**/
+	public bool RunBlocked {
+		get {
+			return this.runBlocked;
+		}
+		set {
+			runBlocked = value;
+		}
+	}
+	
 
 	/**
 	* FR:
@@ -165,17 +285,39 @@ public abstract class Hero : Unit {
 
 	/**
 	* FR:
+	* Getter/Setter de lastCapacityUsed
+	* EN:
+	* Getter/Setter of lastCapacityUsed
+	* @return 
+	* FR:
+	*	Retourne un float pour le getter et void pour le setter
+	* EN:
+	*	Return a float for the getter and void for the setter
+	* @version 1.0
+	**/
+	public float LastCapacityUsed {
+		get {
+			return this.lastCapacityUsed;
+		}
+		set {
+			lastCapacityUsed = value;
+		}
+	}
+
+	
+	/**
+	* FR:
 	* Getter/Setter de blockingPercent
 	* EN:
 	* Getter/Setter of blockingPercent
 	* @return 
 	* FR:
-	*	Retourne un int pour le getter et void pour le setter
+	*	Retourne un float pour le getter et void pour le setter
 	* EN:
-	*	Return an int for the getter and void for the setter
+	*	Return an float for the getter and void for the setter
 	* @version 1.0
 	**/
-	public int BlockingPercent {
+	public float BlockingPercent {
 		get {
 			return this.blockingPercent;
 		}
@@ -212,12 +354,12 @@ public abstract class Hero : Unit {
 	* Getter/Setter of powerQuantity
 	* @return 
 	* FR:
-	*	Retourne un int pour le getter et void pour le setter
+	*	Retourne un float pour le getter et void pour le setter
 	* EN:
-	*	Return an int for the getter and void for the setter
+	*	Return an float for the getter and void for the setter
 	* @version 1.0
 	**/
-	public int PowerQuantity {
+	public float PowerQuantity {
 		get {
 			return this.powerQuantity;
 		}
@@ -233,12 +375,12 @@ public abstract class Hero : Unit {
 	* Getter/Setter of maxPowerQuantity
 	* @return 
 	* FR:
-	*	Retourne un int pour le getter et void pour le setter
+	*	Retourne un float pour le getter et void pour le setter
 	* EN:
-	*	Return an int for the getter and void for the setter
+	*	Return an float for the getter and void for the setter
 	* @version 1.0
 	**/
-	public int MaxPowerQuantity {
+	public float MaxPowerQuantity {
 		get {
 			return this.maxPowerQuantity;
 		}
@@ -254,12 +396,12 @@ public abstract class Hero : Unit {
 	* Getter/Setter of hpRefresh
 	* @return 
 	* FR:
-	*	Retourne un int pour le getter et void pour le setter
+	*	Retourne un float pour le getter et void pour le setter
 	* EN:
-	*	Return an int for the getter and void for the setter
+	*	Return an float for the getter and void for the setter
 	* @version 1.0
 	**/
-	public int HpRefresh {
+	public float HpRefresh {
 		get {
 			return this.hpRefresh;
 		}
@@ -275,12 +417,12 @@ public abstract class Hero : Unit {
 	* Getter/Setter of powerRefresh
 	* @return 
 	* FR:
-	*	Retourne un int pour le getter et void pour le setter
+	*	Retourne un float pour le getter et void pour le setter
 	* EN:
-	*	Return an int for the getter and void for the setter
+	*	Return an float for the getter and void for the setter
 	* @version 1.0
 	**/
-	public int PowerRefresh {
+	public float PowerRefresh {
 		get {
 			return this.powerRefresh;
 		}
@@ -302,18 +444,35 @@ public abstract class Hero : Unit {
 	* @return Return void
 	* @version 1.0
 	**/
-	public void LostHP(int damage)
+	public virtual void LostHP(float damage)
 	{
 		float damageToLost = 0.0f;
 		if(Defending)
 		{
-			damageToLost = damage - (blockingPercent*damage/100);
+			damageToLost = damage - (blockingPercent*damage/100.0f);
 		}
 		else
 		{
 			damageToLost = damage;
 		}
-		base.LostHP((int)damageToLost);
+		base.LostHP(damageToLost);
+	}
+
+	/**
+	* FR:
+	* Cette fonction permet de vérifier le niveau actuel du héro en fonction de son expérience
+	* EN:
+	* This function permit to check the actual level of the hero according to his xp
+	* @return Return void
+	* @version 1.0
+	**/
+	public void checkLevel()
+	{
+		if(xpQuantity > xpQuantityNextLevel)
+		{
+			level += 1;
+			xpQuantityNextLevel = 100 * Mathf.Pow(2,level);
+		}
 	}
 
 	/**
@@ -328,21 +487,12 @@ public abstract class Hero : Unit {
 	*	Return a bool for the getter and void for the setter
 	* @version 1.0
 	**/
-	public bool Defending {
+	protected bool Defending {
 		get {
 			return this.defending;
 		}
 		set {
 			defending = value;
-		}
-	}
-
-	public bool CanRun {
-		get {
-			return this.canRun;
-		}
-		set {
-			canRun = value;
 		}
 	}
 
@@ -375,7 +525,47 @@ public abstract class Hero : Unit {
 		}
 	}
 
-	void OnDestroy(){
-		GameModel.HerosInGame.Remove (this);
+	/**
+	* FR:
+	* Cette fonction permet au héro d'adapter ses statistiques en fonction de son niveau
+	* EN:
+	* Permits to the hero to adapt his stats according to his level
+	* @return Return void
+	* @version 1.0
+	**/
+	public virtual void adaptStatAccordingToLevel()
+	{
+
 	}
+
+	/**
+	* FR:
+	* Cette fonction permet au héro de déclencher sa capacité spéciale
+	* EN:
+	* Permits to the hero to start his special capacity
+	* @return Return void
+	* @version 1.0
+	**/
+	public virtual void SpecialCapacitySpell()
+	{
+
+	}
+
+	public void RegenPower()
+	{
+		if(PowerQuantity + PowerRefresh < MaxPowerQuantity)
+		{
+			PowerQuantity += PowerRefresh;
+		}
+		else
+		{
+			PowerQuantity = MaxPowerQuantity;
+		}
+		lastRegenPower = Time.time;
+	}
+
+	/*void OnTriggerEnter(Collision hit)
+	{
+		
+	}*/
 }

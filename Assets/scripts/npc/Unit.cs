@@ -24,6 +24,7 @@ public abstract class Unit : MonoBehaviour {
 	}
 
 	protected void Update(){
+		
 	}
 
 	/**
@@ -195,10 +196,10 @@ public abstract class Unit : MonoBehaviour {
 	* Not used for the moment
 	*
 	**/
-	void Attack(float x, float y, float z){
+	/*void Attack(float x, float y, float z){
 
 		//Cooldown(0.0);
-	}
+	}*/
 
 	/**
 	* FR:

@@ -256,6 +256,13 @@ public class GameController : MonoBehaviour {
 
 		Time.timeScale = 1.0f;
 
+		AudioSource audioSource = Camera.main.GetComponent<AudioSource> ();
+		Debug.Log ("Musics/" + level.MusicPath);
+		AudioClip clip = Resources.Load ("Musics/" + level.MusicPath, typeof(AudioClip)) as AudioClip;
+		Debug.Log (clip.ToString());
+		audioSource.clip = clip;
+
+		audioSource.Play ();
 		Debug.Log ("END Start GameController");
 
 	}

@@ -5,6 +5,7 @@
 \******************************************************************************/
 
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using Leap;
 
@@ -60,6 +61,13 @@ public class HandController : MonoBehaviour {
 	private GameObject vortex = null;
 	private GameObject vortexGo = null;
 
+	
+	private GameController gameController = null;
+	
+	private RawImage pointerImage;
+	
+	private bool pointerMode = false;
+
 
 
   /** If hands are in charge of Destroying themselves, make this false. */
@@ -86,6 +94,10 @@ public class HandController : MonoBehaviour {
 	private string heroClass = null;
 	private HandSide handSide;
 	private Hero hero = null;
+	
+	public const float TIME_ABOVE_PAUSE = 1.5f;
+
+	private float timeLeftBeforePause = TIME_ABOVE_PAUSE;
 
 	/**
 	 * @author Baptiste Valthier
@@ -128,6 +140,11 @@ public class HandController : MonoBehaviour {
 
 
 	}
+	
+	public void setGameController(GameController gc)
+	{
+		gameController = gc;
+	}
 
   /** Draws the Leap Motion gizmo when in the Unity editor. */
   void OnDrawGizmos() {
@@ -158,16 +175,24 @@ public class HandController : MonoBehaviour {
 
 
   /** Initalizes the hand and tool lists and recording, if enabled.*/
-  void Start() {
+  void Start() 
+  {
     // Initialize hand lookup tables.
     hand_graphics_ = new Dictionary<int, HandModel>();
     hand_physics_ = new Dictionary<int, HandModel>();
 		
+	
+		
+		GameObject rawImageObject = GameObject.Find("PointerImage");
+		pointerImage = rawImageObject.GetComponent<RawImage>();
+
+
 
     if (leap_controller_ == null) {
       Debug.LogWarning(
           "Cannot connect to controller. Make sure you have Leap Motion v2.0+ installed");
     }
+			
 
   }
 
@@ -296,6 +321,7 @@ public class HandController : MonoBehaviour {
 	/**
 	 * @author Baptiste Valthier
 	 * According to the Hero class, recognizes the pattern and adapt the view
+	 * And look for Root pattern like "pause/play" movement (hand is near LM)
 	 **/
 	void DetectSpecialMovements()
 	{
@@ -369,13 +395,80 @@ public class HandController : MonoBehaviour {
 		}
 	}
 
+	void Pointer(Frame _frame)
+	{
+		float appWidth = pointerImage.canvas.pixelRect.width;
+		float appHeight = pointerImage.canvas.pixelRect.height;
+		
+		InteractionBox iBox = _frame.InteractionBox;
+		Pointable pointable = _frame.Pointables.Frontmost;
+		
+		Leap.Vector leapPoint = pointable.StabilizedTipPosition;
+		Leap.Vector normalizedPoint = iBox.NormalizePoint(leapPoint, false);
+		
+		float appX = normalizedPoint.x * appWidth;
+		float appY = (1 - normalizedPoint.y) * appHeight;
+		//The z-coordinate is not used
+		
+		pointerImage.rectTransform.position = new Vector2(appX-25, appHeight-(appY-25)); 
+	}
+	
+	public void setPointerMode(bool _pointerMode)
+	{
+		pointerMode = _pointerMode;
+		if (pointerMode)
+			pointerImage.enabled = true;
+		else
+			pointerImage.enabled = false;
+	}
+	
   /** Updates the graphics objects. */
   void Update() {
     if (leap_controller_ == null)
       return;
     
-	
     Frame frame = GetFrame();
+    
+    //if poitnerMode enabled, just check this mode
+    if (pointerMode)
+    {
+    	Pointer(frame);
+		return;
+    }
+	
+	Hand closestHand = null;
+	for (int i=0; i < frame.Hands.Count; i++)
+	{
+		if (closestHand != null)
+			closestHand = (closestHand.PalmPosition.y < frame.Hands[i].PalmPosition.y ? closestHand : frame.Hands[i]);
+		else
+			closestHand = frame.Hands[i];
+	}
+
+	//detect long pose over LM which means Pause
+	if (closestHand != null)
+	{
+		//((UnityEngine.UI.Text)infoLabel).text = closestHand.PalmVelocity.y.ToString();
+		
+		
+		if (closestHand.PalmPosition.y < 100 && closestHand.PalmVelocity.y < 60)
+		{
+			if (timeLeftBeforePause <= 0)
+			{
+				timeLeftBeforePause = TIME_ABOVE_PAUSE;
+				gameController.Pause();
+			}
+			else
+				timeLeftBeforePause -= Time.deltaTime;
+		}
+		else
+			//if me out-criterion hte Pause mvt, set the timer back
+			timeLeftBeforePause = TIME_ABOVE_PAUSE;
+	}
+	/*else
+		((UnityEngine.UI.Text)infoLabel).text = "No hands detected";*/
+
+
 
     if (frame != null && !flag_initialized_)
     {

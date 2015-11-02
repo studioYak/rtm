@@ -123,7 +123,7 @@ public class GameModel {
 	 * Initialisation of the game model
 	 */
 	public static void Init(){
-		hero  = new Wizard();
+		hero  = new Warrior();
 		levels = LevelParser.parseAllLevelFiles ("LvlList");
 
 		Debug.Log (levels.Count + " levels parsed");

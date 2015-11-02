@@ -85,18 +85,21 @@ public class HandController : MonoBehaviour {
 
 	private string heroClass = null;
 	private HandSide handSide;
+	private Hero hero = null;
 
 	/**
 	 * @author Baptiste Valthier
 	 * defines whether the user is left handed or not and choose the appropriate graphics and features according to the class.
 	 **/
-	public void setModel(HandSide hs, string _heroClass)
+	public void setModel(HandSide hs, Hero _hero)
 	{
+
+		hero = _hero;
 		//saves the value locally
-		heroClass = _heroClass;
+		heroClass = hero.GetType().ToString ();
 		handSide = hs;
 
-			string prefab = _heroClass+"_";
+		string prefab = heroClass+"_";
 		//puts the right-handed or left-handed attribute to the prefab name
 		prefab += (hs == HandSide.RIGHT_HAND ? "RH" : "LH");
 
@@ -119,6 +122,8 @@ public class HandController : MonoBehaviour {
 			vortexGo = Resources.Load ("prefabs/leapmotion/Vortex") as GameObject;
 
 		}
+
+		Debug.Log("leftGraphicsModel : "+leftGraphicsModel+" / rightGraphicsModel : "+rightGraphicsModel);
 
 
 

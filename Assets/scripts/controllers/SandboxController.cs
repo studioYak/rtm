@@ -141,7 +141,7 @@ public class SandboxController : MonoBehaviour {
 		
 		if (go != null){
 			Hero hero = GameModel.HerosInGame[0];
-			GameObject instance = Instantiate(go, new Vector3(0, go.transform.localScale.y/2, hero.GetPosition().z + hero.MovementSpeed * 10.0f), Quaternion.identity) as GameObject;
+			GameObject instance = Instantiate(go, new Vector3(0, go.transform.localScale.y/2, hero.GetPosition().z + hero.MovementSpeed * 15.0f), Quaternion.identity) as GameObject;
 			GameModel.NPCsInGame.Add(instance.GetComponent<NPC>());
 			//GameModel.NPCsInGame[GameModel.NPCsInGame.Count-1].transform.Rotate(0, 180, 0);
 		}

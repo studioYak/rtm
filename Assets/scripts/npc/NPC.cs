@@ -30,15 +30,30 @@ public abstract class NPC : Unit {
 	Blocking blocking;
 	RangeClass rangeType;
 	List<Hero> heros;
+	private GameObject weapon = null;
+	private GameObject weaponPrefab;
+	private bool weaponRotated = false;
+
+
+	void Awake(){
+		weaponPrefab = Resources.Load ("prefabs/sword_invisible") as GameObject;
+	}
 
 	// Use this for initialization
 	void Start () {
-
+		weapon = Instantiate(weaponPrefab);
 	}
 	
 	// Update is called once per frame
 	protected void Update () {
 		Act();
+		if(weapon == null)
+		{
+			weapon = Instantiate(weaponPrefab);
+			weapon.transform.parent = transform;
+			weapon.transform.position = transform.position;
+		}
+		
 	}
 
 	/**
@@ -61,15 +76,20 @@ public abstract class NPC : Unit {
 		this.attackRange = attackRange;
 		this.distanceToDisappear = distanceToDisappear;
 		this.blocking = blocking;
-		
-		if(attackType == "distance")
+	
+		if(attackType == "CaC")
 		{
-			rangeType = RangeClass.LONGRANGE;
+			rangeType = RangeClass.CAC;
+			
 		}
 		else
 		{
-			rangeType = RangeClass.CAC;
+			rangeType = RangeClass.LONGRANGE;
+			Destroy(weapon);
 		}
+		
+		/*weapon.transform.parent = transform;
+		weapon.transform.Translate(1, 0, 0, Space.World);*/
 	}
 
 	/**
@@ -92,10 +112,6 @@ public abstract class NPC : Unit {
 	**/
 	public void Act()
 	{
-
-		if (this.HealthPoint <= 0) {
-			Die();
-		}
 
 		heros = GameModel.HerosInGame;
 		int hero_target_index = Random.Range(0, heros.Count);
@@ -208,10 +224,22 @@ public abstract class NPC : Unit {
 	**/
 	public virtual void Attack(Hero target)
 	{
+		if(weaponRotated == true)
+		{
+			weapon.transform.Translate(new Vector3(0,-2,0));
+			weapon.transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(0, 0, 0),1.0f);
+			
+			weaponRotated = false;
+		}
 		if(LastAttack + AttackSpeed < Time.time )
 		{
 			LastAttack = Time.time;
-			target.LostHP(Damage);
+			if(weapon != null)
+			{
+				weapon.transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(-90, 0, 0),1.0f);
+				weapon.transform.Translate(new Vector3(0,2,0));
+				weaponRotated = true;
+			}
 		}
 	}
 
@@ -284,6 +312,11 @@ public abstract class NPC : Unit {
 		{
 			Hero hero = hit.GetComponentInParent<Hero>();
 			LostHP(hero.Damage);
+			if(IsDead())
+			{
+				hero.GiveXP(XpGain);
+				Die();
+			}
 		}
 	}
 

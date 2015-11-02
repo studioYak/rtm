@@ -279,7 +279,7 @@ public abstract class Unit : MonoBehaviour {
 	* @return Return bool
 	* @version 1.0
 	**/
-	bool IsDead(){
+	public bool IsDead(){
 		if (hp <= 0) {
 			return true;
 		}

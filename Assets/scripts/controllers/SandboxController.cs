@@ -82,7 +82,7 @@ public class SandboxController : MonoBehaviour {
 		leapInstance.transform.position = new Vector3 (0f, 2.5f, 1.6f);
 		//sets the "hand parent" field so the arms also are child of camera and don't flicker
 		leapControl = leapInstance.GetComponent<HandController> ();
-		leapControl.setModel(handSide, heroClass);
+		leapControl.setModel(handSide, hero);
 		leapControl.handParent = Camera.main.transform;
 
 		ter = Instantiate (terrain, new Vector3 (-100, -2, 0), Quaternion.identity) as Terrain;

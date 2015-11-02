@@ -70,6 +70,7 @@ public class Cannon : NPC {
 			base.Action.SetActionAsDistant();
 
 			GameObject projectile = Instantiate(cannonBall) as GameObject;
+			projectile.transform.parent = transform;
 			projectile.transform.position = new Vector3(transform.position.x,transform.position.y+projectileHeight,transform.position.z);
 			Rigidbody rb = projectile.GetComponent<Rigidbody>();
 			rb.velocity = transform.TransformDirection(0,1,-projectileSpeed);

@@ -21,7 +21,7 @@ public class Cannon : NPC {
 		cannonBall = Resources.Load("prefabs/item/Ball") as GameObject;
 	}
 	
-	protected void Update () {
+	void Update () {
 		base.Update ();
 	}
 	
@@ -53,22 +53,21 @@ public class Cannon : NPC {
 	public override void Attack(Hero target)
 	{
 
-		float dist = Vector3.Distance(target.GetPosition(), transform.position);
+		float dist = Vector3.Distance(target.transform.position, transform.position);
 		float timeToShoot = Mathf.Abs(dist/projectileSpeed);
 		float distHero = 3.0f * timeToShoot;
-		Vector3 pos = target.GetPosition() + new Vector3(0, 0, 0+distHero);
 
-		Vector3 vectorToTarget = pos - transform.position;
+		Vector3 vectorToTarget = target.transform.position - transform.position;
+		vectorToTarget.z += distHero;
 		vectorToTarget.y = 0;
 
 		transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(vectorToTarget),rotationSpeed);
 		if(LastAttack + AttackSpeed < Time.time )
 		{
 			// INITIALISATION DE L'ACTION EFFECTUE
-			base.Action = new UnitAction(pos.x,pos.y,pos.z);
+			base.Action = new UnitAction(target.transform.position.x,target.transform.position.y,target.transform.position.z);
 			base.Action.SetActionAsAttack(Damage);
 			base.Action.SetActionAsDistant();
-		
 
 			GameObject projectile = Instantiate(cannonBall) as GameObject;
 			projectile.transform.position = new Vector3(transform.position.x,transform.position.y+projectileHeight,transform.position.z);

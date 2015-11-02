@@ -12,7 +12,7 @@ public class EnnemyConfigurator : MonoBehaviour {
 	public static float assassinHp = 40.0f;
 	public static float assassinDamage = 100.0f;
 	public static float assassinAggroDistance = 30.0f;
-	public static float assassinAttackRange = 4.5f;
+	public static float assassinAttackRange = -1.0f;
 	public static float assassinDistanceToDisappear = 2.0f;
 	//public static Blocking assassinBlocking = Blocking.FREE;
 

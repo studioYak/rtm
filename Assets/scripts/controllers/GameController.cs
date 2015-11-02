@@ -33,11 +33,7 @@ public class GameController : MonoBehaviour {
 		DEAD,
 	};
 
-
-	/**
-	 * Json level file path
-	 */
-	private const string FILE_PATH = "Levels/GL_exJson.json";
+		
 
 	private Level level;
 	/**
@@ -258,6 +254,15 @@ public class GameController : MonoBehaviour {
 		pausedMenu.SetActive(false);
 		paused = false;
 
+		Time.timeScale = 1.0f;
+
+		AudioSource audioSource = Camera.main.GetComponent<AudioSource> ();
+		Debug.Log ("Musics/" + level.MusicPath);
+		AudioClip clip = Resources.Load ("Musics/" + level.MusicPath, typeof(AudioClip)) as AudioClip;
+		Debug.Log (clip.ToString());
+		audioSource.clip = clip;
+
+		audioSource.Play ();
 		Debug.Log ("END Start GameController");
 
 	}

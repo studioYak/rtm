@@ -564,6 +564,10 @@ public abstract class Hero : Unit {
 		lastRegenPower = Time.time;
 	}
 
+	public void OnDestroy(){
+		GameModel.HerosInGame.Remove (this);
+	}
+
 	/*void OnTriggerEnter(Collision hit)
 	{
 		

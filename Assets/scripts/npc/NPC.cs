@@ -92,6 +92,11 @@ public abstract class NPC : Unit {
 	**/
 	public void Act()
 	{
+
+		if (this.HealthPoint <= 0) {
+			Die();
+		}
+
 		heros = GameModel.HerosInGame;
 		int hero_target_index = Random.Range(0, heros.Count);
 
@@ -105,7 +110,7 @@ public abstract class NPC : Unit {
 		}
 		else if(position.z - character.position.z < attackRange) // Condition provisoire
 		{
-			Debug.LogWarning("Range:"+(position.z - character.position.z));
+			//Debug.LogWarning("Range:"+(position.z - character.position.z));
 			if(BlockingType != Blocking.FREE)
 			{
 				if(!target.RunBlocked && firstBlockingTime == 0.0f)
@@ -275,10 +280,14 @@ public abstract class NPC : Unit {
 
 	void OnTriggerEnter(Collider hit)
 	{
-		if(hit.transform.tag == "hero_weapon")
+		if(hit.gameObject.tag == "hero_weapon")
 		{
-			Warrior war = hit.transform.root.GetComponent<Warrior>();
-			LostHP(war.Damage);
+			Hero hero = hit.GetComponentInParent<Hero>();
+			LostHP(hero.Damage);
 		}
+	}
+
+	void OnDestroy(){
+		GameModel.NPCsInGame.Remove (this);
 	}
 }

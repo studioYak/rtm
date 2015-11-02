@@ -308,13 +308,16 @@ public class GameController : MonoBehaviour {
 		}*/
 
 		
+		Hero hero = GameModel.HerosInGame [0];
+		
 		//update hud state
-		float currentHealthPercent = 100*GameModel.HerosInGame[0].HealthPoint/GameModel.HerosInGame[0].MaxHealthPoint;
-		float currentPowerPercent = 100*GameModel.HerosInGame[0].PowerQuantity/GameModel.HerosInGame[0].MaxPowerQuantity;
+		float currentHealthPercent = 100.0f*hero.HealthPoint/hero.MaxHealthPoint;
+		float currentPowerPercent = 100.0f*hero.PowerQuantity/hero.MaxPowerQuantity;
 		//Debug.Log("Life: " + currentHealthPercent);
-
+		
 		hudMaster.setLevel (HudMaster.HudType.Life, currentHealthPercent);
 		hudMaster.setLevel (HudMaster.HudType.Special, currentPowerPercent);
+		hudMaster.updateXP (hero.XpQuantity/hero.XpQuantityNextLevel*100.0f, (int)hero.Level + 1);
 
 		Debug.Log (GameModel.NPCsInGame.Count);
 		if (GameModel.NPCsInGame.Count == 0) {

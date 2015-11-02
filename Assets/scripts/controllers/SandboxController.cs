@@ -98,16 +98,19 @@ public class SandboxController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		Hero hero = GameModel.HerosInGame [0];
+
 		//update hud state
-		float currentHealthPercent = 100*GameModel.HerosInGame[0].HealthPoint/GameModel.HerosInGame[0].MaxHealthPoint;
-		float currentPowerPercent = 100*GameModel.HerosInGame[0].PowerQuantity/GameModel.HerosInGame[0].MaxPowerQuantity;
+		float currentHealthPercent = 100.0f*hero.HealthPoint/hero.MaxHealthPoint;
+		float currentPowerPercent = 100.0f*hero.PowerQuantity/hero.MaxPowerQuantity;
 		//Debug.Log("Life: " + currentHealthPercent);
 		
 		hudMaster.setLevel (HudMaster.HudType.Life, currentHealthPercent);
 		hudMaster.setLevel (HudMaster.HudType.Special, currentPowerPercent);
+		hudMaster.updateXP (hero.XpQuantity/hero.XpQuantityNextLevel*100.0f, (int)hero.Level + 1);
 
 		if (Input.GetKeyDown (KeyCode.L)) {
-			popItem("basicLancer");
+			GameModel.HerosInGame[0].XpQuantity += 100.0f;
 		}
 
 		if (Input.GetKeyDown (KeyCode.V)) {

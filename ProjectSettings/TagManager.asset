@@ -7,6 +7,9 @@ TagManager:
   - hero_defense
   - Touchable
   - hero_weapon
+  - LeftConstraint
+  - RightConstraint
+  - TopConstraint
   layers:
   - Default
   - TransparentFX

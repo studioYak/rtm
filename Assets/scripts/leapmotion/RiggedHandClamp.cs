@@ -16,31 +16,10 @@ public class RiggedHandClamp : RiggedHandBV
 
 
 
-	public override void UpdateHand ()
+
+	protected override void LeapPositionPalm (Transform palm)
 	{
-		if (palm != null) {
-			palm.position = GetPalmPosition ();
-			//palm.rotation = GetPalmRotation() ;//* Reorientation();  //BV edit
-
-
-			//Debug.Log (palm.position.x +" ; "+palm.localPosition.x );
-
-			//constraint left BV
-			if (palm.localPosition.x <= -1 )
-				palm.localPosition = new Vector3(-1, palm.localPosition.y, palm.localPosition.z);
-			else if (palm.localPosition.x >= 1 )
-				palm.localPosition = new Vector3(1, palm.localPosition.y, palm.localPosition.z);
-		
-		}
-
-		if (forearm != null)
-			forearm.rotation = GetArmRotation () * Reorientation ();
-
-		/*for (int i = 0; i < fingers.Length; ++i) {
-      if (fingers[i] != null) {
-				fingers[i].fingerType = (Finger.FingerType)i;
-        fingers[i].UpdateFinger();
-			}
-		}*/
+		palm.position = GetPalmPosition ();
+		//palm.rotation = GetPalmRotation() * Reorientation();
 	}
 }

@@ -10,6 +10,7 @@ public abstract class Hero : Unit {
 
 	protected float xpQuantity;
 	protected float xpQuantityNextLevel;
+	protected float xpQuantityLastLevel;
 	protected float level;
 	protected string handAttack;
 	protected float powerQuantity;
@@ -25,6 +26,7 @@ public abstract class Hero : Unit {
 	public bool runBlocked;
 	protected float lastRegenPower = 0.0f;
 
+
 	// Use this for initialization
 	void Start () {
 	
@@ -33,7 +35,7 @@ public abstract class Hero : Unit {
 	// Update is called once per frame
 	protected void Update () {
 		checkLevel();
-		adaptStatAccordingToLevel();
+		//adaptStatAccordingToLevel();
 		if(specialCapacityUnlocked)
 		{
 			SpecialCapacitySpell();
@@ -119,7 +121,7 @@ public abstract class Hero : Unit {
 	* @version 1.0
 	**/
 	public Hero(float range, float xpQuantity,float blockingPercent, string handAttack, float powerQuantity, float hpRefresh, float powerRefresh, float hp, float damage, float movementSpeed, string attackType, string name)
-		:base(hp, 1000*damage, movementSpeed, attackType, name){
+		:base(hp, damage, movementSpeed, attackType, name){
 		XpQuantity = xpQuantity;
 		HandAttack = handAttack;
 		PowerQuantity = powerQuantity;
@@ -129,6 +131,7 @@ public abstract class Hero : Unit {
 		BlockingPercent = blockingPercent;
 		this.range = range;
 		XpQuantityNextLevel = 100;
+		XpQuantityLastLevel = 0;
 		specialCapacityUnlocked = false;
 		specialCapacity = false;
 		runBlocked = false;
@@ -157,6 +160,22 @@ public abstract class Hero : Unit {
 
 	/**
 	* FR:
+	* Getter/Setter de giveXP
+	* EN:
+	* Getter/Setter of giveXP
+	* @return 
+	* FR:
+	*	Retourne un void pour le getter et void pour le setter
+	* EN:
+	*	Return an void for the getter and void for the setter
+	* @version 1.0
+	**/
+	public void GiveXP(float XP) {
+		XpQuantity += XP;
+	}
+
+	/**
+	* FR:
 	* Getter/Setter de xpQuantityNextLevel
 	* EN:
 	* Getter/Setter of xpQuantityNextLevel
@@ -173,6 +192,27 @@ public abstract class Hero : Unit {
 		}
 		set {
 			xpQuantityNextLevel = value;
+		}
+	}
+
+	/**
+	* FR:
+	* Getter/Setter de xpQuantityLastLevel
+	* EN:
+	* Getter/Setter of xpQuantityLastLevel
+	* @return 
+	* FR:
+	*	Retourne un float pour le getter et void pour le setter
+	* EN:
+	*	Return an float for the getter and void for the setter
+	* @version 1.0
+	**/
+	public float XpQuantityLastLevel {
+		get {
+			return this.xpQuantityLastLevel;
+		}
+		set {
+			xpQuantityLastLevel = value;
 		}
 	}
 
@@ -472,6 +512,20 @@ public abstract class Hero : Unit {
 		{
 			level += 1;
 			xpQuantityNextLevel = 100 * Mathf.Pow(2,level);
+			xpQuantityLastLevel = 100 * Mathf.Pow(2,level-1);
+		}
+
+		if(xpQuantity < xpQuantityLastLevel)
+		{
+			if(level > 1)
+			{
+				level -= 1;
+				xpQuantityNextLevel = 100 * Mathf.Pow(2,level-1);
+			}
+			else
+			{
+				xpQuantityLastLevel = 0;
+			}
 		}
 	}
 
@@ -564,8 +618,34 @@ public abstract class Hero : Unit {
 		lastRegenPower = Time.time;
 	}
 
-	/*void OnTriggerEnter(Collision hit)
+	public void OnDestroy(){
+		GameModel.HerosInGame.Remove (this);
+	}
+
+	void OnTriggerEnter(Collider hit)
 	{
-		
-	}*/
+		if(hit.gameObject.tag == "ennemy_weapon")
+		{
+			NPC ennemy = hit.GetComponentInParent<NPC>();
+			LostHP(ennemy.Damage);
+			if (!Defending){
+				PlayBloodAnimation();
+			}
+		}
+		else if(hit.gameObject.tag == "ennemy_projectile")
+		{
+			NPC ennemy = hit.GetComponentInParent<NPC>();
+			LostHP(ennemy.Damage);
+			if (!Defending){
+				PlayBloodAnimation();
+			}
+			Destroy(hit);
+		}
+	}
+
+	private void PlayBloodAnimation(){
+		Animator anim = Camera.main.GetComponent<Animator>();
+		anim.SetTrigger ("bloody");
+		anim.cullingMode = AnimatorCullingMode.AlwaysAnimate;
+	}
 }

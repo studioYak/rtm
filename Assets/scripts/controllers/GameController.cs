@@ -64,7 +64,13 @@ public class GameController : MonoBehaviour {
 	private GameObject leapPrefab;
 	private GameObject leapInstance;
 	private HandController leapControl;
+	private GameObject leapCanvasPrefab;
+	private GameObject leapCanvas;
 	
+	private GameObject musicCanvasPrefab;
+	private GameObject musicCanvas;
+	private AudioManager audioManager;
+
 	private Hero hero;
 	private GameObject heroGameObject;
 	private Terrain ter;
@@ -126,6 +132,9 @@ public class GameController : MonoBehaviour {
 		wizard = Resources.Load("prefabs/hero/Wizard") as GameObject;
 			
 		leapPrefab = Resources.Load("prefabs/leapmotion/LeapMotionScene") as GameObject;
+		leapCanvasPrefab = Resources.Load("prefabs/leapmotion/LeapCanvas") as GameObject;
+
+		musicCanvasPrefab = Resources.Load("prefabs/sound/MusicCanvas") as GameObject;
 
 		Debug.Log (" END Awake GameController");
 
@@ -184,8 +193,12 @@ public class GameController : MonoBehaviour {
 		leapInstance.transform.position = new Vector3 (0f, 2.5f, 1.6f);
 		//sets the "hand parent" field so the arms also are child of camera and don't flicker
 		leapControl = leapInstance.GetComponent<HandController> ();
-		leapControl.setModel(handSide, heroClass);
+		leapControl.setModel(handSide, hero);
+		leapControl.setGameController(this);
+
 		leapControl.handParent = Camera.allCameras[0].transform;
+		
+		leapCanvas = Instantiate(leapCanvasPrefab);
 
 
 
@@ -256,13 +269,19 @@ public class GameController : MonoBehaviour {
 
 		Time.timeScale = 1.0f;
 
-		AudioSource audioSource = Camera.main.GetComponent<AudioSource> ();
+		/*AudioSource audioSource = Camera.main.GetComponent<AudioSource> ();
 		Debug.Log ("Musics/" + level.MusicPath);
 		AudioClip clip = Resources.Load ("Musics/" + level.MusicPath, typeof(AudioClip)) as AudioClip;
 		Debug.Log (clip.ToString());
 		audioSource.clip = clip;
 
-		audioSource.Play ();
+		audioSource.Play ();*/
+		musicCanvas = Instantiate (musicCanvasPrefab);
+		audioManager = musicCanvas.GetComponent<AudioManager> ();
+		
+		audioManager.SetMusicName (level.MusicPath);
+		audioManager.Init ();
+
 		Debug.Log ("END Start GameController");
 
 	}
@@ -308,17 +327,20 @@ public class GameController : MonoBehaviour {
 		}*/
 
 		
+		Hero hero = GameModel.HerosInGame [0];
+		
 		//update hud state
-		float currentHealthPercent = 100*GameModel.HerosInGame[0].HealthPoint/GameModel.HerosInGame[0].MaxHealthPoint;
-		float currentPowerPercent = 100*GameModel.HerosInGame[0].PowerQuantity/GameModel.HerosInGame[0].MaxPowerQuantity;
+		float currentHealthPercent = 100.0f*hero.HealthPoint/hero.MaxHealthPoint;
+		float currentPowerPercent = 100.0f*hero.PowerQuantity/hero.MaxPowerQuantity;
 		//Debug.Log("Life: " + currentHealthPercent);
-
+		
 		hudMaster.setLevel (HudMaster.HudType.Life, currentHealthPercent);
 		hudMaster.setLevel (HudMaster.HudType.Special, currentPowerPercent);
+		hudMaster.updateXP (hero.XpQuantity/hero.XpQuantityNextLevel*100.0f, (int)hero.Level + 1);
 
-		Debug.Log (GameModel.NPCsInGame.Count);
+		//Debug.Log (GameModel.NPCsInGame.Count);
 		if (GameModel.NPCsInGame.Count == 0) {
-			Debug.Log (timerEnd);
+//			Debug.Log (timerEnd);
 			timerEnd += Time.deltaTime;
 			if (timerEnd >= maxTimerEnd){
 				NextLevel();
@@ -332,7 +354,7 @@ public class GameController : MonoBehaviour {
 			state = GameState.DEAD;
 		}
 
-
+		audioManager.Play();
 
 		if (Input.GetKeyDown(KeyCode.R)){
 			Restart();
@@ -347,8 +369,10 @@ public class GameController : MonoBehaviour {
 	 * Function called when the game is paused
 	 */
 	public void Pause(){
+		audioManager.Pause();
 		Time.timeScale = 0.0f;
 		pausedMenu.SetActive(true);
+		leapControl.setPointerMode(true);
 	}
 
 	/**
@@ -409,6 +433,7 @@ public class GameController : MonoBehaviour {
 		paused = false;
 		state = GameState.PLAY;
 		Time.timeScale = 1.0f;
+		leapControl.setPointerMode(false);
 	}
 	
 }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class HudMaster : MonoBehaviour {
@@ -7,6 +8,8 @@ public class HudMaster : MonoBehaviour {
 
     public GameObject hudLife;
     public GameObject hudSpecial;
+	public GameObject hudXPBar;
+	public GameObject hudXPText;
 
 
     // Use this for initialization
@@ -42,4 +45,16 @@ public class HudMaster : MonoBehaviour {
             hudTarget.transform.localScale = new Vector3(1, _levelPercent/100, 1);
         }
     }
+
+	public void updateXP(float xpPercent, int level) {
+
+		hudXPBar.transform.localScale = new Vector3 (xpPercent / 100.0f, 1.0f, 1.0f);
+
+		//GameObject levelDigit = hudXP.transform.FindChild ("levelText").gameObject;
+		hudXPText.GetComponentInChildren<Text>().text = level.ToString();
+
+
+	}
+
+
 }

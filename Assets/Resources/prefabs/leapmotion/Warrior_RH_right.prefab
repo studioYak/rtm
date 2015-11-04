@@ -483,7 +483,7 @@ GameObject:
   - 33: {fileID: 3397572}
   - 23: {fileID: 2334140}
   - 136: {fileID: 13634750}
-  - 114: {fileID: 11416244}
+  - 114: {fileID: 11472556}
   m_Layer: 0
   m_Name: sword_01
   m_TagString: hero_weapon
@@ -716,7 +716,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.819157124, y: 23.3998203, z: 30.0066242}
+  m_LocalPosition: {x: 549.081726, y: 460.07373, z: -193.606949}
   m_LocalScale: {x: 7.52205467, y: 7.52205753, z: 7.52205753}
   m_Children:
   - {fileID: 400032}
@@ -1076,7 +1076,7 @@ MonoBehaviour:
   deformPosition: 0
   modelFingerPointing: {x: -1, y: 0, z: 0}
   modelPalmFacing: {x: -0, y: 1, z: -0}
---- !u!114 &11416244
+--- !u!114 &11472556
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1084,11 +1084,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 105000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aca0cdbf2e8026742926315b7638af69, type: 3}
+  m_Script: {fileID: 11500000, guid: c2c19261b9a66e645ae8ab508dd3e80c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zAnimObject: {fileID: 0}
-  zAnim: {fileID: 0}
 --- !u!136 &13634750
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1217,6 +1215,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: modelFingerPointing.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: modelPalmFacing.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: modelFingerPointing.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: palm
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

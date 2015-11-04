@@ -9,7 +9,11 @@ public class FireLancer : Lancer {
 	
 	// Use this for initialization
 	void Start () {
+<<<<<<< HEAD
 		//gameObject.GetComponent<Renderer>().material.color = Color.red;
+=======
+		
+>>>>>>> 0ae1df22b18c20115bcfe65fec22b7105eddb16f
 	}
 	
 	// Update is called once per frame
@@ -21,12 +25,13 @@ public class FireLancer : Lancer {
 	* Constructeur de la classe FireLancer
 	* @version 1.0
 	**/
-	public FireLancer()
+	/*public FireLancer()
 		:base(30.0f, 4.5f, 2.0f, 2.0f, 6.0f, 30.0f, 300.0f, 10.0f, "cac", "anonymous"){
 
-	}
+	}*/
 
-	public FireLancer(float essai_double_constructeur)
+	//public FireLancer(float essai_double_constructeur)
+	public FireLancer()
 		:base(EnnemyConfigurator.fireLancerAggroDistance,
 			EnnemyConfigurator.fireLancerAttackRange,
 			EnnemyConfigurator.fireLancerDistanceToDisappear,

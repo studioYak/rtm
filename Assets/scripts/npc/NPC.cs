@@ -28,12 +28,17 @@ public abstract class NPC : Unit {
 	float distanceToDisappear;
 	float firstBlockingTime = 0.0f;
 	Blocking blocking;
-	RangeClass rangeType;
+	protected RangeClass rangeType;
 	List<Hero> heros;
+	protected GameObject weapon = null;
+	protected GameObject weaponPrefab;
+	protected bool weaponRotated = false;
+	protected bool firstAttack = true;
+
 
 	// Use this for initialization
 	void Start () {
-
+		//weapon = Instantiate(weaponPrefab);
 	}
 	
 	// Update is called once per frame
@@ -62,13 +67,13 @@ public abstract class NPC : Unit {
 		this.distanceToDisappear = distanceToDisappear;
 		this.blocking = blocking;
 		
-		if(attackType == "distance")
+		if(attackType == "CaC")
 		{
-			rangeType = RangeClass.LONGRANGE;
+			rangeType = RangeClass.CAC;
 		}
 		else
 		{
-			rangeType = RangeClass.CAC;
+			rangeType = RangeClass.LONGRANGE;
 		}
 	}
 
@@ -105,7 +110,7 @@ public abstract class NPC : Unit {
 		}
 		else if(position.z - character.position.z < attackRange) // Condition provisoire
 		{
-			Debug.LogWarning("Range:"+(position.z - character.position.z));
+			//Debug.LogWarning("Range:"+(position.z - character.position.z));
 			if(BlockingType != Blocking.FREE)
 			{
 				if(!target.RunBlocked && firstBlockingTime == 0.0f)
@@ -118,16 +123,16 @@ public abstract class NPC : Unit {
 					target.RunBlocked = false;	
 				}
 			}
+			else
+			{
+				Run(Time.deltaTime);
+			}
 			Attack(target);
 		}
 		else if(position.z - character.position.z < aggroDistance)
 		{
 			Run(Time.deltaTime);
 		}
-		/*else if(position.z - character.position.z < aggroDistance + 1)
-		{
-			WakeUp(Time.deltaTime);
-		}*/
 	}
 
 	/**
@@ -203,10 +208,27 @@ public abstract class NPC : Unit {
 	**/
 	public virtual void Attack(Hero target)
 	{
-		if(LastAttack + AttackSpeed < Time.time )
+		if(weapon != null)
 		{
-			LastAttack = Time.time;
-			target.LostHP(Damage);
+			if(weaponRotated == true)
+			{
+				weapon.transform.Translate(new Vector3(0,-2,0));
+				weapon.transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(0, 0, 0),1.0f);
+				
+				weaponRotated = false;
+			}
+			firstAttack = false;
+			if(LastAttack + AttackSpeed < Time.time )
+			{
+				LastAttack = Time.time;
+				if(weapon != null)
+				{
+					weapon.transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(-90, 0, 0),1.0f);
+					weapon.transform.Translate(new Vector3(0,2,0));
+					weaponRotated = true;
+					
+				}
+			}
 		}
 	}
 
@@ -275,10 +297,20 @@ public abstract class NPC : Unit {
 
 	void OnTriggerEnter(Collider hit)
 	{
-		if(hit.transform.tag == "hero_weapon")
+		if(hit.gameObject.tag == "hero_weapon")
 		{
-			Warrior war = hit.transform.root.GetComponent<Warrior>();
-			LostHP(war.Damage);
+			Hero hero = hit.GetComponent<HeroLinkWeapon>().Hero;
+			LostHP(hero.Damage);
+			if(IsDead())
+			{
+				hero.GiveXP(XpGain);
+				hero.RunBlocked = false;
+				Die();
+			}
 		}
+	}
+
+	void OnDestroy(){
+		GameModel.NPCsInGame.Remove (this);
 	}
 }

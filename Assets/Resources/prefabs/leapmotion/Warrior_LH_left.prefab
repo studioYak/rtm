@@ -482,7 +482,7 @@ GameObject:
   - 4: {fileID: 436948}
   - 33: {fileID: 3397572}
   - 23: {fileID: 2334140}
-  - 114: {fileID: 11416244}
+  - 114: {fileID: 11449316}
   m_Layer: 0
   m_Name: sword_01
   m_TagString: hero_weapon
@@ -1104,7 +1104,7 @@ MonoBehaviour:
   deformPosition: 0
   modelFingerPointing: {x: -1, y: 0, z: 0}
   modelPalmFacing: {x: -0, y: 1, z: -0}
---- !u!114 &11416244
+--- !u!114 &11449316
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1112,7 +1112,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 105000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aca0cdbf2e8026742926315b7638af69, type: 3}
+  m_Script: {fileID: 11500000, guid: c2c19261b9a66e645ae8ab508dd3e80c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &13616714

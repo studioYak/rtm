@@ -141,7 +141,7 @@ public class GameController : MonoBehaviour {
 	void Start () {
 
 
-		GameModel.Init();
+		//GameModel.Init();
 		GameModel.resetDataBeforeLevel ();
 
 
@@ -188,8 +188,13 @@ public class GameController : MonoBehaviour {
 		//sets the "hand parent" field so the arms also are child of camera and don't flicker
 		leapControl = leapInstance.GetComponent<HandController> ();
 		leapControl.setModel(handSide, hero);
+<<<<<<< HEAD
 		leapControl.setGameController(this);
 
+=======
+
+		leapControl.setGameController(this);
+>>>>>>> 681840428f971448f9842fd99e1cf08c84808acc
 		leapControl.handParent = Camera.allCameras[0].transform;
 		
 		leapCanvas = Instantiate(leapCanvasPrefab);
@@ -326,9 +331,9 @@ public class GameController : MonoBehaviour {
 		hudMaster.setLevel (HudMaster.HudType.Special, currentPowerPercent);
 		hudMaster.updateXP (hero.XpQuantity/hero.XpQuantityNextLevel*100.0f, (int)hero.Level + 1);
 
-		Debug.Log (GameModel.NPCsInGame.Count);
+		//Debug.Log (GameModel.NPCsInGame.Count);
 		if (GameModel.NPCsInGame.Count == 0) {
-			Debug.Log (timerEnd);
+//			Debug.Log (timerEnd);
 			timerEnd += Time.deltaTime;
 			if (timerEnd >= maxTimerEnd){
 				NextLevel();

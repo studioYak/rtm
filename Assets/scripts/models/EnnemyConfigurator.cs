@@ -25,12 +25,13 @@ public class EnnemyConfigurator : MonoBehaviour {
 	public static float cannonHp = 60.0f;
 	public static float cannonDamage = 75.0f;
 	public static float cannonAggroDistance = 30.0f;
-	public static float cannonAttackRange = 20.0f;
+	public static float cannonAttackRange = 27.0f;
 	public static float cannonDistanceToDisappear = 2.0f;
 
 	public static float cannonProjectileSpeed = -35.0f;
 	public static float cannonProjectileHeight = 0.5f;
 	public static float cannonRotationSpeed = 10.0f;
+	public static float cannonMinAttackRange = 10.0f;
 	//public static Blocking cannonBlocking = Blocking.FREE;
 
 	// BASIC_DRAGONET     basicDragonet
@@ -42,7 +43,7 @@ public class EnnemyConfigurator : MonoBehaviour {
 	public static float basicDragonetHp = 30.0f;
 	public static float basicDragonetDamage = 40.0f;
 	public static float basicDragonetAggroDistance = 30.0f;
-	public static float basicDragonetAttackRange = 4.5f;
+	public static float basicDragonetAttackRange = 3.5f;
 	public static float basicDragonetDistanceToDisappear = 2.0f;
 	//public static Blocking basicDragonetBlocking = Blocking.SEMIBLOCK;
 
@@ -76,7 +77,7 @@ public class EnnemyConfigurator : MonoBehaviour {
 	public static string basicLancerName = "BasicLancer" ;
 	public static string basicLancerAttackType = "CaC";
 	public static float basicLancerMovementSpeed = 5.0f;
-	public static float basicLancerAttackSpeed = 2.0f;
+	public static float basicLancerAttackSpeed = 20.0f;
 	public static float basicLancerXpGain = 5.0f;
 	public static float basicLancerHp = 30.0f;
 	public static float basicLancerDamage = 40.0f;
@@ -89,7 +90,7 @@ public class EnnemyConfigurator : MonoBehaviour {
 	public static string fireLancerName = "FireLancer" ;
 	public static string fireLancerAttackType = "CaC";
 	public static float fireLancerMovementSpeed = 5.0f;
-	public static float fireLancerAttackSpeed = 2.0f;
+	public static float fireLancerAttackSpeed = 20.0f;
 	public static float fireLancerXpGain = 5.0f;
 	public static float fireLancerHp = 30.0f;
 	public static float fireLancerDamage = 40.0f;
@@ -102,7 +103,7 @@ public class EnnemyConfigurator : MonoBehaviour {
 	public static string iceLancerName = "IceLancer" ;
 	public static string iceLancerAttackType = "CaC";
 	public static float iceLancerMovementSpeed = 5.0f;
-	public static float iceLancerAttackSpeed = 2.0f;
+	public static float iceLancerAttackSpeed = 20.0f;
 	public static float iceLancerXpGain = 5.0f;
 	public static float iceLancerHp = 30.0f;
 	public static float iceLancerDamage = 40.0f;

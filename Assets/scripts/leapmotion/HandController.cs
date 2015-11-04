@@ -128,6 +128,7 @@ public class HandController : MonoBehaviour {
 			Debug.LogError ("Baptiste says : Can't find GameObject "+"prefabs/leapmotion/"+prefab+"_right"+ ". Does it exists?");
 		rightGraphicsModel = rightGO.GetComponent<RiggedHandBV>();
 
+
 		//load extra prefabs if needed
 		if (heroClass == "Wizard") {
 			fireballGo = Resources.Load ("prefabs/leapmotion/Fireball") as GameObject;
@@ -215,6 +216,13 @@ public class HandController : MonoBehaviour {
     if (handParent != null) {
       hand_model.transform.SetParent(handParent.transform);
     }
+	
+		//We attach the hero to transmit damages
+	if (heroClass == "Warrior"){
+			if (hand_model.GetComponentInChildren<HeroLinkWeapon>() != null){
+				hand_model.GetComponentInChildren<HeroLinkWeapon>().Hero = hero;
+			}
+	}
     return hand_model;
   }
 
@@ -347,6 +355,7 @@ public class HandController : MonoBehaviour {
 						{
 							//loading fireball in the hand
 							fireball = Instantiate(fireballGo);
+							fireball.GetComponentInChildren<HeroLinkWeapon>().Hero = hero;
 
 							fireball.transform.parent = handPrefab.FindChild("HandContainer").transform;
 							fireball.transform.localPosition = new Vector3(0f, 0f, 0f);
@@ -446,7 +455,7 @@ public class HandController : MonoBehaviour {
 	}
 
 	//detect long pose over LM which means Pause
-	if (closestHand != null)
+	if (closestHand != null && gameController != null)
 	{
 		//((UnityEngine.UI.Text)infoLabel).text = closestHand.PalmVelocity.y.ToString();
 		

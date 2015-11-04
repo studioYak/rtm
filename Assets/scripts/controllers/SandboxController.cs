@@ -82,7 +82,7 @@ public class SandboxController : MonoBehaviour {
 		leapInstance.transform.position = new Vector3 (0f, 2.5f, 1.6f);
 		//sets the "hand parent" field so the arms also are child of camera and don't flicker
 		leapControl = leapInstance.GetComponent<HandController> ();
-		leapControl.setModel(handSide, heroClass);
+		leapControl.setModel(handSide, hero);
 		leapControl.handParent = Camera.main.transform;
 
 		ter = Instantiate (terrain, new Vector3 (-100, -2, 0), Quaternion.identity) as Terrain;
@@ -98,16 +98,19 @@ public class SandboxController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		Hero hero = GameModel.HerosInGame [0];
+
 		//update hud state
-		float currentHealthPercent = 100*GameModel.HerosInGame[0].HealthPoint/GameModel.HerosInGame[0].MaxHealthPoint;
-		float currentPowerPercent = 100*GameModel.HerosInGame[0].PowerQuantity/GameModel.HerosInGame[0].MaxPowerQuantity;
+		float currentHealthPercent = 100.0f*hero.HealthPoint/hero.MaxHealthPoint;
+		float currentPowerPercent = 100.0f*hero.PowerQuantity/hero.MaxPowerQuantity;
 		//Debug.Log("Life: " + currentHealthPercent);
 		
 		hudMaster.setLevel (HudMaster.HudType.Life, currentHealthPercent);
 		hudMaster.setLevel (HudMaster.HudType.Special, currentPowerPercent);
+		hudMaster.updateXP (hero.XpQuantity/hero.XpQuantityNextLevel*100.0f, (int)hero.Level + 1);
 
 		if (Input.GetKeyDown (KeyCode.L)) {
-			popItem("basicLancer");
+			GameModel.HerosInGame[0].XpQuantity += 100.0f;
 		}
 
 		if (Input.GetKeyDown (KeyCode.V)) {
@@ -141,9 +144,22 @@ public class SandboxController : MonoBehaviour {
 		
 		if (go != null){
 			Hero hero = GameModel.HerosInGame[0];
-			GameObject instance = Instantiate(go, new Vector3(0, go.transform.localScale.y/2, hero.GetPosition().z + hero.MovementSpeed * 10.0f), Quaternion.identity) as GameObject;
+			GameObject instance = Instantiate(go, new Vector3(0, go.transform.localScale.y/2, hero.GetPosition().z + hero.MovementSpeed * 15.0f), Quaternion.identity) as GameObject;
 			GameModel.NPCsInGame.Add(instance.GetComponent<NPC>());
 			//GameModel.NPCsInGame[GameModel.NPCsInGame.Count-1].transform.Rotate(0, 180, 0);
 		}
+	}
+
+	public void resetLife() {
+		GameModel.HerosInGame[0].HealthPoint = GameModel.HerosInGame[0].MaxHealthPoint;
+	}
+
+	public void resetPower() {
+		GameModel.HerosInGame [0].PowerQuantity = GameModel.HerosInGame [0].MaxPowerQuantity;
+	}
+
+	public void resetBoth() {
+		resetLife ();
+		resetPower ();
 	}
 }

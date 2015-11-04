@@ -189,6 +189,7 @@ public class GameController : MonoBehaviour {
 		leapControl = leapInstance.GetComponent<HandController> ();
 		leapControl.setModel(handSide, hero);
 		leapControl.setGameController(this);
+
 		leapControl.handParent = Camera.allCameras[0].transform;
 		
 		leapCanvas = Instantiate(leapCanvasPrefab);
@@ -262,6 +263,13 @@ public class GameController : MonoBehaviour {
 
 		Time.timeScale = 1.0f;
 
+		AudioSource audioSource = Camera.main.GetComponent<AudioSource> ();
+		Debug.Log ("Musics/" + level.MusicPath);
+		AudioClip clip = Resources.Load ("Musics/" + level.MusicPath, typeof(AudioClip)) as AudioClip;
+		Debug.Log (clip.ToString());
+		audioSource.clip = clip;
+
+		audioSource.Play ();
 		Debug.Log ("END Start GameController");
 
 	}
@@ -307,13 +315,16 @@ public class GameController : MonoBehaviour {
 		}*/
 
 		
+		Hero hero = GameModel.HerosInGame [0];
+		
 		//update hud state
-		float currentHealthPercent = 100*GameModel.HerosInGame[0].HealthPoint/GameModel.HerosInGame[0].MaxHealthPoint;
-		float currentPowerPercent = 100*GameModel.HerosInGame[0].PowerQuantity/GameModel.HerosInGame[0].MaxPowerQuantity;
+		float currentHealthPercent = 100.0f*hero.HealthPoint/hero.MaxHealthPoint;
+		float currentPowerPercent = 100.0f*hero.PowerQuantity/hero.MaxPowerQuantity;
 		//Debug.Log("Life: " + currentHealthPercent);
-
+		
 		hudMaster.setLevel (HudMaster.HudType.Life, currentHealthPercent);
 		hudMaster.setLevel (HudMaster.HudType.Special, currentPowerPercent);
+		hudMaster.updateXP (hero.XpQuantity/hero.XpQuantityNextLevel*100.0f, (int)hero.Level + 1);
 
 		Debug.Log (GameModel.NPCsInGame.Count);
 		if (GameModel.NPCsInGame.Count == 0) {

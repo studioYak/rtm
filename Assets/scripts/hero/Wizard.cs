@@ -7,7 +7,9 @@ using System.Collections;
 **/
 public class Wizard : Hero {
 	
-	
+	float specialCapacityCooldown = 30.0f;
+	float specialCapacityTimer = 5.0f;
+	float shieldSize = 0.0f;
 	
 	// Use this for initialization
 	void Start () {
@@ -15,8 +17,15 @@ public class Wizard : Hero {
 	}
 	
 	// Update is called once per frame
-	protected void Update () {
-		base.Update ();
+	void Update () {
+		base.Update();
+		if(PowerQuantity < MaxPowerQuantity)
+		{
+			if(base.lastRegenPower + 2 < Time.time)
+			{
+				base.RegenPower();	
+			}
+		}
 	}
 
 	/**
@@ -24,8 +33,36 @@ public class Wizard : Hero {
 	* @version 1.0
 	**/
 	public Wizard()
-		:base(0,100,"baton",1000, 4, 4, false, 1100, 8, 3, "distance", "anonymous"){
+		:base(5.0f, 0.0f,100.0f,"baton",1000.0f, 4.0f, 4.0f, 1100.0f, 8.0f, 3.0f, "distance", "anonymous"){
 		
 	}
 	
+	/**
+	* {@inheritDoc}
+	**/
+	public override void adaptStatAccordingToLevel()
+	{
+		if(level > 6)
+		{
+			SpecialCapacityUnlocked = true;
+			LastCapacityUsed = Time.time;
+		}
+		else if(level > 5)
+		{
+			Damage *= 1.1f;
+			// TO DO GROSSIR LES BOULES DE FEU
+		}
+		else if(level > 4)
+		{
+			MaxHealthPoint *= 1.1f;
+		}
+		else if(level > 3)
+		{
+			Damage *= 1.1f;
+		}
+		else if(level > 2)
+		{
+			Damage *= 1.1f;
+		}
+	}
 }

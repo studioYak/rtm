@@ -24,6 +24,7 @@ public abstract class Unit : MonoBehaviour {
 	}
 
 	protected void Update(){
+		
 	}
 
 	/**
@@ -195,10 +196,10 @@ public abstract class Unit : MonoBehaviour {
 	* Not used for the moment
 	*
 	**/
-	void Attack(float x, float y, float z){
+	/*void Attack(float x, float y, float z){
 
 		//Cooldown(0.0);
-	}
+	}*/
 
 	/**
 	* FR:
@@ -213,6 +214,7 @@ public abstract class Unit : MonoBehaviour {
 	* @version 1.0
 	**/
 	public float LostHP(float hpLost){
+		Debug.LogWarning ("LOST HP : " + this.GetType().ToString() + " -- " + hpLost);
 		hp = hp - hpLost;
 		return hp;
 	}
@@ -277,7 +279,7 @@ public abstract class Unit : MonoBehaviour {
 	* @return Return bool
 	* @version 1.0
 	**/
-	bool IsDead(){
+	public bool IsDead(){
 		if (hp <= 0) {
 			return true;
 		}

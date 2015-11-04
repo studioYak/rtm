@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
+using System.Collections.Generic; // Lib for List<GameObject>
 
 /**
 * @author HugoLS
@@ -21,25 +21,39 @@ public abstract class NPC : Unit {
 
 	float attackSpeed;
 	float lastAttack;
-	float attackBeginning;
-	float attackTimeMax;
 	float xpGain;
 
 	float aggroDistance;
 	protected float attackRange;
 	float distanceToDisappear;
+	float firstBlockingTime = 0.0f;
 	Blocking blocking;
 	RangeClass rangeType;
+	List<Hero> heros;
+	private GameObject weapon = null;
+	private GameObject weaponPrefab;
+	private bool weaponRotated = false;
+
+
+	void Awake(){
+		weaponPrefab = Resources.Load ("prefabs/sword_invisible") as GameObject;
+	}
 
 	// Use this for initialization
 	void Start () {
-
+		weapon = Instantiate(weaponPrefab);
 	}
 	
 	// Update is called once per frame
 	protected void Update () {
-		base.Update ();
 		Act();
+		if(weapon == null)
+		{
+			weapon = Instantiate(weaponPrefab);
+			weapon.transform.parent = transform;
+			weapon.transform.position = transform.position;
+		}
+		
 	}
 
 	/**
@@ -62,18 +76,20 @@ public abstract class NPC : Unit {
 		this.attackRange = attackRange;
 		this.distanceToDisappear = distanceToDisappear;
 		this.blocking = blocking;
-		
-		if(attackType == "distance")
+	
+		if(attackType == "CaC")
 		{
-			rangeType = RangeClass.LONGRANGE;
+			rangeType = RangeClass.CAC;
+			
 		}
 		else
 		{
-			rangeType = RangeClass.CAC;
+			rangeType = RangeClass.LONGRANGE;
+			Destroy(weapon);
 		}
-
-		this.attackTimeMax = 5.0f;
-		this.attackBeginning = -1.0f;
+		
+		/*weapon.transform.parent = transform;
+		weapon.transform.Translate(1, 0, 0, Space.World);*/
 	}
 
 	/**
@@ -94,45 +110,45 @@ public abstract class NPC : Unit {
 	* @return Return an Act object
 	* @version 1.0
 	**/
-	public UnitAction Act()
+	public void Act()
 	{
-		List<Hero> heros = GameModel.HerosInGame;
-		System.Random rnd = new System.Random();
-		int hero_target_index = rnd.Next(0, heros.Count);
+
+		heros = GameModel.HerosInGame;
+		int hero_target_index = Random.Range(0, heros.Count);
 
 		Hero target = heros[hero_target_index];
-
 		Transform character = target.transform;
-
-		base.Action = new UnitAction(0,0,0);
+		
 		Vector3 position = GetPosition();
 		if(position.z < character.position.z - distanceToDisappear)
 		{
 			Disappear();
 		}
-		else if(position.z - character.position.z < attackRange && position.z - character.position.z > 0) // Condition provisoire
+		else if(position.z - character.position.z < attackRange) // Condition provisoire
 		{
-			if (attackBeginning == -1.0f && blocking != Blocking.FREE){
-				target.CanRun = false;
-				attackBeginning = Time.time;
+			//Debug.LogWarning("Range:"+(position.z - character.position.z));
+			if(BlockingType != Blocking.FREE)
+			{
+				if(!target.RunBlocked && firstBlockingTime == 0.0f)
+				{
+					firstBlockingTime = Time.time;
+					target.RunBlocked = true;
+				}
+				else if(firstBlockingTime + 5.0f < Time.time)
+				{
+					target.RunBlocked = false;	
+				}
 			}
-
 			Attack(target);
-
-			if (!target.CanRun && attackBeginning+attackTimeMax < Time.time) {
-				target.CanRun = true;
-				Run (Time.deltaTime);
-			}
 		}
 		else if(position.z - character.position.z < aggroDistance)
 		{
 			Run(Time.deltaTime);
 		}
-		else if(position.z - character.position.z < aggroDistance + 1)
+		/*else if(position.z - character.position.z < aggroDistance + 1)
 		{
 			WakeUp(Time.deltaTime);
-		}
-		return base.Action;
+		}*/
 	}
 
 	/**
@@ -208,22 +224,22 @@ public abstract class NPC : Unit {
 	**/
 	public virtual void Attack(Hero target)
 	{
+		if(weaponRotated == true)
+		{
+			weapon.transform.Translate(new Vector3(0,-2,0));
+			weapon.transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(0, 0, 0),1.0f);
+			
+			weaponRotated = false;
+		}
 		if(LastAttack + AttackSpeed < Time.time )
 		{
-			target.LostHP(damage);
-
-			base.Action = new UnitAction(target.GetPosition().x, target.GetPosition().y, target.GetPosition().z);
-			base.Action.SetActionAsAttack(Damage);
-
-			if(rangeType == RangeClass.LONGRANGE)
-			{
-				base.Action.SetActionAsDistant();
-			}
 			LastAttack = Time.time;
-		}
-		else
-		{
-			base.Action = new UnitAction(0,0,0);
+			if(weapon != null)
+			{
+				weapon.transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(-90, 0, 0),1.0f);
+				weapon.transform.Translate(new Vector3(0,2,0));
+				weaponRotated = true;
+			}
 		}
 	}
 
@@ -279,16 +295,7 @@ public abstract class NPC : Unit {
 	**/
 	public void Disappear()
 	{
-		base.Action = new UnitAction(0,0,0);
-		base.Action.SetActionAsDisappear();
-		Die ();
-	}
-
-	void OnDestroy() {
-		GameModel.NPCsInGame.Remove (this);
-		foreach (Hero hero in GameModel.HerosInGame) {
-			hero.CanRun = true;
-		}
+		base.Die();
 	}
 
 	/**
@@ -296,16 +303,24 @@ public abstract class NPC : Unit {
 	**/
 	public override void Run(float deltaTime)
 	{
-		base.Action = new UnitAction(0,0,0);
 		transform.Translate(base.MovementSpeed * (-Vector3.forward) * deltaTime, Space.World);
 	}
 
-	public void OnTriggerEnter(Collider other){
-		Debug.Log ("COLLISION : "+other.name);
-		//this.LostHP (GameModel.Hero.Damage);
-		if (other.gameObject.tag == "hero_weapon") {
-			GameModel.HerosInGame[0].XpQuantity += this.xpGain;
-			Die ();
+	void OnTriggerEnter(Collider hit)
+	{
+		if(hit.gameObject.tag == "hero_weapon")
+		{
+			Hero hero = hit.GetComponentInParent<Hero>();
+			LostHP(hero.Damage);
+			if(IsDead())
+			{
+				hero.GiveXP(XpGain);
+				Die();
+			}
 		}
+	}
+
+	void OnDestroy(){
+		GameModel.NPCsInGame.Remove (this);
 	}
 }

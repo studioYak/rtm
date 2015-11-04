@@ -7,6 +7,10 @@ using System.Collections;
 **/
 public abstract class Lancer : NPC {
 
+	void Awake(){
+		weaponPrefab = Resources.Load ("prefabs/sword_invisible") as GameObject;
+	}
+
 	// Use this for initialization
 	void Start () {
 	
@@ -15,6 +19,13 @@ public abstract class Lancer : NPC {
 	// Update is called once per frame
 	protected void Update () {
 		base.Update ();
+
+		if(weapon == null)
+		{
+			weapon = Instantiate(weaponPrefab);
+			weapon.transform.parent = transform;
+			weapon.transform.position = transform.position;
+		}
 	}
 
 	/**
@@ -34,4 +45,11 @@ public abstract class Lancer : NPC {
 		:base(aggroDistance, attackRange, distanceToDisappear, attackSpeed, xpGain, Blocking.FREE, hp, damage, movementSpeed, attackType, name){
 	
 	}
+
+	/*public override void Attack(Hero target)
+	{
+		weapon.transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(-90, 0, 0),1.0f);
+		weapon.transform.Translate(new Vector3(0,2,0));
+		Die();
+	}*/
 }

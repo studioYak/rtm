@@ -30,30 +30,19 @@ public abstract class NPC : Unit {
 	Blocking blocking;
 	RangeClass rangeType;
 	List<Hero> heros;
-	private GameObject weapon = null;
-	private GameObject weaponPrefab;
+	protected GameObject weapon = null;
+	protected GameObject weaponPrefab;
 	private bool weaponRotated = false;
 
 
-	void Awake(){
-		weaponPrefab = Resources.Load ("prefabs/sword_invisible") as GameObject;
-	}
-
 	// Use this for initialization
 	void Start () {
-		weapon = Instantiate(weaponPrefab);
+		//weapon = Instantiate(weaponPrefab);
 	}
 	
 	// Update is called once per frame
 	protected void Update () {
 		Act();
-		if(weapon == null)
-		{
-			weapon = Instantiate(weaponPrefab);
-			weapon.transform.parent = transform;
-			weapon.transform.position = transform.position;
-		}
-		
 	}
 
 	/**
@@ -76,16 +65,14 @@ public abstract class NPC : Unit {
 		this.attackRange = attackRange;
 		this.distanceToDisappear = distanceToDisappear;
 		this.blocking = blocking;
-	
+		
 		if(attackType == "CaC")
 		{
 			rangeType = RangeClass.CAC;
-			
 		}
 		else
 		{
 			rangeType = RangeClass.LONGRANGE;
-			Destroy(weapon);
 		}
 		
 		/*weapon.transform.parent = transform;
@@ -112,7 +99,6 @@ public abstract class NPC : Unit {
 	**/
 	public void Act()
 	{
-
 		heros = GameModel.HerosInGame;
 		int hero_target_index = Random.Range(0, heros.Count);
 
@@ -224,21 +210,24 @@ public abstract class NPC : Unit {
 	**/
 	public virtual void Attack(Hero target)
 	{
-		if(weaponRotated == true)
+		if(weapon != null)
 		{
-			weapon.transform.Translate(new Vector3(0,-2,0));
-			weapon.transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(0, 0, 0),1.0f);
-			
-			weaponRotated = false;
-		}
-		if(LastAttack + AttackSpeed < Time.time )
-		{
-			LastAttack = Time.time;
-			if(weapon != null)
+			if(weaponRotated == true)
 			{
-				weapon.transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(-90, 0, 0),1.0f);
-				weapon.transform.Translate(new Vector3(0,2,0));
-				weaponRotated = true;
+				weapon.transform.Translate(new Vector3(0,-2,0));
+				weapon.transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(0, 0, 0),1.0f);
+				
+				weaponRotated = false;
+			}
+			if(LastAttack + AttackSpeed < Time.time )
+			{
+				LastAttack = Time.time;
+				if(weapon != null)
+				{
+					weapon.transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(-90, 0, 0),1.0f);
+					weapon.transform.Translate(new Vector3(0,2,0));
+					weaponRotated = true;
+				}
 			}
 		}
 	}
@@ -310,7 +299,7 @@ public abstract class NPC : Unit {
 	{
 		if(hit.gameObject.tag == "hero_weapon")
 		{
-			Hero hero = hit.GetComponentInParent<Hero>();
+			Hero hero = hit.GetComponent<HeroLinkWeapon>().Hero;
 			LostHP(hero.Damage);
 			if(IsDead())
 			{

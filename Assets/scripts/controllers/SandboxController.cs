@@ -101,6 +101,7 @@ public class SandboxController : MonoBehaviour {
 		Hero hero = GameModel.HerosInGame [0];
 
 		//update hud state
+		Debug.Log ("H///" + hero.MaxHealthPoint);
 		float currentHealthPercent = 100.0f*hero.HealthPoint/hero.MaxHealthPoint;
 		float currentPowerPercent = 100.0f*hero.PowerQuantity/hero.MaxPowerQuantity;
 		//Debug.Log("Life: " + currentHealthPercent);

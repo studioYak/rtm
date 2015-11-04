@@ -8,24 +8,20 @@ using System.Collections.Generic; // Lib for List<GameObject>
 **/
 public class EnnemyWeaponCollider : MonoBehaviour {
 
-	float damage = 0.0f;
-
-	public void Init(float weapon_damage)
-	{
-		damage = weapon_damage;
-	}
-
 
 	void OnTriggerEnter(Collider hit)
 	{
 		if(hit.transform.tag == "hero_shield")
 		{
-			hit.transform.root.SendMessage("DefenseMode","on");
-			hit.transform.root.SendMessage("LostHP",damage);
+			hit.gameObject.GetComponentInParent<Hero>().DefenseMode("on");
 		}
-		else if(hit.transform.tag == "hero")
+	}
+
+	void OnTriggerExit(Collider hit)
+	{
+		if(hit.transform.tag == "hero_shield")
 		{
-			hit.transform.root.SendMessage("LostHP",damage);
+			hit.gameObject.GetComponentInParent<Hero>().DefenseMode("off");
 		}
 	}
 }

@@ -658,6 +658,7 @@ MonoBehaviour:
   rightGraphicsModel: {fileID: 0}
   rightPhysicsModel: {fileID: 0}
   handParent: {fileID: 0}
+  infoLabelGo: {fileID: 0}
   destroyHands: 1
   handMovementScale: {x: 1, y: 1, z: 1}
 --- !u!114 &11401990
@@ -723,6 +724,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: handMovementScale.y
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: destroyHands
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -7,12 +7,23 @@ using System.Collections;
 **/
 public abstract class Dragonet : NPC {
 	
+	void Awake(){
+		weaponPrefab = Resources.Load ("prefabs/sword_invisible") as GameObject;
+	}
+
 	void Start () {
-		
+		//weapon = Instantiate(weaponPrefab);
 	}
 	
 	protected void Update () {
 		base.Update ();
+
+		if(weapon == null)
+		{
+			weapon = Instantiate(weaponPrefab);
+			weapon.transform.parent = transform;
+			weapon.transform.position = transform.position;
+		}
 	}
 	
 	/**

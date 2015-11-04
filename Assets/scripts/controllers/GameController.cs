@@ -64,6 +64,8 @@ public class GameController : MonoBehaviour {
 	private GameObject leapPrefab;
 	private GameObject leapInstance;
 	private HandController leapControl;
+	private GameObject leapCanvasPrefab;
+	private GameObject leapCanvas;
 	
 	private Hero hero;
 	private GameObject heroGameObject;
@@ -126,6 +128,7 @@ public class GameController : MonoBehaviour {
 		wizard = Resources.Load("prefabs/hero/Wizard") as GameObject;
 			
 		leapPrefab = Resources.Load("prefabs/leapmotion/LeapMotionScene") as GameObject;
+		leapCanvasPrefab = Resources.Load("prefabs/leapmotion/LeapCanvas") as GameObject;
 
 		Debug.Log (" END Awake GameController");
 
@@ -185,7 +188,11 @@ public class GameController : MonoBehaviour {
 		//sets the "hand parent" field so the arms also are child of camera and don't flicker
 		leapControl = leapInstance.GetComponent<HandController> ();
 		leapControl.setModel(handSide, hero);
+
+		leapControl.setGameController(this);
 		leapControl.handParent = Camera.allCameras[0].transform;
+		
+		leapCanvas = Instantiate(leapCanvasPrefab);
 
 
 
@@ -319,9 +326,9 @@ public class GameController : MonoBehaviour {
 		hudMaster.setLevel (HudMaster.HudType.Special, currentPowerPercent);
 		hudMaster.updateXP (hero.XpQuantity/hero.XpQuantityNextLevel*100.0f, (int)hero.Level + 1);
 
-		Debug.Log (GameModel.NPCsInGame.Count);
+		//Debug.Log (GameModel.NPCsInGame.Count);
 		if (GameModel.NPCsInGame.Count == 0) {
-			Debug.Log (timerEnd);
+//			Debug.Log (timerEnd);
 			timerEnd += Time.deltaTime;
 			if (timerEnd >= maxTimerEnd){
 				NextLevel();
@@ -352,6 +359,7 @@ public class GameController : MonoBehaviour {
 	public void Pause(){
 		Time.timeScale = 0.0f;
 		pausedMenu.SetActive(true);
+		leapControl.setPointerMode(true);
 	}
 
 	/**
@@ -412,6 +420,7 @@ public class GameController : MonoBehaviour {
 		paused = false;
 		state = GameState.PLAY;
 		Time.timeScale = 1.0f;
+		leapControl.setPointerMode(false);
 	}
 	
 }

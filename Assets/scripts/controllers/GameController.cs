@@ -188,13 +188,8 @@ public class GameController : MonoBehaviour {
 		//sets the "hand parent" field so the arms also are child of camera and don't flicker
 		leapControl = leapInstance.GetComponent<HandController> ();
 		leapControl.setModel(handSide, hero);
-<<<<<<< HEAD
 		leapControl.setGameController(this);
 
-=======
-
-		leapControl.setGameController(this);
->>>>>>> 681840428f971448f9842fd99e1cf08c84808acc
 		leapControl.handParent = Camera.allCameras[0].transform;
 		
 		leapCanvas = Instantiate(leapCanvasPrefab);

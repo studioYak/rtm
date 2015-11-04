@@ -483,15 +483,7 @@ GameObject:
   - 33: {fileID: 3397572}
   - 23: {fileID: 2334140}
   - 136: {fileID: 13634750}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-  - 114: {fileID: 11416244}
-  - 114: {fileID: 11472706}
->>>>>>> adrien-sprint-2
-=======
   - 114: {fileID: 11472556}
->>>>>>> 681840428f971448f9842fd99e1cf08c84808acc
   m_Layer: 0
   m_Name: sword_01
   m_TagString: hero_weapon
@@ -1084,13 +1076,7 @@ MonoBehaviour:
   deformPosition: 0
   modelFingerPointing: {x: -1, y: 0, z: 0}
   modelPalmFacing: {x: -0, y: 1, z: -0}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
---- !u!114 &11416244
-=======
 --- !u!114 &11472556
->>>>>>> 681840428f971448f9842fd99e1cf08c84808acc
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1101,23 +1087,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c19261b9a66e645ae8ab508dd3e80c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  zAnimObject: {fileID: 0}
-  zAnim: {fileID: 0}
---- !u!114 &11472706
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 105000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 366aa563f91ab53428f23c2911c19a18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
->>>>>>> adrien-sprint-2
-=======
->>>>>>> 681840428f971448f9842fd99e1cf08c84808acc
 --- !u!136 &13634750
 CapsuleCollider:
   m_ObjectHideFlags: 1

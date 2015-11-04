@@ -108,6 +108,15 @@ public abstract class NPC : Unit {
 		{
 			Disappear();
 		}
+		else if(position.z - character.position.z < attackRange/2) // Condition provisoire
+		{
+			//ennemy is nearby, post-bloqued, ready to go through the hero
+			//disable mesh and colliders
+
+			this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+			this.gameObject.GetComponent<Collider>().enabled = false;
+			weapon.GetComponent<Collider>().enabled = false;
+		}
 		else if(position.z - character.position.z < attackRange) // Condition provisoire
 		{
 			//Debug.LogWarning("Range:"+(position.z - character.position.z));

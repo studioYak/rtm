@@ -67,6 +67,9 @@ public class GameController : MonoBehaviour {
 	private GameObject leapCanvasPrefab;
 	private GameObject leapCanvas;
 	
+	private GameObject musicCanvasPrefab;
+	private GameObject musicCanvas;
+
 	private Hero hero;
 	private GameObject heroGameObject;
 	private Terrain ter;
@@ -129,6 +132,8 @@ public class GameController : MonoBehaviour {
 			
 		leapPrefab = Resources.Load("prefabs/leapmotion/LeapMotionScene") as GameObject;
 		leapCanvasPrefab = Resources.Load("prefabs/leapmotion/LeapCanvas") as GameObject;
+
+		musicCanvasPrefab = Resources.Load("prefabs/sound/MusicCanvas") as GameObject;
 
 		Debug.Log (" END Awake GameController");
 
@@ -263,13 +268,15 @@ public class GameController : MonoBehaviour {
 
 		Time.timeScale = 1.0f;
 
-		AudioSource audioSource = Camera.main.GetComponent<AudioSource> ();
+		/*AudioSource audioSource = Camera.main.GetComponent<AudioSource> ();
 		Debug.Log ("Musics/" + level.MusicPath);
 		AudioClip clip = Resources.Load ("Musics/" + level.MusicPath, typeof(AudioClip)) as AudioClip;
 		Debug.Log (clip.ToString());
 		audioSource.clip = clip;
 
-		audioSource.Play ();
+		audioSource.Play ();*/
+		musicCanvas = Instantiate (musicCanvasPrefab);
+
 		Debug.Log ("END Start GameController");
 
 	}

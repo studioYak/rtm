@@ -13,6 +13,7 @@ GameObject:
   - 23: {fileID: 2373652}
   - 114: {fileID: 11432512}
   - 54: {fileID: 5407530}
+  - 114: {fileID: 11479738}
   m_Layer: 0
   m_Name: FireLancer
   m_TagString: ennemy
@@ -87,6 +88,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dadeb5bc5a268c547900466c9bc91131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11479738
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4881e9f377dd4342856b426fc9c02d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!135 &13521646

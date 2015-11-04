@@ -626,20 +626,21 @@ public abstract class Hero : Unit {
 	{
 		if(hit.gameObject.tag == "ennemy_weapon")
 		{
-			//Debug.Log("COLIISSSSSSSSSSSSSSION");
 			NPC ennemy = hit.GetComponentInParent<NPC>();
 			LostHP(ennemy.Damage);
-			PlayBloodAnimation();
+			if (!Defending){
+				PlayBloodAnimation();
+			}
 		}
 		else if(hit.gameObject.tag == "ennemy_projectile")
 		{
-			//Debug.Log("COLIISSSSSSSSSSSSSSION");
 			NPC ennemy = hit.GetComponentInParent<NPC>();
 			LostHP(ennemy.Damage);
-			PlayBloodAnimation();
+			if (!Defending){
+				PlayBloodAnimation();
+			}
 			Destroy(hit);
 		}
-
 	}
 
 	private void PlayBloodAnimation(){

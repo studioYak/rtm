@@ -11,17 +11,20 @@ public class EnnemyWeaponCollider : MonoBehaviour {
 
 	void OnTriggerEnter(Collider hit)
 	{
-		if(hit.transform.tag == "hero_shield")
+		if(hit.transform.tag == "hero_defense")
 		{
-			hit.gameObject.GetComponentInParent<Hero>().DefenseMode("on");
+			Debug.Log ("DEFENSE");
+			Hero hero = hit.gameObject.GetComponentInParent<Hero>();
+			hero.DefenseMode("on");
 		}
 	}
 
 	void OnTriggerExit(Collider hit)
 	{
-		if(hit.transform.tag == "hero_shield")
+		if(hit.transform.tag == "hero_defense")
 		{
-			hit.gameObject.GetComponentInParent<Hero>().DefenseMode("off");
+			Hero hero = hit.gameObject.GetComponentInParent<Hero>();
+			hero.DefenseMode("off");
 		}
 	}
 }

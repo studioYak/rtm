@@ -7,6 +7,10 @@ using System.Collections;
 **/
 public class Wall : NPC {
 
+	void Awake(){
+		weaponPrefab = Resources.Load ("prefabs/sword_invisible") as GameObject;
+	}
+
 	// Use this for initialization
 	void Start () {
 	
@@ -15,6 +19,16 @@ public class Wall : NPC {
 	// Update is called once per frame
 	protected void Update () {
 		base.Update ();
+		if(base.firstAttack)
+		{
+			base.LastAttack = Time.time;
+		}
+		if(weapon == null)
+		{
+			weapon = Instantiate(weaponPrefab);
+			weapon.transform.parent = transform;
+			weapon.transform.position = transform.position;
+		}
 	}
 
 	/**
@@ -37,7 +51,7 @@ public class Wall : NPC {
 			EnnemyConfigurator.wallDistanceToDisappear,
 			EnnemyConfigurator.wallAttackSpeed,
 			EnnemyConfigurator.wallXpGain,
-			Blocking.FREE,
+			Blocking.BLOCK,
 			EnnemyConfigurator.wallHp,
 			EnnemyConfigurator.wallDamage,
 			EnnemyConfigurator.wallMovementSpeed,
@@ -47,4 +61,19 @@ public class Wall : NPC {
 
 	}
 
+	/*public override void Attack(Hero target)
+	{
+		if(weapon == null)
+		{
+			weapon = Instantiate(weaponPrefab);
+			weapon.transform.parent = transform;
+			weapon.transform.position = transform.position;
+			
+		}
+		if(weapon != null)
+		{
+			weapon.transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(-90, 0, 0),1.0f);
+			weapon.transform.Translate(new Vector3(0,2,0));
+		}
+	}*/
 }

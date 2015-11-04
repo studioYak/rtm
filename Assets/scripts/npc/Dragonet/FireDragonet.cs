@@ -8,7 +8,7 @@ using System.Collections;
 public class FireDragonet : Dragonet {
 	
 	void Start () {
-		gameObject.GetComponent<Renderer>().material.color = Color.red;
+		base.Start();
 	}
 	
 	protected void Update () {

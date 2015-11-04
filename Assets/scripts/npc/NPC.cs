@@ -32,7 +32,8 @@ public abstract class NPC : Unit {
 	List<Hero> heros;
 	protected GameObject weapon = null;
 	protected GameObject weaponPrefab;
-	private bool weaponRotated = false;
+	protected bool weaponRotated = false;
+	protected bool firstAttack = true;
 
 
 	// Use this for initialization
@@ -43,7 +44,6 @@ public abstract class NPC : Unit {
 	// Update is called once per frame
 	protected void Update () {
 		Act();
-
 	}
 
 	/**
@@ -75,9 +75,6 @@ public abstract class NPC : Unit {
 		{
 			rangeType = RangeClass.LONGRANGE;
 		}
-		
-		/*weapon.transform.parent = transform;
-		weapon.transform.Translate(1, 0, 0, Space.World);*/
 	}
 
 	/**
@@ -220,6 +217,7 @@ public abstract class NPC : Unit {
 				
 				weaponRotated = false;
 			}
+			firstAttack = false;
 			if(LastAttack + AttackSpeed < Time.time )
 			{
 				LastAttack = Time.time;
@@ -228,6 +226,7 @@ public abstract class NPC : Unit {
 					weapon.transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(-90, 0, 0),1.0f);
 					weapon.transform.Translate(new Vector3(0,2,0));
 					weaponRotated = true;
+					
 				}
 			}
 		}
@@ -304,9 +303,8 @@ public abstract class NPC : Unit {
 			LostHP(hero.Damage);
 			if(IsDead())
 			{
-
 				hero.GiveXP(XpGain);
-				hero.runBlocked = false;
+				hero.RunBlocked = false;
 				Die();
 			}
 		}

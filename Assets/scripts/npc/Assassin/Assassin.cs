@@ -12,13 +12,11 @@ public class Assassin : NPC {
 	}
 
 	void Start () {
-		
+		gameObject.transform.Rotate(0,180,0);
 	}
 	
 	protected void Update () {
 		base.Update ();
-
-
 
 		if(weapon == null)
 		{

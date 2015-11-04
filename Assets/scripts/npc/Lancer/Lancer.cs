@@ -7,25 +7,18 @@ using System.Collections;
 **/
 public abstract class Lancer : NPC {
 
-	void Awake(){
+	protected void Awake(){
 		weaponPrefab = Resources.Load ("prefabs/sword_invisible") as GameObject;
 	}
 
 	// Use this for initialization
-	void Start () {
-	
+	protected void Start () {
+		
 	}
 	
 	// Update is called once per frame
 	protected void Update () {
 		base.Update ();
-
-		if(weapon == null)
-		{
-			weapon = Instantiate(weaponPrefab);
-			weapon.transform.parent = transform;
-			weapon.transform.position = transform.position;
-		}
 	}
 
 	/**
@@ -46,10 +39,16 @@ public abstract class Lancer : NPC {
 	
 	}
 
-	/*public override void Attack(Hero target)
+	public override void Attack(Hero target)
 	{
-		weapon.transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(-90, 0, 0),1.0f);
-		weapon.transform.Translate(new Vector3(0,2,0));
-		Die();
-	}*/
+		if(weapon == null)
+		{
+			weapon = Instantiate(weaponPrefab);
+			weapon.transform.parent = transform;
+			weapon.transform.position = transform.position;
+			weapon.transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(-90, 0, 0),1.0f);
+			weapon.transform.Translate(new Vector3(0,2,0));
+			Destroy(weapon,1);
+		}
+	}
 }

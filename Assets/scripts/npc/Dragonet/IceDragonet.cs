@@ -8,7 +8,7 @@ using System.Collections;
 public class IceDragonet : Dragonet {
 
 	void Start () {
-		//gameObject.GetComponent<Renderer>().material.color = Color.blue;
+		base.Start();
 	}
 
 	// Update is called once per frame

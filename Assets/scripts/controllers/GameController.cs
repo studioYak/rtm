@@ -69,6 +69,7 @@ public class GameController : MonoBehaviour {
 	
 	private GameObject musicCanvasPrefab;
 	private GameObject musicCanvas;
+	private AudioManager audioManager;
 
 	private Hero hero;
 	private GameObject heroGameObject;
@@ -276,6 +277,10 @@ public class GameController : MonoBehaviour {
 
 		audioSource.Play ();*/
 		musicCanvas = Instantiate (musicCanvasPrefab);
+		audioManager = musicCanvas.GetComponent<AudioManager> ();
+		
+		audioManager.SetMusicName (level.MusicPath);
+		audioManager.Init ();
 
 		Debug.Log ("END Start GameController");
 
@@ -349,7 +354,7 @@ public class GameController : MonoBehaviour {
 			state = GameState.DEAD;
 		}
 
-
+		audioManager.Play();
 
 		if (Input.GetKeyDown(KeyCode.R)){
 			Restart();
@@ -364,6 +369,7 @@ public class GameController : MonoBehaviour {
 	 * Function called when the game is paused
 	 */
 	public void Pause(){
+		audioManager.Pause();
 		Time.timeScale = 0.0f;
 		pausedMenu.SetActive(true);
 		leapControl.setPointerMode(true);

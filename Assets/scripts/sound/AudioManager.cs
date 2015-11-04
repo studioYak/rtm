@@ -7,76 +7,56 @@ using UnityEngine.UI;
 public class AudioManager : MonoBehaviour {
     public int width;
     public int height;
-    public Color backgroundColor = new Color(0,0,0,0);
-	public Color waveformColor = Color.black;
-    public Color cursorColor = Color.green;
+    public Color backgroundColor = Color.black;
+    public Color waveformColor = Color.white;
+    public Color cursorColor = Color.red;
     public int size = 2048;
 
     Color[] blank;
     Texture2D texture;
-	Texture2D textureCursor;
     float[] samples;
     AudioSource audioSource;
     AudioClip clip;
     public GameObject image;
     private RawImage img;
-
-	public GameObject cursor;
-	private RawImage cursorImg;
-
 	private string musicName;
 
     // Use this for initialization
     void Start () {
-        
+        audioSource = GetComponent<AudioSource>();
+        samples = new float[size];
+
+        // create the texture and assign to the guiTexture:
+        img = (RawImage) image.GetComponent<RawImage>();
+        width = (int) GetComponent<RectTransform>().rect.width;
+        height = (int)GetComponent<RectTransform>().rect.height;
+
+        texture = new Texture2D(width, height);
+        img.texture = texture;
+       
+        // create a 'blank screen' image
+        blank = new Color[width * height];
+
+        for (var i = 0; i < blank.Length; i++)
+        {
+            blank[i] = backgroundColor;
+        }
+
     }
 
-	public void SetMusicName(string name){
+	public void setMusicName(string name){
 		musicName = name;
 	}
 
-	public void Init(){
+	public void play(){
 		if (musicName != null) {
-
-			audioSource = GetComponent<AudioSource>();
-			samples = new float[size];
-
 			clip = Resources.Load ("Musics/" + musicName, typeof(AudioClip)) as AudioClip;
 			audioSource.clip = clip;
 
-			// create the texture and assign to the guiTexture:
-			img = (RawImage) image.GetComponent<RawImage>();
-			cursorImg = (RawImage) cursor.GetComponent<RawImage>();
-
-			width = (int) GetComponent<RectTransform>().rect.width;
-			height = (int)GetComponent<RectTransform>().rect.height;
-			
-			texture = new Texture2D(width, height);
-			textureCursor = new Texture2D(width, height);
-			img.texture = texture;
-			cursorImg.texture = textureCursor;
-
-			// create a 'blank screen' image
-			blank = new Color[width * height];
-			
-			for (var i = 0; i < blank.Length; i++)
-			{
-				blank[i] = backgroundColor;
-			}
-
-			textureCursor.SetPixels(blank, 0);
-			textureCursor.Apply();
 			// refresh the display each 100mS
 			GetWaveForm ();
+			audioSource.Play ();
 			StartCoroutine (UpdateWaveForm ());
-		}
-	}
-	public void Pause(){
-		audioSource.Pause ();
-	}
-	public void Play(){
-		if(!audioSource.isPlaying){
-		audioSource.Play ();
 		}
 	}
 
@@ -86,21 +66,19 @@ public class AudioManager : MonoBehaviour {
         int secondes = sizeWaveform / audioSource.clip.frequency;
         int pas = width / secondes;
         int i,j;
-		int currentCount = 1;
+        int count = 0;
         while (true)
         {
-			if(audioSource.isPlaying){
-				textureCursor.SetPixels(blank, 0);
-	            for (i = 1; i < height; i++) //sizeWaveform
-	            {
-					for (j = pas * (currentCount-1); j <= (pas * currentCount)+10; j++) //sizeWaveform
-					{
-	                textureCursor.SetPixel(j, i, cursorColor);
-					}
-	            }
-				textureCursor.Apply();
-				currentCount = currentCount + 1;
-			}
+            for (i = 1; i < height; i++) //sizeWaveform
+            {
+				for (j = pas * (count-1); j <= pas * count; j++) //sizeWaveform
+				{
+                texture.SetPixel(j, i, cursorColor);
+				}
+            }
+            texture.Apply();
+            count = count + 1;
+            //GetCurWave();
             yield return new WaitForSeconds(1.0f);
         }
     }

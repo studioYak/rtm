@@ -8,8 +8,6 @@ using System.Collections;
 public class IceDragonet : Dragonet {
 
 	void Start () {
-		//gameObject.GetComponent<Renderer>().material.color = Color.blue;
-		gameObject.transform.Rotate(0,180,0);
 	}
 
 	// Update is called once per frame

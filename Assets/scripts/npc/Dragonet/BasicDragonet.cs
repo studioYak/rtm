@@ -8,8 +8,6 @@ using System.Collections;
 public class BasicDragonet : Dragonet {
 	
 	void Start () {
-		//gameObject.GetComponent<Renderer>().material.color = Color.green;
-		gameObject.transform.Rotate(0,180,0);
 	}
 	
 	protected void Update () {

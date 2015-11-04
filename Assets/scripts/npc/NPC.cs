@@ -28,7 +28,7 @@ public abstract class NPC : Unit {
 	float distanceToDisappear;
 	float firstBlockingTime = 0.0f;
 	Blocking blocking;
-	RangeClass rangeType;
+	protected RangeClass rangeType;
 	List<Hero> heros;
 	protected GameObject weapon = null;
 	protected GameObject weaponPrefab;
@@ -43,6 +43,7 @@ public abstract class NPC : Unit {
 	// Update is called once per frame
 	protected void Update () {
 		Act();
+
 	}
 
 	/**
@@ -125,16 +126,16 @@ public abstract class NPC : Unit {
 					target.RunBlocked = false;	
 				}
 			}
+			else
+			{
+				Run(Time.deltaTime);
+			}
 			Attack(target);
 		}
 		else if(position.z - character.position.z < aggroDistance)
 		{
 			Run(Time.deltaTime);
 		}
-		/*else if(position.z - character.position.z < aggroDistance + 1)
-		{
-			WakeUp(Time.deltaTime);
-		}*/
 	}
 
 	/**
@@ -303,7 +304,9 @@ public abstract class NPC : Unit {
 			LostHP(hero.Damage);
 			if(IsDead())
 			{
+
 				hero.GiveXP(XpGain);
+				hero.runBlocked = false;
 				Die();
 			}
 		}

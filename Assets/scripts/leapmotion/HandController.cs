@@ -128,13 +128,7 @@ public class HandController : MonoBehaviour {
 			Debug.LogError ("Baptiste says : Can't find GameObject "+"prefabs/leapmotion/"+prefab+"_right"+ ". Does it exists?");
 		rightGraphicsModel = rightGO.GetComponent<RiggedHandBV>();
 
-		if (heroClass == "Warrior"){
-			if (hs == HandSide.RIGHT_HAND) {
-				rightGraphicsModel.GetComponentInChildren<HeroLinkWeapon>().Hero = hero;
-			} else {
-				leftGraphicsModel.GetComponentInChildren<HeroLinkWeapon>().Hero = hero;
-			}
-		}
+
 		//load extra prefabs if needed
 		if (heroClass == "Wizard") {
 			fireballGo = Resources.Load ("prefabs/leapmotion/Fireball") as GameObject;
@@ -222,6 +216,13 @@ public class HandController : MonoBehaviour {
     if (handParent != null) {
       hand_model.transform.SetParent(handParent.transform);
     }
+	
+		//We attach the hero to transmit damages
+	if (heroClass == "Warrior"){
+			if (hand_model.GetComponentInChildren<HeroLinkWeapon>() != null){
+				hand_model.GetComponentInChildren<HeroLinkWeapon>().Hero = hero;
+			}
+	}
     return hand_model;
   }
 

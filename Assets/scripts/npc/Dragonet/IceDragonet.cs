@@ -27,12 +27,13 @@ public class IceDragonet : Dragonet {
 	* Constructeur de la classe IceDragonet
 	* @version 1.0
 	**/
-	public IceDragonet()
+	/*public IceDragonet()
 		:base(30.0f, 4.5f, 2.0f, 2.0f, 7.0f, 40.0f, 25.0f, 10.0f, "semiDistance", "anonymous"){
 			
-	}
+	}*/
 
-	public IceDragonet(float essai_double_constructeur)
+	//public IceDragonet(float essai_double_constructeur)
+	public IceDragonet()
 		:base(EnnemyConfigurator.iceDragonetAggroDistance,
 			EnnemyConfigurator.iceDragonetAttackRange,
 			EnnemyConfigurator.iceDragonetDistanceToDisappear,

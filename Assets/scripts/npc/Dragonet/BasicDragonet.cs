@@ -19,12 +19,13 @@ public class BasicDragonet : Dragonet {
 	* Constructeur de la classe BasicDragonet
 	* @version 1.0
 	**/
-	public BasicDragonet()
+	/*public BasicDragonet()
 		:base(30.0f, 4.5f, 2.0f, 2.0f, 5.0f, 30.0f, 40.0f, 5.0f, "semiDistance", "anonymous"){
 		
-	}
+	}*/
 
-	public BasicDragonet(float essai_double_constructeur)
+	//public BasicDragonet(float essai_double_constructeur)
+	public BasicDragonet()
 		:base(EnnemyConfigurator.basicDragonetAggroDistance,
 			EnnemyConfigurator.basicDragonetAttackRange,
 			EnnemyConfigurator.basicDragonetDistanceToDisappear,

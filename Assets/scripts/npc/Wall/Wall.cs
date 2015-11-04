@@ -25,12 +25,13 @@ public class Wall : NPC {
 	* Lancer class constructor
 	* @version 1.0
 	**/
-	public Wall()
+	/*public Wall()
 		:base(30.0f, 4.5f, 2.0f, 0.0f, 0.0f, Blocking.BLOCK, 100.0f, 10.0f, 0.0f, "cac", "anonymous"){
 		
-	}
+	}*/
 
-	public Wall(float essai_double_constructeur)
+	//public Wall(float essai_double_constructeur)
+	public Wall()
 		:base(EnnemyConfigurator.wallAggroDistance,
 			EnnemyConfigurator.wallAttackRange,
 			EnnemyConfigurator.wallDistanceToDisappear,

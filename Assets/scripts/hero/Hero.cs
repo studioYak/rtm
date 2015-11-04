@@ -35,7 +35,7 @@ public abstract class Hero : Unit {
 	// Update is called once per frame
 	protected void Update () {
 		checkLevel();
-		adaptStatAccordingToLevel();
+		//adaptStatAccordingToLevel();
 		if(specialCapacityUnlocked)
 		{
 			SpecialCapacitySpell();
@@ -121,7 +121,7 @@ public abstract class Hero : Unit {
 	* @version 1.0
 	**/
 	public Hero(float range, float xpQuantity,float blockingPercent, string handAttack, float powerQuantity, float hpRefresh, float powerRefresh, float hp, float damage, float movementSpeed, string attackType, string name)
-		:base(hp, 1000*damage, movementSpeed, attackType, name){
+		:base(hp, damage, movementSpeed, attackType, name){
 		XpQuantity = xpQuantity;
 		HandAttack = handAttack;
 		PowerQuantity = powerQuantity;
@@ -626,9 +626,25 @@ public abstract class Hero : Unit {
 	{
 		if(hit.gameObject.tag == "ennemy_weapon")
 		{
-			Debug.Log("COLIISSSSSSSSSSSSSSION");
+			//Debug.Log("COLIISSSSSSSSSSSSSSION");
 			NPC ennemy = hit.GetComponentInParent<NPC>();
 			LostHP(ennemy.Damage);
+			PlayBloodAnimation();
 		}
+		else if(hit.gameObject.tag == "ennemy_projectile")
+		{
+			//Debug.Log("COLIISSSSSSSSSSSSSSION");
+			NPC ennemy = hit.GetComponentInParent<NPC>();
+			LostHP(ennemy.Damage);
+			PlayBloodAnimation();
+			Destroy(hit);
+		}
+
+	}
+
+	private void PlayBloodAnimation(){
+		Animator anim = Camera.main.GetComponent<Animator>();
+		anim.SetTrigger ("bloody");
+		anim.cullingMode = AnimatorCullingMode.AlwaysAnimate;
 	}
 }

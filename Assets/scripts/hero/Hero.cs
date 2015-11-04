@@ -624,6 +624,7 @@ public abstract class Hero : Unit {
 
 	void OnTriggerEnter(Collider hit)
 	{
+		//Debug.LogWarning("COLLISION HERO "+hit);
 		if(hit.gameObject.tag == "ennemy_weapon")
 		{
 			NPC ennemy = hit.GetComponentInParent<NPC>();
@@ -640,6 +641,7 @@ public abstract class Hero : Unit {
 				PlayBloodAnimation();
 			}
 			Destroy(hit);
+			//Debug.LogWarning("COLLISION HERO -> destroy "+hit);
 		}
 	}
 

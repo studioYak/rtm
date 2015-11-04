@@ -23,7 +23,7 @@ public class FireballCollision : MonoBehaviour {
 
 	void onTriggerEnter(Collider col)
 	{
-		Debug.Log("Fireball Trigger with : "+col);
+		Debug.LogError("** FIRE Fireball Trigger with : "+col);
 		Destroy(this);
 	}
 }

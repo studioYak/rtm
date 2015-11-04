@@ -308,6 +308,22 @@ public abstract class NPC : Unit {
 				Die();
 			}
 		}
+		else if(hit.gameObject.tag == "hero_projectile")
+		{
+			Hero hero = hit.GetComponent<HeroLinkWeapon>().Hero;
+			LostHP(hero.Damage);
+			if(IsDead())
+			{
+				hero.GiveXP(XpGain);
+				hero.RunBlocked = false;
+				Die();
+			}
+
+			//fireball collides with an ennemy. Destruct it !
+			Destroy(hit.gameObject);
+		}
+
+
 	}
 
 	void OnDestroy(){

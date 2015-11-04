@@ -27,6 +27,7 @@ public class HeroMenuController : MonoBehaviour {
 		buttonMonk = GameObject.Find("Monk").GetComponent<Button>();
 
 		buttonPlay.interactable = false;
+		buttonMonk.interactable = false;
 
 		cb = buttonWarrior.colors;
 

@@ -136,10 +136,6 @@ public class HandController : MonoBehaviour {
 
 		}
 
-		Debug.Log("leftGraphicsModel : "+leftGraphicsModel+" / rightGraphicsModel : "+rightGraphicsModel);
-
-
-
 	}
 	
 	public void setGameController(GameController gc)

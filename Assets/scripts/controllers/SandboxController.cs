@@ -101,13 +101,14 @@ public class SandboxController : MonoBehaviour {
 		Hero hero = GameModel.HerosInGame [0];
 
 		//update hud state
+		Debug.Log ("H///" + hero.MaxHealthPoint);
 		float currentHealthPercent = 100.0f*hero.HealthPoint/hero.MaxHealthPoint;
 		float currentPowerPercent = 100.0f*hero.PowerQuantity/hero.MaxPowerQuantity;
 		//Debug.Log("Life: " + currentHealthPercent);
 		
 		hudMaster.setLevel (HudMaster.HudType.Life, currentHealthPercent);
 		hudMaster.setLevel (HudMaster.HudType.Special, currentPowerPercent);
-		hudMaster.updateXP (hero.XpQuantity/hero.XpQuantityNextLevel*100.0f, (int)hero.Level + 1);
+		hudMaster.updateXP ((hero.XpQuantity-hero.XpQuantityLastLevel)/(hero.XpQuantityNextLevel-hero.XpQuantityLastLevel)*100.0f, (int)hero.Level + 1);
 
 		if (Input.GetKeyDown (KeyCode.L)) {
 			GameModel.HerosInGame[0].XpQuantity += 100.0f;
@@ -144,7 +145,7 @@ public class SandboxController : MonoBehaviour {
 		
 		if (go != null){
 			Hero hero = GameModel.HerosInGame[0];
-			GameObject instance = Instantiate(go, new Vector3(0, go.transform.localScale.y/2, hero.GetPosition().z + hero.MovementSpeed * 15.0f), Quaternion.identity) as GameObject;
+			GameObject instance = Instantiate(go, new Vector3(0, go.transform.localScale.y/2, hero.GetPosition().z + hero.MovementSpeed * 10.0f), Quaternion.identity) as GameObject;
 			GameModel.NPCsInGame.Add(instance.GetComponent<NPC>());
 			//GameModel.NPCsInGame[GameModel.NPCsInGame.Count-1].transform.Rotate(0, 180, 0);
 		}

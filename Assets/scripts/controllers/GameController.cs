@@ -66,6 +66,10 @@ public class GameController : MonoBehaviour {
 	private HandController leapControl;
 	private GameObject leapCanvasPrefab;
 	private GameObject leapCanvas;
+
+	private GameObject musicCanvasPrefab;
+	private GameObject musicCanvas;
+	private AudioManager audioManager;
 	
 	private Hero hero;
 	private GameObject heroGameObject;
@@ -130,6 +134,8 @@ public class GameController : MonoBehaviour {
 		leapPrefab = Resources.Load("prefabs/leapmotion/LeapMotionScene") as GameObject;
 		leapCanvasPrefab = Resources.Load("prefabs/leapmotion/LeapCanvas") as GameObject;
 
+		musicCanvasPrefab = Resources.Load("prefabs/sound/MusicCanvas") as GameObject;
+
 		Debug.Log (" END Awake GameController");
 
 	}
@@ -189,6 +195,7 @@ public class GameController : MonoBehaviour {
 		leapControl = leapInstance.GetComponent<HandController> ();
 		leapControl.setModel(handSide, hero);
 		leapControl.setGameController(this);
+		
 
 		leapControl.handParent = Camera.allCameras[0].transform;
 		
@@ -263,14 +270,26 @@ public class GameController : MonoBehaviour {
 
 		Time.timeScale = 1.0f;
 
-		AudioSource audioSource = Camera.main.GetComponent<AudioSource> ();
-		Debug.Log ("Musics/" + level.MusicPath);
-		AudioClip clip = Resources.Load ("Musics/" + level.MusicPath, typeof(AudioClip)) as AudioClip;
-		Debug.Log (clip.ToString());
-		audioSource.clip = clip;
+		musicCanvas = Instantiate (musicCanvasPrefab);
+		audioManager = musicCanvas.GetComponent<AudioManager> ();
+		
+		audioManager.SetMusicName (level.MusicPath);
+		audioManager.Init ();
 
-		audioSource.Play ();
+			//If leap is not connected, Pause game and show warning message
+		if ( !leapControl.IsConnected())
+		{
+				//pause()
+				audioManager.Pause();
+				Time.timeScale = 0.0f;
+
+			GameObject detectedCanvas = GameObject.Find("DetectedLeapCanvas");
+				detectedCanvas.GetComponent<Canvas>().enabled = true;
+		}
+
 		Debug.Log ("END Start GameController");
+
+
 
 	}
 	
@@ -342,7 +361,7 @@ public class GameController : MonoBehaviour {
 			state = GameState.DEAD;
 		}
 
-
+		audioManager.Play();
 
 		if (Input.GetKeyDown(KeyCode.R)){
 			Restart();
@@ -357,6 +376,7 @@ public class GameController : MonoBehaviour {
 	 * Function called when the game is paused
 	 */
 	public void Pause(){
+		audioManager.Pause();
 		Time.timeScale = 0.0f;
 		pausedMenu.SetActive(true);
 		leapControl.setPointerMode(true);

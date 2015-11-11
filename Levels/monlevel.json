@@ -1,1 +1,1 @@
-{"name":"monlevel","music":"bensound-epic","map":"undefined","tutorial":false,"items":[{"id":1,"type":"basicDragonet","position_seconds":"12","position_x":"0"},{"id":2,"type":"basicDragonet","position_seconds":"5","position_x":"0"}]}
+{"name":"monlevel","music":"bensound-epic","map":"undefined","tutorial":false,"items":[{"id":1,"type":"basicDragonet","position_seconds":"12","position_x":"0"},{"id":2,"type":"cannon","position_seconds":"5","position_x":"0"}]}

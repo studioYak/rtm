@@ -9,21 +9,22 @@ using System.Collections.Generic; // Lib for List<GameObject>
 public class EnnemyWeaponCollider : MonoBehaviour {
 
 
-	void OnTriggerEnter(Collider hit)
+	void OnTriggerEnter(Collider other)
 	{
-		if(hit.transform.tag == "hero_defense")
+		Debug.Log ("epee trigger "+other.ToString() + " tag : " + other.gameObject.tag);
+		if(other.gameObject.tag == "hero_defense")
 		{
 			Debug.Log ("DEFENSE");
-			Hero hero = hit.gameObject.GetComponentInParent<Hero>();
+			Hero hero = other.gameObject.GetComponentInParent<Hero>();
 			hero.DefenseMode("on");
 		}
 	}
 
-	void OnTriggerExit(Collider hit)
+	void OnTriggerExit(Collider other)
 	{
-		if(hit.transform.tag == "hero_defense")
+		if(other.gameObject.tag == "hero_defense")
 		{
-			Hero hero = hit.gameObject.GetComponentInParent<Hero>();
+			Hero hero = other.gameObject.GetComponentInParent<Hero>();
 			hero.DefenseMode("off");
 		}
 	}

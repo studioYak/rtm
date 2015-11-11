@@ -113,9 +113,9 @@ public abstract class NPC : Unit {
 			//ennemy is nearby, post-bloqued, ready to go through the hero
 			//disable mesh and colliders
 
-			this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+			/*this.gameObject.GetComponent<MeshRenderer>().enabled = false;
 			this.gameObject.GetComponent<Collider>().enabled = false;
-			weapon.GetComponent<Collider>().enabled = false;
+			weapon.GetComponent<Collider>().enabled = false;*/
 		}
 		else if(position.z - character.position.z < attackRange) // Condition provisoire
 		{
@@ -221,7 +221,8 @@ public abstract class NPC : Unit {
 		{
 			if(weaponRotated == true)
 			{
-				weapon.transform.Translate(new Vector3(0,-2,0));
+
+				weapon.transform.Translate(new Vector3(0,-2,-0.9f));
 				weapon.transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(0, 0, 0),1.0f);
 				
 				weaponRotated = false;
@@ -233,7 +234,7 @@ public abstract class NPC : Unit {
 				if(weapon != null)
 				{
 					weapon.transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(-90, 0, 0),1.0f);
-					weapon.transform.Translate(new Vector3(0,2,0));
+					weapon.transform.Translate(new Vector3(0,2,0.9f));
 					weaponRotated = true;
 					
 				}

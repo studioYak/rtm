@@ -7,7 +7,6 @@
 [Ll]ibrary/
 sysinfo.txt
 *.stackdump
-*.meta
 ProjectSettings/ProjectSettings.asset
 ProjectSettings/ProjectVersion.txt
 

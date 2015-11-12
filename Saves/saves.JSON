@@ -1,0 +1,25 @@
+{
+	"slots": [
+		{
+			"name" : "Roxxor22",
+	
+			"score" : 1200,
+	
+			"currentLevel" : "level 3",
+		
+			"xp" : 360,
+		
+			"class" : "Warrior"
+		},{
+			"name" : "Jean-Kévin",
+	
+			"score" : 3670,
+	
+			"currentLevel" : "level 2",
+		
+			"xp" : 30000,
+		
+			"class" : "Wizard"
+		}
+	]
+}

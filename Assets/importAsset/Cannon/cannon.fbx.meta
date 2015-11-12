@@ -1,0 +1,130 @@
+fileFormatVersion: 2
+guid: 37f884c2126bbea41b7210f7437f806a
+timeCreated: 1446495266
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Bolts
+    100002: Bolts_Washers
+    100004: Cannon
+    100006: //RootNode
+    100008: CannonMount
+    100010: CannonMount_Bolts
+    100012: CannonPivot
+    100014: Cart
+    100016: Cart_RearBlock
+    100018: Hooks_Rear
+    100020: Hooks_Side
+    100022: Wheel Rotation
+    100024: Wheels
+    400000: Bolts
+    400002: Bolts_Washers
+    400004: Cannon
+    400006: //RootNode
+    400008: CannonMount
+    400010: CannonMount_Bolts
+    400012: CannonPivot
+    400014: Cart
+    400016: Cart_RearBlock
+    400018: Hooks_Rear
+    400020: Hooks_Side
+    400022: Wheel Rotation
+    400024: Wheels
+    2300000: Bolts
+    2300002: Bolts_Washers
+    2300004: Cannon
+    2300006: CannonMount
+    2300008: CannonMount_Bolts
+    2300010: CannonPivot
+    2300012: Cart
+    2300014: Cart_RearBlock
+    2300016: Hooks_Rear
+    2300018: Hooks_Side
+    2300020: Wheels
+    3300000: Bolts
+    3300002: Bolts_Washers
+    3300004: Cannon
+    3300006: CannonMount
+    3300008: CannonMount_Bolts
+    3300010: CannonPivot
+    3300012: Cart
+    3300014: Cart_RearBlock
+    3300016: Hooks_Rear
+    3300018: Hooks_Side
+    3300020: Wheels
+    4300000: Hooks_Side
+    4300002: Hooks_Rear
+    4300004: Cart_RearBlock
+    4300006: Wheels
+    4300008: Bolts_Washers
+    4300010: Bolts
+    4300012: Cart
+    4300014: CannonMount_Bolts
+    4300016: CannonPivot
+    4300018: CannonMount
+    4300020: Cannon
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

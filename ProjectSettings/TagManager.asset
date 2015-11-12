@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - hero_defense
+  - Touchable
+  - hero_weapon
+  - ennemy
+  - LeftConstraint
+  - RightConstraint
+  - TopConstraint
+  - ennemy_weapon
+  - hero_projectile
   layers:
   - Default
   - TransparentFX

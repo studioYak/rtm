@@ -1,0 +1,204 @@
+fileFormatVersion: 2
+guid: 372857d99b573684bae23963dfd40a53
+timeCreated: 1446470828
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Body_Low
+    100002: Character_Ctrl:ChestEndEffector
+    100004: Character_Ctrl:ChestOriginEffector
+    100006: Character_Ctrl:Head
+    100008: Character_Ctrl:HeadEffector
+    100010: Character_Ctrl:Hips
+    100012: Character_Ctrl:HipsEffector
+    100014: Character_Ctrl:LeftAnkleEffector
+    100016: Character_Ctrl:LeftArm
+    100018: Character_Ctrl:LeftElbowEffector
+    100020: Character_Ctrl:LeftFoot
+    100022: Character_Ctrl:LeftForeArm
+    100024: Character_Ctrl:LeftHand
+    100026: Character_Ctrl:LeftHipEffector
+    100028: Character_Ctrl:LeftKneeEffector
+    100030: Character_Ctrl:LeftLeg
+    100032: Character_Ctrl:LeftShoulderEffector
+    100034: Character_Ctrl:LeftUpLeg
+    100036: Character_Ctrl:LeftWristEffector
+    100038: Character_Ctrl:Reference
+    100040: Character_Ctrl:RightAnkleEffector
+    100042: Character_Ctrl:RightArm
+    100044: Character_Ctrl:RightElbowEffector
+    100046: Character_Ctrl:RightFoot
+    100048: Character_Ctrl:RightForeArm
+    100050: Character_Ctrl:RightHand
+    100052: Character_Ctrl:RightHipEffector
+    100054: Character_Ctrl:RightKneeEffector
+    100056: Character_Ctrl:RightLeg
+    100058: Character_Ctrl:RightShoulderEffector
+    100060: Character_Ctrl:RightUpLeg
+    100062: Character_Ctrl:RightWristEffector
+    100064: Character_Ctrl:Spine
+    100066: chest
+    100068: foot.L
+    100070: foot.R
+    100072: forearm.L
+    100074: forearm.R
+    100076: hand.L
+    100078: hand.L_end
+    100080: hand.R
+    100082: hand.R_end
+    100084: head
+    100086: head_end
+    100088: heel.L
+    100090: heel.L_end
+    100092: heel.R
+    100094: heel.R_end
+    100096: hips
+    100098: //RootNode
+    100100: metarig
+    100102: neck
+    100104: shin.L
+    100106: shin.R
+    100108: shoulder.L
+    100110: shoulder.R
+    100112: spine
+    100114: thigh.L
+    100116: thigh.R
+    100118: toe.L
+    100120: toe.L_end
+    100122: toe.R
+    100124: toe.R_end
+    100126: upper_arm.L
+    100128: upper_arm.R
+    400000: Body_Low
+    400002: Character_Ctrl:ChestEndEffector
+    400004: Character_Ctrl:ChestOriginEffector
+    400006: Character_Ctrl:Head
+    400008: Character_Ctrl:HeadEffector
+    400010: Character_Ctrl:Hips
+    400012: Character_Ctrl:HipsEffector
+    400014: Character_Ctrl:LeftAnkleEffector
+    400016: Character_Ctrl:LeftArm
+    400018: Character_Ctrl:LeftElbowEffector
+    400020: Character_Ctrl:LeftFoot
+    400022: Character_Ctrl:LeftForeArm
+    400024: Character_Ctrl:LeftHand
+    400026: Character_Ctrl:LeftHipEffector
+    400028: Character_Ctrl:LeftKneeEffector
+    400030: Character_Ctrl:LeftLeg
+    400032: Character_Ctrl:LeftShoulderEffector
+    400034: Character_Ctrl:LeftUpLeg
+    400036: Character_Ctrl:LeftWristEffector
+    400038: Character_Ctrl:Reference
+    400040: Character_Ctrl:RightAnkleEffector
+    400042: Character_Ctrl:RightArm
+    400044: Character_Ctrl:RightElbowEffector
+    400046: Character_Ctrl:RightFoot
+    400048: Character_Ctrl:RightForeArm
+    400050: Character_Ctrl:RightHand
+    400052: Character_Ctrl:RightHipEffector
+    400054: Character_Ctrl:RightKneeEffector
+    400056: Character_Ctrl:RightLeg
+    400058: Character_Ctrl:RightShoulderEffector
+    400060: Character_Ctrl:RightUpLeg
+    400062: Character_Ctrl:RightWristEffector
+    400064: Character_Ctrl:Spine
+    400066: chest
+    400068: foot.L
+    400070: foot.R
+    400072: forearm.L
+    400074: forearm.R
+    400076: hand.L
+    400078: hand.L_end
+    400080: hand.R
+    400082: hand.R_end
+    400084: head
+    400086: head_end
+    400088: heel.L
+    400090: heel.L_end
+    400092: heel.R
+    400094: heel.R_end
+    400096: hips
+    400098: //RootNode
+    400100: metarig
+    400102: neck
+    400104: shin.L
+    400106: shin.R
+    400108: shoulder.L
+    400110: shoulder.R
+    400112: spine
+    400114: thigh.L
+    400116: thigh.R
+    400118: toe.L
+    400120: toe.L_end
+    400122: toe.R
+    400124: toe.R_end
+    400126: upper_arm.L
+    400128: upper_arm.R
+    4300000: Body_Low
+    9500000: //RootNode
+    13700000: Body_Low
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

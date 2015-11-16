@@ -60,6 +60,10 @@ public class GameController : MonoBehaviour {
 	private GameObject warrior;
 	private GameObject monk;
 	private GameObject wizard;
+
+	private GameObject lifePotion;
+	private GameObject powerPotion;
+	private GameObject invincibilityPotion;
 		
 	private GameObject leapPrefab;
 	private GameObject leapInstance;
@@ -130,6 +134,10 @@ public class GameController : MonoBehaviour {
 		warrior = Resources.Load("prefabs/hero/Warrior") as GameObject;
 		monk = Resources.Load("prefabs/hero/Monk") as GameObject;
 		wizard = Resources.Load("prefabs/hero/Wizard") as GameObject;
+
+		lifePotion = Resources.Load("prefabs/item/LifePotion") as GameObject;
+		powerPotion = Resources.Load("prefabs/item/powerPotion") as GameObject;
+		invincibilityPotion = Resources.Load("prefabs/item/InvincibilityPotion") as GameObject;
 			
 		leapPrefab = Resources.Load("prefabs/leapmotion/LeapMotionScene") as GameObject;
 		leapCanvasPrefab = Resources.Load("prefabs/leapmotion/LeapCanvas") as GameObject;
@@ -223,31 +231,40 @@ public class GameController : MonoBehaviour {
 		List<Item> items = level.ItemList;
 		//Debug.Log ("FINAL ITEM LIST COUNT : " + items.Count);
 
-		foreach (Item ennemy in items) {
+		foreach (Item item in items) {
 			GameObject go = null;
 
-			if (ennemy.Type == "basicLancer")
+			if (item.Type == "basicLancer")
 				go = basicLancer;
-			else if (ennemy.Type == "fireLancer")
+			else if (item.Type == "fireLancer")
 				go = fireLancer;
-			else if (ennemy.Type == "iceLancer")
+			else if (item.Type == "iceLancer")
 				go = iceLancer;
-			else if (ennemy.Type == "basicDragonet")
+			else if (item.Type == "basicDragonet")
 				go = basicDragonet;
-			else if (ennemy.Type == "fireDragonet")
+			else if (item.Type == "fireDragonet")
 				go = fireDragonet;
-			else if (ennemy.Type == "iceDragonet")
+			else if (item.Type == "iceDragonet")
 				go = iceDragonet;
-			else if (ennemy.Type == "wall")
+			else if (item.Type == "wall")
 				go = wall;
-			else if (ennemy.Type == "cannon")
+			else if (item.Type == "cannon")
 				go = canon;
-			else if (ennemy.Type == "assassin")
+			else if (item.Type == "assassin")
 				go = assassin;
+			else if (item.Type == "life")
+				go = lifePotion;
+			else if (item.Type == "power")
+				go = powerPotion;
+			else if (item.Type == "invincibility")
+				go = invincibilityPotion;
 
 			if (go != null){
-				GameObject instance = Instantiate(go, new Vector3(ennemy.PositionInX, go.transform.localScale.y/2, vitesseHeros*ennemy.PositionInSeconds), Quaternion.identity) as GameObject;
-				GameModel.NPCsInGame.Add(instance.GetComponent<NPC>());
+				GameObject instance = Instantiate(go, new Vector3(item.PositionInX, go.transform.localScale.y/2, vitesseHeros*item.PositionInSeconds), Quaternion.identity) as GameObject;
+				NPC npc = instance.GetComponent<NPC>();
+				
+				if (npc != null)
+					GameModel.NPCsInGame.Add(npc);
 				//GameModel.NPCsInGame[GameModel.NPCsInGame.Count-1].transform.Rotate(0, 180, 0);
 			}
 		}
@@ -282,6 +299,11 @@ public class GameController : MonoBehaviour {
 
 //		GameObject tutoGO = Resources.Load("prefabs/controllers/TutorialManager") as GameObject;
 //		 Instantiate (tutoGO);
+
+		//TEST POTION
+
+			GameModel.HerosInGame [0].HealthPoint = GameModel.HerosInGame [0].HealthPoint / 2;
+			GameModel.HerosInGame [0].PowerQuantity = GameModel.HerosInGame [0].PowerQuantity / 2;
 	}
 	
 	/**

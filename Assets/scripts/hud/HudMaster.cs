@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.UI;
 
 public class HudMaster : MonoBehaviour {
 
@@ -12,10 +13,22 @@ public class HudMaster : MonoBehaviour {
 	public GameObject hudXPText;
 
 
+
     // Use this for initialization
     void Start () {
        // hudLife = GameObject.Find("hud_life");
        // hudSpecial = GameObject.Find("hud_special");
+		Color32 newColor;
+		if (GameModel.HerosInGame [0].GetType ().ToString () == "Warrior") {
+			newColor = new Color32(43, 170, 11, 184);
+		} else if (GameModel.HerosInGame [0].GetType ().ToString () == "Wizard") {
+			newColor = new Color32 (25, 1, 202, 184);
+		} else {
+			newColor = new Color32 (20, 20, 20, 184);
+		}
+
+		hudSpecial.GetComponent<Image> ().color = (Color) newColor;
+
     }
 	
 	// Update is called once per frame

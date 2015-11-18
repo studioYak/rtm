@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic; // Lib for List<GameObject>
+using UnityEngine.UI;
 
 /**
 * @author HugoLS
@@ -45,6 +46,8 @@ public abstract class NPC : Unit {
 	protected GameObject triggerAttack;
 	protected Vector3 nextAttackCoords;
 
+	protected Image lifeImageNPC;
+
 	AudioSource audio;
 
 	void Awake() {
@@ -52,7 +55,10 @@ public abstract class NPC : Unit {
 	}
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
+
+
 	}
 	
 	// Update is called once per frame
@@ -156,6 +162,8 @@ public abstract class NPC : Unit {
 		audio = GetComponentInChildren<AudioSource>();
 
 		initiated = true;
+
+		lifeImageNPC = this.gameObject.GetComponentInChildren<Image> ();
 	}
 
 	public virtual void UnderAttackRange(Hero target)
@@ -393,10 +401,16 @@ public abstract class NPC : Unit {
 
 	void OnTriggerEnter(Collider hit)
 	{
+
 		if(hit.gameObject.tag == "hero_weapon")
 		{
 			Hero hero = hit.GetComponent<HeroLinkWeapon>().Hero;
 			LostHP(hero.Damage);
+
+			Vector3 imageScale = lifeImageNPC.rectTransform.localScale;
+			imageScale.Set(hp / maxHp, 1, 0);
+			lifeImageNPC.rectTransform.localScale = imageScale;
+
 			if(IsDead())
 			{
 				hero.GiveXP(XpGain);
@@ -408,6 +422,11 @@ public abstract class NPC : Unit {
 		{
 			Hero hero = hit.GetComponent<HeroLinkWeapon>().Hero;
 			LostHP(hero.Damage);
+
+			Vector3 imageScale = lifeImageNPC.rectTransform.localScale;
+			imageScale.Set(hp / maxHp, 1, 0);
+			lifeImageNPC.rectTransform.localScale = imageScale;
+
 			if(IsDead())
 			{
 				hero.GiveXP(XpGain);

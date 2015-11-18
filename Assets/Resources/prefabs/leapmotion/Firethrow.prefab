@@ -16,7 +16,7 @@ GameObject:
   - 114: {fileID: 11441520}
   - 114: {fileID: 11489348}
   m_Layer: 0
-  m_Name: Fireball
+  m_Name: Firethrow
   m_TagString: hero_projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1107,7 +1107,7 @@ ParticleSystem:
     range: {x: 0, y: 1}
   CollisionModule:
     enabled: 0
-    type: 0
+    type: 1
     plane0: {fileID: 0}
     plane1: {fileID: 0}
     plane2: {fileID: 0}
@@ -1211,6 +1211,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: startDelay
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: CollisionModule.type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

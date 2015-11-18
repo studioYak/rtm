@@ -99,6 +99,9 @@ public class HandController : MonoBehaviour {
 
 	private float timeLeftBeforePause = TIME_ABOVE_PAUSE;
 
+	private HandModel lefthand = null;
+	private HandModel righthand = null;
+
 	/**
 	 * @author Baptiste Valthier
 	 * defines whether the user is left handed or not and choose the appropriate graphics and features according to the class.
@@ -119,14 +122,16 @@ public class HandController : MonoBehaviour {
 		GameObject leftGO = Resources.Load("prefabs/leapmotion/"+prefab+"_left") as GameObject;
 		//GameObject leftGO = Resources.Load("prefabs/leapmotion/PepperLightFullLeftHand") as GameObject;
 
-		if (leftGO == null) {
-			//Debug.LogError ("Baptiste says : Can't find GameObject " + "prefabs/leapmotion/" + prefab + "_left" + ". Does it exists?");
+		if (leftGO == null)
+		{
+			Debug.LogError ("Baptiste says : Can't find GameObject "+"prefabs/leapmotion/"+prefab+"_left"+ ". Does it exists?");
 		}
 		leftGraphicsModel = leftGO.GetComponent<RiggedHandBV>();
 
 		GameObject rightGO = Resources.Load("prefabs/leapmotion/"+prefab+"_right") as GameObject;
-		if (rightGO == null) {
-			//Debug.LogError ("Baptiste says : Can't find GameObject " + "prefabs/leapmotion/" + prefab + "_right" + ". Does it exists?");
+		if (rightGO == null)
+		{
+			Debug.LogError ("Baptiste says : Can't find GameObject "+"prefabs/leapmotion/"+prefab+"_right"+ ". Does it exists?");
 		}
 		rightGraphicsModel = rightGO.GetComponent<RiggedHandBV>();
 
@@ -188,7 +193,8 @@ public class HandController : MonoBehaviour {
 
 
     if (leap_controller_ == null) {
-      //Debug.LogWarning("Cannot connect to controller. Make sure you have Leap Motion v2.0+ installed");
+      Debug.LogWarning(
+          "Cannot connect to controller. Make sure you have Leap Motion v2.0+ installed");
     }
 			
 
@@ -204,8 +210,40 @@ public class HandController : MonoBehaviour {
       Leap.Utils.IgnoreCollisions(hand.gameObject, to_ignore, ignore);
   }
 
+
   /** Creates a new HandModel instance. */
-  protected HandModel CreateHand(HandModel model) {
+	/** BV : passing leap_hand because we need to know if it's a right or left and detected by LMC before instantiate*/
+  protected HandModel CreateHand(HandModel model, Hand leap_hand) {
+
+		if (righthand != null && lefthand == null)
+		{
+			//create left hand only
+			model = leftGraphicsModel;
+			lefthand = model;
+
+		}
+		else if (lefthand != null && righthand == null)
+		{
+			//create righthand only
+			model = rightGraphicsModel;
+			righthand = model;
+		}
+		else if (lefthand != null && righthand != null)
+		{ 
+			//already both hands set !
+			return null;
+		}
+		else if (lefthand == null && righthand == null)
+		{
+			//do nothing, keep the parameter model
+			if (leap_hand.IsLeft)
+				lefthand = model;
+			else
+				righthand = model;
+		}
+
+
+
     HandModel hand_model = Instantiate(model, transform.position, transform.rotation)
                            as HandModel;
     hand_model.gameObject.SetActive(true);
@@ -226,12 +264,20 @@ public class HandController : MonoBehaviour {
   /** 
   * Destroys a HandModel instance if HandController.destroyHands is true (the default).
   * If you set destroyHands to false, you must destroy the hand instances elsewhere in your code.
+  * EDIT BV : put back the hands in the initial position
   */
   protected void DestroyHand(HandModel hand_model) {
-    if (destroyHands)
+    
+	if (hand_model.GetLeapHand().IsLeft)
+			lefthand = null;
+	else
+			righthand = null;
+
+	if (destroyHands)
       Destroy(hand_model.gameObject);
     else
       hand_model.SetLeapHand(null);
+		Debug.Log("DestroyHand "+hand_model);
   }
 
   /** 
@@ -271,19 +317,25 @@ public class HandController : MonoBehaviour {
         ids_to_check.Remove(leap_hand.Id);
 
         // Create the hand and initialized it if it doesn't exist yet.
+				//EDIT BV and if not both hands sets
         if (!all_hands.ContainsKey(leap_hand.Id)) {
-          HandModel new_hand = CreateHand(model);
-          new_hand.SetLeapHand(leap_hand);
-          //new_hand.MirrorYAxis(mirrorYAxis);
-          new_hand.SetController(this);
+					Debug.Log("prepare to call CreateHand");
+          HandModel new_hand = CreateHand(model, leap_hand);
+					//if new_hand is null, it means we already have both hands set. Do not add the new hand.
+          if (new_hand != null)
+			{
+						new_hand.SetLeapHand(leap_hand);
+	          //new_hand.MirrorYAxis(mirrorYAxis);
+	          new_hand.SetController(this);
 
-          // Set scaling based on reference hand.
-          float hand_scale = MM_TO_M * leap_hand.PalmWidth / new_hand.handModelPalmWidth;
-          new_hand.transform.localScale = hand_scale * transform.lossyScale;
+	          // Set scaling based on reference hand.
+	          float hand_scale = MM_TO_M * leap_hand.PalmWidth / new_hand.handModelPalmWidth;
+	          new_hand.transform.localScale = hand_scale * transform.lossyScale;
 
-          new_hand.InitHand();
-          new_hand.UpdateHand();
-          all_hands[leap_hand.Id] = new_hand;
+	          new_hand.InitHand();
+	          new_hand.UpdateHand();
+	          all_hands[leap_hand.Id] = new_hand;
+				}
         }
         else {
           // Make sure we update the Leap Hand reference.
@@ -442,7 +494,7 @@ public class HandController : MonoBehaviour {
 		return;
     }
 	
-	/*Hand closestHand = null;
+	Hand closestHand = null;
 	for (int i=0; i < frame.Hands.Count; i++)
 	{
 		if (closestHand != null)
@@ -452,7 +504,8 @@ public class HandController : MonoBehaviour {
 	}
 
 	//detect long pose over LM which means Pause
-	if (closestHand != null && gameController != null)
+	//Pause will not be implemented in the game. (Movement not suitable)
+	/*if (closestHand != null && gameController != null)
 	{
 		//((UnityEngine.UI.Text)infoLabel).text = closestHand.PalmVelocity.y.ToString();
 		
@@ -470,11 +523,11 @@ public class HandController : MonoBehaviour {
 		else
 			//if me out-criterion hte Pause mvt, set the timer back
 			timeLeftBeforePause = TIME_ABOVE_PAUSE;
-	}
+	}*/
 	/*else
 		((UnityEngine.UI.Text)infoLabel).text = "No hands detected";*/
 
-	
+
 
     if (frame != null && !flag_initialized_)
     {
@@ -545,8 +598,12 @@ public class HandController : MonoBehaviour {
   }
 
   /** Destroys all hands owned by this HandController instance. */
+	/** Edit BV : hands stay in scene */
   public void DestroyAllHands() {
-    if (hand_graphics_ != null) {
+		Debug.Log("DestroyAllHands() called");
+		lefthand = null;
+		righthand = null;
+    /*if (hand_graphics_ != null) {
       foreach (HandModel model in hand_graphics_.Values)
         Destroy(model.gameObject);
 
@@ -557,7 +614,7 @@ public class HandController : MonoBehaviour {
         Destroy(model.gameObject);
 
       hand_physics_.Clear();
-    }
+    }*/
   }
   
 }

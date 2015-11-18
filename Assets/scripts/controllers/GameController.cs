@@ -208,6 +208,9 @@ public class GameController : MonoBehaviour {
 		
 		leapCanvas = Instantiate(leapCanvasPrefab);
 
+		
+
+
 
 
 		//Génération de terrain
@@ -291,6 +294,17 @@ public class GameController : MonoBehaviour {
 		
 		audioManager.SetMusicName (level.MusicPath);
 		audioManager.Init ();
+
+		//If leap is not connected, Pause game and show warning message
+		if ( !leapControl.IsConnected())
+		{
+			//pause()
+			audioManager.Pause();
+			Time.timeScale = 0.0f;
+			
+			GameObject detectedCanvas = GameObject.Find("DetectedLeapCanvas");
+			detectedCanvas.GetComponent<Canvas>().enabled = true;
+		}
 
 		//Debug.Log ("END Start GameController");
 		

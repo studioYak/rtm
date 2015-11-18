@@ -86,6 +86,16 @@ public class SandboxController : MonoBehaviour {
 		leapControl.setModel(handSide, hero);
 		leapControl.handParent = Camera.main.transform;
 
+		//If leap is not connected, Pause game and show warning message
+		if ( !leapControl.IsConnected())
+		{
+			//pause()
+			Time.timeScale = 0.0f;
+			
+			GameObject detectedCanvas = GameObject.Find("DetectedLeapCanvas");
+			detectedCanvas.GetComponent<Canvas>().enabled = true;
+		}
+
 		ter = Instantiate (terrain, new Vector3 (-100, -2, 0), Quaternion.identity) as Terrain;
 
 		//Génération du HUD
@@ -95,7 +105,7 @@ public class SandboxController : MonoBehaviour {
 		Camera.main.transform.parent = heroGameObject.transform;
 		Camera.main.transform.position = new Vector3 (0, 2.18f, 0);
 
-		LevelGenerator.generateLevelFromFile ("lel");
+
 	}
 	
 	// Update is called once per frame
@@ -165,5 +175,10 @@ public class SandboxController : MonoBehaviour {
 	public void resetBoth() {
 		resetLife ();
 		resetPower ();
+	}
+
+	public void Resume()
+	{
+		Time.timeScale = 1.0f;
 	}
 }

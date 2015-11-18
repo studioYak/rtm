@@ -11,6 +11,7 @@ public class Cannon : NPC {
 	public GameObject CannonBallPrefab;
 
 	GameObject cannonBall;// = Resources.Load("prefabs/item/Ball") as GameObject;
+	HudMaster hudShield;
 
 	Vector3 target;
 	float projectileSpeed = EnnemyConfigurator.cannonProjectileSpeed;
@@ -22,6 +23,7 @@ public class Cannon : NPC {
 	protected void Start () {
 		cannonBall = Resources.Load("prefabs/item/Ball") as GameObject;
 		audio = GetComponentInChildren<AudioSource>();
+		hudShield = GameObject.Find("hudPrefab(Clone)").GetComponent<HudMaster>();
 	}
 	
 	protected void Update () {
@@ -68,12 +70,16 @@ public class Cannon : NPC {
 			vectorToTarget.z += distHero;
 			//vectorToTarget.y = 0;
 
+			float randomX = Random.Range(-1.5F, 1.5F)/distHero;
+			float randomY = Random.Range(0.0F, 1.0F)/distHero;
 
-			transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(vectorToTarget),rotationSpeed);
+			vectorToTarget.x += randomX;
+			vectorToTarget.y += randomY;
 			
 			if(LastAttack + AttackSpeed < Time.time )
 			{
-				nextAttackCoords = vectorToTarget;
+				transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(vectorToTarget),rotationSpeed);
+				//Debug.Log("vect:"+vectorToTarget);
 
 				// INITIALISATION DE L'ACTION EFFECTUE
 				base.Action = new UnitAction(target.transform.position.x,target.transform.position.y,target.transform.position.z);
@@ -84,8 +90,14 @@ public class Cannon : NPC {
 				projectile.transform.parent = transform;
 				projectile.transform.position = new Vector3(transform.position.x,transform.position.y+projectileHeight,transform.position.z);
 				Rigidbody rb = projectile.GetComponent<Rigidbody>();
+				nextAttackCoords = vectorToTarget - Physics.gravity * timeToShoot * timeToShoot;
+				nextAttackCoords.z += 3.0f;
 				rb.velocity = transform.TransformDirection(0,1,-projectileSpeed);
-
+				
+				//Debug.Log("next:"+nextAttackCoords);
+				hudShield.ShieldActivated = true;
+				hudShield.WorldToShieldPosition(nextAttackCoords);
+				
 				PlayAttackSound();
 
 				LastAttack = Time.time;

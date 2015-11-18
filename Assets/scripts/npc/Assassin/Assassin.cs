@@ -47,6 +47,7 @@ public class Assassin : NPC {
 
 	public override void Attack(Hero target)
 	{
-		
+		target.LostHP(this.Damage);
+		target.PlayBloodAnimation();
 	}
 }

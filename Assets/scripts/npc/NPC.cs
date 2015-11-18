@@ -24,6 +24,7 @@ public abstract class NPC : Unit {
 	float lastAttack;
 	float soundSpeed = 1;
 	float xpGain;
+	protected float offsetAttackTime = 0.0f;
 
 	float aggroDistance;
 	protected float attackRange;
@@ -46,19 +47,17 @@ public abstract class NPC : Unit {
 	protected GameObject triggerAttack;
 	protected Vector3 nextAttackCoords;
 
-	protected Image lifeImageNPC;
+	Image lifeImageNPC;
 
 	AudioSource audio;
+	protected bool audioInit = false;
 
 	void Awake() {
 
 	}
 
 	// Use this for initialization
-	void Start () 
-	{
-
-
+	void Start () {
 	}
 	
 	// Update is called once per frame
@@ -124,7 +123,6 @@ public abstract class NPC : Unit {
 		heros = GameModel.HerosInGame;
 		int hero_target_index = Random.Range(0, heros.Count);
 		
-
 		Hero target = heros[hero_target_index];
 		Transform character = target.transform;
 		
@@ -159,26 +157,30 @@ public abstract class NPC : Unit {
 		triggerAttack.transform.parent = transform;
 		triggerAttack.transform.position = new Vector3(transform.position.x,transform.position.y,transform.position.z-attackRange);
 
-		audio = GetComponentInChildren<AudioSource>();
-
-		initiated = true;
+		if(GetComponentInChildren<AudioSource>())
+		{
+			audio = GetComponentInChildren<AudioSource>();
+			audioInit = true;
+		}
 
 		lifeImageNPC = this.gameObject.GetComponentInChildren<Image> ();
+
+		initiated = true;
 	}
 
 	public virtual void UnderAttackRange(Hero target)
 	{
 		if(BlockingType != Blocking.FREE)
 		{
-			if(!target.RunBlocked && firstBlockingTime == 0.0f)
+			/*if(!target.RunBlocked && firstBlockingTime == 0.0f)
 			{
-				firstBlockingTime = Time.time;
-				target.RunBlocked = true;
+			*/	firstBlockingTime = Time.time;
+				target.RunBlocked = true;/*
 			}
 			else if(firstBlockingTime + 5.0f < Time.time)
 			{
 				target.RunBlocked = false;	
-			}
+			}*/
 		}
 		else
 		{
@@ -327,7 +329,17 @@ public abstract class NPC : Unit {
 	public virtual void Attack(Hero target)
 	{
 		//nextAttackCoords = vectorToTarget;
-		if(LastAttack + CurrentAttackSpeed < Time.time )
+		if(NbAttack == 0)
+		{
+			if(LastAttack + CurrentAttackSpeed + offsetAttackTime < Time.time )
+			{
+				GetComponentInChildren<Animation>().CrossFadeQueued("Attack",0.2f);
+				PlayAttackSound();
+				NbAttack = NbAttack+1;
+				LastAttack = Time.time;
+			}
+		}
+		else if(LastAttack + CurrentAttackSpeed < Time.time )
 		{
 			GetComponentInChildren<Animation>().CrossFadeQueued("Attack",0.2f);
 			PlayAttackSound();
@@ -401,16 +413,16 @@ public abstract class NPC : Unit {
 
 	void OnTriggerEnter(Collider hit)
 	{
-
+		
 		if(hit.gameObject.tag == "hero_weapon")
 		{
 			Hero hero = hit.GetComponent<HeroLinkWeapon>().Hero;
 			LostHP(hero.Damage);
-
+			
 			Vector3 imageScale = lifeImageNPC.rectTransform.localScale;
 			imageScale.Set(hp / maxHp, 1, 0);
 			lifeImageNPC.rectTransform.localScale = imageScale;
-
+			
 			if(IsDead())
 			{
 				hero.GiveXP(XpGain);
@@ -422,18 +434,18 @@ public abstract class NPC : Unit {
 		{
 			Hero hero = hit.GetComponent<HeroLinkWeapon>().Hero;
 			LostHP(hero.Damage);
-
+			
 			Vector3 imageScale = lifeImageNPC.rectTransform.localScale;
 			imageScale.Set(hp / maxHp, 1, 0);
 			lifeImageNPC.rectTransform.localScale = imageScale;
-
+			
 			if(IsDead())
 			{
 				hero.GiveXP(XpGain);
 				hero.RunBlocked = false;
 				Die();
 			}
-
+			
 			//fireball collides with an ennemy. Destruct it !
 			Destroy(hit.gameObject);
 		}
@@ -469,10 +481,13 @@ public abstract class NPC : Unit {
 	}
 
 	public void PlayAttackSound(){
-		if(audio.isPlaying){
-			audio.Stop();
+		if(audioInit)
+		{
+			if(audio.isPlaying){
+				audio.Stop();
+			}
+			audio.Play();
 		}
-		audio.Play();
 	}
 
 

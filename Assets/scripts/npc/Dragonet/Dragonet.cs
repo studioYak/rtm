@@ -46,6 +46,22 @@ public abstract class Dragonet : NPC {
 		}
 	}
 
+	public override void Attack(Hero target)
+	{
+		if(LastAttack + CurrentAttackSpeed < Time.time )
+		{
+			Vector3 vectorToTarget = target.transform.position - transform.position;
+			vectorToTarget.z = -vectorToTarget.z;
+			//Debug.Log("Dragonnet:"+vectorToTarget);
+			transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(vectorToTarget),10f);
+			GetComponentInChildren<Animation>().CrossFadeQueued("Attack",0.2f);
+			PlayAttackSound();
+			NbAttack = NbAttack+1;
+			LastAttack = Time.time;
+		}
+		
+	}
+
 	public void FollowPlayer(Hero target)
 	{
 		Transform character = target.transform;

@@ -658,7 +658,7 @@ public abstract class Hero : Unit {
 		}
 	}
 
-	private void PlayBloodAnimation(){
+	public void PlayBloodAnimation(){
 		Debug.Log ("BLOODY");
 		Animator anim = Camera.main.GetComponent<Animator>();
 		anim.SetTrigger ("bloody");

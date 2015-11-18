@@ -49,11 +49,11 @@ public class Wall : NPC {
 			EnnemyConfigurator.wallAttackType,
 			EnnemyConfigurator.wallName)
 	{
-
+		base.offsetAttackTime = 5.0f;
 	}
 
-	public override void Attack(Hero target)
+	/*public override void Attack(Hero target)
 	{
 
-	}
+	}*/
 }

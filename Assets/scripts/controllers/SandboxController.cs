@@ -94,6 +94,8 @@ public class SandboxController : MonoBehaviour {
 		
 		Camera.main.transform.parent = heroGameObject.transform;
 		Camera.main.transform.position = new Vector3 (0, 2.18f, 0);
+
+		LevelGenerator.generateLevelFromFile ("lel");
 	}
 	
 	// Update is called once per frame

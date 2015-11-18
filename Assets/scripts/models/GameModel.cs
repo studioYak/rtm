@@ -29,6 +29,10 @@ public class GameModel {
 
 	private static List<Save> saves;
 
+	private static bool customLevel;
+
+	private static List<HighScore> highScores;
+
 	public static Hero Hero {
 		get {
 			return hero;
@@ -163,5 +167,24 @@ public class GameModel {
 		npcsInGame = new List<NPC> ();
 
 		//herosInGame.Add( new 
+	}
+
+	public static bool CustomLevel {
+		get {
+			return customLevel;
+		}
+		set {
+			customLevel = value;
+		}
+	}
+
+	public static List<HighScore> HighScores {
+		get {
+			return highScores;
+		}
+		
+		set {
+			highScores = value;
+		}
 	}
 }

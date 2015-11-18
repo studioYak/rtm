@@ -298,4 +298,17 @@ public abstract class Unit : MonoBehaviour {
 	{
 		Destroy(this.gameObject);
 	}
+
+	/**
+	* FR:
+	* 	Tue l'unité en détruisant le gameObject
+	* EN:
+	* 	Kill the unit by destroying the gameObject
+	* @return Return void
+	* @version 1.0
+	**/
+	public void Die(float timer)
+	{
+		Destroy(this.gameObject,timer);
+	}
 }

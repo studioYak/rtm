@@ -15,7 +15,56 @@ using SimpleJSON;
  */
 public class LevelParser {
 
+	public static void saveLevelToFile(Level level) {
+		JSONNode json = LevelToJSON (level);
 
+		System.IO.File.WriteAllText (Application.dataPath + "/../Levels/" + level.Name + ".JSON", LevelToJSON(level).ToString());
+		Debug.Log (level.Name);
+		//json.SaveToFile(Application.dataPath + "/../Levels/" + level.Name + ".JSON");
+	}
+
+	private static JSONNode LevelToJSON(Level level) {
+
+		JSONClass root = new JSONClass ();
+
+		JSONData name = new JSONData (level.Name);
+		root.Add ("name",name);
+
+		JSONData music = new JSONData (level.MusicPath);
+		root.Add ("music",name);
+
+		JSONData map = new JSONData (level.Map);
+		root.Add ("map",name);
+
+		JSONData tutorial = new JSONData (level.Tutorial);
+		root.Add ("tutorial", tutorial);
+
+
+		int i = 0;
+		JSONArray items = new JSONArray ();
+		foreach (Item itemInList in level.ItemList) {
+			JSONClass item = new JSONClass();
+
+			i++;
+			JSONData id = new JSONData (i);
+			item.Add ("id", id);
+
+			JSONData type = new JSONData (itemInList.Type);
+			item.Add ("type", type);
+
+			JSONData position_seconds = new JSONData (itemInList.PositionInSeconds);
+			item.Add ("position_seconds", position_seconds);
+
+			JSONData position_x = new JSONData (itemInList.PositionInX);
+			item.Add ("position_x", position_x);
+
+			items.Add (item);
+		}
+
+		root.Add ("items", items);
+		return root;
+	}
+	
 
 	public static Level parseLevelFile(string levelFileName){
 

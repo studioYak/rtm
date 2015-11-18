@@ -487,6 +487,10 @@ ModelImporter:
     100958: WINGFAN_TOP_L_end
     100960: WINGFAN_TOP_R
     100962: WINGFAN_TOP_R_end
+    100964: Larry_bone_GEO
+    100966: Larry_eyeR_GEO
+    100968: Larry_spine_GEO
+    100970: Larry_wings_GEO
     400000: Bone.001
     400002: Bone.002
     400004: BROW_L
@@ -969,6 +973,10 @@ ModelImporter:
     400958: WINGFAN_TOP_L_end
     400960: WINGFAN_TOP_R
     400962: WINGFAN_TOP_R_end
+    400964: Larry_bone_GEO
+    400966: Larry_eyeR_GEO
+    400968: Larry_spine_GEO
+    400970: Larry_wings_GEO
     2300000: Larry_eyeL_GEO
     2300002: SHAPE_browL
     2300004: SHAPE_browMid
@@ -992,6 +1000,7 @@ ModelImporter:
     2300040: SHAPE_stick
     2300042: SHAPE_tongue
     2300044: SHAPE_torso
+    2300046: Larry_eyeR_GEO
     3300000: Larry_eyeL_GEO
     3300002: SHAPE_browL
     3300004: SHAPE_browMid
@@ -1015,6 +1024,7 @@ ModelImporter:
     3300040: SHAPE_stick
     3300042: SHAPE_tongue
     3300044: SHAPE_torso
+    3300046: Larry_eyeR_GEO
     4300000: SHAPE_footroll
     4300002: SHAPE_Eyeswitch
     4300004: SHAPE_FKswitchR
@@ -1040,15 +1050,25 @@ ModelImporter:
     4300044: Larry_eyeL_GEO
     4300046: Larry_body_GEO_MeshPart0
     4300048: Larry_body_GEO_MeshPart1
+    4300050: Larry_eyeR_GEO
+    4300052: Larry_bone_GEO
+    4300054: Larry_body_GEO
+    4300056: Larry_wings_GEO
+    4300058: Larry_spine_GEO
     7400000: Larry_Rig|Action
     7400002: Larry_Rig|BattementAiles
     7400004: Larry_Rig|Mourrir
-    7400006: Larry_Rig|OuvrirBouche
+    7400006: Attack
     7400008: Larry_Rig|Queue
     7400010: Larry_SpineRig|Action
     9500000: //RootNode
+    11100000: //RootNode
     13700000: Larry_body_GEO_MeshPart0
     13700002: Larry_body_GEO_MeshPart1
+    13700004: Larry_body_GEO
+    13700006: Larry_bone_GEO
+    13700008: Larry_spine_GEO
+    13700010: Larry_wings_GEO
   materials:
     importMaterials: 1
     materialName: 0
@@ -1068,7 +1088,997 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Attack
+      takeName: Larry_Rig|OuvrirBouche
+      firstFrame: 0
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: hook_ridgeA_1
+        weight: 1
+      - path: hook_ridgeA_2
+        weight: 1
+      - path: hook_ridgeB_1
+        weight: 1
+      - path: hook_ridgeB_2
+        weight: 1
+      - path: hook_ridgeC_1
+        weight: 1
+      - path: hook_ridgeC_2
+        weight: 1
+      - path: hook_ridgeE_1
+        weight: 1
+      - path: hook_ridgeE_2
+        weight: 1
+      - path: hook_ridgeF_1
+        weight: 1
+      - path: hook_ridgeF_2
+        weight: 1
+      - path: hook_ridgeG_1
+        weight: 1
+      - path: hook_ridgeG_2
+        weight: 1
+      - path: hook_ridgeH_1
+        weight: 1
+      - path: hook_ridgeH_2
+        weight: 1
+      - path: hook_ridgeI_1
+        weight: 1
+      - path: hook_ridgeI_2
+        weight: 1
+      - path: hook_SpineBelly_A
+        weight: 1
+      - path: hook_SpineBelly_B
+        weight: 1
+      - path: hook_SpineBelly_C
+        weight: 1
+      - path: hook_SpineBelly_E
+        weight: 1
+      - path: hook_SpineBelly_F
+        weight: 1
+      - path: hook_SpineBelly_G
+        weight: 1
+      - path: hook_SpineBelly_H
+        weight: 1
+      - path: hook_SpineBelly_I
+        weight: 1
+      - path: Larry_body_GEO
+        weight: 1
+      - path: Larry_body_GEO/Larry_body_GEO_MeshPart0
+        weight: 1
+      - path: Larry_body_GEO/Larry_body_GEO_MeshPart1
+        weight: 1
+      - path: Larry_Rig
+        weight: 1
+      - path: Larry_Rig/def_browB_L
+        weight: 1
+      - path: Larry_Rig/def_browB_L/def_browB_L_end
+        weight: 1
+      - path: Larry_Rig/def_nostril_L
+        weight: 1
+      - path: Larry_Rig/def_nostril_L/def_nostril_L_end
+        weight: 1
+      - path: Larry_Rig/def_nostril_R
+        weight: 1
+      - path: Larry_Rig/def_nostril_R/def_nostril_R_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Bone.001
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Bone.001/Ridge_H
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Bone.001/Ridge_H/Ridge_H_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Bone.002
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Bone.002/Ridge_I
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Bone.002/Ridge_I/Ridge_I_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_A
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_A/mch_SpineUP_A
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_A/mch_SpineUP_A/mch_SpineUP_A_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_A_aim
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_A_aim/mch_SpineBelly_A_aim_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_B
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_B/mch_SpineUP_B
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_B/mch_SpineUP_B/mch_SpineUP_B_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_B_aim
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_B_aim/mch_SpineBelly_B_aim_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_C
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_C/mch_SpineUP_C
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_C/mch_SpineUP_C/mch_SpineUP_C_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_C_aim
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_C_aim/mch_SpineBelly_C_aim_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_E
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_E/mch_SpineUP_E
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_E/mch_SpineUP_E/mch_SpineUP_E_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_E_aim
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_E_aim/mch_SpineBelly_E_aim_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_F
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_F/mch_SpineUP_F
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_F/mch_SpineUP_F/mch_SpineUP_F_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_F_aim
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_F_aim/mch_SpineBelly_F_aim_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_G
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_G/mch_SpineUP_G
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_G/mch_SpineUP_G/mch_SpineUP_G_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_G_aim
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_G_aim/mch_SpineBelly_G_aim_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_H
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_H/mch_SpineUP_H
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_H/mch_SpineUP_H/mch_SpineUP_H_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_H_aim
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_H_aim/mch_SpineBelly_H_aim_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_I
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_I/mch_SpineUP_I
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_I/mch_SpineUP_I/mch_SpineUP_I_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_I_aim
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_I_aim/mch_SpineBelly_I_aim_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_A
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_A/Ridge_A_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_B
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_B/Ridge_B_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_C
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_C/Ridge_C_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_D
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_D/Ridge_D_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_F
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_F/Ridge_F_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_G
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_G/Ridge_G_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/ridgeE_ori
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/ridgeE_ori/Ridge_E
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/ridgeE_ori/Ridge_E/Ridge_E_end
+        weight: 1
+      - path: Larry_Rig/ROOT
+        weight: 1
+      - path: Larry_Rig/ROOT/EYES_GLOBAL
+        weight: 1
+      - path: Larry_Rig/ROOT/EYES_GLOBAL/EYE_GLOBAL_L
+        weight: 1
+      - path: Larry_Rig/ROOT/EYES_GLOBAL/EYE_GLOBAL_L/EYE_GLOBAL_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/EYES_GLOBAL/EYE_GLOBAL_R
+        weight: 1
+      - path: Larry_Rig/ROOT/EYES_GLOBAL/EYE_GLOBAL_R/EYE_GLOBAL_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/FOOTROLL_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/FOOTROLL_L/FOOTROLL_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/KNEE_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/KNEE_L/KNEE_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeIK_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeIK_L/mch_ankleIK_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeIK_L/mch_ankleIK_L/mch_legIK_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeIK_L/mch_ankleIK_L/mch_legIK_L/mch_legIK_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeIK_L/mch_ankleUP_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeIK_L/mch_ankleUP_L/mch_ankleUP_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeIK_L/mch_footroll_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeIK_L/mch_footroll_L/mch_footroll_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeIndex_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeIndex_L/mch_toeIndexEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeIndex_L/mch_toeIndexEnd_L/mch_toeIndexEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeMid_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeMid_L/mch_toeMidEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeMid_L/mch_toeMidEnd_L/mch_toeMidEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toePinky_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toePinky_L/mch_toePinkyEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toePinky_L/mch_toePinkyEnd_L/mch_toePinkyEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeThumb_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeThumb_L/mch_toeThumbEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeThumb_L/mch_toeThumbEnd_L/mch_toeThumbEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/FOOTROLL_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/FOOTROLL_R/FOOTROLL_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/KNEE_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/KNEE_R/KNEE_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeIK_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeIK_R/mch_ankleIK_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeIK_R/mch_ankleIK_R/mch_legIK_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeIK_R/mch_ankleIK_R/mch_legIK_R/mch_legIK_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeIK_R/mch_ankleUP_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeIK_R/mch_ankleUP_R/mch_ankleUP_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeIK_R/mch_footroll_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeIK_R/mch_footroll_R/mch_footroll_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeIndex_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeIndex_R/mch_toeIndexEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeIndex_R/mch_toeIndexEnd_R/mch_toeIndexEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeMid_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeMid_R/mch_toeMidEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeMid_R/mch_toeMidEnd_R/mch_toeMidEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toePinky_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toePinky_R/mch_toePinkyEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toePinky_R/mch_toePinkyEnd_R/mch_toePinkyEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeThumb_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeThumb_R/mch_toeThumbEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeThumb_R/mch_toeThumbEnd_R/mch_toeThumbEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/IK_HAND_L
+        weight: 1
+      - path: Larry_Rig/ROOT/IK_HAND_L/mch_IKarmTar_L
+        weight: 1
+      - path: Larry_Rig/ROOT/IK_HAND_L/mch_IKarmTar_L/mch_IKarmTar_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/IK_HAND_R
+        weight: 1
+      - path: Larry_Rig/ROOT/IK_HAND_R/mch_IKarmTar_R
+        weight: 1
+      - path: Larry_Rig/ROOT/IK_HAND_R/mch_IKarmTar_R/mch_IKarmTar_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/FING_INDEX_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/FING_INDEX_L/FING_INDEXend_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/FING_INDEX_L/FING_INDEXend_L/FING_INDEXend_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/FING_MID_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/FING_MID_L/FING_MIDend_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/FING_MID_L/FING_MIDend_L/FING_MIDend_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/PALMPinky_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/PALMPinky_L/FING_PINKY_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/PALMPinky_L/FING_PINKY_L/FING_PINKYend_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/PALMPinky_L/FING_PINKY_L/FING_PINKYend_L/FING_PINKYend_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/PALMThumb_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/PALMThumb_L/FING_THUMB_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/PALMThumb_L/FING_THUMB_L/FING_THUMBend_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/PALMThumb_L/FING_THUMB_L/FING_THUMBend_L/FING_THUMBend_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_SWITCH_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_SWITCH_L/FK_SWITCH_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_SWITCH_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_SWITCH_R/FK_SWITCH_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/IK_bicep_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/IK_bicep_L/IK_forearm_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/IK_bicep_L/IK_forearm_L/IK_forearm_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/mch_neckBase
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/mch_neckBase/def_neck
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/mch_neckBase/def_neck/mch_neckTarget
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/mch_neckBase/def_neck/mch_neckTarget/mch_neckTarget_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_L/def_browA_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_L/def_browA_L/def_browA_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_L/mch_browTrack_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_L/mch_browTrack_L/pt_brow_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_L/mch_browTrack_L/pt_brow_L/pt_brow_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_L/mch_browTrack_L/pt_brow_L/pt_brow_R/pt_brow_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_L/mch_eyebrow_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_L/mch_eyebrow_L/mch_eyebrow_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_R/def_browA_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_R/def_browA_R/def_browA_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_R/mch_browTrack_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_R/mch_browTrack_R/mch_browTrack_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_R/mch_eyebrow_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_R/mch_eyebrow_R/mch_eyebrow_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/CHEEK_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/CHEEK_L/CHEEK_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/CHEEK_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/CHEEK_R/CHEEK_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_browB_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_browB_R/def_browB_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_cheek_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_cheek_L/def_cheek_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_cheek_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_cheek_R/def_cheek_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_earA_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_earA_L/def_earB_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_earA_L/def_earB_L/def_earB_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_earA_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_earA_R/def_earB_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_earA_R/def_earB_R/def_earB_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_eyelidBttm_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_eyelidBttm_L/def_eyelidBttm_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_eyelidBttm_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_eyelidBttm_R/def_eyelidBttm_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_eyelidTop_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_eyelidTop_L/def_eyelidTop_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_eyelidTop_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_eyelidTop_R/def_eyelidTop_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_jawBase
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_jawBase/def_jaw_A
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_jawBase/def_jaw_A/def_jaw_B
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_jawBase/def_jaw_A/def_jaw_B/def_jaw_B_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_snoutBase
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_snoutBase/def_snout_A
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_snoutBase/def_snout_A/def_snout_B
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_snoutBase/def_snout_A/def_snout_B/def_snout_B_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/EAR_01_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/EAR_01_L/EAR_02_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/EAR_01_L/EAR_02_L/EAR_02_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/EAR_01_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/EAR_01_R/EAR_02_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/EAR_01_R/EAR_02_R/EAR_02_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/EYES_LOCAL
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/EYES_LOCAL/EYE_LOCAL_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/EYES_LOCAL/EYE_LOCAL_L/EYE_LOCAL_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/EYES_LOCAL/EYE_LOCAL_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/EYES_LOCAL/EYE_LOCAL_R/EYE_LOCAL_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/JAW_Base
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/JAW_Base/JAW_A
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/JAW_Base/JAW_A/JAW_B
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/JAW_Base/JAW_A/JAW_B/JAW_B_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/JAW_Base/TONGUE_PIVOT
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/JAW_Base/TONGUE_PIVOT/def_tongue_top
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/JAW_Base/TONGUE_PIVOT/def_tongue_top/def_tongue_bttm
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/JAW_Base/TONGUE_PIVOT/def_tongue_top/def_tongue_bttm/def_tongue_bttm_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/JAW_Base/TONGUE_PIVOT/TONGUE_TOP
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/JAW_Base/TONGUE_PIVOT/TONGUE_TOP/TONGUE_BTTM
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/JAW_Base/TONGUE_PIVOT/TONGUE_TOP/TONGUE_BTTM/TONGUE_BTTM_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_brow_mid
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_brow_mid/BROW_MID
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_brow_mid/BROW_MID/BROW_MID_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_ConstrainedEye_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_ConstrainedEye_L/Larry_eyeL_GEO
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_ConstrainedEye_L/mch_ConstrainedEye_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_ConstrainedEye_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_ConstrainedEye_R/mch_ConstrainedEye_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_eyeTrack_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_eyeTrack_L/EYELID_BTTM_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_eyeTrack_L/EYELID_BTTM_L/EYELID_BTTM_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_eyeTrack_L/EYELID_TOP_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_eyeTrack_L/EYELID_TOP_L/EYELID_TOP_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_eyeTrack_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_eyeTrack_R/EYELID_BTTM_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_eyeTrack_R/EYELID_BTTM_R/EYELID_BTTM_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_eyeTrack_R/EYELID_TOP_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_eyeTrack_R/EYELID_TOP_R/EYELID_TOP_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_trackLocal_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_trackLocal_L/mch_trackLocal_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_trackLocal_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_trackLocal_R/mch_trackLocal_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_trackMaster_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_trackMaster_L/mch_trackMaster_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_trackMaster_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_trackMaster_R/mch_trackMaster_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/SNOUT_A
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/SNOUT_A/EYE_SWITCH
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/SNOUT_A/EYE_SWITCH/EYE_SWITCH_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/SNOUT_A/SNOUT_B
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/SNOUT_A/SNOUT_B/NOSTRIL_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/SNOUT_A/SNOUT_B/NOSTRIL_L/NOSTRIL_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/SNOUT_A/SNOUT_B/NOSTRIL_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/SNOUT_A/SNOUT_B/NOSTRIL_R/NOSTRIL_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/mch_wingBttm_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/mch_wingBttm_L/def_wingBttm_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/mch_wingBttm_L/def_wingBttm_L/def_wingBttm_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/mch_wingBttm_L/mch_wingBttmRot_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/mch_wingBttm_L/mch_wingBttmRot_L/mch_wingBttmRot_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/mch_wingBttm_L/WINGFAN_BTTM_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/mch_wingBttm_L/WINGFAN_BTTM_L/WINGFAN_BTTM_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingMid_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingMid_L/def_wingMid_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingMid_L/def_wingMid_L/def_wingMid_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingMid_L/mch_wingMidRot_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingMid_L/mch_wingMidRot_L/mch_wingMidRot_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingMid_L/WINGFAN_MID_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingMid_L/WINGFAN_MID_L/WINGFAN_MID_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingTop_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingTop_L/def_wingTop_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingTop_L/def_wingTop_L/def_wingTop_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingTop_L/mch_wingTopRot_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingTop_L/mch_wingTopRot_L/mch_wingTopRot_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingTop_L/WINGFAN_TOP_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingTop_L/WINGFAN_TOP_L/WINGFAN_TOP_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_R/WING_END_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_R/WING_END_R/WING_END_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_fingIndex_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_fingIndex_L/def_fingIndexEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_fingIndex_L/def_fingIndexEnd_L/def_fingIndexEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_fingMid_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_fingMid_L/def_fingMidEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_fingMid_L/def_fingMidEnd_L/def_fingMidEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_palmPinky_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_palmPinky_L/def_fingPinky_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_palmPinky_L/def_fingPinky_L/def_fingPinkyEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_palmPinky_L/def_fingPinky_L/def_fingPinkyEnd_L/def_fingPinkyEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_palmThumb_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_palmThumb_L/def_fingThumb_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_palmThumb_L/def_fingThumb_L/def_fingThumbEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_palmThumb_L/def_fingThumb_L/def_fingThumbEnd_L/def_fingThumbEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_fingIndex_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_fingIndex_R/def_fingIndexEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_fingIndex_R/def_fingIndexEnd_R/def_fingIndexEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_fingMid_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_fingMid_R/def_fingMidEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_fingMid_R/def_fingMidEnd_R/def_fingMidEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_palmPinky_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_palmPinky_R/def_fingPinky_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_palmPinky_R/def_fingPinky_R/def_fingPinkyEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_palmPinky_R/def_fingPinky_R/def_fingPinkyEnd_R/def_fingPinkyEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_palmThumb_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_palmThumb_R/def_fingThumb_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_palmThumb_R/def_fingThumb_R/def_fingThumbEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_palmThumb_R/def_fingThumb_R/def_fingThumbEnd_R/def_fingThumbEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_L/def_wingBaseB_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_L/def_wingBaseB_L/def_wingBaseB_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingMid_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingMid_R/def_wingMid_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingMid_R/def_wingMid_R/def_wingMid_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingMid_R/mch_wingMidRot_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingMid_R/mch_wingMidRot_R/mch_wingMidRot_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingMid_R/WINGFAN_MID_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingMid_R/WINGFAN_MID_R/WINGFAN_MID_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingTop_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingTop_R/def_wingTop_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingTop_R/def_wingTop_R/def_wingTop_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingTop_R/mch_wingTopRot_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingTop_R/mch_wingTopRot_R/mch_wingTopRot_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingTop_R/WINGFAN_TOP_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingTop_R/WINGFAN_TOP_R/WINGFAN_TOP_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/mch_wingBttm_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/mch_wingBttm_R/def_wingBttm_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/mch_wingBttm_R/def_wingBttm_R/def_wingBttm_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/mch_wingBttm_R/mch_wingBttmRot_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/mch_wingBttm_R/mch_wingBttmRot_R/mch_wingBttmRot_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/mch_wingBttm_R/WINGFAN_BTTM_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/mch_wingBttm_R/WINGFAN_BTTM_R/WINGFAN_BTTM_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/FING_INDEX_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/FING_INDEX_R/FING_INDEXend_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/FING_INDEX_R/FING_INDEXend_R/FING_INDEXend_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/FING_MID_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/FING_MID_R/FING_MIDend_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/FING_MID_R/FING_MIDend_R/FING_MIDend_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/PALMPinky_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/PALMPinky_R/FING_PINKY_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/PALMPinky_R/FING_PINKY_R/FING_PINKYend_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/PALMPinky_R/FING_PINKY_R/FING_PINKYend_R/FING_PINKYend_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/PALMThumb_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/PALMThumb_R/FING_THUMB_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/PALMThumb_R/FING_THUMB_R/FING_THUMBend_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/PALMThumb_R/FING_THUMB_R/FING_THUMBend_R/FING_THUMBend_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/IK_bicep_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/IK_bicep_R/IK_forearm_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/IK_bicep_R/IK_forearm_R/IK_forearm_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toeIndex_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toeIndex_L/def_toeIndexEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toeIndex_L/def_toeIndexEnd_L/def_toeIndexEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toeMid_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toeMid_L/def_toeMidEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toeMid_L/def_toeMidEnd_L/def_toeMidEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toePinky_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toePinky_L/def_toePinkyEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toePinky_L/def_toePinkyEnd_L/def_toePinkyEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toeThumb_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toeThumb_L/def_toeThumbEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toeThumb_L/def_toeThumbEnd_L/def_toeThumbEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toeIndex_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toeIndex_R/def_toeIndexEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toeIndex_R/def_toeIndexEnd_R/def_toeIndexEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toeMid_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toeMid_R/def_toeMidEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toeMid_R/def_toeMidEnd_R/def_toeMidEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toePinky_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toePinky_R/def_toePinkyEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toePinky_R/def_toePinkyEnd_R/def_toePinkyEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toeThumb_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toeThumb_R/def_toeThumbEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toeThumb_R/def_toeThumbEnd_R/def_toeThumbEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/ELBOW_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/ELBOW_L/ELBOW_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/ELBOW_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/ELBOW_R/ELBOW_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_tailBaseCurve
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_tailBaseCurve/def_tail_A
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_tailBaseCurve/def_tail_A/def_tail_B
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_tailBaseCurve/def_tail_A/def_tail_B/def_tail_B_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_thigh_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_thigh_L/mch_shin_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_thigh_L/mch_shin_L/mch_ankle_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_thigh_L/mch_shin_L/mch_ankle_L/mch_toes_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_thigh_L/mch_shin_L/mch_ankle_L/mch_toes_L/mch_toes_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_thigh_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_thigh_R/mch_shin_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_thigh_R/mch_shin_R/mch_ankle_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_thigh_R/mch_shin_R/mch_ankle_R/mch_toes_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_thigh_R/mch_shin_R/mch_ankle_R/mch_toes_R/mch_toes_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/TAIL_TOP
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/TAIL_TOP/def_spineCorrect
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/TAIL_TOP/def_spineCorrect/def_spineCorrect_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/TAIL_TOP/TAIL_BTTM
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/TAIL_TOP/TAIL_BTTM/TAIL_BTTM_end
+        weight: 1
+      - path: SHAPE_browL
+        weight: 1
+      - path: SHAPE_browMid
+        weight: 1
+      - path: SHAPE_browR
+        weight: 1
+      - path: SHAPE_cheekL
+        weight: 1
+      - path: SHAPE_cheekR
+        weight: 1
+      - path: SHAPE_circular
+        weight: 1
+      - path: SHAPE_eyelidL
+        weight: 1
+      - path: SHAPE_eyelidR
+        weight: 1
+      - path: SHAPE_eyeMaster
+        weight: 1
+      - path: SHAPE_Eyeswitch
+        weight: 1
+      - path: SHAPE_FKswitchL
+        weight: 1
+      - path: SHAPE_FKswitchR
+        weight: 1
+      - path: SHAPE_footroll
+        weight: 1
+      - path: SHAPE_head
+        weight: 1
+      - path: SHAPE_jaw01
+        weight: 1
+      - path: SHAPE_jawBase
+        weight: 1
+      - path: SHAPE_neck
+        weight: 1
+      - path: SHAPE_root
+        weight: 1
+      - path: SHAPE_spheres
+        weight: 1
+      - path: SHAPE_stick
+        weight: 1
+      - path: SHAPE_tongue
+        weight: 1
+      - path: SHAPE_torso
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -1107,7 +2117,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 1
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

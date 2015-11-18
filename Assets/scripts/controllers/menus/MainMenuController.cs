@@ -2,8 +2,8 @@
 using System.Collections;
 
 /**
- * @author Adrien D
- * @version 1.0
+ * @author Adrien D / Kevin R
+ * @version 1.1
  */
 
 /**
@@ -19,6 +19,13 @@ public class MainMenuController : MonoBehaviour {
 	}
 
 	/**
+	 * function triggered by the play button
+	 */
+	public void Custom() {
+		Application.LoadLevel ("Custom_menu");
+	}
+
+	/**
 	 * function triggered by the load button
 	 */
 	public void Load() {
@@ -29,7 +36,7 @@ public class MainMenuController : MonoBehaviour {
 	 * function triggered by the high scofre button
 	 */
 	public void HighScore() {
-		
+		Application.LoadLevel("HighScore_menu");
 	}
 
 	/**

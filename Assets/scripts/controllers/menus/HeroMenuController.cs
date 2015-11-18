@@ -24,10 +24,10 @@ public class HeroMenuController : MonoBehaviour {
 		buttonPlay = GameObject.Find("Play").GetComponent<Button>();
 		buttonWarrior = GameObject.Find("Warrior").GetComponent<Button>();
 		buttonWizard = GameObject.Find("Wizard").GetComponent<Button>();
-		buttonMonk = GameObject.Find("Monk").GetComponent<Button>();
+		//buttonMonk = GameObject.Find("Monk").GetComponent<Button>();
 
 		buttonPlay.interactable = false;
-		buttonMonk.interactable = false;
+		//buttonMonk.interactable = false;
 
 		cb = buttonWarrior.colors;
 
@@ -54,9 +54,9 @@ public class HeroMenuController : MonoBehaviour {
 		
 		cb.normalColor = Color.white;
 		buttonWizard.colors = cb;
-		buttonMonk.colors = cb;
+		//buttonMonk.colors = cb;
 		wizard = false;
-		monk = false;
+		//monk = false;
 
 	}
 
@@ -67,12 +67,12 @@ public class HeroMenuController : MonoBehaviour {
 
 		cb.normalColor = Color.white;
 		buttonWarrior.colors = cb;
-		buttonMonk.colors = cb;
+		//buttonMonk.colors = cb;
 		warrior = false;
-		monk = false;
+		//monk = false;
 	}
 
-	public void Monk() {
+	/*public void Monk() {
 		cb.normalColor = new Color32(163, 124, 124, 255);
 		buttonMonk.colors = cb;
 		monk = true;
@@ -83,7 +83,7 @@ public class HeroMenuController : MonoBehaviour {
 		warrior = false;
 		wizard = false;
 
-	}
+	}*/
 
 	public void Play(){
 		if (warrior) GameModel.Hero = new Warrior();

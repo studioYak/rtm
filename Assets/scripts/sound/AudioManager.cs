@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour {
 	public Color waveformColor = Color.black;
     public Color cursorColor = Color.green;
     public int size = 2048;
+	public static float songAmplitude = 0;
 
     Color[] blank;
     Texture2D texture;
@@ -112,6 +113,29 @@ public class AudioManager : MonoBehaviour {
 	            }
 				textureCursor.Apply();
 				currentCount = currentCount + 1;
+
+				audioSource.GetOutputData(samples, 0);
+				int k;
+				float sum = 0;
+				float moyenne = 0;
+				float min = float.MaxValue;
+				float max = float.MinValue;
+				
+				// draw the waveform
+				for (k = 0; k < size; k++)
+				{
+					if (samples[k] > max)
+					{
+						max = samples[k];
+					}
+					if (samples[k] < min)
+					{
+						min = samples[k];
+					}
+					sum = sum + samples[k];
+				}
+
+				songAmplitude = max;
 			}
             yield return new WaitForSeconds(1.0f);
         }

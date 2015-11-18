@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11493956}
   m_Layer: 0
   m_Name: Monk
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,6 +73,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46951570736dd4e4d9e9dd4f6e425197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runBlocked: 0
+  prayerMode: 0
+  lastHeal: 0
+  speedHeal: 1
+  powerHealConsumption: 10
+  hpHealed: 100
 --- !u!136 &13640840
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -104,6 +110,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Radius
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

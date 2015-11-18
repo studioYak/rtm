@@ -1,0 +1,2116 @@
+fileFormatVersion: 2
+guid: 154e45920f2292f40b74aa06c54e5d33
+timeCreated: 1447350918
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Bone.001
+    100002: Bone.002
+    100004: BROW_L
+    100006: BROW_MID
+    100008: BROW_MID_end
+    100010: BROW_R
+    100012: CHEEK_L
+    100014: CHEEK_L_end
+    100016: CHEEK_R
+    100018: CHEEK_R_end
+    100020: CHEST
+    100022: def_ankle_L
+    100024: def_ankle_R
+    100026: def_bicep_L
+    100028: def_bicep_R
+    100030: def_browA_L
+    100032: def_browA_L_end
+    100034: def_browA_R
+    100036: def_browA_R_end
+    100038: def_browB_L
+    100040: def_browB_L_end
+    100042: def_browB_R
+    100044: def_browB_R_end
+    100046: def_cheek_L
+    100048: def_cheek_L_end
+    100050: def_cheek_R
+    100052: def_cheek_R_end
+    100054: def_chest
+    100056: def_earA_L
+    100058: def_earA_R
+    100060: def_earB_L
+    100062: def_earB_L_end
+    100064: def_earB_R
+    100066: def_earB_R_end
+    100068: def_eyelidBttm_L
+    100070: def_eyelidBttm_L_end
+    100072: def_eyelidBttm_R
+    100074: def_eyelidBttm_R_end
+    100076: def_eyelidTop_L
+    100078: def_eyelidTop_L_end
+    100080: def_eyelidTop_R
+    100082: def_eyelidTop_R_end
+    100084: def_fingIndex_L
+    100086: def_fingIndex_R
+    100088: def_fingIndexEnd_L
+    100090: def_fingIndexEnd_L_end
+    100092: def_fingIndexEnd_R
+    100094: def_fingIndexEnd_R_end
+    100096: def_fingMid_L
+    100098: def_fingMid_R
+    100100: def_fingMidEnd_L
+    100102: def_fingMidEnd_L_end
+    100104: def_fingMidEnd_R
+    100106: def_fingMidEnd_R_end
+    100108: def_fingPinky_L
+    100110: def_fingPinky_R
+    100112: def_fingPinkyEnd_L
+    100114: def_fingPinkyEnd_L_end
+    100116: def_fingPinkyEnd_R
+    100118: def_fingPinkyEnd_R_end
+    100120: def_fingThumb_L
+    100122: def_fingThumb_R
+    100124: def_fingThumbEnd_L
+    100126: def_fingThumbEnd_L_end
+    100128: def_fingThumbEnd_R
+    100130: def_fingThumbEnd_R_end
+    100132: def_forearm_L
+    100134: def_forearm_R
+    100136: def_hand_L
+    100138: def_hand_R
+    100140: def_head
+    100142: def_jaw_A
+    100144: def_jaw_B
+    100146: def_jaw_B_end
+    100148: def_jawBase
+    100150: def_neck
+    100152: def_nostril_L
+    100154: def_nostril_L_end
+    100156: def_nostril_R
+    100158: def_nostril_R_end
+    100160: def_palmPinky_L
+    100162: def_palmPinky_R
+    100164: def_palmThumb_L
+    100166: def_palmThumb_R
+    100168: def_pelvis
+    100170: def_shin_L
+    100172: def_shin_R
+    100174: def_snout_A
+    100176: def_snout_B
+    100178: def_snout_B_end
+    100180: def_snoutBase
+    100182: def_spineCorrect
+    100184: def_spineCorrect_end
+    100186: def_tail_A
+    100188: def_tail_B
+    100190: def_tail_B_end
+    100192: def_thigh_L
+    100194: def_thigh_R
+    100196: def_toeIndex_L
+    100198: def_toeIndex_R
+    100200: def_toeIndexEnd_L
+    100202: def_toeIndexEnd_L_end
+    100204: def_toeIndexEnd_R
+    100206: def_toeIndexEnd_R_end
+    100208: def_toeMid_L
+    100210: def_toeMid_R
+    100212: def_toeMidEnd_L
+    100214: def_toeMidEnd_L_end
+    100216: def_toeMidEnd_R
+    100218: def_toeMidEnd_R_end
+    100220: def_toePinky_L
+    100222: def_toePinky_R
+    100224: def_toePinkyEnd_L
+    100226: def_toePinkyEnd_L_end
+    100228: def_toePinkyEnd_R
+    100230: def_toePinkyEnd_R_end
+    100232: def_toeThumb_L
+    100234: def_toeThumb_R
+    100236: def_toeThumbEnd_L
+    100238: def_toeThumbEnd_L_end
+    100240: def_toeThumbEnd_R
+    100242: def_toeThumbEnd_R_end
+    100244: def_tongue_bttm
+    100246: def_tongue_bttm_end
+    100248: def_tongue_top
+    100250: def_wingBaseA_L
+    100252: def_wingBaseA_R
+    100254: def_wingBaseB_L
+    100256: def_wingBaseB_L_end
+    100258: def_wingBaseB_R
+    100260: def_wingBttm_L
+    100262: def_wingBttm_L_end
+    100264: def_wingBttm_R
+    100266: def_wingBttm_R_end
+    100268: def_wingMid_L
+    100270: def_wingMid_L_end
+    100272: def_wingMid_R
+    100274: def_wingMid_R_end
+    100276: def_wingTop_L
+    100278: def_wingTop_L_end
+    100280: def_wingTop_R
+    100282: def_wingTop_R_end
+    100284: EAR_01_L
+    100286: EAR_01_R
+    100288: EAR_02_L
+    100290: EAR_02_L_end
+    100292: EAR_02_R
+    100294: EAR_02_R_end
+    100296: ELBOW_L
+    100298: ELBOW_L_end
+    100300: ELBOW_R
+    100302: ELBOW_R_end
+    100304: EYE_GLOBAL_L
+    100306: EYE_GLOBAL_L_end
+    100308: EYE_GLOBAL_R
+    100310: EYE_GLOBAL_R_end
+    100312: EYE_LOCAL_L
+    100314: EYE_LOCAL_L_end
+    100316: EYE_LOCAL_R
+    100318: EYE_LOCAL_R_end
+    100320: EYE_SWITCH
+    100322: EYE_SWITCH_end
+    100324: EYELID_BTTM_L
+    100326: EYELID_BTTM_L_end
+    100328: EYELID_BTTM_R
+    100330: EYELID_BTTM_R_end
+    100332: EYELID_TOP_L
+    100334: EYELID_TOP_L_end
+    100336: EYELID_TOP_R
+    100338: EYELID_TOP_R_end
+    100340: EYES_GLOBAL
+    100342: EYES_LOCAL
+    100344: FING_INDEX_L
+    100346: FING_INDEX_R
+    100348: FING_INDEXend_L
+    100350: FING_INDEXend_L_end
+    100352: FING_INDEXend_R
+    100354: FING_INDEXend_R_end
+    100356: FING_MID_L
+    100358: FING_MID_R
+    100360: FING_MIDend_L
+    100362: FING_MIDend_L_end
+    100364: FING_MIDend_R
+    100366: FING_MIDend_R_end
+    100368: FING_PINKY_L
+    100370: FING_PINKY_R
+    100372: FING_PINKYend_L
+    100374: FING_PINKYend_L_end
+    100376: FING_PINKYend_R
+    100378: FING_PINKYend_R_end
+    100380: FING_THUMB_L
+    100382: FING_THUMB_R
+    100384: FING_THUMBend_L
+    100386: FING_THUMBend_L_end
+    100388: FING_THUMBend_R
+    100390: FING_THUMBend_R_end
+    100392: //RootNode
+    100394: FK_BICEP_L
+    100396: FK_BICEP_R
+    100398: FK_FOREARM_L
+    100400: FK_FOREARM_R
+    100402: FK_HAND_L
+    100404: FK_HAND_R
+    100406: FK_SWITCH_L
+    100408: FK_SWITCH_L_end
+    100410: FK_SWITCH_R
+    100412: FK_SWITCH_R_end
+    100414: FOOT_L
+    100416: FOOT_R
+    100418: FOOTROLL_L
+    100420: FOOTROLL_L_end
+    100422: FOOTROLL_R
+    100424: FOOTROLL_R_end
+    100426: HEAD
+    100428: hook_ridgeA_1
+    100430: hook_ridgeA_2
+    100432: hook_ridgeB_1
+    100434: hook_ridgeB_2
+    100436: hook_ridgeC_1
+    100438: hook_ridgeC_2
+    100440: hook_ridgeE_1
+    100442: hook_ridgeE_2
+    100444: hook_ridgeF_1
+    100446: hook_ridgeF_2
+    100448: hook_ridgeG_1
+    100450: hook_ridgeG_2
+    100452: hook_ridgeH_1
+    100454: hook_ridgeH_2
+    100456: hook_ridgeI_1
+    100458: hook_ridgeI_2
+    100460: hook_SpineBelly_A
+    100462: hook_SpineBelly_B
+    100464: hook_SpineBelly_C
+    100466: hook_SpineBelly_E
+    100468: hook_SpineBelly_F
+    100470: hook_SpineBelly_G
+    100472: hook_SpineBelly_H
+    100474: hook_SpineBelly_I
+    100476: IK_bicep_L
+    100478: IK_bicep_R
+    100480: IK_forearm_L
+    100482: IK_forearm_L_end
+    100484: IK_forearm_R
+    100486: IK_forearm_R_end
+    100488: IK_HAND_L
+    100490: IK_HAND_R
+    100492: JAW_A
+    100494: JAW_B
+    100496: JAW_B_end
+    100498: JAW_Base
+    100500: KNEE_L
+    100502: KNEE_L_end
+    100504: KNEE_R
+    100506: KNEE_R_end
+    100508: Larry_body_GEO
+    100510: Larry_bone_GEO
+    100512: Larry_eyeL_GEO
+    100514: Larry_eyeR_GEO
+    100516: Larry_Rig
+    100518: Larry_spine_GEO
+    100520: Larry_SpineRig
+    100522: Larry_wings_GEO
+    100524: mch_ankle_L
+    100526: mch_ankle_R
+    100528: mch_ankleIK_L
+    100530: mch_ankleIK_R
+    100532: mch_ankleUP_L
+    100534: mch_ankleUP_L_end
+    100536: mch_ankleUP_R
+    100538: mch_ankleUP_R_end
+    100540: mch_brow_mid
+    100542: mch_browTrack_L
+    100544: mch_browTrack_R
+    100546: mch_browTrack_R_end
+    100548: mch_ConstrainedEye_L
+    100550: mch_ConstrainedEye_L_end
+    100552: mch_ConstrainedEye_R
+    100554: mch_ConstrainedEye_R_end
+    100556: mch_eyebrow_L
+    100558: mch_eyebrow_L_end
+    100560: mch_eyebrow_R
+    100562: mch_eyebrow_R_end
+    100564: mch_eyeTrack_L
+    100566: mch_eyeTrack_R
+    100568: mch_footroll_L
+    100570: mch_footroll_L_end
+    100572: mch_footroll_R
+    100574: mch_footroll_R_end
+    100576: mch_IKarmTar_L
+    100578: mch_IKarmTar_L_end
+    100580: mch_IKarmTar_R
+    100582: mch_IKarmTar_R_end
+    100584: mch_legIK_L
+    100586: mch_legIK_L_end
+    100588: mch_legIK_R
+    100590: mch_legIK_R_end
+    100592: mch_neckBase
+    100594: mch_neckTarget
+    100596: mch_neckTarget_end
+    100598: mch_shin_L
+    100600: mch_shin_R
+    100602: mch_SpineBelly_A
+    100604: mch_SpineBelly_A_aim
+    100606: mch_SpineBelly_A_aim_end
+    100608: mch_SpineBelly_B
+    100610: mch_SpineBelly_B_aim
+    100612: mch_SpineBelly_B_aim_end
+    100614: mch_SpineBelly_C
+    100616: mch_SpineBelly_C_aim
+    100618: mch_SpineBelly_C_aim_end
+    100620: mch_SpineBelly_E
+    100622: mch_SpineBelly_E_aim
+    100624: mch_SpineBelly_E_aim_end
+    100626: mch_SpineBelly_F
+    100628: mch_SpineBelly_F_aim
+    100630: mch_SpineBelly_F_aim_end
+    100632: mch_SpineBelly_G
+    100634: mch_SpineBelly_G_aim
+    100636: mch_SpineBelly_G_aim_end
+    100638: mch_SpineBelly_H
+    100640: mch_SpineBelly_H_aim
+    100642: mch_SpineBelly_H_aim_end
+    100644: mch_SpineBelly_I
+    100646: mch_SpineBelly_I_aim
+    100648: mch_SpineBelly_I_aim_end
+    100650: mch_SpineUP_A
+    100652: mch_SpineUP_A_end
+    100654: mch_SpineUP_B
+    100656: mch_SpineUP_B_end
+    100658: mch_SpineUP_C
+    100660: mch_SpineUP_C_end
+    100662: mch_SpineUP_E
+    100664: mch_SpineUP_E_end
+    100666: mch_SpineUP_F
+    100668: mch_SpineUP_F_end
+    100670: mch_SpineUP_G
+    100672: mch_SpineUP_G_end
+    100674: mch_SpineUP_H
+    100676: mch_SpineUP_H_end
+    100678: mch_SpineUP_I
+    100680: mch_SpineUP_I_end
+    100682: mch_tailBaseCurve
+    100684: mch_thigh_L
+    100686: mch_thigh_R
+    100688: mch_toeIK_L
+    100690: mch_toeIK_R
+    100692: mch_toeIndex_L
+    100694: mch_toeIndex_R
+    100696: mch_toeIndexEnd_L
+    100698: mch_toeIndexEnd_L_end
+    100700: mch_toeIndexEnd_R
+    100702: mch_toeIndexEnd_R_end
+    100704: mch_toeMid_L
+    100706: mch_toeMid_R
+    100708: mch_toeMidEnd_L
+    100710: mch_toeMidEnd_L_end
+    100712: mch_toeMidEnd_R
+    100714: mch_toeMidEnd_R_end
+    100716: mch_toePinky_L
+    100718: mch_toePinky_R
+    100720: mch_toePinkyEnd_L
+    100722: mch_toePinkyEnd_L_end
+    100724: mch_toePinkyEnd_R
+    100726: mch_toePinkyEnd_R_end
+    100728: mch_toes_L
+    100730: mch_toes_L_end
+    100732: mch_toes_R
+    100734: mch_toes_R_end
+    100736: mch_toeThumb_L
+    100738: mch_toeThumb_R
+    100740: mch_toeThumbEnd_L
+    100742: mch_toeThumbEnd_L_end
+    100744: mch_toeThumbEnd_R
+    100746: mch_toeThumbEnd_R_end
+    100748: mch_trackLocal_L
+    100750: mch_trackLocal_L_end
+    100752: mch_trackLocal_R
+    100754: mch_trackLocal_R_end
+    100756: mch_trackMaster_L
+    100758: mch_trackMaster_L_end
+    100760: mch_trackMaster_R
+    100762: mch_trackMaster_R_end
+    100764: mch_wingBttm_L
+    100766: mch_wingBttm_R
+    100768: mch_wingBttmRot_L
+    100770: mch_wingBttmRot_L_end
+    100772: mch_wingBttmRot_R
+    100774: mch_wingBttmRot_R_end
+    100776: mch_wingMid_L
+    100778: mch_wingMid_R
+    100780: mch_wingMidRot_L
+    100782: mch_wingMidRot_L_end
+    100784: mch_wingMidRot_R
+    100786: mch_wingMidRot_R_end
+    100788: mch_wingTop_L
+    100790: mch_wingTop_R
+    100792: mch_wingTopRot_L
+    100794: mch_wingTopRot_L_end
+    100796: mch_wingTopRot_R
+    100798: mch_wingTopRot_R_end
+    100800: NECK
+    100802: NOSTRIL_L
+    100804: NOSTRIL_L_end
+    100806: NOSTRIL_R
+    100808: NOSTRIL_R_end
+    100810: PALMPinky_L
+    100812: PALMPinky_R
+    100814: PALMThumb_L
+    100816: PALMThumb_R
+    100818: PELVIS
+    100820: pt_brow_L
+    100822: pt_brow_R
+    100824: pt_brow_R_end
+    100826: Ridge_A
+    100828: Ridge_A_end
+    100830: Ridge_B
+    100832: Ridge_B_end
+    100834: Ridge_C
+    100836: Ridge_C_end
+    100838: Ridge_D
+    100840: Ridge_D_end
+    100842: Ridge_E
+    100844: Ridge_E_end
+    100846: Ridge_F
+    100848: Ridge_F_end
+    100850: Ridge_G
+    100852: Ridge_G_end
+    100854: Ridge_H
+    100856: Ridge_H_end
+    100858: Ridge_I
+    100860: Ridge_I_end
+    100862: ridgeE_ori
+    100864: ROOT
+    100866: SHAPE_browL
+    100868: SHAPE_browMid
+    100870: SHAPE_browR
+    100872: SHAPE_cheekL
+    100874: SHAPE_cheekR
+    100876: SHAPE_circular
+    100878: SHAPE_eyelidL
+    100880: SHAPE_eyelidR
+    100882: SHAPE_eyeMaster
+    100884: SHAPE_Eyeswitch
+    100886: SHAPE_FKswitchL
+    100888: SHAPE_FKswitchR
+    100890: SHAPE_footroll
+    100892: SHAPE_head
+    100894: SHAPE_jaw01
+    100896: SHAPE_jawBase
+    100898: SHAPE_neck
+    100900: SHAPE_root
+    100902: SHAPE_spheres
+    100904: SHAPE_stick
+    100906: SHAPE_tongue
+    100908: SHAPE_torso
+    100910: SNOUT_A
+    100912: SNOUT_B
+    100914: TAIL_BTTM
+    100916: TAIL_BTTM_end
+    100918: TAIL_TOP
+    100920: toes_L
+    100922: toes_R
+    100924: TONGUE_BTTM
+    100926: TONGUE_BTTM_end
+    100928: TONGUE_PIVOT
+    100930: TONGUE_TOP
+    100932: TORSO
+    100934: WING_BASE_L
+    100936: WING_BASE_R
+    100938: WING_END_L
+    100940: WING_END_R
+    100942: WING_END_R_end
+    100944: WINGFAN_BTTM_L
+    100946: WINGFAN_BTTM_L_end
+    100948: WINGFAN_BTTM_R
+    100950: WINGFAN_BTTM_R_end
+    100952: WINGFAN_MID_L
+    100954: WINGFAN_MID_L_end
+    100956: WINGFAN_MID_R
+    100958: WINGFAN_MID_R_end
+    100960: WINGFAN_TOP_L
+    100962: WINGFAN_TOP_L_end
+    100964: WINGFAN_TOP_R
+    100966: WINGFAN_TOP_R_end
+    400000: Bone.001
+    400002: Bone.002
+    400004: BROW_L
+    400006: BROW_MID
+    400008: BROW_MID_end
+    400010: BROW_R
+    400012: CHEEK_L
+    400014: CHEEK_L_end
+    400016: CHEEK_R
+    400018: CHEEK_R_end
+    400020: CHEST
+    400022: def_ankle_L
+    400024: def_ankle_R
+    400026: def_bicep_L
+    400028: def_bicep_R
+    400030: def_browA_L
+    400032: def_browA_L_end
+    400034: def_browA_R
+    400036: def_browA_R_end
+    400038: def_browB_L
+    400040: def_browB_L_end
+    400042: def_browB_R
+    400044: def_browB_R_end
+    400046: def_cheek_L
+    400048: def_cheek_L_end
+    400050: def_cheek_R
+    400052: def_cheek_R_end
+    400054: def_chest
+    400056: def_earA_L
+    400058: def_earA_R
+    400060: def_earB_L
+    400062: def_earB_L_end
+    400064: def_earB_R
+    400066: def_earB_R_end
+    400068: def_eyelidBttm_L
+    400070: def_eyelidBttm_L_end
+    400072: def_eyelidBttm_R
+    400074: def_eyelidBttm_R_end
+    400076: def_eyelidTop_L
+    400078: def_eyelidTop_L_end
+    400080: def_eyelidTop_R
+    400082: def_eyelidTop_R_end
+    400084: def_fingIndex_L
+    400086: def_fingIndex_R
+    400088: def_fingIndexEnd_L
+    400090: def_fingIndexEnd_L_end
+    400092: def_fingIndexEnd_R
+    400094: def_fingIndexEnd_R_end
+    400096: def_fingMid_L
+    400098: def_fingMid_R
+    400100: def_fingMidEnd_L
+    400102: def_fingMidEnd_L_end
+    400104: def_fingMidEnd_R
+    400106: def_fingMidEnd_R_end
+    400108: def_fingPinky_L
+    400110: def_fingPinky_R
+    400112: def_fingPinkyEnd_L
+    400114: def_fingPinkyEnd_L_end
+    400116: def_fingPinkyEnd_R
+    400118: def_fingPinkyEnd_R_end
+    400120: def_fingThumb_L
+    400122: def_fingThumb_R
+    400124: def_fingThumbEnd_L
+    400126: def_fingThumbEnd_L_end
+    400128: def_fingThumbEnd_R
+    400130: def_fingThumbEnd_R_end
+    400132: def_forearm_L
+    400134: def_forearm_R
+    400136: def_hand_L
+    400138: def_hand_R
+    400140: def_head
+    400142: def_jaw_A
+    400144: def_jaw_B
+    400146: def_jaw_B_end
+    400148: def_jawBase
+    400150: def_neck
+    400152: def_nostril_L
+    400154: def_nostril_L_end
+    400156: def_nostril_R
+    400158: def_nostril_R_end
+    400160: def_palmPinky_L
+    400162: def_palmPinky_R
+    400164: def_palmThumb_L
+    400166: def_palmThumb_R
+    400168: def_pelvis
+    400170: def_shin_L
+    400172: def_shin_R
+    400174: def_snout_A
+    400176: def_snout_B
+    400178: def_snout_B_end
+    400180: def_snoutBase
+    400182: def_spineCorrect
+    400184: def_spineCorrect_end
+    400186: def_tail_A
+    400188: def_tail_B
+    400190: def_tail_B_end
+    400192: def_thigh_L
+    400194: def_thigh_R
+    400196: def_toeIndex_L
+    400198: def_toeIndex_R
+    400200: def_toeIndexEnd_L
+    400202: def_toeIndexEnd_L_end
+    400204: def_toeIndexEnd_R
+    400206: def_toeIndexEnd_R_end
+    400208: def_toeMid_L
+    400210: def_toeMid_R
+    400212: def_toeMidEnd_L
+    400214: def_toeMidEnd_L_end
+    400216: def_toeMidEnd_R
+    400218: def_toeMidEnd_R_end
+    400220: def_toePinky_L
+    400222: def_toePinky_R
+    400224: def_toePinkyEnd_L
+    400226: def_toePinkyEnd_L_end
+    400228: def_toePinkyEnd_R
+    400230: def_toePinkyEnd_R_end
+    400232: def_toeThumb_L
+    400234: def_toeThumb_R
+    400236: def_toeThumbEnd_L
+    400238: def_toeThumbEnd_L_end
+    400240: def_toeThumbEnd_R
+    400242: def_toeThumbEnd_R_end
+    400244: def_tongue_bttm
+    400246: def_tongue_bttm_end
+    400248: def_tongue_top
+    400250: def_wingBaseA_L
+    400252: def_wingBaseA_R
+    400254: def_wingBaseB_L
+    400256: def_wingBaseB_L_end
+    400258: def_wingBaseB_R
+    400260: def_wingBttm_L
+    400262: def_wingBttm_L_end
+    400264: def_wingBttm_R
+    400266: def_wingBttm_R_end
+    400268: def_wingMid_L
+    400270: def_wingMid_L_end
+    400272: def_wingMid_R
+    400274: def_wingMid_R_end
+    400276: def_wingTop_L
+    400278: def_wingTop_L_end
+    400280: def_wingTop_R
+    400282: def_wingTop_R_end
+    400284: EAR_01_L
+    400286: EAR_01_R
+    400288: EAR_02_L
+    400290: EAR_02_L_end
+    400292: EAR_02_R
+    400294: EAR_02_R_end
+    400296: ELBOW_L
+    400298: ELBOW_L_end
+    400300: ELBOW_R
+    400302: ELBOW_R_end
+    400304: EYE_GLOBAL_L
+    400306: EYE_GLOBAL_L_end
+    400308: EYE_GLOBAL_R
+    400310: EYE_GLOBAL_R_end
+    400312: EYE_LOCAL_L
+    400314: EYE_LOCAL_L_end
+    400316: EYE_LOCAL_R
+    400318: EYE_LOCAL_R_end
+    400320: EYE_SWITCH
+    400322: EYE_SWITCH_end
+    400324: EYELID_BTTM_L
+    400326: EYELID_BTTM_L_end
+    400328: EYELID_BTTM_R
+    400330: EYELID_BTTM_R_end
+    400332: EYELID_TOP_L
+    400334: EYELID_TOP_L_end
+    400336: EYELID_TOP_R
+    400338: EYELID_TOP_R_end
+    400340: EYES_GLOBAL
+    400342: EYES_LOCAL
+    400344: FING_INDEX_L
+    400346: FING_INDEX_R
+    400348: FING_INDEXend_L
+    400350: FING_INDEXend_L_end
+    400352: FING_INDEXend_R
+    400354: FING_INDEXend_R_end
+    400356: FING_MID_L
+    400358: FING_MID_R
+    400360: FING_MIDend_L
+    400362: FING_MIDend_L_end
+    400364: FING_MIDend_R
+    400366: FING_MIDend_R_end
+    400368: FING_PINKY_L
+    400370: FING_PINKY_R
+    400372: FING_PINKYend_L
+    400374: FING_PINKYend_L_end
+    400376: FING_PINKYend_R
+    400378: FING_PINKYend_R_end
+    400380: FING_THUMB_L
+    400382: FING_THUMB_R
+    400384: FING_THUMBend_L
+    400386: FING_THUMBend_L_end
+    400388: FING_THUMBend_R
+    400390: FING_THUMBend_R_end
+    400392: //RootNode
+    400394: FK_BICEP_L
+    400396: FK_BICEP_R
+    400398: FK_FOREARM_L
+    400400: FK_FOREARM_R
+    400402: FK_HAND_L
+    400404: FK_HAND_R
+    400406: FK_SWITCH_L
+    400408: FK_SWITCH_L_end
+    400410: FK_SWITCH_R
+    400412: FK_SWITCH_R_end
+    400414: FOOT_L
+    400416: FOOT_R
+    400418: FOOTROLL_L
+    400420: FOOTROLL_L_end
+    400422: FOOTROLL_R
+    400424: FOOTROLL_R_end
+    400426: HEAD
+    400428: hook_ridgeA_1
+    400430: hook_ridgeA_2
+    400432: hook_ridgeB_1
+    400434: hook_ridgeB_2
+    400436: hook_ridgeC_1
+    400438: hook_ridgeC_2
+    400440: hook_ridgeE_1
+    400442: hook_ridgeE_2
+    400444: hook_ridgeF_1
+    400446: hook_ridgeF_2
+    400448: hook_ridgeG_1
+    400450: hook_ridgeG_2
+    400452: hook_ridgeH_1
+    400454: hook_ridgeH_2
+    400456: hook_ridgeI_1
+    400458: hook_ridgeI_2
+    400460: hook_SpineBelly_A
+    400462: hook_SpineBelly_B
+    400464: hook_SpineBelly_C
+    400466: hook_SpineBelly_E
+    400468: hook_SpineBelly_F
+    400470: hook_SpineBelly_G
+    400472: hook_SpineBelly_H
+    400474: hook_SpineBelly_I
+    400476: IK_bicep_L
+    400478: IK_bicep_R
+    400480: IK_forearm_L
+    400482: IK_forearm_L_end
+    400484: IK_forearm_R
+    400486: IK_forearm_R_end
+    400488: IK_HAND_L
+    400490: IK_HAND_R
+    400492: JAW_A
+    400494: JAW_B
+    400496: JAW_B_end
+    400498: JAW_Base
+    400500: KNEE_L
+    400502: KNEE_L_end
+    400504: KNEE_R
+    400506: KNEE_R_end
+    400508: Larry_body_GEO
+    400510: Larry_bone_GEO
+    400512: Larry_eyeL_GEO
+    400514: Larry_eyeR_GEO
+    400516: Larry_Rig
+    400518: Larry_spine_GEO
+    400520: Larry_SpineRig
+    400522: Larry_wings_GEO
+    400524: mch_ankle_L
+    400526: mch_ankle_R
+    400528: mch_ankleIK_L
+    400530: mch_ankleIK_R
+    400532: mch_ankleUP_L
+    400534: mch_ankleUP_L_end
+    400536: mch_ankleUP_R
+    400538: mch_ankleUP_R_end
+    400540: mch_brow_mid
+    400542: mch_browTrack_L
+    400544: mch_browTrack_R
+    400546: mch_browTrack_R_end
+    400548: mch_ConstrainedEye_L
+    400550: mch_ConstrainedEye_L_end
+    400552: mch_ConstrainedEye_R
+    400554: mch_ConstrainedEye_R_end
+    400556: mch_eyebrow_L
+    400558: mch_eyebrow_L_end
+    400560: mch_eyebrow_R
+    400562: mch_eyebrow_R_end
+    400564: mch_eyeTrack_L
+    400566: mch_eyeTrack_R
+    400568: mch_footroll_L
+    400570: mch_footroll_L_end
+    400572: mch_footroll_R
+    400574: mch_footroll_R_end
+    400576: mch_IKarmTar_L
+    400578: mch_IKarmTar_L_end
+    400580: mch_IKarmTar_R
+    400582: mch_IKarmTar_R_end
+    400584: mch_legIK_L
+    400586: mch_legIK_L_end
+    400588: mch_legIK_R
+    400590: mch_legIK_R_end
+    400592: mch_neckBase
+    400594: mch_neckTarget
+    400596: mch_neckTarget_end
+    400598: mch_shin_L
+    400600: mch_shin_R
+    400602: mch_SpineBelly_A
+    400604: mch_SpineBelly_A_aim
+    400606: mch_SpineBelly_A_aim_end
+    400608: mch_SpineBelly_B
+    400610: mch_SpineBelly_B_aim
+    400612: mch_SpineBelly_B_aim_end
+    400614: mch_SpineBelly_C
+    400616: mch_SpineBelly_C_aim
+    400618: mch_SpineBelly_C_aim_end
+    400620: mch_SpineBelly_E
+    400622: mch_SpineBelly_E_aim
+    400624: mch_SpineBelly_E_aim_end
+    400626: mch_SpineBelly_F
+    400628: mch_SpineBelly_F_aim
+    400630: mch_SpineBelly_F_aim_end
+    400632: mch_SpineBelly_G
+    400634: mch_SpineBelly_G_aim
+    400636: mch_SpineBelly_G_aim_end
+    400638: mch_SpineBelly_H
+    400640: mch_SpineBelly_H_aim
+    400642: mch_SpineBelly_H_aim_end
+    400644: mch_SpineBelly_I
+    400646: mch_SpineBelly_I_aim
+    400648: mch_SpineBelly_I_aim_end
+    400650: mch_SpineUP_A
+    400652: mch_SpineUP_A_end
+    400654: mch_SpineUP_B
+    400656: mch_SpineUP_B_end
+    400658: mch_SpineUP_C
+    400660: mch_SpineUP_C_end
+    400662: mch_SpineUP_E
+    400664: mch_SpineUP_E_end
+    400666: mch_SpineUP_F
+    400668: mch_SpineUP_F_end
+    400670: mch_SpineUP_G
+    400672: mch_SpineUP_G_end
+    400674: mch_SpineUP_H
+    400676: mch_SpineUP_H_end
+    400678: mch_SpineUP_I
+    400680: mch_SpineUP_I_end
+    400682: mch_tailBaseCurve
+    400684: mch_thigh_L
+    400686: mch_thigh_R
+    400688: mch_toeIK_L
+    400690: mch_toeIK_R
+    400692: mch_toeIndex_L
+    400694: mch_toeIndex_R
+    400696: mch_toeIndexEnd_L
+    400698: mch_toeIndexEnd_L_end
+    400700: mch_toeIndexEnd_R
+    400702: mch_toeIndexEnd_R_end
+    400704: mch_toeMid_L
+    400706: mch_toeMid_R
+    400708: mch_toeMidEnd_L
+    400710: mch_toeMidEnd_L_end
+    400712: mch_toeMidEnd_R
+    400714: mch_toeMidEnd_R_end
+    400716: mch_toePinky_L
+    400718: mch_toePinky_R
+    400720: mch_toePinkyEnd_L
+    400722: mch_toePinkyEnd_L_end
+    400724: mch_toePinkyEnd_R
+    400726: mch_toePinkyEnd_R_end
+    400728: mch_toes_L
+    400730: mch_toes_L_end
+    400732: mch_toes_R
+    400734: mch_toes_R_end
+    400736: mch_toeThumb_L
+    400738: mch_toeThumb_R
+    400740: mch_toeThumbEnd_L
+    400742: mch_toeThumbEnd_L_end
+    400744: mch_toeThumbEnd_R
+    400746: mch_toeThumbEnd_R_end
+    400748: mch_trackLocal_L
+    400750: mch_trackLocal_L_end
+    400752: mch_trackLocal_R
+    400754: mch_trackLocal_R_end
+    400756: mch_trackMaster_L
+    400758: mch_trackMaster_L_end
+    400760: mch_trackMaster_R
+    400762: mch_trackMaster_R_end
+    400764: mch_wingBttm_L
+    400766: mch_wingBttm_R
+    400768: mch_wingBttmRot_L
+    400770: mch_wingBttmRot_L_end
+    400772: mch_wingBttmRot_R
+    400774: mch_wingBttmRot_R_end
+    400776: mch_wingMid_L
+    400778: mch_wingMid_R
+    400780: mch_wingMidRot_L
+    400782: mch_wingMidRot_L_end
+    400784: mch_wingMidRot_R
+    400786: mch_wingMidRot_R_end
+    400788: mch_wingTop_L
+    400790: mch_wingTop_R
+    400792: mch_wingTopRot_L
+    400794: mch_wingTopRot_L_end
+    400796: mch_wingTopRot_R
+    400798: mch_wingTopRot_R_end
+    400800: NECK
+    400802: NOSTRIL_L
+    400804: NOSTRIL_L_end
+    400806: NOSTRIL_R
+    400808: NOSTRIL_R_end
+    400810: PALMPinky_L
+    400812: PALMPinky_R
+    400814: PALMThumb_L
+    400816: PALMThumb_R
+    400818: PELVIS
+    400820: pt_brow_L
+    400822: pt_brow_R
+    400824: pt_brow_R_end
+    400826: Ridge_A
+    400828: Ridge_A_end
+    400830: Ridge_B
+    400832: Ridge_B_end
+    400834: Ridge_C
+    400836: Ridge_C_end
+    400838: Ridge_D
+    400840: Ridge_D_end
+    400842: Ridge_E
+    400844: Ridge_E_end
+    400846: Ridge_F
+    400848: Ridge_F_end
+    400850: Ridge_G
+    400852: Ridge_G_end
+    400854: Ridge_H
+    400856: Ridge_H_end
+    400858: Ridge_I
+    400860: Ridge_I_end
+    400862: ridgeE_ori
+    400864: ROOT
+    400866: SHAPE_browL
+    400868: SHAPE_browMid
+    400870: SHAPE_browR
+    400872: SHAPE_cheekL
+    400874: SHAPE_cheekR
+    400876: SHAPE_circular
+    400878: SHAPE_eyelidL
+    400880: SHAPE_eyelidR
+    400882: SHAPE_eyeMaster
+    400884: SHAPE_Eyeswitch
+    400886: SHAPE_FKswitchL
+    400888: SHAPE_FKswitchR
+    400890: SHAPE_footroll
+    400892: SHAPE_head
+    400894: SHAPE_jaw01
+    400896: SHAPE_jawBase
+    400898: SHAPE_neck
+    400900: SHAPE_root
+    400902: SHAPE_spheres
+    400904: SHAPE_stick
+    400906: SHAPE_tongue
+    400908: SHAPE_torso
+    400910: SNOUT_A
+    400912: SNOUT_B
+    400914: TAIL_BTTM
+    400916: TAIL_BTTM_end
+    400918: TAIL_TOP
+    400920: toes_L
+    400922: toes_R
+    400924: TONGUE_BTTM
+    400926: TONGUE_BTTM_end
+    400928: TONGUE_PIVOT
+    400930: TONGUE_TOP
+    400932: TORSO
+    400934: WING_BASE_L
+    400936: WING_BASE_R
+    400938: WING_END_L
+    400940: WING_END_R
+    400942: WING_END_R_end
+    400944: WINGFAN_BTTM_L
+    400946: WINGFAN_BTTM_L_end
+    400948: WINGFAN_BTTM_R
+    400950: WINGFAN_BTTM_R_end
+    400952: WINGFAN_MID_L
+    400954: WINGFAN_MID_L_end
+    400956: WINGFAN_MID_R
+    400958: WINGFAN_MID_R_end
+    400960: WINGFAN_TOP_L
+    400962: WINGFAN_TOP_L_end
+    400964: WINGFAN_TOP_R
+    400966: WINGFAN_TOP_R_end
+    2300000: Larry_eyeL_GEO
+    2300002: Larry_eyeR_GEO
+    2300004: SHAPE_browL
+    2300006: SHAPE_browMid
+    2300008: SHAPE_browR
+    2300010: SHAPE_cheekL
+    2300012: SHAPE_cheekR
+    2300014: SHAPE_circular
+    2300016: SHAPE_eyelidL
+    2300018: SHAPE_eyelidR
+    2300020: SHAPE_eyeMaster
+    2300022: SHAPE_Eyeswitch
+    2300024: SHAPE_FKswitchL
+    2300026: SHAPE_FKswitchR
+    2300028: SHAPE_footroll
+    2300030: SHAPE_head
+    2300032: SHAPE_jaw01
+    2300034: SHAPE_jawBase
+    2300036: SHAPE_neck
+    2300038: SHAPE_root
+    2300040: SHAPE_spheres
+    2300042: SHAPE_stick
+    2300044: SHAPE_tongue
+    2300046: SHAPE_torso
+    3300000: Larry_eyeL_GEO
+    3300002: Larry_eyeR_GEO
+    3300004: SHAPE_browL
+    3300006: SHAPE_browMid
+    3300008: SHAPE_browR
+    3300010: SHAPE_cheekL
+    3300012: SHAPE_cheekR
+    3300014: SHAPE_circular
+    3300016: SHAPE_eyelidL
+    3300018: SHAPE_eyelidR
+    3300020: SHAPE_eyeMaster
+    3300022: SHAPE_Eyeswitch
+    3300024: SHAPE_FKswitchL
+    3300026: SHAPE_FKswitchR
+    3300028: SHAPE_footroll
+    3300030: SHAPE_head
+    3300032: SHAPE_jaw01
+    3300034: SHAPE_jawBase
+    3300036: SHAPE_neck
+    3300038: SHAPE_root
+    3300040: SHAPE_spheres
+    3300042: SHAPE_stick
+    3300044: SHAPE_tongue
+    3300046: SHAPE_torso
+    4300000: SHAPE_footroll
+    4300002: SHAPE_Eyeswitch
+    4300004: SHAPE_FKswitchR
+    4300006: SHAPE_FKswitchL
+    4300008: SHAPE_torso
+    4300010: SHAPE_cheekR
+    4300012: SHAPE_cheekL
+    4300014: SHAPE_tongue
+    4300016: SHAPE_circular
+    4300018: SHAPE_jawBase
+    4300020: SHAPE_jaw01
+    4300022: SHAPE_spheres
+    4300024: SHAPE_eyeMaster
+    4300026: SHAPE_stick
+    4300028: SHAPE_head
+    4300030: SHAPE_eyelidR
+    4300032: SHAPE_eyelidL
+    4300034: SHAPE_browR
+    4300036: SHAPE_browL
+    4300038: SHAPE_browMid
+    4300040: SHAPE_neck
+    4300042: SHAPE_root
+    4300044: Larry_eyeR_GEO
+    4300046: Larry_eyeL_GEO
+    4300048: Larry_bone_GEO
+    4300050: Larry_body_GEO
+    4300052: Larry_wings_GEO
+    4300054: Larry_spine_GEO
+    7400000: Attack
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Larry_body_GEO
+    13700002: Larry_bone_GEO
+    13700004: Larry_spine_GEO
+    13700006: Larry_wings_GEO
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Attack
+      takeName: Larry_Rig|Attack
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: hook_ridgeA_1
+        weight: 1
+      - path: hook_ridgeA_2
+        weight: 1
+      - path: hook_ridgeB_1
+        weight: 1
+      - path: hook_ridgeB_2
+        weight: 1
+      - path: hook_ridgeC_1
+        weight: 1
+      - path: hook_ridgeC_2
+        weight: 1
+      - path: hook_ridgeE_1
+        weight: 1
+      - path: hook_ridgeE_2
+        weight: 1
+      - path: hook_ridgeF_1
+        weight: 1
+      - path: hook_ridgeF_2
+        weight: 1
+      - path: hook_ridgeG_1
+        weight: 1
+      - path: hook_ridgeG_2
+        weight: 1
+      - path: hook_ridgeH_1
+        weight: 1
+      - path: hook_ridgeH_2
+        weight: 1
+      - path: hook_ridgeI_1
+        weight: 1
+      - path: hook_ridgeI_2
+        weight: 1
+      - path: hook_SpineBelly_A
+        weight: 1
+      - path: hook_SpineBelly_B
+        weight: 1
+      - path: hook_SpineBelly_C
+        weight: 1
+      - path: hook_SpineBelly_E
+        weight: 1
+      - path: hook_SpineBelly_F
+        weight: 1
+      - path: hook_SpineBelly_G
+        weight: 1
+      - path: hook_SpineBelly_H
+        weight: 1
+      - path: hook_SpineBelly_I
+        weight: 1
+      - path: Larry_body_GEO
+        weight: 1
+      - path: Larry_bone_GEO
+        weight: 1
+      - path: Larry_Rig
+        weight: 1
+      - path: Larry_Rig/def_browB_L
+        weight: 1
+      - path: Larry_Rig/def_browB_L/def_browB_L_end
+        weight: 1
+      - path: Larry_Rig/def_nostril_L
+        weight: 1
+      - path: Larry_Rig/def_nostril_L/def_nostril_L_end
+        weight: 1
+      - path: Larry_Rig/def_nostril_R
+        weight: 1
+      - path: Larry_Rig/def_nostril_R/def_nostril_R_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Bone.001
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Bone.001/Ridge_H
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Bone.001/Ridge_H/Ridge_H_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Bone.002
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Bone.002/Ridge_I
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Bone.002/Ridge_I/Ridge_I_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_A
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_A/mch_SpineUP_A
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_A/mch_SpineUP_A/mch_SpineUP_A_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_A_aim
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_A_aim/mch_SpineBelly_A_aim_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_B
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_B/mch_SpineUP_B
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_B/mch_SpineUP_B/mch_SpineUP_B_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_B_aim
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_B_aim/mch_SpineBelly_B_aim_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_C
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_C/mch_SpineUP_C
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_C/mch_SpineUP_C/mch_SpineUP_C_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_C_aim
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_C_aim/mch_SpineBelly_C_aim_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_E
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_E/mch_SpineUP_E
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_E/mch_SpineUP_E/mch_SpineUP_E_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_E_aim
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_E_aim/mch_SpineBelly_E_aim_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_F
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_F/mch_SpineUP_F
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_F/mch_SpineUP_F/mch_SpineUP_F_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_F_aim
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_F_aim/mch_SpineBelly_F_aim_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_G
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_G/mch_SpineUP_G
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_G/mch_SpineUP_G/mch_SpineUP_G_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_G_aim
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_G_aim/mch_SpineBelly_G_aim_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_H
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_H/mch_SpineUP_H
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_H/mch_SpineUP_H/mch_SpineUP_H_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_H_aim
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_H_aim/mch_SpineBelly_H_aim_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_I
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_I/mch_SpineUP_I
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_I/mch_SpineUP_I/mch_SpineUP_I_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_I_aim
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/mch_SpineBelly_I_aim/mch_SpineBelly_I_aim_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_A
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_A/Ridge_A_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_B
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_B/Ridge_B_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_C
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_C/Ridge_C_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_D
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_D/Ridge_D_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_F
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_F/Ridge_F_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_G
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/Ridge_G/Ridge_G_end
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/ridgeE_ori
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/ridgeE_ori/Ridge_E
+        weight: 1
+      - path: Larry_Rig/Larry_SpineRig/ridgeE_ori/Ridge_E/Ridge_E_end
+        weight: 1
+      - path: Larry_Rig/ROOT
+        weight: 1
+      - path: Larry_Rig/ROOT/EYES_GLOBAL
+        weight: 1
+      - path: Larry_Rig/ROOT/EYES_GLOBAL/EYE_GLOBAL_L
+        weight: 1
+      - path: Larry_Rig/ROOT/EYES_GLOBAL/EYE_GLOBAL_L/EYE_GLOBAL_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/EYES_GLOBAL/EYE_GLOBAL_R
+        weight: 1
+      - path: Larry_Rig/ROOT/EYES_GLOBAL/EYE_GLOBAL_R/EYE_GLOBAL_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/FOOTROLL_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/FOOTROLL_L/FOOTROLL_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/KNEE_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/KNEE_L/KNEE_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeIK_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeIK_L/mch_ankleIK_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeIK_L/mch_ankleIK_L/mch_legIK_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeIK_L/mch_ankleIK_L/mch_legIK_L/mch_legIK_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeIK_L/mch_ankleUP_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeIK_L/mch_ankleUP_L/mch_ankleUP_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeIK_L/mch_footroll_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeIK_L/mch_footroll_L/mch_footroll_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeIndex_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeIndex_L/mch_toeIndexEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeIndex_L/mch_toeIndexEnd_L/mch_toeIndexEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeMid_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeMid_L/mch_toeMidEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeMid_L/mch_toeMidEnd_L/mch_toeMidEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toePinky_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toePinky_L/mch_toePinkyEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toePinky_L/mch_toePinkyEnd_L/mch_toePinkyEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeThumb_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeThumb_L/mch_toeThumbEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_L/mch_toeThumb_L/mch_toeThumbEnd_L/mch_toeThumbEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/FOOTROLL_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/FOOTROLL_R/FOOTROLL_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/KNEE_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/KNEE_R/KNEE_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeIK_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeIK_R/mch_ankleIK_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeIK_R/mch_ankleIK_R/mch_legIK_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeIK_R/mch_ankleIK_R/mch_legIK_R/mch_legIK_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeIK_R/mch_ankleUP_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeIK_R/mch_ankleUP_R/mch_ankleUP_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeIK_R/mch_footroll_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeIK_R/mch_footroll_R/mch_footroll_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeIndex_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeIndex_R/mch_toeIndexEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeIndex_R/mch_toeIndexEnd_R/mch_toeIndexEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeMid_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeMid_R/mch_toeMidEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeMid_R/mch_toeMidEnd_R/mch_toeMidEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toePinky_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toePinky_R/mch_toePinkyEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toePinky_R/mch_toePinkyEnd_R/mch_toePinkyEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeThumb_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeThumb_R/mch_toeThumbEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/FOOT_R/mch_toeThumb_R/mch_toeThumbEnd_R/mch_toeThumbEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/IK_HAND_L
+        weight: 1
+      - path: Larry_Rig/ROOT/IK_HAND_L/mch_IKarmTar_L
+        weight: 1
+      - path: Larry_Rig/ROOT/IK_HAND_L/mch_IKarmTar_L/mch_IKarmTar_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/IK_HAND_R
+        weight: 1
+      - path: Larry_Rig/ROOT/IK_HAND_R/mch_IKarmTar_R
+        weight: 1
+      - path: Larry_Rig/ROOT/IK_HAND_R/mch_IKarmTar_R/mch_IKarmTar_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/FING_INDEX_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/FING_INDEX_L/FING_INDEXend_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/FING_INDEX_L/FING_INDEXend_L/FING_INDEXend_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/FING_MID_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/FING_MID_L/FING_MIDend_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/FING_MID_L/FING_MIDend_L/FING_MIDend_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/PALMPinky_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/PALMPinky_L/FING_PINKY_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/PALMPinky_L/FING_PINKY_L/FING_PINKYend_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/PALMPinky_L/FING_PINKY_L/FING_PINKYend_L/FING_PINKYend_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/PALMThumb_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/PALMThumb_L/FING_THUMB_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/PALMThumb_L/FING_THUMB_L/FING_THUMBend_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_BICEP_L/FK_FOREARM_L/FK_HAND_L/PALMThumb_L/FING_THUMB_L/FING_THUMBend_L/FING_THUMBend_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_SWITCH_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_SWITCH_L/FK_SWITCH_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_SWITCH_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/FK_SWITCH_R/FK_SWITCH_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/IK_bicep_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/IK_bicep_L/IK_forearm_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/IK_bicep_L/IK_forearm_L/IK_forearm_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/mch_neckBase
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/mch_neckBase/def_neck
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/mch_neckBase/def_neck/mch_neckTarget
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/mch_neckBase/def_neck/mch_neckTarget/mch_neckTarget_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_L/def_browA_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_L/def_browA_L/def_browA_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_L/mch_browTrack_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_L/mch_browTrack_L/pt_brow_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_L/mch_browTrack_L/pt_brow_L/pt_brow_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_L/mch_browTrack_L/pt_brow_L/pt_brow_R/pt_brow_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_L/mch_eyebrow_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_L/mch_eyebrow_L/mch_eyebrow_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_R/def_browA_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_R/def_browA_R/def_browA_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_R/mch_browTrack_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_R/mch_browTrack_R/mch_browTrack_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_R/mch_eyebrow_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/BROW_R/mch_eyebrow_R/mch_eyebrow_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/CHEEK_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/CHEEK_L/CHEEK_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/CHEEK_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/CHEEK_R/CHEEK_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_browB_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_browB_R/def_browB_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_cheek_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_cheek_L/def_cheek_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_cheek_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_cheek_R/def_cheek_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_earA_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_earA_L/def_earB_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_earA_L/def_earB_L/def_earB_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_earA_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_earA_R/def_earB_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_earA_R/def_earB_R/def_earB_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_eyelidBttm_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_eyelidBttm_L/def_eyelidBttm_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_eyelidBttm_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_eyelidBttm_R/def_eyelidBttm_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_eyelidTop_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_eyelidTop_L/def_eyelidTop_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_eyelidTop_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_eyelidTop_R/def_eyelidTop_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_jawBase
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_jawBase/def_jaw_A
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_jawBase/def_jaw_A/def_jaw_B
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_jawBase/def_jaw_A/def_jaw_B/def_jaw_B_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_snoutBase
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_snoutBase/def_snout_A
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_snoutBase/def_snout_A/def_snout_B
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/def_head/def_snoutBase/def_snout_A/def_snout_B/def_snout_B_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/EAR_01_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/EAR_01_L/EAR_02_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/EAR_01_L/EAR_02_L/EAR_02_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/EAR_01_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/EAR_01_R/EAR_02_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/EAR_01_R/EAR_02_R/EAR_02_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/EYES_LOCAL
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/EYES_LOCAL/EYE_LOCAL_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/EYES_LOCAL/EYE_LOCAL_L/EYE_LOCAL_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/EYES_LOCAL/EYE_LOCAL_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/EYES_LOCAL/EYE_LOCAL_R/EYE_LOCAL_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/JAW_Base
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/JAW_Base/JAW_A
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/JAW_Base/JAW_A/JAW_B
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/JAW_Base/JAW_A/JAW_B/JAW_B_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/JAW_Base/TONGUE_PIVOT
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/JAW_Base/TONGUE_PIVOT/def_tongue_top
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/JAW_Base/TONGUE_PIVOT/def_tongue_top/def_tongue_bttm
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/JAW_Base/TONGUE_PIVOT/def_tongue_top/def_tongue_bttm/def_tongue_bttm_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/JAW_Base/TONGUE_PIVOT/TONGUE_TOP
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/JAW_Base/TONGUE_PIVOT/TONGUE_TOP/TONGUE_BTTM
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/JAW_Base/TONGUE_PIVOT/TONGUE_TOP/TONGUE_BTTM/TONGUE_BTTM_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_brow_mid
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_brow_mid/BROW_MID
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_brow_mid/BROW_MID/BROW_MID_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_ConstrainedEye_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_ConstrainedEye_L/Larry_eyeL_GEO
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_ConstrainedEye_L/mch_ConstrainedEye_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_ConstrainedEye_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_ConstrainedEye_R/Larry_eyeR_GEO
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_ConstrainedEye_R/mch_ConstrainedEye_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_eyeTrack_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_eyeTrack_L/EYELID_BTTM_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_eyeTrack_L/EYELID_BTTM_L/EYELID_BTTM_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_eyeTrack_L/EYELID_TOP_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_eyeTrack_L/EYELID_TOP_L/EYELID_TOP_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_eyeTrack_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_eyeTrack_R/EYELID_BTTM_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_eyeTrack_R/EYELID_BTTM_R/EYELID_BTTM_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_eyeTrack_R/EYELID_TOP_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_eyeTrack_R/EYELID_TOP_R/EYELID_TOP_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_trackLocal_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_trackLocal_L/mch_trackLocal_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_trackLocal_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_trackLocal_R/mch_trackLocal_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_trackMaster_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_trackMaster_L/mch_trackMaster_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_trackMaster_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/mch_trackMaster_R/mch_trackMaster_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/SNOUT_A
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/SNOUT_A/EYE_SWITCH
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/SNOUT_A/EYE_SWITCH/EYE_SWITCH_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/SNOUT_A/SNOUT_B
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/SNOUT_A/SNOUT_B/NOSTRIL_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/SNOUT_A/SNOUT_B/NOSTRIL_L/NOSTRIL_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/SNOUT_A/SNOUT_B/NOSTRIL_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/NECK/HEAD/SNOUT_A/SNOUT_B/NOSTRIL_R/NOSTRIL_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/mch_wingBttm_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/mch_wingBttm_L/def_wingBttm_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/mch_wingBttm_L/def_wingBttm_L/def_wingBttm_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/mch_wingBttm_L/mch_wingBttmRot_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/mch_wingBttm_L/mch_wingBttmRot_L/mch_wingBttmRot_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/mch_wingBttm_L/WINGFAN_BTTM_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/mch_wingBttm_L/WINGFAN_BTTM_L/WINGFAN_BTTM_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingMid_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingMid_L/def_wingMid_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingMid_L/def_wingMid_L/def_wingMid_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingMid_L/mch_wingMidRot_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingMid_L/mch_wingMidRot_L/mch_wingMidRot_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingMid_L/WINGFAN_MID_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingMid_L/WINGFAN_MID_L/WINGFAN_MID_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingTop_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingTop_L/def_wingTop_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingTop_L/def_wingTop_L/def_wingTop_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingTop_L/mch_wingTopRot_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingTop_L/mch_wingTopRot_L/mch_wingTopRot_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingTop_L/WINGFAN_TOP_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_L/WING_END_L/mch_wingTop_L/WINGFAN_TOP_L/WINGFAN_TOP_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_R/WING_END_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/CHEST/WING_BASE_R/WING_END_R/WING_END_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_fingIndex_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_fingIndex_L/def_fingIndexEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_fingIndex_L/def_fingIndexEnd_L/def_fingIndexEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_fingMid_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_fingMid_L/def_fingMidEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_fingMid_L/def_fingMidEnd_L/def_fingMidEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_palmPinky_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_palmPinky_L/def_fingPinky_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_palmPinky_L/def_fingPinky_L/def_fingPinkyEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_palmPinky_L/def_fingPinky_L/def_fingPinkyEnd_L/def_fingPinkyEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_palmThumb_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_palmThumb_L/def_fingThumb_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_palmThumb_L/def_fingThumb_L/def_fingThumbEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_L/def_forearm_L/def_hand_L/def_palmThumb_L/def_fingThumb_L/def_fingThumbEnd_L/def_fingThumbEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_fingIndex_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_fingIndex_R/def_fingIndexEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_fingIndex_R/def_fingIndexEnd_R/def_fingIndexEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_fingMid_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_fingMid_R/def_fingMidEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_fingMid_R/def_fingMidEnd_R/def_fingMidEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_palmPinky_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_palmPinky_R/def_fingPinky_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_palmPinky_R/def_fingPinky_R/def_fingPinkyEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_palmPinky_R/def_fingPinky_R/def_fingPinkyEnd_R/def_fingPinkyEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_palmThumb_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_palmThumb_R/def_fingThumb_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_palmThumb_R/def_fingThumb_R/def_fingThumbEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_bicep_R/def_forearm_R/def_hand_R/def_palmThumb_R/def_fingThumb_R/def_fingThumbEnd_R/def_fingThumbEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_L/def_wingBaseB_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_L/def_wingBaseB_L/def_wingBaseB_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingMid_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingMid_R/def_wingMid_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingMid_R/def_wingMid_R/def_wingMid_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingMid_R/mch_wingMidRot_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingMid_R/mch_wingMidRot_R/mch_wingMidRot_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingMid_R/WINGFAN_MID_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingMid_R/WINGFAN_MID_R/WINGFAN_MID_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingTop_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingTop_R/def_wingTop_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingTop_R/def_wingTop_R/def_wingTop_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingTop_R/mch_wingTopRot_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingTop_R/mch_wingTopRot_R/mch_wingTopRot_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingTop_R/WINGFAN_TOP_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/def_wingBaseB_R/mch_wingTop_R/WINGFAN_TOP_R/WINGFAN_TOP_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/mch_wingBttm_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/mch_wingBttm_R/def_wingBttm_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/mch_wingBttm_R/def_wingBttm_R/def_wingBttm_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/mch_wingBttm_R/mch_wingBttmRot_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/mch_wingBttm_R/mch_wingBttmRot_R/mch_wingBttmRot_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/mch_wingBttm_R/WINGFAN_BTTM_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/def_wingBaseA_R/mch_wingBttm_R/WINGFAN_BTTM_R/WINGFAN_BTTM_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/FING_INDEX_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/FING_INDEX_R/FING_INDEXend_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/FING_INDEX_R/FING_INDEXend_R/FING_INDEXend_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/FING_MID_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/FING_MID_R/FING_MIDend_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/FING_MID_R/FING_MIDend_R/FING_MIDend_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/PALMPinky_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/PALMPinky_R/FING_PINKY_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/PALMPinky_R/FING_PINKY_R/FING_PINKYend_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/PALMPinky_R/FING_PINKY_R/FING_PINKYend_R/FING_PINKYend_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/PALMThumb_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/PALMThumb_R/FING_THUMB_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/PALMThumb_R/FING_THUMB_R/FING_THUMBend_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/FK_BICEP_R/FK_FOREARM_R/FK_HAND_R/PALMThumb_R/FING_THUMB_R/FING_THUMBend_R/FING_THUMBend_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/IK_bicep_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/IK_bicep_R/IK_forearm_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_chest/IK_bicep_R/IK_forearm_R/IK_forearm_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toeIndex_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toeIndex_L/def_toeIndexEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toeIndex_L/def_toeIndexEnd_L/def_toeIndexEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toeMid_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toeMid_L/def_toeMidEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toeMid_L/def_toeMidEnd_L/def_toeMidEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toePinky_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toePinky_L/def_toePinkyEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toePinky_L/def_toePinkyEnd_L/def_toePinkyEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toeThumb_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toeThumb_L/def_toeThumbEnd_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_L/def_shin_L/def_ankle_L/toes_L/def_toeThumb_L/def_toeThumbEnd_L/def_toeThumbEnd_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toeIndex_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toeIndex_R/def_toeIndexEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toeIndex_R/def_toeIndexEnd_R/def_toeIndexEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toeMid_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toeMid_R/def_toeMidEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toeMid_R/def_toeMidEnd_R/def_toeMidEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toePinky_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toePinky_R/def_toePinkyEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toePinky_R/def_toePinkyEnd_R/def_toePinkyEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toeThumb_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toeThumb_R/def_toeThumbEnd_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/def_pelvis/def_thigh_R/def_shin_R/def_ankle_R/toes_R/def_toeThumb_R/def_toeThumbEnd_R/def_toeThumbEnd_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/ELBOW_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/ELBOW_L/ELBOW_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/ELBOW_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/ELBOW_R/ELBOW_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_tailBaseCurve
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_tailBaseCurve/def_tail_A
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_tailBaseCurve/def_tail_A/def_tail_B
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_tailBaseCurve/def_tail_A/def_tail_B/def_tail_B_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_thigh_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_thigh_L/mch_shin_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_thigh_L/mch_shin_L/mch_ankle_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_thigh_L/mch_shin_L/mch_ankle_L/mch_toes_L
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_thigh_L/mch_shin_L/mch_ankle_L/mch_toes_L/mch_toes_L_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_thigh_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_thigh_R/mch_shin_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_thigh_R/mch_shin_R/mch_ankle_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_thigh_R/mch_shin_R/mch_ankle_R/mch_toes_R
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/mch_thigh_R/mch_shin_R/mch_ankle_R/mch_toes_R/mch_toes_R_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/TAIL_TOP
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/TAIL_TOP/def_spineCorrect
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/TAIL_TOP/def_spineCorrect/def_spineCorrect_end
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/TAIL_TOP/TAIL_BTTM
+        weight: 1
+      - path: Larry_Rig/ROOT/TORSO/PELVIS/TAIL_TOP/TAIL_BTTM/TAIL_BTTM_end
+        weight: 1
+      - path: Larry_spine_GEO
+        weight: 1
+      - path: Larry_wings_GEO
+        weight: 1
+      - path: SHAPE_browL
+        weight: 1
+      - path: SHAPE_browMid
+        weight: 1
+      - path: SHAPE_browR
+        weight: 1
+      - path: SHAPE_cheekL
+        weight: 1
+      - path: SHAPE_cheekR
+        weight: 1
+      - path: SHAPE_circular
+        weight: 1
+      - path: SHAPE_eyelidL
+        weight: 1
+      - path: SHAPE_eyelidR
+        weight: 1
+      - path: SHAPE_eyeMaster
+        weight: 1
+      - path: SHAPE_Eyeswitch
+        weight: 1
+      - path: SHAPE_FKswitchL
+        weight: 1
+      - path: SHAPE_FKswitchR
+        weight: 1
+      - path: SHAPE_footroll
+        weight: 1
+      - path: SHAPE_head
+        weight: 1
+      - path: SHAPE_jaw01
+        weight: 1
+      - path: SHAPE_jawBase
+        weight: 1
+      - path: SHAPE_neck
+        weight: 1
+      - path: SHAPE_root
+        weight: 1
+      - path: SHAPE_spheres
+        weight: 1
+      - path: SHAPE_stick
+        weight: 1
+      - path: SHAPE_tongue
+        weight: 1
+      - path: SHAPE_torso
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .5
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -9,7 +9,7 @@ public abstract class Dragonet : NPC {
 	
 	
 	protected void Awake(){
-		weaponPrefab = Resources.Load ("prefabs/sword_invisible") as GameObject;
+		
 	}
 
 	protected void Start () {
@@ -18,13 +18,7 @@ public abstract class Dragonet : NPC {
 	
 	protected void Update () {
 		base.Update ();
-
-		if(weapon == null)
-		{
-			weapon = Instantiate(weaponPrefab);
-			weapon.transform.parent = transform;
-			weapon.transform.position = transform.position;
-		}
+	
 	}
 	
 	/**
@@ -45,7 +39,6 @@ public abstract class Dragonet : NPC {
 	{
 		Attack(target);
 		FollowPlayer(target);
-		//Blocked();
 		if(SuccessiveBlocked >= 3)
 		{
 			MoveToAttack();
@@ -61,6 +54,8 @@ public abstract class Dragonet : NPC {
 
 	public void MoveToAttack()
 	{
-		transform.position = new Vector3(Random.Range(-2.0F, 2.0F),Random.Range(0.0F, 2.0F),transform.position.z);
+		Vector3 moveToAttack = new Vector3(Random.Range(-2.0F, 2.0F),Random.Range(0.0F, 2.0F),transform.position.z);
+		transform.Translate(base.MovementSpeed * moveToAttack * Time.deltaTime, Space.World);
+		//transform.position = new Vector3(Random.Range(-2.0F, 2.0F),Random.Range(0.0F, 2.0F),transform.position.z);
 	}
 }

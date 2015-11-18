@@ -11,8 +11,6 @@ TagManager:
   - LeftConstraint
   - RightConstraint
   - TopConstraint
-  - ennemy_weapon
-  - hero_projectile
   layers:
   - Default
   - TransparentFX

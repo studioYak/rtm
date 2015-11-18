@@ -12,12 +12,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/menus/Hero_menu.unity
   - enabled: 1
+    path: Assets/scenes/menus/Custom_menu.unity
+  - enabled: 1
+    path: Assets/scenes/menus/HighScore_menu.unity
+  - enabled: 1
     path: Assets/scenes/game/GameScene.unity
   - enabled: 1
     path: Assets/scenes/menus/Load_Menu.unity
   - enabled: 1
     path: Assets/scenes/game/NextLevelScene.unity
-  - enabled: 0
+  - enabled: 1
     path: Assets/scenes/menus/Main_menu.unity
-  - enabled: 0
+  - enabled: 1
     path: Assets/scenes/sandbox/SandboxScene.unity

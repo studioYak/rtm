@@ -21,10 +21,6 @@ public class LoadMenuController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		// A SUPPRIMER QUAND TERMINE ////////////
-		GameModel.Init();
-		/////////////////////////////////////////
-
 		buttonPlay = GameObject.Find("Play").GetComponent<Button>();
 		buttonSlot1 = GameObject.Find("ButtonSlot1").GetComponent<Button>();
 		buttonSlot2 = GameObject.Find("ButtonSlot2").GetComponent<Button>();
@@ -59,7 +55,6 @@ public class LoadMenuController : MonoBehaviour {
 	void checkSave() {
 		List<Save> saves = GameModel.Saves;
 		for (int i = 0; i < saves.Count; i++) {
-
 			buttons[i].interactable = true;
 			buttons[i].GetComponentInChildren<Text>().text = 
 				"Name : "+saves[i].Hero.Name+"\nClass : "+saves[i].Hero.GetType().ToString()+"\nLevel : "+(saves[i].Hero.Level + 1)+"\nLast Level : "+GameModel.Levels[saves[i].LevelId].Name;

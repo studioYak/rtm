@@ -39,7 +39,7 @@ public class HudMaster : MonoBehaviour {
 
 
 		groundOnCam = Camera.main.WorldToViewportPoint(new Vector3 (0.0f, 0.0f, GameModel.HerosInGame[0].GetPosition().z + 3.0f)).y*this.gameObject.GetComponent<RectTransform>().sizeDelta.y;
-		Debug.Log (groundOnCam);
+
     }
 	
 	// Update is called once per frame

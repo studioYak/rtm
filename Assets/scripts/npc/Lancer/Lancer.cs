@@ -7,8 +7,13 @@ using System.Collections;
 **/
 public abstract class Lancer : NPC {
 
+	Animation animation;
+	
+	AudioSource audio;
+
 	protected void Awake(){
-		weaponPrefab = Resources.Load ("prefabs/sword_invisible") as GameObject;
+		animation = GetComponentInChildren<Animation>();
+		audio = GetComponentInChildren<AudioSource>();
 	}
 
 	// Use this for initialization
@@ -41,14 +46,17 @@ public abstract class Lancer : NPC {
 
 	public override void Attack(Hero target)
 	{
-		if(weapon == null)
+		if(NbAttack == 0 )
 		{
-			weapon = Instantiate(weaponPrefab);
-			weapon.transform.parent = transform;
-			weapon.transform.position = transform.position;
-			weapon.transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(-90, 0, 0),1.0f);
-			weapon.transform.Translate(new Vector3(0,2,0));
-			Destroy(weapon,1);
+			animation.CrossFadeQueued("Attack",0.2f);
+			PlayAttackSound();
+			NbAttack = NbAttack+1;
+			//Die(10.0f);
+			LastAttack = Time.time;
+		}
+		else
+		{
+			Die(10.0f);
 		}
 	}
 }

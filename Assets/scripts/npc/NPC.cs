@@ -21,6 +21,7 @@ public abstract class NPC : Unit {
 
 	float attackSpeed;
 	float lastAttack;
+	float soundSpeed = 1;
 	float xpGain;
 
 	float aggroDistance;
@@ -30,20 +31,36 @@ public abstract class NPC : Unit {
 	Blocking blocking;
 	protected RangeClass rangeType;
 	List<Hero> heros;
-	protected GameObject weapon = null;
-	protected GameObject weaponPrefab;
-	protected bool weaponRotated = false;
+	
+	protected bool initiated = false;
 	protected bool firstAttack = true;
+	protected bool distanceUnderAggroDist = false;
+	protected bool distanceUnderAttackDist = false;
 	protected int successiveBlocked = 0;
+	protected int nbAttack = 0;
 
+	protected GameObject triggerAggroPrefab;
+	protected GameObject triggerAttackPrefab;
+	protected GameObject triggerAggro;
+	protected GameObject triggerAttack;
+	protected Vector3 nextAttackCoords;
+
+	AudioSource audio;
+
+	void Awake() {
+
+	}
 
 	// Use this for initialization
 	void Start () {
-		//weapon = Instantiate(weaponPrefab);
 	}
 	
 	// Update is called once per frame
 	protected void Update () {
+		if(initiated == false)
+		{
+			initNPC();
+		}
 		Act();
 	}
 
@@ -112,14 +129,33 @@ public abstract class NPC : Unit {
 		{
 			Disappear();
 		}
-		else if(distance_to_hero < attackRange) // Condition provisoire
+		else if(distanceUnderAttackDist) 
 		{
+			//Debug.Log("Mode attack: " + name + ":"+distanceUnderAttackDist);
 			UnderAttackRange(target);
 		}
-		else if(distance_to_hero < aggroDistance)
+		else if(distanceUnderAggroDist)
 		{
+			//Debug.Log("Mode aggro: " + name + ":"+distanceUnderAggroDist);
 			UnderAggroDistance(target);
 		}
+	}
+
+	void initNPC()
+	{
+		triggerAggroPrefab = Resources.Load("prefabs/npc/TriggerAggro") as GameObject;
+		triggerAggro = Instantiate(triggerAggroPrefab) as GameObject;
+		triggerAggro.transform.parent = transform;
+		triggerAggro.transform.position = new Vector3(transform.position.x,transform.position.y,transform.position.z-aggroDistance);
+
+		triggerAttackPrefab = Resources.Load("prefabs/npc/TriggerAttack") as GameObject;
+		triggerAttack = Instantiate(triggerAttackPrefab) as GameObject;
+		triggerAttack.transform.parent = transform;
+		triggerAttack.transform.position = new Vector3(transform.position.x,transform.position.y,transform.position.z-attackRange);
+
+		audio = GetComponentInChildren<AudioSource>();
+
+		initiated = true;
 	}
 
 	public virtual void UnderAttackRange(Hero target)
@@ -166,6 +202,67 @@ public abstract class NPC : Unit {
 		}
 		set {
 			attackSpeed = value;
+		}
+	}
+
+	
+	/**
+	* FR:
+	* Getter/Setter de distanceUnderAggroDist
+	* EN:
+	* Getter/Setter of distanceUnderAggroDist
+	* @return 
+	* FR:
+	*	Retourne un bool pour le getter et void pour le setter
+	* EN:
+	*	Return a bool for the getter and void for the setter
+	* @version 1.0
+	**/
+	public bool DistanceUnderAggroDist {
+		get {
+			return this.distanceUnderAggroDist;
+		}
+		set {
+			distanceUnderAggroDist = value;
+		}
+	}
+
+	/**
+	* FR:
+	* Getter/Setter de distanceUnderAttackDist
+	* EN:
+	* Getter/Setter of distanceUnderAttackDist
+	* @return 
+	* FR:
+	*	Retourne un bool pour le getter et void pour le setter
+	* EN:
+	*	Return a bool for the getter and void for the setter
+	* @version 1.0
+	**/
+	public bool DistanceUnderAttackDist {
+		get {
+			return this.distanceUnderAttackDist;
+		}
+		set {
+			distanceUnderAttackDist = value;
+		}
+	}
+
+	/**
+	* FR:
+	* Getter/Setter de currentAttackSpeed
+	* EN:
+	* Getter/Setter of currentAttackSpeed
+	* @return 
+	* FR:
+	*	Retourne un float pour le getter et void pour le setter
+	* EN:
+	*	Return a float for the getter and void for the setter
+	* @version 1.0
+	**/
+	public float CurrentAttackSpeed {
+		get {
+			return (AttackSpeed / soundSpeed);
 		}
 	}
 
@@ -221,28 +318,13 @@ public abstract class NPC : Unit {
 	**/
 	public virtual void Attack(Hero target)
 	{
-		if(weapon != null)
+		//nextAttackCoords = vectorToTarget;
+		if(LastAttack + CurrentAttackSpeed < Time.time )
 		{
-			if(weaponRotated == true)
-			{
-
-				weapon.transform.Translate(new Vector3(0,0,-0.9f));
-				weapon.transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(0, 0, 0),1.0f);
-				
-				weaponRotated = false;
-			}
-			firstAttack = false;
-			if(LastAttack + AttackSpeed < Time.time )
-			{
-				LastAttack = Time.time;
-				if(weapon != null)
-				{
-					weapon.transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(-90, 0, 0),1.0f);
-					weapon.transform.Translate(new Vector3(0,0,0.9f));
-					weaponRotated = true;
-					
-				}
-			}
+			GetComponentInChildren<Animation>().CrossFadeQueued("Attack",0.2f);
+			PlayAttackSound();
+			NbAttack = NbAttack+1;
+			LastAttack = Time.time;
 		}
 	}
 
@@ -347,14 +429,32 @@ public abstract class NPC : Unit {
 		}
 	}
 
+	public int NbAttack{
+		get {
+			return this.nbAttack;
+		}
+		set {
+			nbAttack = value;
+		}
+	}
+
 	public void Blocked()
 	{
-		Debug.LogWarning("Allez blockéééé");
+		//Debug.LogWarning("Allez blockéééé");
 		SuccessiveBlocked += 1;
-		Debug.LogWarning(SuccessiveBlocked);
+		//Debug.LogWarning(SuccessiveBlocked);
 	}
 
 	void OnDestroy(){
 		GameModel.NPCsInGame.Remove (this);
 	}
+
+	public void PlayAttackSound(){
+		if(audio.isPlaying){
+			audio.Stop();
+		}
+		audio.Play();
+	}
+
+
 }

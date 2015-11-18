@@ -135,6 +135,7 @@ public abstract class Hero : Unit {
 		specialCapacityUnlocked = false;
 		specialCapacity = false;
 		runBlocked = false;
+		defending = false;
 	}
 
 	/**
@@ -624,7 +625,7 @@ public abstract class Hero : Unit {
 
 	void OnTriggerEnter(Collider hit)
 	{
-		//Debug.LogWarning("COLLISION HERO "+hit);
+		Debug.LogWarning("COLLISION HERO "+hit);
 		if(hit.gameObject.tag == "ennemy_weapon")
 		{
 			NPC ennemy = hit.GetComponentInParent<NPC>();
@@ -643,9 +644,22 @@ public abstract class Hero : Unit {
 			Destroy(hit);
 			//Debug.LogWarning("COLLISION HERO -> destroy "+hit);
 		}
+		else if(hit.gameObject.tag == "trigger_aggro")
+		{
+			NPC ennemy = hit.GetComponentInParent<NPC>();
+			ennemy.DistanceUnderAggroDist = true;
+			Destroy(hit.gameObject);
+		}
+		else if(hit.gameObject.tag == "trigger_attack")
+		{
+			NPC ennemy = hit.GetComponentInParent<NPC>();
+			ennemy.DistanceUnderAttackDist = true;
+			Destroy(hit.gameObject);
+		}
 	}
 
 	private void PlayBloodAnimation(){
+		Debug.Log ("BLOODY");
 		Animator anim = Camera.main.GetComponent<Animator>();
 		anim.SetTrigger ("bloody");
 		anim.cullingMode = AnimatorCullingMode.AlwaysAnimate;

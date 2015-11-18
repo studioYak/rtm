@@ -1,0 +1,32 @@
+{
+	"slots":[
+		{
+			"name":"Bob",
+			"score":"100"
+		},{
+			"name":"Alice",
+			"score":"80"
+		},{
+			"name":"Jean",
+			"score":"68"
+		},{
+			"name":"Bob",
+			"score":"65"
+		},{
+			"name":"Kevin",
+			"score":"59"
+		},{
+			"name":"Kevin",
+			"score":"50"
+		},{
+			"name":"Yann",
+			"score":"45"
+		},{
+			"name":"Adrie",
+			"score":"40"
+		},{
+			"name":"Hugo",
+			"score":"20"
+		}
+	]
+}

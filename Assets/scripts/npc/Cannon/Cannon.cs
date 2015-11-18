@@ -10,18 +10,21 @@ public class Cannon : NPC {
 	
 	public GameObject CannonBallPrefab;
 
-	GameObject cannonBall;
+	GameObject cannonBall;// = Resources.Load("prefabs/item/Ball") as GameObject;
 
 	Vector3 target;
 	float projectileSpeed = EnnemyConfigurator.cannonProjectileSpeed;
 	float projectileHeight = EnnemyConfigurator.cannonProjectileHeight;
 	float rotationSpeed = EnnemyConfigurator.cannonRotationSpeed;
 
-	void Start () {
+	AudioSource audio;
+
+	protected void Start () {
 		cannonBall = Resources.Load("prefabs/item/Ball") as GameObject;
+		audio = GetComponentInChildren<AudioSource>();
 	}
 	
-	void Update () {
+	protected void Update () {
 		base.Update ();
 	}
 	
@@ -53,6 +56,7 @@ public class Cannon : NPC {
 
 	public override void Attack(Hero target)
 	{
+		Debug.Log("cannon try to attack");
 		float ZDistance = transform.position.z - target.transform.position.z;
 		if(ZDistance > EnnemyConfigurator.cannonMinAttackRange)
 		{
@@ -62,12 +66,15 @@ public class Cannon : NPC {
 
 			Vector3 vectorToTarget = target.transform.position - transform.position;
 			vectorToTarget.z += distHero;
-			vectorToTarget.y = 0;
+			//vectorToTarget.y = 0;
+
 
 			transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(vectorToTarget),rotationSpeed);
 			
 			if(LastAttack + AttackSpeed < Time.time )
 			{
+				nextAttackCoords = vectorToTarget;
+
 				// INITIALISATION DE L'ACTION EFFECTUE
 				base.Action = new UnitAction(target.transform.position.x,target.transform.position.y,target.transform.position.z);
 				base.Action.SetActionAsAttack(Damage);
@@ -78,6 +85,8 @@ public class Cannon : NPC {
 				projectile.transform.position = new Vector3(transform.position.x,transform.position.y+projectileHeight,transform.position.z);
 				Rigidbody rb = projectile.GetComponent<Rigidbody>();
 				rb.velocity = transform.TransformDirection(0,1,-projectileSpeed);
+
+				PlayAttackSound();
 
 				LastAttack = Time.time;
 				Destroy(projectile, 5);

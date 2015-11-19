@@ -22,6 +22,7 @@ public class LoadMenuController : MonoBehaviour {
 	void Start () {
 
 		buttonPlay = GameObject.Find("Play").GetComponent<Button>();
+
 		buttonSlot1 = GameObject.Find("ButtonSlot1").GetComponent<Button>();
 		buttonSlot2 = GameObject.Find("ButtonSlot2").GetComponent<Button>();
 		buttonSlot3 = GameObject.Find("ButtonSlot3").GetComponent<Button>();
@@ -55,12 +56,14 @@ public class LoadMenuController : MonoBehaviour {
 	void checkSave() {
 		List<Save> saves = GameModel.Saves;
 		for (int i = 0; i < saves.Count; i++) {
-			buttons[i].interactable = true;
-			buttons[i].GetComponentInChildren<Text>().text = 
-				"Name : "+saves[i].Hero.Name+"\nClass : "+saves[i].Hero.GetType().ToString()+"\nLevel : "+(saves[i].Hero.Level + 1)+"\nLast Level : "+GameModel.Levels[saves[i].LevelId].Name;
-			buttons[i].GetComponentInChildren<Text>().alignment = TextAnchor.MiddleLeft;
-			buttons[i].GetComponentInChildren<Text>().fontSize = 14;
-			buttons[i].GetComponentInChildren<Text>().lineSpacing = 1.6f;
+			if(saves[i].Hero.Name != null) {
+				buttons[i].interactable = true;
+				buttons[i].GetComponentInChildren<Text>().text = 
+					"Name : "+saves[i].Hero.Name+"\nClass : "+saves[i].Hero.GetType().ToString()+"\nLevel : "+(saves[i].Hero.Level + 1)+"\nLast Level : "+GameModel.Levels[saves[i].LevelId].Name;
+				buttons[i].GetComponentInChildren<Text>().alignment = TextAnchor.MiddleLeft;
+				buttons[i].GetComponentInChildren<Text>().fontSize = 14;
+				buttons[i].GetComponentInChildren<Text>().lineSpacing = 1.6f;
+			}
 		}
 	}
 

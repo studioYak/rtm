@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class NextLevelController : MonoBehaviour {
@@ -15,6 +15,8 @@ public class NextLevelController : MonoBehaviour {
 	void Update () {
 		time += Time.deltaTime;
 		if (time > max) {
+			GameModel.Score ++;
+			SaveParser.addSave(GameModel.Slot, GameModel.Hero, GameModel.Score, GameModel.ActualLevelId);
 			Application.LoadLevel("GameScene");
 		}
 	}

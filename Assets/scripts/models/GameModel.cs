@@ -33,6 +33,30 @@ public class GameModel {
 
 	private static List<HighScore> highScores;
 
+	private static int score;
+
+	private static int slot;
+
+	public static int Slot {
+		get {
+			return slot;
+		}
+		
+		set {
+			slot = value;
+		}
+	}
+
+	public static int Score {
+		get {
+			return score;
+		}
+		
+		set {
+			score = value;
+		}
+	}
+
 	public static Hero Hero {
 		get {
 			return hero;
@@ -121,6 +145,16 @@ public class GameModel {
 		}
 	}
 
+	public static List<HighScore> HighScores {
+		get {
+			return highScores;
+		}
+		
+		set {
+			highScores = value;
+		}
+	}
+	
 	public static NPC getNearestNPC(){
 		NPC res = null;
 
@@ -146,15 +180,23 @@ public class GameModel {
 		herosInGame = new List<Hero> ();
 
 		//create saves
-		saves = SaveParser.parseLevelFile ("saves");
+		saves = SaveParser.parseLevelFile ();
+
+		highScores = HighScoreParser.parseHighScoreFile();
+
+		score = 0;
 
 		TutorialManagerController.tutorials = new List<Tutorial> ();
-		TutorialManagerController.tutorials.Add(new Tutorial("Texte du tuto du POP", "xhamster", "onPop"));
+		TutorialManagerController.tutorials.Add(new Tutorial("Texte du tuto du POP", "weaponWarrior", "onPop"));
 		TutorialManagerController.tutorials.Add(new Tutorial("Texte du tuto de l'ATTAQUE", "weaponWarrior", "firstAttack"));
 		TutorialManagerController.tutorials.Add(new Tutorial("Texte du tuto de la DEFENSE", "ShieldWarrior", "firstDefence"));
 		TutorialManagerController.tutorials.Add(new Tutorial("Texte du tuto pour un LANCIER", "BasicLancer", "Lancer"));
 		TutorialManagerController.tutorials.Add(new Tutorial("Texte du tuto pour un DRAGONNET", "BasicDragonet", "Dragonet"));
-		TutorialManagerController.tutorials.Add(new Tutorial("Texte du tuto pour un DRAGONNET", "BasicDragonet", "Dragonet"));
+		TutorialManagerController.tutorials.Add(new Tutorial("Texte du tuto pour un ASSASSIN", "Assassin", "Assassin"));
+		TutorialManagerController.tutorials.Add(new Tutorial("Texte du tuto pour un CANON", "Cannon", "Cannon"));
+		TutorialManagerController.tutorials.Add(new Tutorial("Texte du tuto pour un MUR", "Wall", "Wall"));
+		TutorialManagerController.tutorials.Add(new Tutorial("Texte du tuto pour un MUR", "FireDragonet", "Fire"));
+		TutorialManagerController.tutorials.Add(new Tutorial("Texte du tuto pour un MUR", "IceLancer", "Ice"));
 	}
 
 	public static void resetDataBeforeLevel(){
@@ -165,7 +207,7 @@ public class GameModel {
 
 		Save save = saves [saveNum];
 		hero = save.Hero;
-
+		score = save.Score;
 		ActualLevelId = save.LevelId;
 	}
 
@@ -174,6 +216,18 @@ public class GameModel {
 		npcsInGame = new List<NPC> ();
 
 		//herosInGame.Add( new 
+	}
+	
+	public static void resetSaveSlot(int slot){
+		Slot = slot;
+		if (saves.Count < 3) {
+			saves.Add (new Save (Hero, ActualLevelId, Score));
+		} else {
+			Save save = saves [slot];
+			save.Hero = Hero;
+			save.LevelId = ActualLevelId;
+			save.Score = Score;
+		}
 	}
 
 	public static bool CustomLevel {
@@ -185,13 +239,5 @@ public class GameModel {
 		}
 	}
 
-	public static List<HighScore> HighScores {
-		get {
-			return highScores;
-		}
-		
-		set {
-			highScores = value;
-		}
-	}
+	
 }

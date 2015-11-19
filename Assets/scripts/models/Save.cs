@@ -7,9 +7,13 @@ public class Save {
 
 	private int levelId;
 
-	public Save(Hero hero, int levelId){
+	private int score;
+
+
+	public Save(Hero hero, int levelId, int score){
 		this.hero = hero;
 		this.levelId = levelId;
+		this.score = score;
 	}
 
 	public Save(){
@@ -32,6 +36,16 @@ public class Save {
 		
 		set {
 			levelId = value;
+		}
+	}
+
+	public int Score {
+		get {
+			return score;
+		}
+		
+		set {
+			score = value;
 		}
 	}
 

@@ -9,11 +9,18 @@ public class HeroMenuController : MonoBehaviour {
 	InputField inputName;
 
 	Button buttonPlay;
+
 	Button buttonWarrior;
 	Button buttonWizard;
 	Button buttonMonk;
-
 	bool warrior, wizard, monk;
+
+	Button buttonSlot1;
+	Button buttonSlot2;
+	Button buttonSlot3;
+	bool slot1, slot2, slot3;
+
+	int save;
 
 	ColorBlock cb;
 
@@ -22,12 +29,16 @@ public class HeroMenuController : MonoBehaviour {
 		inputName = GameObject.Find("InputName").GetComponent<InputField>();
 
 		buttonPlay = GameObject.Find("Play").GetComponent<Button>();
+
 		buttonWarrior = GameObject.Find("Warrior").GetComponent<Button>();
 		buttonWizard = GameObject.Find("Wizard").GetComponent<Button>();
 		//buttonMonk = GameObject.Find("Monk").GetComponent<Button>();
 
+		buttonSlot1 = GameObject.Find("Slot1").GetComponent<Button>();
+		buttonSlot2 = GameObject.Find("Slot2").GetComponent<Button>();
+		buttonSlot3 = GameObject.Find("Slot3").GetComponent<Button>();
+
 		buttonPlay.interactable = false;
-		//buttonMonk.interactable = false;
 
 		cb = buttonWarrior.colors;
 
@@ -36,12 +47,25 @@ public class HeroMenuController : MonoBehaviour {
 		warrior = false;
 		wizard = false;
 		monk = false;
+
+		/*if(GameModel.Saves.Count == 0) {
+			buttonSlot1.interactable
+		} else if(GameModel.Saves.Count == 1) {
+			
+		} else if(GameModel.Saves.Count == 0) {
+			
+		} else {
+
+		}*/
+		slot1 = false;
+		slot2 = false;
+		slot3 = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		userName = inputName.text;
-		if(((warrior|wizard|monk) == true) & userName != ""){
+		if(((warrior|wizard|monk) == true) & ((slot1|slot2|slot3) == true) & userName != ""){
 			buttonPlay.interactable = true;
 		} else buttonPlay.interactable = false;
 
@@ -85,10 +109,55 @@ public class HeroMenuController : MonoBehaviour {
 
 	}*/
 
+	public void Slot1() {
+		cb.normalColor = new Color32(163, 124, 124, 255);
+		buttonSlot1.colors = cb;
+		slot1 = true;
+		
+		cb.normalColor = Color.white;
+		buttonSlot2.colors = cb;
+		buttonSlot3.colors = cb;
+		slot2 = false;
+		slot3 = false;
+
+		save = 0;
+	}
+
+	public void Slot2() {
+		cb.normalColor = new Color32(163, 124, 124, 255);
+		buttonSlot2.colors = cb;
+		slot2 = true;
+		
+		cb.normalColor = Color.white;
+		buttonSlot1.colors = cb;
+		buttonSlot3.colors = cb;
+		slot1 = false;
+		slot3 = false;
+
+		save = 1;
+	}
+
+	public void Slot3() {
+		cb.normalColor = new Color32(163, 124, 124, 255);
+		buttonSlot3.colors = cb;
+		slot3 = true;
+		
+		cb.normalColor = Color.white;
+		buttonSlot1.colors = cb;
+		buttonSlot2.colors = cb;
+		slot1 = false;
+		slot2 = false;
+
+		save = 2;
+	}
+
 	public void Play(){
 		if (warrior) GameModel.Hero = new Warrior();
 		if (monk) GameModel.Hero = new Monk();
 		if (wizard) GameModel.Hero = new Wizard();
+
+		GameModel.resetSaveSlot(save);
+
 		GameModel.Hero.Name = userName;
 		Application.LoadLevel("GameScene");
 	}

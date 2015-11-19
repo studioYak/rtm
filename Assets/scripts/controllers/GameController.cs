@@ -311,13 +311,11 @@ public class GameController : MonoBehaviour {
 
 		//ADD TUTORIAL MANAGER
 
-		GameObject tutoGO = Resources.Load("prefabs/controllers/TutorialManager") as GameObject;
-		 Instantiate (tutoGO);
-
-		//TEST POTION
-
-			GameModel.HerosInGame [0].HealthPoint = GameModel.HerosInGame [0].HealthPoint / 2;
-			GameModel.HerosInGame [0].PowerQuantity = GameModel.HerosInGame [0].PowerQuantity / 2;
+		if (level.Tutorial) {
+			GameObject tutoGO = Resources.Load("prefabs/controllers/TutorialManager") as GameObject;
+		 	Instantiate (tutoGO);
+		}
+		
 	}
 	
 	/**
@@ -415,6 +413,7 @@ public class GameController : MonoBehaviour {
 	void dead(){
 		if (!deathDone) {
 			Instantiate (deathHud);
+			HighScoreParser.addHighScore(GameModel.Hero.Name, GameModel.Score);
 			deathDone = true;
 		}
 		if (Input.GetKeyDown(KeyCode.R)){
@@ -454,7 +453,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void ReturnToMainMenu() {
-		Application.LoadLevel ("Main_menu");
+		Application.LoadLevel ("LoadingScene");
 	}
 
 	public void NextLevel(){

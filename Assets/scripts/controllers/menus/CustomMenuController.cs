@@ -69,16 +69,11 @@ public class CustomMenuController : MonoBehaviour {
 
 		if(launchBrowser.Select){
 			customSong = launchBrowser.Output;
-
 			tmp = customSong.Split('\\');
 			songText.text = tmp[tmp.Length-1];
 			browserMenu.SetActive(false);
 			canvas.SetActive(true);
 			launchBrowser.Select = false;
-
-			LevelGenerator.generateLevelFromFile(customSong);
-
-			Application.LoadLevel("GameScene");
 		}
 
 		if(launchBrowser.Cancel){

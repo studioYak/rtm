@@ -59,6 +59,16 @@ public class Warrior : Hero {
 		}
 	}
 
+	public override float Damage {
+		get {
+			float coeff = (2 - 1 + 1) * (PowerQuantity / MaxPowerQuantity) + 1;
+			return this.damage * coeff;
+		}
+		set {
+			damage = value;
+		}
+	}
+
 	/**
 	* {@inheritDoc}
 	**/
@@ -103,6 +113,16 @@ public class Warrior : Hero {
 				}
 			}			
 		}
+	}
+
+	public override void PreAttack()
+	{
+
+	}
+
+	public override void PostAttack()
+	{
+		PowerQuantity /= 2;
 	}
 	
 }

@@ -148,6 +148,13 @@ public class GameModel {
 		//create saves
 		saves = SaveParser.parseLevelFile ("saves");
 
+		TutorialManagerController.tutorials = new List<Tutorial> ();
+		TutorialManagerController.tutorials.Add(new Tutorial("Texte du tuto du POP", "xhamster", "onPop"));
+		TutorialManagerController.tutorials.Add(new Tutorial("Texte du tuto de l'ATTAQUE", "weaponWarrior", "firstAttack"));
+		TutorialManagerController.tutorials.Add(new Tutorial("Texte du tuto de la DEFENSE", "ShieldWarrior", "firstDefence"));
+		TutorialManagerController.tutorials.Add(new Tutorial("Texte du tuto pour un LANCIER", "BasicLancer", "Lancer"));
+		TutorialManagerController.tutorials.Add(new Tutorial("Texte du tuto pour un DRAGONNET", "BasicDragonet", "Dragonet"));
+		TutorialManagerController.tutorials.Add(new Tutorial("Texte du tuto pour un DRAGONNET", "BasicDragonet", "Dragonet"));
 	}
 
 	public static void resetDataBeforeLevel(){

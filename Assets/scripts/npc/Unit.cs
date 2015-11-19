@@ -120,7 +120,7 @@ public abstract class Unit : MonoBehaviour {
 	*	Return a float for the getter and void for the setter
 	* @version 1.0
 	**/
-	public float Damage {
+	public virtual float Damage {
 		get {
 			return this.damage;
 		}

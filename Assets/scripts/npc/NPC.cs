@@ -272,7 +272,8 @@ public abstract class NPC : Unit {
 	**/
 	public float CurrentAttackSpeed {
 		get {
-			float factor = AudioManager.songAmplitude * (EnnemyConfigurator.maxMusicSpeedFactor - EnnemyConfigurator.minMusicSpeedFactor + 1) - EnnemyConfigurator.minMusicSpeedFactor;
+			float factor = AudioManager.songAmplitude * ((EnnemyConfigurator.maxMusicSpeedFactor - EnnemyConfigurator.minMusicSpeedFactor + 1) - EnnemyConfigurator.minMusicSpeedFactor);
+			Debug.Log(factor);
 			return (AttackSpeed / factor);
 		}
 	}
@@ -334,18 +335,22 @@ public abstract class NPC : Unit {
 		{
 			if(LastAttack + CurrentAttackSpeed + offsetAttackTime < Time.time )
 			{
+				if(GetComponentInChildren<Animation>()["Attack"]){
+					GetComponentInChildren<Animation>().CrossFadeQueued("Attack",0.2f);
+					PlayAttackSound();
+					NbAttack = NbAttack+1;
+					LastAttack = Time.time;
+				}
+			}
+		}
+		else if(LastAttack + CurrentAttackSpeed < Time.time )
+		{
+			if(GetComponentInChildren<Animation>()["Attack"]){
 				GetComponentInChildren<Animation>().CrossFadeQueued("Attack",0.2f);
 				PlayAttackSound();
 				NbAttack = NbAttack+1;
 				LastAttack = Time.time;
 			}
-		}
-		else if(LastAttack + CurrentAttackSpeed < Time.time )
-		{
-			GetComponentInChildren<Animation>().CrossFadeQueued("Attack",0.2f);
-			PlayAttackSound();
-			NbAttack = NbAttack+1;
-			LastAttack = Time.time;
 		}
 	}
 
@@ -418,6 +423,8 @@ public abstract class NPC : Unit {
 		if(hit.gameObject.tag == "hero_weapon")
 		{
 			Hero hero = hit.GetComponent<HeroLinkWeapon>().Hero;
+			hero.PreAttack();
+			
 			LostHP(hero.Damage);
 			
 			Vector3 imageScale = lifeImageNPC.rectTransform.localScale;
@@ -430,10 +437,12 @@ public abstract class NPC : Unit {
 				hero.RunBlocked = false;
 				Die();
 			}
+			hero.PostAttack();
 		}
 		else if(hit.gameObject.tag == "hero_projectile")
 		{
 			Hero hero = hit.GetComponent<HeroLinkWeapon>().Hero;
+			hero.PreAttack();
 			LostHP(hero.Damage);
 			
 			Vector3 imageScale = lifeImageNPC.rectTransform.localScale;
@@ -449,6 +458,7 @@ public abstract class NPC : Unit {
 			
 			//fireball collides with an ennemy. Destruct it !
 			Destroy(hit.gameObject);
+			hero.PostAttack();
 		}
 	}
 

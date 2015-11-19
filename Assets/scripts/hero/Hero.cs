@@ -689,4 +689,14 @@ public abstract class Hero : Unit {
 		invicibleTime = Time.time + time;
 		isInvicible = true;
 	}
+
+	public virtual void PreAttack()
+	{
+		
+	}
+
+	public virtual void PostAttack()
+	{
+		
+	}
 }

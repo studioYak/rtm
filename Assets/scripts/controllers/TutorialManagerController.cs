@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class TutorialManagerController : MonoBehaviour {
 
@@ -7,6 +8,8 @@ public class TutorialManagerController : MonoBehaviour {
 		FREEZE,
 		NORMAL,
 	};
+
+	public static List<Tutorial> tutorials;
 
 	private float freezeTimeScale = 0.1f;
 
@@ -16,7 +19,7 @@ public class TutorialManagerController : MonoBehaviour {
 	private float timerFreeze = 0.0f;
 	private float timerNormal = 0.0f;
 
-	private float distTrigger = 20.0f;
+
 
 	private GameObject tutoUIPrefab;
 	private GameObject tutoUIInstance;
@@ -31,6 +34,8 @@ public class TutorialManagerController : MonoBehaviour {
 		maxTimerFreeze *= freezeTimeScale;
 
 		tutoUIPrefab = Resources.Load("prefabs/hud/BasicTutorial") as GameObject;
+
+
 	}
 	
 	// Update is called once per frame
@@ -56,11 +61,20 @@ public class TutorialManagerController : MonoBehaviour {
 	private void normal(){
 		timerNormal += Time.deltaTime;
 
+
+		foreach (Tutorial tuto in tutorials) {
+			if (!tuto.Played && tuto.requestTrigger()) {
+				launchFreeze(tuto.Text,tuto.ImagePath);
+				tuto.Played = true;
+			}
+		}
+
+		/*
 		NPC npc = GameModel.getNearestNPC ();
 		if (npc != null && npc.GetPosition().z-GameModel.HerosInGame[0].GetPosition().z < distTrigger) {
 			string npcType = npc.GetType().ToString();
 			if (npcType.Contains("Lancer") && !lancerDone){
-				launchFreeze("Ma carrière est incroyable, si je vais en Enfer je paie le voyage.","xhamster");
+
 				lancerDone = true;
 			}else if (npcType.Contains("Dragonet") && !dragonetDone) {
 				launchFreeze("Si les meilleurs partent en premier, pourquoi suis-je toujours en vie ?","xhamster");
@@ -69,7 +83,7 @@ public class TutorialManagerController : MonoBehaviour {
 
 
 		}
-
+		*/
 		
 	}
 

@@ -311,8 +311,8 @@ public class GameController : MonoBehaviour {
 
 		//ADD TUTORIAL MANAGER
 
-//		GameObject tutoGO = Resources.Load("prefabs/controllers/TutorialManager") as GameObject;
-//		 Instantiate (tutoGO);
+		GameObject tutoGO = Resources.Load("prefabs/controllers/TutorialManager") as GameObject;
+		 Instantiate (tutoGO);
 
 		//TEST POTION
 

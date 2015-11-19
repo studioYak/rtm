@@ -28,7 +28,7 @@ public class Warrior : Hero {
 	**/
 	public Warrior()
 		:base(5.0f, 0.0f,100.0f,"epee",1000.0f, 2.0f, 2.0f, 1000.0f, 10.0f, 3.0f, "cac", "anonymous"){
-	
+		PowerQuantity = 0;
 	}
 
 	/**
@@ -71,10 +71,12 @@ public class Warrior : Hero {
 			if(Defending)
 			{
 				damageToLost = damageEnemy - (blockingPercent*damageEnemy/100);
+				PowerQuantity += damageEnemy/2.0f;
 			}
 			else
 			{
 				damageToLost = damageEnemy;
+				PowerQuantity += damageEnemy;
 			}
 		}
 		base.LostHP(damageToLost);

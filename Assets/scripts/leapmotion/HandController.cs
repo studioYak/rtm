@@ -396,7 +396,7 @@ public class HandController : MonoBehaviour {
 				if (hand.IsValid && (handSide == HandSide.RIGHT_HAND ? hand.IsRight : hand.IsLeft))
 				{
 					//if we grab and we don't have a fireball in  the hand yet
-					if (fireball == null && hand.GrabStrength >= 0.88) 
+					if (fireball == null && hand.GrabStrength >= 0.88 && hero.PowerQuantity >= 100) 
 					{
 						Transform handPrefab = transform.parent.FindChild("Wizard_"+(handSide == HandSide.RIGHT_HAND ? "RH" : "LH") +"_right(Clone)");
 						//if the LM finds the grab before constructing the hand, we wait to instantiate it
@@ -413,9 +413,16 @@ public class HandController : MonoBehaviour {
 					//if we throw and we have a fireball ready in the hand
 					else if (fireball != null && hand.GrabStrength <= 0.2)
 					{
+						//id it's the first time we throw the ball
+						if (fireball.transform.parent != null)
+							hero.PowerQuantity -= 100;
+
 						fireball.transform.parent = null;
 						//fireball.GetComponent<Rigidbody>().AddForce
 						fireball.GetComponent<Rigidbody>().isKinematic = false;
+
+
+
 					}
 				}
 				else
@@ -440,6 +447,9 @@ public class HandController : MonoBehaviour {
 					//if we throw 
 					else if (vortex != null && hand.GrabStrength <= 0.2)
 					{
+						if (vortex.transform.parent != transform.parent)
+							hero.PowerQuantity -= 50;
+
 						vortex.transform.parent = transform.parent; //attach to camera
 						//vortex.transform.localPosition = new Vector3(0f, 0.3f, 1.5f);
 

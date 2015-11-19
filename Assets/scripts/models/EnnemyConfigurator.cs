@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class EnnemyConfigurator : MonoBehaviour {
+	// GENERAL
+	public static float maxMusicSpeedFactor = 5.0f;
+	public static float minMusicSpeedFactor = 1.0f;
 	
 	// ASSASSIN    assassin
 	public static string assassinName = "Assassin" ;

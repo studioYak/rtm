@@ -5,6 +5,12 @@ public class Tutorial {
 
 	private string text;
 	private string imagePath;
+	private bool played;
+	private string name;
+
+	public Tutorial(string text, string imagePath, string name) {
+
+	}
 
 	public string Text {
 		get {
@@ -25,4 +31,16 @@ public class Tutorial {
 			this.imagePath = value;
 		}
 	}
+
+	public bool Played {
+		get {
+			return this.played;
+		}
+
+		set {
+			this.played = value;
+		}
+	}
+
+
 }

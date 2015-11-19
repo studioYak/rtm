@@ -272,7 +272,8 @@ public abstract class NPC : Unit {
 	**/
 	public float CurrentAttackSpeed {
 		get {
-			return (AttackSpeed / soundSpeed);
+			float factor = AudioManager.songAmplitude * (EnnemyConfigurator.maxMusicSpeedFactor - EnnemyConfigurator.minMusicSpeedFactor + 1) - EnnemyConfigurator.minMusicSpeedFactor;
+			return (AttackSpeed / factor);
 		}
 	}
 
@@ -425,7 +426,7 @@ public abstract class NPC : Unit {
 			
 			if(IsDead())
 			{
-				hero.GiveXP(XpGain);
+				hero.HasKilled(XpGain);
 				hero.RunBlocked = false;
 				Die();
 			}
@@ -441,7 +442,7 @@ public abstract class NPC : Unit {
 			
 			if(IsDead())
 			{
-				hero.GiveXP(XpGain);
+				hero.HasKilled(XpGain);
 				hero.RunBlocked = false;
 				Die();
 			}

@@ -21,7 +21,7 @@ public class Wizard : Hero {
 		base.Update();
 		if(PowerQuantity < MaxPowerQuantity)
 		{
-			if(base.lastRegenPower + 2 < Time.time)
+			if(base.lastRegenPower + 1 < Time.time)
 			{
 				base.RegenPower();	
 			}
@@ -33,8 +33,15 @@ public class Wizard : Hero {
 	* @version 1.0
 	**/
 	public Wizard()
-		:base(5.0f, 0.0f,100.0f,"baton",1000.0f, 4.0f, 4.0f, 1100.0f, 8.0f, 3.0f, "distance", "anonymous"){
+		:base(5.0f, 0.0f,100.0f,"baton",1000.0f, 10.0f, 4.0f, 1100.0f, 8.0f, 3.0f, "distance", "anonymous"){
 		
+	}
+
+	public override void HasKilled(float XP)
+	{
+		GiveXP(XP);
+		RegenPower();
+		RegenPower();
 	}
 	
 	/**

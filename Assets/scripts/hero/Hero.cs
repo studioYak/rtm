@@ -25,6 +25,8 @@ public abstract class Hero : Unit {
 	protected float lastCapacityUsed;
 	public bool runBlocked;
 	protected float lastRegenPower = 0.0f;
+	public bool isInvicible = false;
+	protected float invicibleTime = 0.0f;
 
 
 	// Use this for initialization
@@ -42,6 +44,14 @@ public abstract class Hero : Unit {
 		}
 		if(!runBlocked){
 			Run(Time.deltaTime);
+		}
+
+		if(isInvicible)
+		{
+			if(invicibleTime < Time.time)
+			{
+				isInvicible = false;
+			}
 		}
 	}
 
@@ -173,6 +183,11 @@ public abstract class Hero : Unit {
 	**/
 	public void GiveXP(float XP) {
 		XpQuantity += XP;
+	}
+
+	public virtual void HasKilled(float XP)
+	{
+		GiveXP(XP);
 	}
 
 	/**
@@ -496,6 +511,7 @@ public abstract class Hero : Unit {
 		{
 			damageToLost = damage;
 		}
+
 		base.LostHP(damageToLost);
 	}
 
@@ -610,6 +626,7 @@ public abstract class Hero : Unit {
 	{
 		if(PowerQuantity + PowerRefresh < MaxPowerQuantity)
 		{
+			Debug.Log ("+" + PowerRefresh);
 			PowerQuantity += PowerRefresh;
 		}
 		else
@@ -629,9 +646,11 @@ public abstract class Hero : Unit {
 		if(hit.gameObject.tag == "ennemy_weapon")
 		{
 			NPC ennemy = hit.GetComponentInParent<NPC>();
-			LostHP(ennemy.Damage);
-			if (!Defending){
-				PlayBloodAnimation();
+			if (!Defending && !isInvicible){
+				LostHP(ennemy.Damage);
+				if (!Defending){
+					PlayBloodAnimation();
+				}
 			}
 		}
 		else if(hit.gameObject.tag == "ennemy_projectile")
@@ -663,5 +682,11 @@ public abstract class Hero : Unit {
 		Animator anim = Camera.main.GetComponent<Animator>();
 		anim.SetTrigger ("bloody");
 		anim.cullingMode = AnimatorCullingMode.AlwaysAnimate;
+	}
+
+	public void makeInvicible(float time)
+	{
+		invicibleTime = Time.time + time;
+		isInvicible = true;
 	}
 }

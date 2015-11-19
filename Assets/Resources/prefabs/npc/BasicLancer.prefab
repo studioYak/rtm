@@ -513,7 +513,7 @@ GameObject:
   - 114: {fileID: 11416018}
   - 114: {fileID: 11425376}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: NPCLifeCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

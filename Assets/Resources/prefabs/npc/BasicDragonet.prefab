@@ -713,7 +713,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &106332
 GameObject:
   m_ObjectHideFlags: 1
@@ -5967,6 +5967,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 408120}
   - 114: {fileID: 11496132}
+  - 114: {fileID: 11450010}
   - 54: {fileID: 5424756}
   - 65: {fileID: 6516550}
   m_Layer: 0
@@ -11201,8 +11202,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105724}
-  m_LocalRotation: {x: 1, y: 1.62920685e-07, z: 1.62920685e-07, w: 2.65431496e-14}
-  m_LocalPosition: {x: -0, y: 2.66000009, z: -1.25999999}
+  m_LocalRotation: {x: -.717111111, y: 0, z: 0, w: .696958899}
+  m_LocalPosition: {x: 0, y: 2.58999991, z: -1.21000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 408120}
@@ -14654,6 +14655,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11450010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 178718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4881e9f377dd4342856b426fc9c02d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11454916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -15629,8 +15641,8 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105724}
-  lengthInSec: 37.2599983
-  startDelay: 2.29999995
+  lengthInSec: 2
+  startDelay: 0
   speed: 1
   randomSeed: 0
   looping: 1
@@ -15640,7 +15652,7 @@ ParticleSystem:
   InitialModule:
     enabled: 1
     startLifetime:
-      scalar: 6.11999989
+      scalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -15800,7 +15812,7 @@ ParticleSystem:
         rgba: 4283851629
       minMaxState: 0
     startSize:
-      scalar: .300000012
+      scalar: .600000024
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -15866,9 +15878,9 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 2
     enabled: 1
-    type: 9
-    radius: .00999999978
-    angle: 5.34000015
+    type: 0
+    radius: .0799999982
+    angle: 25
     length: 5
     boxX: 1
     boxY: 1
@@ -15881,7 +15893,7 @@ ParticleSystem:
     enabled: 1
     m_Type: 0
     rate:
-      scalar: 40
+      scalar: 20
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -16120,7 +16132,7 @@ ParticleSystem:
     cycles: 1
     randomRow: 1
   VelocityModule:
-    enabled: 0
+    enabled: 1
     x:
       scalar: 0
       maxCurve:
@@ -16188,7 +16200,7 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 0
     z:
-      scalar: .100000001
+      scalar: -.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -16328,7 +16340,7 @@ ParticleSystem:
     enabled: 0
     multiplier: 1
   ClampVelocityModule:
-    enabled: 1
+    enabled: 0
     x:
       scalar: 1
       maxCurve:
@@ -16635,14 +16647,14 @@ ParticleSystem:
     range: {x: 0, y: 1}
   CollisionModule:
     enabled: 0
-    type: 0
+    type: 1
     plane0: {fileID: 0}
     plane1: {fileID: 0}
     plane2: {fileID: 0}
     plane3: {fileID: 0}
     plane4: {fileID: 0}
     plane5: {fileID: 0}
-    dampen: .449999988
+    dampen: 0
     bounce: 1
     energyLossOnCollision: 0
     minKillSpeed: 0

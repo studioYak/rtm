@@ -17,7 +17,7 @@ GameObject:
   m_TagString: hero_defense
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &493158
 Transform:
@@ -50,7 +50,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 162256}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: .916137397
   m_Height: .185410917
   m_Direction: 2
@@ -232,7 +232,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: .300000012
+      scalar: .800000012
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -304,7 +304,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     type: 10
-    radius: .200000003
+    radius: .5
     angle: 25
     length: 5
     boxX: 1
@@ -1166,14 +1166,6 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: hero_defense
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: ShapeModule.radius
-      value: .200000003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

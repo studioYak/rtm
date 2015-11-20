@@ -660,7 +660,7 @@ public abstract class Hero : Unit {
 			if (!Defending){
 				PlayBloodAnimation();
 			}
-			Destroy(hit.gameObject);
+			Destroy(hit);
 			//Debug.LogWarning("COLLISION HERO -> destroy "+hit);
 		}
 		else if(hit.gameObject.tag == "trigger_aggro")

@@ -70,8 +70,8 @@ public class SandboxController : MonoBehaviour {
 
 		handSide = HandSide.RIGHT_HAND;
 
-		GameObject heroGameObject = Instantiate (warrior);
-		//GameObject heroGameObject = Instantiate (wizard);
+		//GameObject heroGameObject = Instantiate (warrior);
+		GameObject heroGameObject = Instantiate (wizard);
 		Hero hero = heroGameObject.GetComponent<Hero> ();
 		GameModel.HerosInGame.Add (hero);
 		string heroClass = hero.GetType ().ToString ();

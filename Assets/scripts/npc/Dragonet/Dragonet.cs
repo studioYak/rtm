@@ -6,7 +6,9 @@ using System.Collections;
 * @version 1.0
 **/
 public abstract class Dragonet : NPC {
-	
+
+	private GameObject fireball = null;
+	private GameObject fireballGo = null;
 	
 	protected void Awake(){
 		
@@ -14,11 +16,11 @@ public abstract class Dragonet : NPC {
 
 	protected void Start () {
 		//gameObject.transform.Rotate(0,180,0);
+		fireballGo = Resources.Load("prefabs/leapmotion/FireballDragonnet") as GameObject;
 	}
 	
 	protected void Update () {
 		base.Update ();
-	
 	}
 	
 	/**
@@ -32,7 +34,6 @@ public abstract class Dragonet : NPC {
 	**/
 	public Dragonet(float aggroDistance, float attackRange, float distanceToDisappear, float attackSpeed, float xpGain, float hp, float damage, float movementSpeed, string attackType, string name)
 		:base(aggroDistance, attackRange, distanceToDisappear, attackSpeed, xpGain, Blocking.SEMIBLOCK, hp, damage, movementSpeed, attackType, name){
-		
 	}
 
 	public override void UnderAttackRange(Hero target)
@@ -48,18 +49,33 @@ public abstract class Dragonet : NPC {
 
 	public override void Attack(Hero target)
 	{
-		if(LastAttack + CurrentAttackSpeed < Time.time )
+		if(LastAttack + CurrentAttackSpeed < Time.time )//CurrentAttackSpeed
 		{
+
 			Vector3 vectorToTarget = target.transform.position - transform.position;
 			vectorToTarget.z = -vectorToTarget.z;
-			//Debug.Log("Dragonnet:"+vectorToTarget);
+
 			transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(Camera.main.transform.position),10f);
 			GetComponentInChildren<Animation>().CrossFadeQueued("Attack",0.2f);
 			PlayAttackSound();
 			NbAttack = NbAttack+1;
 			LastAttack = Time.time;
+
+			//add attacking BV
+			if (fireball == null) 
+			{
+				//loading fireball in the dragonnet
+				fireball = Instantiate(fireballGo);
+				//fireball.GetComponentInChildren<HeroLinkWeapon>().Hero = hero;
+				fireball.transform.parent = transform; //need to attach to this
+				//get the lifebar position because dragonnet position is messed up
+				fireball.transform.position = this.transform.position; //GetComponentInChildren<Canvas>().transform.position;
+				fireball.transform.localPosition = new Vector3(0, 2.3f, 0);
+				//fireball.transform.localPosition = new Vector3(0f, 0f, 0f);
+
+			}
+
 		}
-		
 	}
 
 	public void FollowPlayer(Hero target)

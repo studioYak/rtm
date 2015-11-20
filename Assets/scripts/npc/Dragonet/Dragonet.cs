@@ -53,7 +53,7 @@ public abstract class Dragonet : NPC {
 			Vector3 vectorToTarget = target.transform.position - transform.position;
 			vectorToTarget.z = -vectorToTarget.z;
 			//Debug.Log("Dragonnet:"+vectorToTarget);
-			transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(Camera.main.transform.position),10f);
+			//transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(Camera.main.transform.position),10f);
 			GetComponentInChildren<Animation>().CrossFadeQueued("Attack",0.2f);
 			PlayAttackSound();
 			NbAttack = NbAttack+1;

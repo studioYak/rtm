@@ -358,6 +358,7 @@ GameObject:
   - 33: {fileID: 3306528}
   - 23: {fileID: 2344208}
   - 136: {fileID: 13634116}
+  - 114: {fileID: 11461304}
   m_Layer: 0
   m_Name: Halberd_A
   m_TagString: ennemy_weapon
@@ -934,7 +935,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 420836}
-  - 114: {fileID: 11495100}
   - 114: {fileID: 11470848}
   - 65: {fileID: 6516784}
   - 54: {fileID: 5440286}
@@ -2113,6 +2113,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11461304
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4881e9f377dd4342856b426fc9c02d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11466640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2138,17 +2149,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 731b006bfe34f334fb3976e035e42472, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11495100
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 188616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4881e9f377dd4342856b426fc9c02d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &13634116
